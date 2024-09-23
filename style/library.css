@@ -333,6 +333,14 @@ a, ul, li {
     width: 100%;
 }
 
+.h-full-vh {
+    height: 100vh;
+}
+
+.h-90-vh {
+    height: 90vh;
+}
+
 button {
     cursor: pointer;
 }
@@ -340,6 +348,15 @@ button {
 .text-center {
     text-align: center;
 }
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
 
 .round-corner {
     border-radius: 10px;

@@ -52,7 +52,7 @@ h1 {
 h2 {
     font-family: var(--primary-font);
     font-size: 36px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
 }
@@ -60,7 +60,7 @@ h2 {
 h3 {
     font-family: var(--primary-font);
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
 }
@@ -68,7 +68,7 @@ h3 {
 h4 {
     font-family: var(--primary-font);
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
 }
@@ -104,6 +104,7 @@ p {
 
 
 /* styles for pages */
+/* front page about company */
 .about-ghiblifilms {
     background-image: url("../img/about-ghiblifilms.jpg");
     width: 100%;
@@ -112,6 +113,7 @@ p {
     background-position: center;
 }
 
+/* all containers with 3 items */
 .items {
     list-style: none;
     display: grid;
@@ -125,6 +127,13 @@ p {
     height: auto; 
 }
 
+
+/* booking slot */
+.booking-slot {
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 36px;
+}
 
 
 
