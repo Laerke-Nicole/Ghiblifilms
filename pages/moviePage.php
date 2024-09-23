@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Page</title>
+    <title>Ghiblifilms</title>
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/library.css">
     <link rel="stylesheet" href="../../style/responsive.css">
@@ -128,19 +128,19 @@
         </div>
 
         <div class="flex flex-col w-half gap-4">
-            <div class="booking-slot">
+            <div class="box">
                 <h4>MON 17/9 AT 19.30</h4>
                 <p>BIO 1</p>
                 <p>2D</p>
             </div>
 
-            <div class="booking-slot">
+            <div class="box">
                 <h4>MON 17/9 AT 19.30</h4>
                 <p>BIO 1</p>
                 <p>2D</p>
             </div>
 
-            <div class="booking-slot">
+            <div class="box">
                 <h4>MON 17/9 AT 19.30</h4>
                 <p>BIO 1</p>
                 <p>2D</p>
