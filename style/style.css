@@ -1,0 +1,80 @@
+/* color palette */
+:root {
+    --primary-color: #2B2254;
+    --secondary-color: #D4C5FF;
+    --tertiary-color: #F3F3E7;
+}
+
+
+/* font family */
+:root {
+    --primary-font: "etna", sans-serif;
+    --secondary-font: "open sans", sans-serif;
+}
+
+
+/* body style */
+body {
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--primary-color);
+}
+
+
+/* button style */
+.btn {
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: var(--primary-font);
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+
+/* text style */
+h1 {
+    font-family: var(--primary-font);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+h2 {
+    font-family: var(--primary-font);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+h3 {
+    font-family: var(--primary-font);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+h4 {
+    font-family: var(--primary-font);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+p {
+    font-family: var(--secondary-font);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--tertiary-color);
+}
+
+
+.round-corner {
+    border-radius: 10px;
+}
+
+/* 10% percent sides */
+.ten-percent {
+    padding-right: 10%;
+    padding-left: 10%;
+}
