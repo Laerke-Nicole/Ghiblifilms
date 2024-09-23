@@ -3,6 +3,10 @@
     display: flex;
 }
 
+.flex-1 {
+    flex: 1;
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;
@@ -40,6 +44,33 @@
     align-items: flex-end;
 }
 
+.grid {
+    display: grid;
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.max-w-xs {
+    max-width: 20rem;
+}
+
+.max-w-lg {
+    max-width: 32rem;
+}
 
 
 .text-xs {
@@ -81,6 +112,19 @@
 .text-6xl {
     font-size: 64px;
 }
+
+.weight-400 {
+    font-weight: 400;
+}
+
+.weight-600 {
+    font-weight: 600;
+}
+
+.weight-700 {
+    font-weight: 700;
+}
+
 
 .gap-1 {
     gap: 4px;
@@ -281,6 +325,10 @@ a, ul, li {
     width: 60%;
 }
 
+.w-70 {
+    width: 70%;
+}
+
 .w-full {
     width: 100%;
 }
@@ -291,4 +339,13 @@ button {
 
 .text-center {
     text-align: center;
+}
+
+.round-corner {
+    border-radius: 10px;
+}
+
+.ten-percent {
+    padding-right: 10%;
+    padding-left: 10%;
 }

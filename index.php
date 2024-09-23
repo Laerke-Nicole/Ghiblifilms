@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/library.css">
+    <link rel="stylesheet" href="style/responsive.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 
 
 <!-- news -->
-<section>
+<section class="pt-24 pb-24 ten-percent">
     <div>
-        <h2>NEWS</h2>
+        <h2 class="text-center pb-4">NEWS</h2>
     </div>
     
     <!-- loop with news -->
-    <div>
+    <div class="items">
         <div>
-            <img src="" alt="Image of news">
-            <h4></h4>
+            <img src="img/ged.jpg" alt="Image of news">
+            <h4 class="weight-400 pb-2">SIRITED AWAY</h4>
+            <button class="btn">See more</button>
+        </div>
+        <div>
+            <img src="img/chihiro.jpg" alt="Image of news">
+            <h4 class="weight-400 pb-2">PONYO</h4>
+            <button class="btn">See more</button>
+        </div>
+        <div>
+            <img src="img/ponyo.jpg" alt="Image of news">
+            <h4 class="weight-400 pb-2">HOWL'S MOVING CASTLE</h4>
             <button class="btn">See more</button>
         </div>
     </div>
@@ -30,16 +41,41 @@
 
 
 <!-- upcoming movies -->
-<section>
+<section class="pb-24 ten-percent">
     <div>
-        <h2>Upcoming movies</h2>
+        <h2 class="text-center pb-4">Upcoming movies</h2>
     </div>
     
     <!-- loop with movies -->
-    <div>
+    <div class="items">
         <div>
-            <img src="" alt="Image of movie">
-            <h4></h4>
+            <img src="img/ged.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">SIRITED AWAY</h4>
+            <button class="btn">Get tickets</button>
+        </div>
+        <div>
+            <img src="img/chihiro.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">PONYO</h4>
+            <button class="btn">Get tickets</button>
+        </div>
+        <div>
+            <img src="img/ponyo.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">HOWL'S MOVING CASTLE</h4>
+            <button class="btn">Get tickets</button>
+        </div>
+        <div>
+            <img src="img/ged.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">SIRITED AWAY</h4>
+            <button class="btn">Get tickets</button>
+        </div>
+        <div>
+            <img src="img/chihiro.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">PONYO</h4>
+            <button class="btn">Get tickets</button>
+        </div>
+        <div>
+            <img src="img/ponyo.jpg" alt="Image of movie">
+            <h4 class="weight-400 pb-2">HOWL'S MOVING CASTLE</h4>
             <button class="btn">Get tickets</button>
         </div>
     </div>
@@ -49,18 +85,17 @@
 
 <!-- about ghiblifilms -->
 <section>
-    <div class="about-ghiblifilms">
-        <div>
-            <h2 class="primary-color">About Ghiblifilms</h2>
+    <div class="about-ghiblifilms flex pt-20 pb-20 justify-around">
+        <div class="flex-1 max-w-xs">
+            <h2 class="primary-color text-6xl">About<br>Ghiblifilms</h2>
         </div>
 
-        <div>
-            <p class="primary-color">Welcome to Ghiblifilms, Copenhagen's enchanting cinema dedicated entirely to the magical world of Studio Ghibli. 
+        <div class="flex-1 max-w-lg">
+            <p class="primary-color primary-font text-lg">Welcome to Ghiblifilms, Copenhagen's enchanting cinema dedicated entirely to the magical world of Studio Ghibli. 
                 Nestled in the heart of the city, our cinema is a haven for Ghibli fans, where the charm and wonder of 
                 Hayao Miyazaki's timeless creations come to life. Our screenings exclusively feature Studio Ghibli classics, 
                 offering a truly immersive experience where the magic of the movies extends beyond the screen. </p>
         </div>
-        
     </div>
 </section>
 

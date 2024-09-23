@@ -31,11 +31,12 @@ body {
 .btn {
     border: 1px solid var(--secondary-color);
     border-radius: 10px;
-    padding: 10px 20px;
+    padding: 12px 30px;
     font-family: var(--primary-font);
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     color: var(--secondary-color);
+    background-color: transparent;
 }
 
 
@@ -79,17 +80,6 @@ p {
     color: var(--tertiary-color);
 }
 
-
-.round-corner {
-    border-radius: 10px;
-}
-
-/* 10% percent sides */
-.ten-percent {
-    padding-right: 10%;
-    padding-left: 10%;
-}
-
 .primary-color {
     color: var(--primary-color);
 }
@@ -100,6 +90,14 @@ p {
 
 .tertiary-color {
     color: var(--tertiary-color);
+}
+
+.primary-font {
+    font-family: var(--primary-font);
+}
+
+.secondary-font {
+    font-family: var(--secondary-font);
 }
 
 
@@ -113,3 +111,26 @@ p {
     background-size: cover;
     background-position: center;
 }
+
+.items {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3,minmax(1px, 1fr));
+    row-gap: 56px;
+    column-gap: 16px;
+}
+
+.items img {
+    width: 100%; 
+    height: auto; 
+}
+
+
+
+
+
+
+
+
+
+
