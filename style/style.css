@@ -12,12 +12,18 @@
     --secondary-font: "open sans", sans-serif;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* body style */
 body {
     font-weight: 400;
     font-style: normal;
     background-color: var(--primary-color);
+    line-height: 1.6;
 }
 
 
@@ -29,6 +35,7 @@ body {
     font-family: var(--primary-font);
     font-size: 16px;
     text-transform: uppercase;
+    color: var(--secondary-color);
 }
 
 
@@ -38,6 +45,7 @@ h1 {
     font-size: 48px;
     font-weight: 700;
     color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 h2 {
@@ -45,6 +53,7 @@ h2 {
     font-size: 36px;
     font-weight: 700;
     color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 h3 {
@@ -52,6 +61,7 @@ h3 {
     font-size: 28px;
     font-weight: 700;
     color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 h4 {
@@ -59,6 +69,7 @@ h4 {
     font-size: 24px;
     font-weight: 700;
     color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 p {
@@ -77,4 +88,28 @@ p {
 .ten-percent {
     padding-right: 10%;
     padding-left: 10%;
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.tertiary-color {
+    color: var(--tertiary-color);
+}
+
+
+
+
+/* styles for pages */
+.about-ghiblifilms {
+    background-image: url("../img/about-ghiblifilms.jpg");
+    width: 100%;
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
 }
