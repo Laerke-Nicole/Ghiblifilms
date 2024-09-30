@@ -1,3 +1,5 @@
+<?php include '../header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 
 <!-- movie overall info -->
 <section>
-    <div class="flex gap-10">
+    <div class="half">
         <!-- img of movie -->
         <div class="h-full-vh">
             <img src="../../img/chihiro.jpg" alt="Image of movie" class="h-90-vh">
@@ -54,7 +56,7 @@
 <!-- cast -->
 <section class="pt-24 pb-24">
     <!-- voice actors -->
-    <div class="flex justify-between ten-percent pb-24">
+    <div class="half ten-percent pb-24">
         <div class="flex">
             <h3>VOICE ACTORS</h3>
         </div>
@@ -120,14 +122,14 @@
 
 <!-- book slots -->
 <section class="pb-24">
-    <div class="flex justify-between ten-percent pb-12">
+    <div class="half ten-percent pb-12">
         <!-- adress -->
         <div class="flex">
             <h3>FIELD'S SHOPPING MALL<br>ARNE JACOBSENS ALLÉ 12,<br>2300 COPENHAGEN</h3>
 
         </div>
 
-        <div class="flex flex-col w-half gap-4">
+        <div class="flex flex-col gap-4">
             <div class="box">
                 <h4>MON 17/9 AT 19.30</h4>
                 <p>BIO 1</p>

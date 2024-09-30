@@ -366,3 +366,7 @@ button {
     padding-right: 10%;
     padding-left: 10%;
 }
+
+.cursor {
+    cursor: pointer;
+}

@@ -37,6 +37,7 @@ body {
     text-transform: uppercase;
     color: var(--secondary-color);
     background-color: transparent;
+    cursor: pointer;
 }
 
 
@@ -133,6 +134,7 @@ p {
     border: 1px solid var(--secondary-color);
     border-radius: 10px;
     padding: 36px;
+    width: 100%;
 }
 
 .contact-form input, .contact-form textarea {
@@ -142,6 +144,12 @@ p {
 }
 
 
+/* half and half */
+.half{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
 
 
+/* contact form */
