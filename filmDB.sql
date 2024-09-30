@@ -29,11 +29,13 @@ CREATE TABLE Reservation (
 CREATE TABLE Movie (
   MovieID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Name varchar(100),
-  Description text(255),
+  Description text,
   ReleaseDate date,
   Duration time,
   ScreenFormat varchar(2),
-  MovieImg IMAGE
+  MovieImg varchar(255),
+  GenreID INT, 
+  FOREIGN KEY (GenreID) REFERENCES Genre(GenreID)
 );
 
 
@@ -41,7 +43,8 @@ CREATE TABLE Movie (
 CREATE TABLE Genre (
   GenreID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Name varchar(30),
-  parent_of int
+  ParentOf int,
+  FOREIGN KEY (ParentOf) REFERENCES Genre(GenreID)
 );
 
 
@@ -49,7 +52,7 @@ CREATE TABLE Genre (
 CREATE TABLE Seat (
   SeatID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   SeatNumber int(2),
-  Row int(1)
+  SeatRow int(1)
 );
 
 
@@ -57,8 +60,8 @@ CREATE TABLE Seat (
 CREATE TABLE SeatReservation (
   SeatReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   SeatNumber int(2),
-  Row int(1)
-  NumberOfSeatsBooked int (2)
+  SeatRow int(1),
+  NumberOfSeatsBooked int(2) 
 );
 
 
@@ -66,13 +69,17 @@ CREATE TABLE SeatReservation (
 CREATE TABLE VoiceActor (
   VoiceActorID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   FirstName varchar(50),
-  LastName varchar(50),
+  LastName varchar(50)
 );
 
 
 -- movie voice actor
 CREATE TABLE MovieVoiceActor (
-  
+  MovieVoiceActorID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  MovieID INT NOT NULL,
+  VoiceActorID INT NOT NULL,
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
+  FOREIGN KEY (VoiceActorID) REFERENCES VoiceActor(VoiceActorID)
 );
 
 
@@ -87,7 +94,11 @@ CREATE TABLE Production (
 
 -- movie production actor
 CREATE TABLE MovieProduction (
-  
+  MovieProductionID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  MovieID INT NOT NULL,
+  ProductionID INT NOT NULL,
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
+  FOREIGN KEY (ProductionID) REFERENCES Production(ProductionID)
 );
 
 
@@ -103,8 +114,8 @@ CREATE TABLE News (
   NewsID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Headline varchar(168),
   SubHeadline varchar(168),
-  TextOfNews text(255),
-  NewsImage IMAGE
+  TextOfNews text,
+  NewsImage varchar(255)
 );
 
 
@@ -112,7 +123,7 @@ CREATE TABLE News (
 CREATE TABLE CompanyInformation (
   CompanyInformationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NameOfCompany varchar(11),
-  CompanyDescription text(255),
+  CompanyDescription text,
   Email varchar(63),
   PhoneNumber varchar(20),
   AddressOfCompany varchar(255)
@@ -126,7 +137,7 @@ CREATE TABLE ContactForm (
   LastName varchar(50),
   Email varchar(63),
   PhoneNumber varchar(20),
-  MessageText text(255)
+  MessageText text
 );
 
 
@@ -134,7 +145,7 @@ CREATE TABLE ContactForm (
 CREATE TABLE OpeningHour (
   OpeningHourID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Day varchar(9),
-  Time timestamp
+  Time TIME  
 );
 
 
@@ -143,5 +154,3 @@ CREATE TABLE Payment (
   PaymentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   PaymentType varchar(9)
 );
-
-
