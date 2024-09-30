@@ -1,7 +1,7 @@
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php //confirm_logged_in(); ?>
+<?php // confirm_logged_in(); ?>
 <?php include 'header.php'; ?>
 
 <?php
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 
     try {
         // Prepare the SQL query to insert user
-        $query = "INSERT INTO users (user, pass) VALUES (:username, :hashed_password)";
+        $query = "INSERT INTO User (user, pass) VALUES (:username, :hashed_password)";
         $stmt = $connection->prepare($query);
 
         // Bind parameters
@@ -52,9 +52,9 @@ if (!empty($message)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ghiblifilms</title>
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/library.css">
-    <link rel="stylesheet" href="../style/responsive.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/library.css">
+    <link rel="stylesheet" href="style/responsive.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
 </head>
 

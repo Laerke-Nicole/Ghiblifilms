@@ -9,6 +9,7 @@
   <!-- right side links -->
   <div class="flex gap-6">
     <a href="login.php" class="secondary-color">Log In</a>
+    <a href="newuser.php" class="secondary-color">Create New User</a>
     <a href="#" class="secondary-color">Profile Page</a>
   </div>
 </header>

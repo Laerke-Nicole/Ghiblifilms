@@ -24,7 +24,7 @@
 		
 		try {
 			// Prepare the SQL query using PDO
-			$query = "SELECT id, user, pass FROM users WHERE user = :username LIMIT 1";
+			$query = "SELECT id, user, pass FROM User WHERE user = :username LIMIT 1";
 			$stmt = $connection->prepare($query);
 			
 			// Bind the username parameter
