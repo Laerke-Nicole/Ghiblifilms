@@ -15,55 +15,54 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
 </head>
 <body>
-
 <?php
-	// START FORM PROCESSING
-	if (isset($_POST['submit'])) { // Form has been submitted.
-		$username = trim($_POST['user']);
-		$password = trim($_POST['pass']);
-		
-		try {
-			// Prepare the SQL query using PDO
-			$query = "SELECT id, user, pass FROM User WHERE user = :username LIMIT 1";
-			$stmt = $connection->prepare($query);
-			
-			// Bind the username parameter
-			$stmt->bindParam(':username', $username);
-			$stmt->execute();
-			
-			// Fetch the result
-			$found_user = $stmt->fetch(PDO::FETCH_ASSOC);
-			
-			if ($found_user) {
-				// Check if the password is correct
-				if (password_verify($password, $found_user['pass'])) {
-					// Username/password authenticated
-					$_SESSION['user_id'] = $found_user['id'];
-					$_SESSION['user'] = $found_user['user'];
-					redirect_to("index.php");
-				} else {
-					// Password is incorrect
-					$message = "Username/password combination incorrect.<br />
-					Please make sure your caps lock key is off and try again.";
-				}
-			} else {
-				// No user found
-				$message = "Username/password combination incorrect.<br />
-				Please make sure your caps lock key is off and try again.";
-			}
-		} catch (PDOException $e) {
-			die("Database query failed: " . $e->getMessage());
-		}
-	} else { // Form has not been submitted.
-		if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-			$message = "You are now logged out.";
-		} 
-	}
+    // START FORM PROCESSING
+    if (isset($_POST['submit'])) { // Form has been submitted.
+        $username = trim($_POST['user']);
+        $password = trim($_POST['pass']);
+        
+        try {
+            // Prepare the SQL query using PDO
+            $query = "SELECT id, username, pass FROM User WHERE username = :username LIMIT 1"; // Use 'username' instead of 'user'
+            $stmt = $connection->prepare($query);
+            
+            // Bind the username parameter
+            $stmt->bindParam(':username', $username);
+            $stmt->execute();
+            
+            // Fetch the result
+            $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($found_user) {
+                // Check if the password is correct
+                if (password_verify($password, $found_user['pass'])) {
+                    // Username/password authenticated
+                    $_SESSION['user_id'] = $found_user['id'];
+                    $_SESSION['user'] = $found_user['username']; // Update to 'username'
+                    redirect_to("index.php");
+                } else {
+                    // Password is incorrect
+                    $message = "Username/password combination incorrect.<br />
+                    Please make sure your caps lock key is off and try again.";
+                }
+            } else {
+                // No user found
+                $message = "Username/password combination incorrect.<br />
+                Please make sure your caps lock key is off and try again.";
+            }
+        } catch (PDOException $e) {
+            die("Database query failed: " . $e->getMessage());
+        }
+    } else { // Form has not been submitted.
+        if (isset($_GET['logout']) && $_GET['logout'] == 1) {
+            $message = "You are now logged out.";
+        } 
+    }
 
-	// Display the message if set
-	if (!empty($message)) {
-		echo "<p>" . $message . "</p>";
-	}
+    // Display the message if set
+    if (!empty($message)) {
+        echo "<p>" . $message . "</p>";
+    }
 ?>
 
 <!DOCTYPE html>

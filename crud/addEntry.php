@@ -11,8 +11,8 @@ $description = $_POST['description'];
 $dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("INSERT INTO customers (`username`, `Fname`, `Lname`, `email`, `rank`, `description`) VALUES ('$userName', '$firstName', '$lastName', '$email', 3, '$description')");
 $query->execute();
-    header("Location: crud.php?status=added");
+    header("Location: admin.php?status=added");
 
 }else{
-    header("Location: crud.php?status=0");
+    header("Location: admin.php?status=0");
 }

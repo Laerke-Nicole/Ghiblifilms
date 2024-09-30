@@ -11,8 +11,8 @@ if (isset($_POST['entryID']) && isset($_POST['submit'])) {
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("UPDATE customers SET `username`='$userName', `Fname`='$firstName', `Lname`='$lastName', `email`='$email', `description`='$description' WHERE ID=$entryID");
     $query->execute();
-    header("Location: crud.php?status=updated&ID=$entryID");
+    header("Location: admin.php?status=updated&ID=$entryID");
 
 }else{
-    header("Location: crud.php?status=0");
+    header("Location: admin.php?status=0");
 }

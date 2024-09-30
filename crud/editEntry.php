@@ -59,5 +59,5 @@ $getUsers = $query->fetchAll();
 </div>
 </body>
 </html>
-<?php }else{    header("Location: crud.php?status=0");
+<?php }else{    header("Location: admin.php?status=0");
 }?>

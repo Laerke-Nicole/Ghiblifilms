@@ -2,14 +2,21 @@
   <!-- empty div for left side alignment -->
   <div></div>
 
-  <!-- centered title -->
-  <a href="/ghiblifilms/ghiblifilms/index.php" class="secondary-color text-3xl">GHIBLIFILMS</a>
+    <!-- centered title -->
+    <a href="/ghiblifilms/ghiblifilms/index.php" class="secondary-color text-3xl">GHIBLIFILMS</a>
 
 
-  <!-- right side links -->
-  <div class="flex gap-6">
-    <a href="login.php" class="secondary-color">Log In</a>
-    <a href="newuser.php" class="secondary-color">Create New User</a>
-    <a href="#" class="secondary-color">Profile Page</a>
+    <!-- right side links -->
+    <div class="flex gap-6">
+      <a href="login.php" class="secondary-color">Log In</a>
+      <a href="newuser.php" class="secondary-color">Create New User</a>
+      <a href="#" class="secondary-color">Profile Page</a>
+
+      <?php if (logged_in()) { ?>
+          <form action="logout.php" method="post" style="display:inline;">
+              <input type="submit" value="Log Out" class="btn">
+          </form>
+      <?php } ?>
+      
   </div>
 </header>
