@@ -1,4 +1,5 @@
 <?php require_once "dbcon.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,15 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
+
 <?php
 $dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM customers");
 $query->execute();
 $getUsers = $query->fetchAll();
 //var_dump($getUsers);
+
+
 ?>
 <body>
 
@@ -81,7 +85,7 @@ $getUsers = $query->fetchAll();
             </table>
         </div>
         <hr>
-        <h3>Add new user to DB!</h3>
+        <h3>Add new movie</h3>
 
         <form class="col s12" name="contact" method="post" action="addEntry.php">
             <div class="row">
@@ -99,7 +103,7 @@ $getUsers = $query->fetchAll();
                     <input id="lastName" name="lastName" type="text" class="validate" required="" aria-required="true">
                     <label for="lastName">Last Name</label>
                 </div>
-            </div>
+            </div>  
             <div class="row">
                 <div class="input-field col s12">
                     <input id="email" name="email" type="email" class="validate" required="" aria-required="true">

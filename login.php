@@ -18,16 +18,16 @@
 <?php
     // START FORM PROCESSING
     if (isset($_POST['submit'])) { // Form has been submitted.
-        $username = trim($_POST['user']);
-        $password = trim($_POST['pass']);
+        $username = trim($_POST['User']);
+        $password = trim($_POST['Pass']);
         
         try {
             // Prepare the SQL query using PDO
-            $query = "SELECT id, username, pass FROM User WHERE username = :username LIMIT 1"; // Use 'username' instead of 'user'
+            $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; // Use 'username' instead of 'user'
             $stmt = $connection->prepare($query);
             
             // Bind the username parameter
-            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':Username', $username);
             $stmt->execute();
             
             // Fetch the result
@@ -35,10 +35,10 @@
             
             if ($found_user) {
                 // Check if the password is correct
-                if (password_verify($password, $found_user['pass'])) {
+                if (password_verify($password, $found_user['Pass'])) {
                     // Username/password authenticated
-                    $_SESSION['user_id'] = $found_user['id'];
-                    $_SESSION['user'] = $found_user['username']; // Update to 'username'
+                    $_SESSION['user_id'] = $found_user['UserID']; // Update to 'UserID'
+                    $_SESSION['User'] = $found_user['Username']; // Update to 'username'
                     redirect_to("index.php");
                 } else {
                     // Password is incorrect
@@ -82,12 +82,12 @@
 <form action="" method="post" class="flex flex-col">
     <div class="pb-4">
         <p>Username:</p>
-        <input type="text" name="user" maxlength="30" value="" />
+        <input type="text" name="User" maxlength="30" value="" />
     </div>
     
     <div class="pb-4">
         <p>Password:</p>
-        <input type="password" name="pass" maxlength="30" value="" />
+        <input type="password" name="Pass" maxlength="30" value="" />
     </div>
 
     <div class="cursor">
