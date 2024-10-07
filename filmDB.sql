@@ -82,8 +82,8 @@ CREATE TABLE Movie (
   MovieID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Name` varchar(100),
   `Description` text,
-  ReleaseDate date,
-  Duration varchar(11),
+  ReleaseYear tinyint (4),
+  Duration varchar(7),
   MovieImg varchar(255),
   GenreID INT NOT NULL,
   ScreenFormatID INT NOT NULL,
@@ -336,24 +336,53 @@ insert into ScreenFormat (ScreenFormatID, ScreenFormat) values (3, '4D');
 -- role in production
 insert into RoleInProduction (RoleInProductionID, NameOfRole) values (1, 'Director');
 insert into RoleInProduction (RoleInProductionID, NameOfRole) values (2, 'Producer');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (3, 'Screenwriter');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (4, 'Art Director');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (5, 'Character Designer');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (6, 'Animation Director');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (7, 'Music Composer');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (8, 'Sound Director');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (9, 'Key Animator');
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (10, 'Background Artist');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (3, 'Art Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (4, 'Animation Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (5, 'Music Composer');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (6, 'Sound Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (7, 'Editor');
 
 
 -- production
-insert into Production (ProductionID, FirstName, LastName) values (1, 'Hayao', 'Miyazaki');
-insert into Production (ProductionID, FirstName, LastName) values (2, 'Toshio', 'Suzuki');
-insert into Production (ProductionID, FirstName, LastName) values (3, 'Joe', 'Hisaishi');
-insert into Production (ProductionID, FirstName, LastName) values (4, 'Yasuyoshi', 'Tokuma');
-insert into Production (ProductionID, FirstName, LastName) values (5, 'Isao', 'Takahata');
-insert into Production (ProductionID, FirstName, LastName) values (6, 'Yoshiaki', 'Nishimura');
-insert into Production (ProductionID, FirstName, LastName) values (7, 'Kazuo', 'Oga');
-insert into Production (ProductionID, FirstName, LastName) values (8, 'Yoshiyuki', 'Momose');
-insert into Production (ProductionID, FirstName, LastName) values (9, 'Kazuo', 'Komatsubara');
-insert into Production (ProductionID, FirstName, LastName) values (10, 'Yoshiyuki', 'Kasuga');
+-- the boy and the heron
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (1, 'Hayao', 'Miyazaki', 1);
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (2, 'Toshio', 'Suzuki', 2);
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (3, 'Yôji', 'Takeshige', 3);
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (4, 'Joe', 'Hisaishi', 5);
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (5, 'Kôji', 'Kasamatsu', 6);
+insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (6, 'Rie', 'Matsubara', 7);
+
+
+
+-- voice actor
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (1, 'Rumi', 'Hiiragi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (2, 'Miyu', 'Irino');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (3, 'Mari', 'Natsuki');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (4, 'Takashi', 'Naito');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (5, 'Yasuko', 'Sawaguchi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (6, 'Sumi', 'Shimamoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (7, 'Keiko', 'Yokozawa');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (8, 'Yuriko', 'Ishida');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (9, 'Yuko', 'Tanaka');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (10, 'Kazuo', 'Kumakura');
+
+
+-- movie
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (1, 'The boy and the heron', 'In the wake of his mothers death and his fathers remarriage, a headstrong boy named Mahito ventures into a dreamlike world shared by both the living and the dead.', 2023, '2h 4m', 'imglink', 4, 3, 2, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (2, 'Spirited away', 'During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.', 2001, '2h 4m', 'imglink', 6, 1, 3, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (3, 'Howls moving castle', 'When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.', 2004, '1h 59m', 'imglink', 4, 2, 2, 3);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (4, 'Princess Mononoke', 'On a journey to find the cure for a Tatarigamis curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.', 1997, '2h 13m', 'img link', 7, 1, 3, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (5, 'My neighbour Totoro', 'When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.', 1988, '1h 26m', 'imglink', 9, 1, 2, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (6, 'Ponyo', 'A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.', 2008, '1h 41m', 'imglink', 5, 3, 1, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (7, 'Kikis delivery service', 'Along with her black cat Jiji, Kiki settles in a seaside town and starts a high-flying delivery service. Here begins her magical encounter with independence and responsibility, making lifelong friends and finding her place in the world.', 1989, '1h 43m', 'imglink', 1, 1, 3, 2);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (8, 'Tales from Earthsea', 'In a mythical land, a man and a young boy investigate a series of unusual occurrences.', 2006, '1h 55m', 'imglink', 6, 1, 2, 3);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (9, 'The tale of the princess Kaguya', 'Kaguya is a beautiful young woman coveted by five nobles. To try to avoid marrying a stranger she doesnt love, she sends her suitors on seemingly impossible tasks. But she will have to face her fate and punishment for her choices.', 2013, '2h 17m', 'imglink', 9, 3, 2, 3);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (10, 'The secret world of Arrietty', 'The Clock family are four-inch-tall people who live anonymously in another familys residence, borrowing simple items to make their home. Life changes for the Clocks when their teenage daughter Arrietty is discovered.', 2010, '1h 34m', 'imglink', 7, 3, 2, 1);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (11, 'The wind rises', 'Jiro Horikoshi studies assiduously to fulfill his aim of becoming an aeronautical engineer. As WWII begins, fighter aircraft designed by him end up getting used by the Japanese Empire against its foes.', 2013, '2h 6m', 'imglink', 8, 1, 3, 3);
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, GenreID, ScreenFormatID, VoiceActorID, ProductionID) values (12, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'imglink', 1, 2, 3, 3);
+
+
+-- movie production actor
+insert into MovieProduction (MovieID, ProductionID) values (1, 1);
+insert into MovieProduction (MovieID, ProductionID) values (1, 2);
+insert into MovieProduction (MovieID, ProductionID) values (1, 3);
