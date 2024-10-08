@@ -461,66 +461,66 @@ insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieI
 
 -- movie genres
 -- the boy and the heron
-insert into MovieProduction (MovieID, GenreID) values (1, 2);
-insert into MovieProduction (MovieID, GenreID) values (1, 3);
-insert into MovieProduction (MovieID, GenreID) values (1, 4);
+insert into MovieGenre (MovieID, GenreID) values (1, 2);
+insert into MovieGenre (MovieID, GenreID) values (1, 3);
+insert into MovieGenre (MovieID, GenreID) values (1, 4);
 
 -- spirited away
-insert into MovieProduction (MovieID, GenreID) values (2, 2);
-insert into MovieProduction (MovieID, GenreID) values (2, 4);
-insert into MovieProduction (MovieID, GenreID) values (2, 6);
-insert into MovieProduction (MovieID, GenreID) values (2, 7);
-insert into MovieProduction (MovieID, GenreID) values (2, 10);
+insert into MovieGenre (MovieID, GenreID) values (2, 2);
+insert into MovieGenre (MovieID, GenreID) values (2, 4);
+insert into MovieGenre (MovieID, GenreID) values (2, 6);
+insert into MovieGenre (MovieID, GenreID) values (2, 7);
+insert into MovieGenre (MovieID, GenreID) values (2, 10);
 
 -- howls moving castle
-insert into MovieProduction (MovieID, GenreID) values (3, 2);
-insert into MovieProduction (MovieID, GenreID) values (3, 4);
-insert into MovieProduction (MovieID, GenreID) values (3, 7);
+insert into MovieGenre (MovieID, GenreID) values (3, 2);
+insert into MovieGenre (MovieID, GenreID) values (3, 4);
+insert into MovieGenre (MovieID, GenreID) values (3, 7);
 
 -- princess mononoke
-insert into MovieProduction (MovieID, GenreID) values (4, 2);
-insert into MovieProduction (MovieID, GenreID) values (4, 4);
-insert into MovieProduction (MovieID, GenreID) values (4, 5);
+insert into MovieGenre (MovieID, GenreID) values (4, 2);
+insert into MovieGenre (MovieID, GenreID) values (4, 4);
+insert into MovieGenre (MovieID, GenreID) values (4, 5);
 
 -- my neighbour Totoro
-insert into MovieProduction (MovieID, GenreID) values (5, 4);
-insert into MovieProduction (MovieID, GenreID) values (5, 7);
-insert into MovieProduction (MovieID, GenreID) values (5, 11);
+insert into MovieGenre (MovieID, GenreID) values (5, 4);
+insert into MovieGenre (MovieID, GenreID) values (5, 7);
+insert into MovieGenre (MovieID, GenreID) values (5, 11);
 
 -- ponyo
-insert into MovieProduction (MovieID, GenreID) values (6, 2);
-insert into MovieProduction (MovieID, GenreID) values (6, 4);
-insert into MovieProduction (MovieID, GenreID) values (6, 7);
-insert into MovieProduction (MovieID, GenreID) values (6, 11);
+insert into MovieGenre (MovieID, GenreID) values (6, 2);
+insert into MovieGenre (MovieID, GenreID) values (6, 4);
+insert into MovieGenre (MovieID, GenreID) values (6, 7);
+insert into MovieGenre (MovieID, GenreID) values (6, 11);
 
 -- kikis delivery service
-insert into MovieProduction (MovieID, GenreID) values (7, 4);
-insert into MovieProduction (MovieID, GenreID) values (7, 7);
+insert into MovieGenre (MovieID, GenreID) values (7, 4);
+insert into MovieGenre (MovieID, GenreID) values (7, 7);
 
 -- tales from Earthsea
-insert into MovieProduction (MovieID, GenreID) values (8, 2);
-insert into MovieProduction (MovieID, GenreID) values (8, 4);
+insert into MovieGenre (MovieID, GenreID) values (8, 2);
+insert into MovieGenre (MovieID, GenreID) values (8, 4);
 
 -- the tale of the princess kaguya
-insert into MovieProduction (MovieID, GenreID) values (9, 3);
-insert into MovieProduction (MovieID, GenreID) values (9, 10);
-insert into MovieProduction (MovieID, GenreID) values (9, 12);
+insert into MovieGenre (MovieID, GenreID) values (9, 3);
+insert into MovieGenre (MovieID, GenreID) values (9, 10);
+insert into MovieGenre (MovieID, GenreID) values (9, 12);
 
 -- the secret world of arrietty
-insert into MovieProduction (MovieID, GenreID) values (10, 2);
-insert into MovieProduction (MovieID, GenreID) values (10, 3);
-insert into MovieProduction (MovieID, GenreID) values (10, 4);
-insert into MovieProduction (MovieID, GenreID) values (10, 7);
+insert into MovieGenre (MovieID, GenreID) values (10, 2);
+insert into MovieGenre (MovieID, GenreID) values (10, 3);
+insert into MovieGenre (MovieID, GenreID) values (10, 4);
+insert into MovieGenre (MovieID, GenreID) values (10, 7);
 
 -- the wind rises
-insert into MovieProduction (MovieID, GenreID) values (11, 8);
-insert into MovieProduction (MovieID, GenreID) values (11, 12);
+insert into MovieGenre (MovieID, GenreID) values (11, 8);
+insert into MovieGenre (MovieID, GenreID) values (11, 12);
 
 -- from up on poppy hill
-insert into MovieProduction (MovieID, GenreID) values (12, 1);
-insert into MovieProduction (MovieID, GenreID) values (12, 3);
-insert into MovieProduction (MovieID, GenreID) values (12, 8);
-insert into MovieProduction (MovieID, GenreID) values (12, 11);
+insert into MovieGenre (MovieID, GenreID) values (12, 1);
+insert into MovieGenre (MovieID, GenreID) values (12, 3);
+insert into MovieGenre (MovieID, GenreID) values (12, 8);
+insert into MovieGenre (MovieID, GenreID) values (12, 11);
 
 
 -- movie production actor
