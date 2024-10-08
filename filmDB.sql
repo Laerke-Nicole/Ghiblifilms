@@ -346,13 +346,13 @@ insert into ScreenFormat (ScreenFormatID, ScreenFormat) values (NULL, '4D');
 
 
 -- role in production
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Director');1
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Producer');2
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Art Director');3
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Animation Director');4
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Music Composer');5
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Sound Director');6
-insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Editor');7
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Producer');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Art Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Animation Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Music Composer');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Sound Director');
+insert into RoleInProduction (RoleInProductionID, NameOfRole) values (NULL, 'Editor');
 
 
 -- production
