@@ -6,13 +6,12 @@
 		redirect_to("index.php");
 	}
  ?>
- 
 
- <?php include 'header.php'; ?>
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+    <title>Log in</title>
 </head>
 <body>
 <?php

@@ -370,3 +370,7 @@ button {
 .cursor {
     cursor: pointer;
 }
+
+.caps {
+    text-transform: uppercase;
+}
