@@ -1,18 +1,21 @@
 <?php
 require_once "dbcon.php";
 if (isset($_POST['entryID']) && isset($_POST['submit'])) {
-    $userName = $_POST['userName'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $description = $_POST['description'];
+    $userName = $_POST['Username'];
+    $firstName = $_POST['FirstName'];
+    $lastName = $_POST['LastName'];
+    $email = $_POST['Email'];
+    $phoneNumber = $_POST['PhoneNumber'];
+    $address = $_POST['Address'];
+    $postalCode = $_POST['PostalCode'];
     $entryID = $_POST['entryID'];
 
     $dbCon = dbCon($user, $pass);
-    $query = $dbCon->prepare("UPDATE customers SET `username`='$userName', `Fname`='$firstName', `Lname`='$lastName', `email`='$email', `description`='$description' WHERE ID=$entryID");
+    $query = $dbCon->prepare("UPDATE User SET `Username`='$userName', `FirstName`='$firstName', `LastName`='$lastName', `Email`='$email', `PhoneNumber`='$phoneNumber', `Address`='$address', `PostalCode`='$postalCode' WHERE UserID=$entryID");
     $query->execute();
     header("Location: admin.php?status=updated&ID=$entryID");
 
-}else{
+} else {
     header("Location: admin.php?status=0");
 }
+?>

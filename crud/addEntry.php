@@ -2,17 +2,20 @@
 require_once "dbcon.php";
 if (isset($_POST['submit'])) {
 
-$userName = $_POST['userName'];
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$email = $_POST['email'];
-$description = $_POST['description'];
+    $userName = $_POST['Username'];
+    $firstName = $_POST['FirstName'];
+    $lastName = $_POST['LastName'];
+    $email = $_POST['Email'];
+    $phoneNumber = $_POST['PhoneNumber'];
+    $address = $_POST['Address'];
+    $postalCode = $_POST['PostalCode'];
 
-$dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("INSERT INTO customers (`username`, `Fname`, `Lname`, `email`, `rank`, `description`) VALUES ('$userName', '$firstName', '$lastName', '$email', 3, '$description')");
-$query->execute();
+    $dbCon = dbCon($user, $pass);
+    $query = $dbCon->prepare("INSERT INTO User (`Username`, `FirstName`, `LastName`, `Email`, `PhoneNumber`, `Address`, `PostalCode`) VALUES ('$userName', '$firstName', '$lastName', '$email', '$phoneNumber', '$address', '$postalCode')");
+    $query->execute();
     header("Location: admin.php?status=added");
 
-}else{
+} else {
     header("Location: admin.php?status=0");
 }
+?>

@@ -1,12 +1,13 @@
 <?php
 require_once "dbcon.php";
-if (isset($_GET['ID'])) {
-    $entryID = $_GET['ID'];
+if (isset($_GET['UserID'])) {
+    $entryID = $_GET['UserID'];
     $dbCon = dbCon($user, $pass);
-    $query = $dbCon->prepare("DELETE FROM customers WHERE id=$entryID");
+    $query = $dbCon->prepare("DELETE FROM User WHERE UserID=$entryID");
     $query->execute();
 
-    header("Location: admin?status=deleted&ID=$entryID");
-}else{
-    header("Location: admin?status=0");
+    header("Location: admin.php?status=deleted&ID=$entryID");
+} else {
+    header("Location: admin.php?status=0");
 }
+?>

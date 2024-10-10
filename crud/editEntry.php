@@ -1,6 +1,7 @@
 <?php require_once "dbcon.php";
 if (isset($_GET['ID'])) {
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,8 @@ if (isset($_GET['ID'])) {
 <?php
 $entryID = $_GET['ID'];
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM customers WHERE ID=$entryID");
+$query = $dbCon->prepare("SELECT * FROM User WHERE UserID=$entryID");
+
 $query->execute();
 $getUsers = $query->fetchAll();
 ?>
@@ -25,32 +27,57 @@ $getUsers = $query->fetchAll();
         <form class="col s12" name="contact" method="post" action="updateEntry.php">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="userName" name="userName" type="text" value="<?php echo $getUsers[0][1]; ?>" class="validate" required="" aria-required="true">
-                    <label for="userName">Username</label>
+                    <input id="Username" name="Username" type="text" value="<?php echo $getUsers[0][1]; ?>" class="validate" required="" aria-required="true">
+                    <label for="Username">Username</label>
                 </div>
             </div>
+
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="firstName" name="firstName" type="text"value="<?php echo $getUsers[0][2]; ?>" class="validate" required="" aria-required="true">
-                    <label for="firstName">First Name</label>
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo $getUsers[0][3]; ?>" class="validate" required="" aria-required="true">
+                    <label for="FirstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="lastName" name="lastName" type="text"value="<?php echo $getUsers[0][3]; ?>" class="validate" required="" aria-required="true">
-                    <label for="lastName">Last Name</label>
+                    <input id="LastName" name="LastName" type="text" value="<?php echo $getUsers[0][4]; ?>" class="validate" required="" aria-required="true">
+                    <label for="LastName">Last Name</label>
                 </div>
             </div>
+
             <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" name="email" type="email"value="<?php echo $getUsers[0][4]; ?>" class="validate" required="" aria-required="true">
-                    <label for="email">E-Mail</label>
+                <div class="input-field col s6">
+                    <input id="Email" name="Email" type="email" value="<?php echo $getUsers[0][5]; ?>" class="validate" required="" aria-required="true">
+                    <label for="Email">E-Mail</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo $getUsers[0][6]; ?>" class="validate" required="" aria-required="true">
+                    <label for="PhoneNumber">Phone Number</label>
                 </div>
             </div>
+
             <div class="row">
+                <div class="input-field col s6">
+                    <input id="Address" name="Address" type="text" value="<?php echo $getUsers[0][7]; ?>" class="validate" required="" aria-required="true">
+                    <label for="Address">Address</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo $getUsers[0][8]; ?>" class="validate" required="" aria-required="true">
+                    <label for="PostalCode">Postal code</label>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- <div class="row">
                 <div class="input-field col s12">
                     <textarea name="description" id="description" class="materialize-textarea" required="" aria-required="true"><?php echo $getUsers[0][6]; ?></textarea>
                     <label for="description">Description</label>
                 </div>
-            </div>
+            </div> -->
+
             <input type="hidden" name="entryID" value="<?php echo $entryID; ?>">
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>
@@ -59,5 +86,9 @@ $getUsers = $query->fetchAll();
 </div>
 </body>
 </html>
-<?php }else{    header("Location: admin.php?status=0");
+<?php 
+
+}
+
+else{    header("Location: admin.php?status=0");
 }?>

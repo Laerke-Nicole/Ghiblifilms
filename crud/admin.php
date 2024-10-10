@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact</title>
+    <title>Admin page</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -13,7 +13,7 @@
 
 <?php
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM customers");
+$query = $dbCon->prepare("SELECT * FROM User");
 $query->execute();
 $getUsers = $query->fetchAll();
 //var_dump($getUsers);
@@ -51,7 +51,9 @@ $getUsers = $query->fetchAll();
                     <th>Username</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Rank</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
+                    <th>Postal code</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -61,23 +63,20 @@ $getUsers = $query->fetchAll();
                 <?php
                 foreach ($getUsers as $getUser) {
                     echo "<tr>";
-                    echo "<td>". $getUser['ID']."</td>";
-                    echo "<td>". $getUser['username']."</td>";
-                    echo "<td>". $getUser['Fname']. " " .$getUser['Lname']."</td>";
-                    echo "<td>". $getUser['email']."</td>";
+                    echo "<td>". $getUser['UserID']."</td>";
+                    echo "<td>". $getUser['Username']."</td>";
+                    echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
+                    echo "<td>". $getUser['Email']."</td>";
+                    echo "<td>". $getUser['PhoneNumber']."</td>";
+                    echo "<td>". $getUser['Address']."</td>";
+                    echo "<td>". $getUser['PostalCode']."</td>";
                     echo "<td>";
-                    if ($getUser['rank']==1){
-                        echo '<img src="img/lvl1.png" alt="lvl 1" height="40px">';
-                    }
-                    elseif ($getUser['rank']==2){
-                        echo '<img src="img/lvl2.png" alt="lvl 2" height="40px">';
-                    }
-                    elseif ($getUser['rank']==3){
-                        echo '<img src="img/lvl3.png" alt="lvl 3" height="40px">';
-                    }
+
                     echo "</td>";
-                    echo '<td><a href="editEntry.php?ID='.$getUser['ID'].'" class="waves-effect waves-light btn" ">Edit</a></td>';
-                    echo '<td><a href="deleteEntry.php?ID='.$getUser['ID'].'" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="editEntry.php?ID='.$getUser['UserID'].'" class="waves-effect waves-light btn" ">Edit</a></td>';
+                    echo '<td><a href="deleteEntry.php?UserID='.$getUser['UserID'].'" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+
+                    
                     echo "</tr>";
                 }
                 ?>
@@ -85,37 +84,66 @@ $getUsers = $query->fetchAll();
             </table>
         </div>
         <hr>
-        <h3>Add new movie</h3>
+        <h3>Add new user</h3>
 
         <form class="col s12" name="contact" method="post" action="addEntry.php">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="userName" name="userName" type="text" class="validate" required="" aria-required="true">
-                    <label for="userName">Username</label>
+                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true">
+                    <label for="Username">Username</label>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="firstName" name="firstName" type="text" class="validate" required="" aria-required="true">
-                    <label for="firstName">First Name</label>
+                    <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">
+                    <label for="FirstName">First Name</label>
                 </div>
+                
                 <div class="input-field col s6">
-                    <input id="lastName" name="lastName" type="text" class="validate" required="" aria-required="true">
-                    <label for="lastName">Last Name</label>
+                    <input id="LastName" name="LastName" type="text" class="validate" required="" aria-required="true">
+                    <label for="LastName">Last Name</label>
                 </div>
             </div>  
+
             <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" name="email" type="email" class="validate" required="" aria-required="true">
-                    <label for="email">E-Mail</label>
+                <div class="input-field col s6">
+                        <input id="Email" name="Email" type="email" class="validate" required="" aria-required="true">
+                        <label for="Email">E-Mail</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="PhoneNumber" name="PhoneNumber" type="number" class="validate" required="" aria-required="true">
+                        <label for="PhoneNumber">Phone number</label>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="Address" name="Address" type="text" class="validate" required="" aria-required="true">
+                    <label for="Address">Address</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <label for="PostalCode">Postal code</label>
                 </div>
             </div>
-            <div class="row">
+
+
+
+
+
+
+            <!-- <div class="row">
                 <div class="input-field col s12">
-                    <textarea name="description" id="description" class="materialize-textarea" required="" aria-required="true"></textarea>
-                    <label for="description">Description</label>
+                    <textarea name="Description" id="description" class="materialize-textarea" required="" aria-required="true"></textarea>
+                    <label for="Description">Description</label>
                 </div>
-            </div>
+            </div> -->
+
+
             <button class="btn waves-effect waves-light" type="submit" name="submit">Add
             </button>
         </form>
