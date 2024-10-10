@@ -120,16 +120,6 @@ CREATE TABLE MovieVoiceActor (
 ) ENGINE=InnoDB;
 
 
--- movie genre
-CREATE TABLE MovieGenre (
-  MovieID INT NOT NULL,
-  GenreID INT NOT NULL,
-  CONSTRAINT PK_MovieGenre PRIMARY KEY (MovieID, GenreID),
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (GenreID) REFERENCES Genre(GenreID)
-) ENGINE=InnoDB;
-
-
 -- reservation
 CREATE TABLE Reservation (
   ReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -195,7 +185,7 @@ CREATE TABLE ContactForm (
 CREATE TABLE OpeningHour (
   OpeningHourID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Day` varchar(9),
-  `Time` varchar(8)
+  `Time` varchar(13)
 ) ENGINE=InnoDB;
 
 
@@ -431,17 +421,91 @@ insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) v
 
 
 -- voice actor
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rumi', 'Hiiragi');
+--The boy and the heron
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Soma', 'Santoki');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masaki', 'Suda');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kô', 'Shibasaki');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aimyon', 'Himi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yoshino', 'Kimura');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takuya', 'Kimura');
+
+-- spirited away
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miyu', 'Irino');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rumi', 'Hiiragi');
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mari', 'Natsuki');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takashi', 'Naito');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takashi', 'Naitô');
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yasuko', 'Sawaguchi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Sumi', 'Shimamoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Yokozawa');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Gashûin');
+
+-- howls moving castle
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chieko', 'Baishô');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Akihiro', 'Miwa');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Ryunosuke', 'Kamiki');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mitsunori', 'Isaki');
+
+-- princess mononoke
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yôji', 'Matsuda');
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuriko', 'Ishida');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuko', 'Tanaka');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kazuo', 'Kumakura');
--- MORE
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûko', 'Tanaka');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kei', 'Iinuma');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Michiko', 'Yamamoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shirô', 'Saitô');
+
+-- my neighbour Totoro
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hitoshi', 'Takagi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Noriko', 'Hidaka');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chika', 'Sakamoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shigesato', 'Itoi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Sumi', 'Shimamoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tanie', 'Kitabayashi');
+
+-- ponyo
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Yamaguchi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kazushige', 'Nagashima');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûki', 'Amami');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'George', 'Tokoro');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuria', 'Nara');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hiroki', 'Doi');
+
+-- kikis delivery service
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Minami', 'Takayama');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rei', 'Sakuma');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kappei', 'Yamaguchi');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Toda');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mieko', 'Nobusawa');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kôichi', 'Miura');
+
+-- tales from Earthsea
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aoi', 'Teshima');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Bunta', 'Sugawara');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Teruyuki', 'Kagawa');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Fubuki');
+
+-- the tale of the princess Kaguya
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aki', 'Asakura');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kengo', 'Kôra');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takeo', 'Chii');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Nobuko', 'Miyamoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Atsuko', 'Takahata');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Tabata');
+
+-- the secret world of Arrietty
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mirai', 'Shida');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Fujiwara');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomokazu', 'Miura');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shinobu', 'Ôtake');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Takeshita');
+
+-- the wind rises
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hideaki', 'Anno');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hidetoshi', 'Nishijima');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miori', 'Takimoto');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masahiko', 'Nishimura');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mansai', 'Nomura');
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Kunimura');
+
+-- from up on Poppy Hill
+insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami', 'Nagasawa');
 
 
 -- movie
@@ -632,3 +696,111 @@ insert into MovieProduction (MovieID, ProductionID) values (12, 44);
 insert into MovieProduction (MovieID, ProductionID) values (12, 22);
 insert into MovieProduction (MovieID, ProductionID) values (12, 11);
 
+
+-- MovieVoiceActor here
+-- the boy and the heron
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 1);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 2);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 3);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 4);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 5);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 6);
+
+-- spirited away
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 7);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 8);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 9);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 10);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 11);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 12);
+
+-- howls moving castle
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 13);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 6);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 12);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 14);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 15);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 16);
+
+-- princess mononoke
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 17);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 18);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 19);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 20);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 21);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 22);
+
+-- my neighbour Totoro
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 23);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 24);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 25);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 26);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 27);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 28);
+
+-- ponyo
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 29);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 30);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 31);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 32);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 33);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 34);
+
+-- kikis delivery service
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 35);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 36);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 37);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 38);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 39);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 40);
+
+-- tales from Earthsea
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 41);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 42);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 19);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 43);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 44);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 10);
+
+-- the tale of the princess Kaguya
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 45);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 46);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 47);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 48);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 49);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 50);
+
+-- the secret world of Arrietty
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 51);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 15);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 52);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 53);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 54);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 10);
+
+-- the wind rises
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 55);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 56);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 57);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 58);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 59);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 60);
+
+-- from up on Poppy Hill
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 61);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 54);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
+
+
+
+-- opening hours
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Tuesday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (3, 'Wednesday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (4, 'Thursday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (5, 'Friday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (6, 'Saturday', '12.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.00 - 22.00');
