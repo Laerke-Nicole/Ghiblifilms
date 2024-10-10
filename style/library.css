@@ -374,3 +374,7 @@ button {
 .caps {
     text-transform: uppercase;
 }
+
+tr:hover {
+    background-color: transparent !important;
+}

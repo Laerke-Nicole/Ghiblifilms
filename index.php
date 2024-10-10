@@ -44,15 +44,39 @@ if (isset($_GET['page'])){
 switch($page) {
 
 default:
-include('home.php');
+    include('home.php');
 break;
 
 case "login":
-include('login.php');
+    include('login.php');
 break;
 
 case "newuser":
-include('newuser.php');
+    include('newuser.php');
+break;
+
+case "admin":
+    include('crud/admin.php');
+break;
+
+case "addnews":
+    include('crud/addNews.php');
+break;
+
+case "addentry":
+    include('crud/addEntry.php');
+break;
+
+case "deletenews":
+    include('crud/deleteNews.php');
+break;
+
+case "editnews":
+    include('crud/editNews.php');
+break;
+
+case "updatenews":
+    include('crud/updatenews.php');
 break;
 
 }  

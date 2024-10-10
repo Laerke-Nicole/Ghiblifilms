@@ -1,5 +1,6 @@
 <?php require_once "dbcon.php";?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +31,8 @@ $getNews = $queryNews->fetchAll();
 ?>
 <body>
 
+
+<!-- user -->
 <div class="container">
 
     <h2>All users</h2>
@@ -54,7 +57,7 @@ $getNews = $queryNews->fetchAll();
         <div class="row">
             <table class="highlight">
                 <thead>
-                <tr>
+                <tr class="secondary-color">
                     <th>UserID</th>
                     <th>Username</th>
                     <th>Name</th>
@@ -67,7 +70,7 @@ $getNews = $queryNews->fetchAll();
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="secondary-color">
                 <?php
                 foreach ($getUsers as $getUser) {
                     echo "<tr>";
@@ -81,8 +84,8 @@ $getNews = $queryNews->fetchAll();
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="editEntry.php?ID='.$getUser['UserID'].'" class="waves-effect waves-light btn" ">Edit</a></td>';
-                    echo '<td><a href="deleteEntry.php?UserID='.$getUser['UserID'].'" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="editEntry.php?ID='.$getUser['UserID'].'" class="btn" ">Edit</a></td>';
+                    echo '<td><a href="deleteEntry.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
 
                     
                     echo "</tr>";
@@ -151,6 +154,9 @@ $getNews = $queryNews->fetchAll();
 <br>
 <br>
 
+
+
+<!-- news -->
 <div class="container">
 
     <h2>All news</h2>
@@ -178,7 +184,7 @@ $getNews = $queryNews->fetchAll();
     <div class="row">
         <table class="highlight">
             <thead>
-            <tr>
+            <tr class="secondary-color">
                 <th>NewsID</th>
                 <th>Headline</th>
                 <th>SubHeadline</th>
@@ -188,7 +194,8 @@ $getNews = $queryNews->fetchAll();
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody>
+
+            <tbody class="secondary-color">
             <?php
             foreach ($getNews as $news) {
                 echo "<tr>";
@@ -208,7 +215,7 @@ $getNews = $queryNews->fetchAll();
 
     <hr>
         <h3>Add New News</h3>
-        <form class="col s12" name="contact" method="post" action="addNews.php">
+        <form class="col s12" name="contact" method="post" action="index.php?page=addnews" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Headline" name="Headline" type="text" class="validate" required="" aria-required="true">
@@ -232,8 +239,7 @@ $getNews = $queryNews->fetchAll();
             
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="NewsImage" name="NewsImage" type="text" class="validate" required="" aria-required="true">
-                    <label for="NewsImage">Image link</label>
+                    <input id="NewsImage" name="NewsImage" type="file" class="validate" required="" aria-required="true">
                 </div>
             </div>
 
