@@ -421,7 +421,7 @@ insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) v
 
 
 -- voice actor
---The boy and the heron
+-- The boy and the heron
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Soma', 'Santoki');
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masaki', 'Suda');
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kô', 'Shibasaki');
