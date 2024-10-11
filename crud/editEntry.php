@@ -77,8 +77,7 @@ $getUsers = $query->fetchAll();
                     <label for="description">Description</label>
                 </div>
             </div> -->
-
-            <input type="hidden" name="entryID" value="<?php echo $entryID; ?>">
+            
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>
         </form>

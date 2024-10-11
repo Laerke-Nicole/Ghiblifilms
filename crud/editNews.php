@@ -12,9 +12,9 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <?php
-$entryID = $_GET['ID'];
+$newsID = $_GET['ID'];
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID=$entryID");
+$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID=$newsID");
 
 $query->execute();
 $getNews = $query->fetchAll();
@@ -47,12 +47,12 @@ $getNews = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="NewsImage" name="NewsImage" type="text" value="<?php echo $getNews[0][4]; ?>" class="validate" required="">
-                    <label for="NewsImage">News Image URL</label>
+                    <?php echo "<img src='" . $getNews[0][4] . "' alt='Image of news' width='100'>"; ?>
+                    <input id="NewsImage" name="NewsImage" type="file" value="<?php echo $getNews[0][4]; ?>" class="validate" required="">
                 </div>
             </div>
 
-            <input type="hidden" name="entryID" value="<?php echo $entryID; ?>">
+            
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
         </form>
     </div>

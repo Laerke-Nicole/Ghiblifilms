@@ -23,7 +23,7 @@
         
         <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
-        <li><a href="#" class="secondary-color">Profile Page</a></li>
+        <li><a href="index.php?page=admin" class="secondary-color">Profile Page</a></li>
 
         <?php if (logged_in()) { ?>
             <form action="logout.php" method="post" style="display:inline;">
@@ -59,20 +59,36 @@ case "admin":
     include('crud/admin.php');
 break;
 
+// add
+case "addentry":
+    include('crud/addEntry.php');
+break;
+
 case "addnews":
     include('crud/addNews.php');
 break;
 
-case "addentry":
-    include('crud/addEntry.php');
+// delete
+case "deleteentry":
+    include('crud/deleteEntry.php');
 break;
 
 case "deletenews":
     include('crud/deleteNews.php');
 break;
 
+// edit
+case "editentry":
+    include('crud/editEntry.php');
+break;
+
 case "editnews":
     include('crud/editNews.php');
+break;
+
+// update
+case "updateentry":
+    include('crud/updateEntry.php');
 break;
 
 case "updatenews":

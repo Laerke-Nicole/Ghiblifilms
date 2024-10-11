@@ -162,8 +162,8 @@ CREATE TABLE CompanyInformation (
   CompanyInformationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NameOfCompany varchar(11),
   CompanyDescription text,
-  Email varchar(63),
-  PhoneNumber varchar(20),
+  CompanyEmail varchar(63),
+  CompanyPhoneNumber varchar(20),
   AddressOfCompany varchar(255),
   PostalCode varchar(20),
   FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)

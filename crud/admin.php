@@ -8,6 +8,9 @@
     <title>Admin page</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/ghiblifilms/style/style.css">
+    <link rel="stylesheet" href="/ghiblifilms/style/responsive.css">
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -20,13 +23,16 @@ $query->execute();
 $getUsers = $query->fetchAll();
 //var_dump($getUsers);
 
-
 // get news
 $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();
 $getNews = $queryNews->fetchAll();
 
-
+// get company information
+$dbCon = dbCon($user, $pass);
+$query = $dbCon->prepare("SELECT * FROM CompanyInformation");
+$query->execute();
+$getCompanies = $query->fetchAll();
 
 ?>
 <body>
@@ -85,7 +91,7 @@ $getNews = $queryNews->fetchAll();
 
                     echo "</td>";
                     echo '<td><a href="editEntry.php?ID='.$getUser['UserID'].'" class="btn" ">Edit</a></td>';
-                    echo '<td><a href="deleteEntry.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="crud/deleteEntry.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
 
                     
                     echo "</tr>";
@@ -97,10 +103,10 @@ $getNews = $queryNews->fetchAll();
         <hr>
         <h3>Add new user</h3>
 
-        <form class="col s12" name="contact" method="post" action="addEntry.php">
+        <form class="col s12" name="contact" method="post" action="crud/addEntry.php">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true">
+                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true" class="secondary-color">
                     <label for="Username">Username</label>
                 </div>
             </div>
@@ -148,12 +154,12 @@ $getNews = $queryNews->fetchAll();
     </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <!-- news -->
@@ -215,7 +221,7 @@ $getNews = $queryNews->fetchAll();
 
     <hr>
         <h3>Add New News</h3>
-        <form class="col s12" name="contact" method="post" action="index.php?page=addnews" enctype="multipart/form-data">
+        <form class="col s12" name="contact" method="post" action="addNews.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Headline" name="Headline" type="text" class="validate" required="" aria-required="true">
@@ -249,12 +255,123 @@ $getNews = $queryNews->fetchAll();
     </div>
 </div>
 
+
 <br>
 <br>
 <br>
 <br>
 <br>
 
+
+<!-- company information -->
+<div class="container">
+
+    <h2>Company information</h2>
+    <?php
+    if (isset($_GET['status'])) {
+        if ($_GET['status'] == "deleted") {
+            echo "The entry " . $_GET['ID'] . " has been successfully deleted!";
+            echo "<script>M.toast({html: 'Deleted!'})</script>";
+        } elseif ($_GET['status'] == "updated") {
+            echo "The entry " . $_GET['ID'] . " has been successfully Updated!";
+            echo "<script>M.toast({html: 'Updated!'})</script>";
+        } elseif ($_GET['status'] == "added") {
+            echo "The new entry has been successfully added!";
+            echo "<script>M.toast({html: 'Added!'})</script>";
+        } elseif ($_GET['status'] == 0) {
+            echo "Forbidden access - redirected to home!";
+            echo "<script>M.toast({html: 'Access denied!'})</script>";
+        }
+    }
+    ?>
+    <div class="row">
+        <div class="row">
+            <table class="highlight">
+                <thead>
+                <tr class="secondary-color">
+                    <th>Company ID</th>
+                    <th>Company Name</th>
+                    <th>Description</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th>Address</th>
+                    <th>Postal code</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+
+                <tbody class="secondary-color">
+                <?php
+                foreach ($getCompanies as $companyInformation) {
+                    echo "<tr>";
+                    echo "<td>". $companyInformation['CompanyInformationID']."</td>";
+                    echo "<td>". $companyInformation['NameOfCompany']."</td>";
+                    echo "<td>". $companyInformation['CompanyDescription']."</td>";
+                    echo "<td>". $companyInformation['CompanyEmail']."</td>";
+                    echo "<td>". $companyInformation['CompanyPhoneNumber']."</td>";
+                    echo "<td>". $companyInformation['AddressOfCompany']."</td>";
+                    echo "<td>". $companyInformation['PostalCode']."</td>";
+                    echo "<td>";
+
+                    echo "</td>";
+                    echo '<td><a href="editCompanyInformation.php?ID='.$companyInformation['CompanyInformationID'].'" class="btn" ">Edit</a></td>';
+                    echo '<td><a href="deleteCompanyInformation.php?CompanyInformationID='.$companyInformation['CompanyInformationID'].'" class="btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+
+                    echo "</tr>";
+
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h3>Add new company information</h3>
+
+        <form class="col s12" name="contact" method="post" action="addCompanyInformation.php">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="NameOfCompany" name="NameOfCompany" type="text" class="validate" required="" aria-required="true" class="secondary-color">
+                    <label for="NameOfCompany">Company Name</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="CompanyDescription" name="CompanyDescription" class="materialize-textarea" required=""></textarea>
+                    <label for="CompanyDescription">Description</label>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="CompanyEmail" name="CompanyEmail" type="email" class="validate" required="" aria-required="true">
+                    <label for="CompanyEmail">E-Mail</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="CompanyPhoneNumber" name="CompanyPhoneNumber" type="number" class="validate" required="" aria-required="true">
+                    <label for="CompanyPhoneNumber">Phone number</label>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="AddressOfCompany" name="AddressOfCompany" type="text" class="validate" required="" aria-required="true">
+                    <label for="AddressOfCompany">Address</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <label for="PostalCode">Postal code</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="submit">Add
+            </button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
