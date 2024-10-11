@@ -52,7 +52,9 @@ $getNews = $query->fetchAll();
                 </div>
             </div>
 
-            
+
+            <input type="hidden" name="NewsID" value="<?php echo $newsID; ?>">
+
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
         </form>
     </div>

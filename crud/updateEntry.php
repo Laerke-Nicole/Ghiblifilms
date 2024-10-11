@@ -1,6 +1,7 @@
 <?php
 require_once "dbcon.php";
-if (isset($_POST['entryID']) && isset($_POST['submit'])) {
+
+if (isset($_POST['EntryID']) && isset($_POST['submit'])) {
     $userName = $_POST['Username'];
     $firstName = $_POST['FirstName'];
     $lastName = $_POST['LastName'];
@@ -8,7 +9,7 @@ if (isset($_POST['entryID']) && isset($_POST['submit'])) {
     $phoneNumber = $_POST['PhoneNumber'];
     $address = $_POST['Address'];
     $postalCode = $_POST['PostalCode'];
-    $entryID = $_POST['entryID'];
+    $entryID = $_POST['EntryID'];
 
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("UPDATE User SET `Username`='$userName', `FirstName`='$firstName', `LastName`='$lastName', `Email`='$email', `PhoneNumber`='$phoneNumber', `Address`='$address', `PostalCode`='$postalCode' WHERE UserID=$entryID");

@@ -66,18 +66,9 @@ $getUsers = $query->fetchAll();
                     <label for="PostalCode">Postal code</label>
                 </div>
             </div>
-
-
-
-
-
-            <!-- <div class="row">
-                <div class="input-field col s12">
-                    <textarea name="description" id="description" class="materialize-textarea" required="" aria-required="true"><?php echo $getUsers[0][6]; ?></textarea>
-                    <label for="description">Description</label>
-                </div>
-            </div> -->
             
+            <input type="hidden" name="UserID" value="<?php echo $userID; ?>">
+
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>
         </form>

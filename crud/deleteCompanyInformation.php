@@ -13,6 +13,3 @@ if (isset($_GET['CompanyInformationID'])) {
     header("Location: admin.php?status=0");
 }
 ?>
-
-
-
