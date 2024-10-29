@@ -6,16 +6,16 @@ if (isset($_GET['ID'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit entry</title>
+    <title>Edit user</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <?php
-$entryID = $_GET['ID'];
+$userID = $_GET['ID'];
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM User WHERE UserID=$entryID");
+$query = $dbCon->prepare("SELECT * FROM User WHERE UserID=$userID");
 
 $query->execute();
 $getUsers = $query->fetchAll();
@@ -24,7 +24,7 @@ $getUsers = $query->fetchAll();
 
 <div class="container">
         <h3>Editing user "<?php echo $getUsers[0][1]; ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="updateEntry.php">
+        <form class="col s12" name="contact" method="post" action="crud/updateUser.php">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Username" name="Username" type="text" value="<?php echo $getUsers[0][1]; ?>" class="validate" required="" aria-required="true">
@@ -80,5 +80,5 @@ $getUsers = $query->fetchAll();
 
 }
 
-else{    header("Location: admin.php?status=0");
+else{    header("Location: ../index.php?page=admin&status=added");
 }?>

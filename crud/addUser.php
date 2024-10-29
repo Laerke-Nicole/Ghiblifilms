@@ -14,9 +14,9 @@ if (isset($_POST['submit'])) {
     $query = $dbCon->prepare("INSERT INTO User (`Username`, `FirstName`, `LastName`, `Email`, `PhoneNumber`, `Address`, `PostalCode`) VALUES ('$userName', '$firstName', '$lastName', '$email', '$phoneNumber', '$address', '$postalCode')");
     $query->execute();
 
-    header("Location: admin.php?status=added");
+    header("Location: ../index.php?page=admin&status=added");
 
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

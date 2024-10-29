@@ -45,13 +45,13 @@ $getCompanies = $query->fetchAll();
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
-            echo "The entry " . $_GET['ID'] . " has been successfully deleted!";
+            echo "The user " . $_GET['ID'] . " has been successfully deleted!";
             echo "<script>M.toast({html: 'Deleted!'})</script>";
         } elseif ($_GET['status'] == "updated") {
-            echo "The entry " . $_GET['ID'] . " has been successfully Updated!";
+            echo "The user " . $_GET['ID'] . " has been successfully Updated!";
             echo "<script>M.toast({html: 'Updated!'})</script>";
         } elseif ($_GET['status'] == "added") {
-            echo "The new entry has been successfully added!";
+            echo "The new user has been successfully added!";
             echo "<script>M.toast({html: 'Added!'})</script>";
         } elseif ($_GET['status'] == 0) {
             echo "Forbidden access - redirected to home!";
@@ -90,8 +90,8 @@ $getCompanies = $query->fetchAll();
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="editEntry.php?ID='.$getUser['UserID'].'" class="btn" ">Edit</a></td>';
-                    echo '<td><a href="crud/deleteEntry.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=edituser&ID='.$getUser['UserID'].'" class="btn">Edit</a></td>';
+                    echo '<td><a href="crud/deleteUser.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
 
                     
                     echo "</tr>";
@@ -103,7 +103,7 @@ $getCompanies = $query->fetchAll();
         <hr>
         <h3>Add new user</h3>
 
-        <form class="col s12" name="contact" method="post" action="crud/addEntry.php">
+        <form class="col s12" name="contact" method="post" action="crud/addUser.php">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true" class="secondary-color">
@@ -169,13 +169,13 @@ $getCompanies = $query->fetchAll();
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
-            echo "The entry " . $_GET['ID'] . " has been successfully deleted!";
+            echo "The news " . $_GET['ID'] . " has been successfully deleted!";
             echo "<script>M.toast({html: 'Deleted!'})</script>";
         } elseif ($_GET['status'] == "updated") {
-            echo "The entry " . $_GET['ID'] . " has been successfully Updated!";
+            echo "The news " . $_GET['ID'] . " has been successfully Updated!";
             echo "<script>M.toast({html: 'Updated!'})</script>";
         } elseif ($_GET['status'] == "added") {
-            echo "The new entry has been successfully added!";
+            echo "The new news has been successfully added!";
             echo "<script>M.toast({html: 'Added!'})</script>";
         } elseif ($_GET['status'] == 0) {
             echo "Forbidden access - redirected to home!";
@@ -270,13 +270,13 @@ $getCompanies = $query->fetchAll();
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
-            echo "The entry " . $_GET['ID'] . " has been successfully deleted!";
+            echo "The company info " . $_GET['ID'] . " has been successfully deleted!";
             echo "<script>M.toast({html: 'Deleted!'})</script>";
         } elseif ($_GET['status'] == "updated") {
-            echo "The entry " . $_GET['ID'] . " has been successfully Updated!";
+            echo "The company info " . $_GET['ID'] . " has been successfully Updated!";
             echo "<script>M.toast({html: 'Updated!'})</script>";
         } elseif ($_GET['status'] == "added") {
-            echo "The new entry has been successfully added!";
+            echo "The new company info has been successfully added!";
             echo "<script>M.toast({html: 'Added!'})</script>";
         } elseif ($_GET['status'] == 0) {
             echo "Forbidden access - redirected to home!";

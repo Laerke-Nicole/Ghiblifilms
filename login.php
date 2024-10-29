@@ -33,16 +33,23 @@
             $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($found_user) {
-                // Check if the password is correct
-                if (password_verify($password, $found_user['Pass'])) {
-                    // Username/password authenticated
-                    $_SESSION['user_id'] = $found_user['UserID']; // Update to 'UserID'
-                    $_SESSION['User'] = $found_user['Username']; // Update to 'username'
-                    redirect_to("index.php");
+                // Check if the user is an admin
+                if ($username == "admin" && $password == "123456") {
+                    $_SESSION['user_id'] = $found_user['UserID'];
+                    $_SESSION['User'] = $found_user['Username'];
+                    redirect_to("index.php?page=admin");
                 } else {
-                    // Password is incorrect
-                    $message = "Username/password combination incorrect.<br />
-                    Please make sure your caps lock key is off and try again.";
+                    // Check if the password matches for non-admin users
+                    if (password_verify($password, $found_user['Pass'])) {
+                        // Username/password authenticated
+                        $_SESSION['user_id'] = $found_user['UserID'];
+                        $_SESSION['User'] = $found_user['Username'];
+                        redirect_to("index.php");
+                    } else {
+                        // Password is incorrect
+                        $message = "Username/password combination incorrect.<br />
+                        Please make sure your caps lock key is off and try again.";
+                    }
                 }
             } else {
                 // No user found
@@ -57,7 +64,7 @@
             $message = "You are now logged out.";
         } 
     }
-
+    
     // Display the message if set
     if (!empty($message)) {
         echo "<p>" . $message . "</p>";
@@ -93,6 +100,21 @@
         <input type="submit" name="submit" value="Login" class="btn" />
     </div>
 </form>
+
+<button class="g-recaptcha" 
+        data-sitekey="6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>
+
+
+<!-- recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+   function onSubmit(token) {
+     document.getElementById("demo-form").submit();
+   }
+</script>
 
 </body>
 </html>

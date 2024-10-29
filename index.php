@@ -34,7 +34,6 @@
 </nav>
 
 
-
 <?php
 if (isset($_GET['page'])){
 	$page = $_GET['page'];
@@ -60,8 +59,8 @@ case "admin":
 break;
 
 // add
-case "addentry":
-    include('crud/addEntry.php');
+case "adduser":
+    include('crud/addUser.php');
 break;
 
 case "addnews":
@@ -69,8 +68,8 @@ case "addnews":
 break;
 
 // delete
-case "deleteentry":
-    include('crud/deleteEntry.php');
+case "deleteuser":
+    include('crud/deleteUser.php');
 break;
 
 case "deletenews":
@@ -78,8 +77,8 @@ case "deletenews":
 break;
 
 // edit
-case "editentry":
-    include('crud/editEntry.php');
+case "edituser":
+    include('crud/editUser.php');
 break;
 
 case "editnews":
@@ -87,8 +86,8 @@ case "editnews":
 break;
 
 // update
-case "updateentry":
-    include('crud/updateEntry.php');
+case "updateuser":
+    include('crud/updateUser.php');
 break;
 
 case "updatenews":
