@@ -12,11 +12,16 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <?php
-$newsID = $_GET['ID'];
+$newsID = htmlspecialchars(trim($_GET['ID']));
+
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID=$newsID");
+
+$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
+
+$query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
 
 $query->execute();
+
 $getNews = $query->fetchAll();
 ?>
 <body>
@@ -53,7 +58,7 @@ $getNews = $query->fetchAll();
             </div>
 
 
-            <input type="hidden" name="NewsID" value="<?php echo $newsID; ?>">
+            <input type="hidden" name="NewsID" value="<?php echo htmlspecialchars($newsID); ?>">
 
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
         </form>

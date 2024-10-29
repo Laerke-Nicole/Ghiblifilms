@@ -68,12 +68,6 @@ $getCompanyInformation = $query->fetchAll();
                 <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
             </form>
         </div>
-
-
-
-
-
-
     </div>
 </div>
 </body>
