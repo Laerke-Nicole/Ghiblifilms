@@ -11,9 +11,10 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("UPDATE News SET `Headline`='$headline', `SubHeadline`='$subHeadline', `TextOfNews`='$textOfNews', `NewsImage`='$newsImage' WHERE NewsID=$newsID");
     $query->execute();
-    header("Location: admin.php?status=news_updated&ID=$newsID");
+
+    header("Location: ../index.php?page=admin&status=updated&ID=$newsID");
 
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

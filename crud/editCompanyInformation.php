@@ -81,6 +81,6 @@ $getCompanyInformation = $query->fetchAll();
 
 <?php 
 } else { 
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

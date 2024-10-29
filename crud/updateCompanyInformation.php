@@ -14,9 +14,9 @@ if (isset($_POST['CompanyInformationID']) && isset($_POST['submit'])) {
     $query = $dbCon->prepare("UPDATE CompanyInformation SET `NameOfCompany`='$nameOfCompany', `CompanyDescription`='$companyDescription', `CompanyEmail`='$companyEmail', `CompanyPhoneNumber`='$companyPhoneNumber', `AddressOfCompany`='$addressOfCompany', `PostalCode`='$postalCode' WHERE CompanyInformationID=$companyInformationID");
     $query->execute();
     
-    header("Location: admin.php?status=updated&ID=$companyInformationID");
+    header("Location: ../index.php?page=admin&status=updated&ID=$companyInformationID");
 
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

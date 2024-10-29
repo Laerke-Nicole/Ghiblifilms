@@ -80,5 +80,6 @@ $getUsers = $query->fetchAll();
 
 }
 
-else{    header("Location: ../index.php?page=admin&status=added");
+else {    
+    header("Location: ../index.php?page=admin&status=0");
 }?>

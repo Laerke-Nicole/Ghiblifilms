@@ -17,9 +17,9 @@ if (isset($_POST['submit'])) {
 
     $query->execute();
 
-    header("Location: admin.php?status=added");
+    header("Location: ../index.php?page=admin&status=added");
 
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

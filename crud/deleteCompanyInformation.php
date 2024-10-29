@@ -8,8 +8,9 @@ if (isset($_GET['CompanyInformationID'])) {
     $query = $dbCon->prepare("DELETE FROM CompanyInformation WHERE CompanyInformationID=$companyInformationID");
     $query->execute();
 
-    header("Location: admin.php?status=deleted&ID=$companyInformationID");
+    header("Location: ../index.php?page=admin&status=deleted&ID=$companyInformationID");
+
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>

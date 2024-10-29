@@ -5,12 +5,14 @@ if (isset($_GET['NewsID'])) {
     $newsID = $_GET['NewsID'];
     $dbCon = dbCon($user, $pass);
     
-    $query = $dbCon->prepare("DELETE FROM News WHERE NewsID = $newsID");
+    $query = $dbCon->prepare("DELETE FROM News WHERE NewsID = :newsID");
+    $query->bindParam(':newsID', $newsID);
     $query->execute();
 
-    header("Location: admin.php?status=deleted&ID=$newsID");
+    header("Location: ../index.php?page=admin&status=deleted&ID=$newsID");
+
 } else {
-    header("Location: admin.php?status=0");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>
 

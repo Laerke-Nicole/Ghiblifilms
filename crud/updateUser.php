@@ -18,6 +18,6 @@ if (isset($_POST['UserID']) && isset($_POST['submit'])) {
     header("Location: ../index.php?page=admin&status=updated&ID=$userID");
     
 } else {
-    header("Location: ../index.php?page=admin&status=deleted&ID=$userID");
+    header("Location: ../index.php?page=admin&status=0");
 }
 ?>
