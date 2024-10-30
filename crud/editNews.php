@@ -27,25 +27,25 @@ $getNews = $query->fetchAll();
 <body>
 
 <div class="container">
-        <h3>Editing News "<?php echo $getNews[0][1]; ?>"</h3>
+        <h3>Editing News "<?php echo htmlspecialchars($getNews[0]['Headline']); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="updateNews.php">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Headline" name="Headline" type="text" value="<?php echo $getNews[0][1]; ?>" class="validate" required="" aria-required="true">
+                    <input id="Headline" name="Headline" type="text" value="<?php echo htmlspecialchars($getNews[0][1]); ?>" class="validate" required="" aria-required="true">
                     <label for="Headline">Headline</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="SubHeadline" name="SubHeadline" type="text" value="<?php echo $getNews[0][2]; ?>" class="validate" required="" aria-required="true">
+                    <input id="SubHeadline" name="SubHeadline" type="text" value="<?php echo htmlspecialchars($getNews[0][2]); ?>" class="validate" required="" aria-required="true">
                     <label for="SubHeadline">Subheadline</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="TextOfNews" name="TextOfNews" class="materialize-textarea" required=""><?php echo $getNews[0][3]; ?></textarea>
+                    <textarea id="TextOfNews" name="TextOfNews" class="materialize-textarea" required=""><?php echo htmlspecialchars($getNews[0][3]); ?></textarea>
                     <label for="TextOfNews">Text of News</label>
                 </div>
             </div>
@@ -53,7 +53,7 @@ $getNews = $query->fetchAll();
             <div class="row">
                 <div class="input-field col s12">
                     <?php echo "<img src='" . $getNews[0][4] . "' alt='Image of news' width='100'>"; ?>
-                    <input id="NewsImage" name="NewsImage" type="file" value="<?php echo $getNews[0][4]; ?>" class="validate" required="">
+                    <input id="NewsImage" name="NewsImage" type="file" value="<?php echo htmlspecialchars($getNews[0][4]); ?>" class="validate" required="">
                 </div>
             </div>
 
