@@ -22,17 +22,17 @@
 
 <!-- Movie Admin Section -->
 <div id="movieAdmin" style="display: none;">
-    <?php include 'crud/adminModules/movieAdmin.php'; ?>
+    <?php include 'adminModules/movieAdmin.php'; ?>
 </div>
 
 <!-- User Admin Section -->
 <div id="userAdmin" style="display: none;">
-    <?php include 'crud/adminModules/userAdmin.php'; ?>
+    <?php include 'adminModules/userAdmin.php'; ?>
 </div>
 
 <!-- News Admin Section -->
 <div id="newsAdmin" style="display: none;">
-    <?php include 'crud/adminModules/newsAdmin.php'; ?>
+    <?php include 'adminModules/newsAdmin.php'; ?>
 </div>
 
 </body>
