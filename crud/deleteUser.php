@@ -6,6 +6,7 @@ if (isset($_GET['UserID'])) {
 
     $dbCon = dbCon($user, $pass);
 
+    // Prepare the statement
     $query = $dbCon->prepare("DELETE FROM User WHERE UserID=$userID");
     
     $query->execute();

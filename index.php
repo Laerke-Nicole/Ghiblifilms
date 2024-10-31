@@ -58,40 +58,76 @@ case "admin":
     include('crud/admin.php');
 break;
 
+
 // add
 case "adduser":
     include('crud/addUser.php');
+break;
+
+case "addmovie":
+    include('crud/addMovie.php');
 break;
 
 case "addnews":
     include('crud/addNews.php');
 break;
 
+case "addcompanyinformation":
+    include('crud/addCompanyInformation.php');
+break;
+
+
 // delete
 case "deleteuser":
     include('crud/deleteUser.php');
+break;
+
+case "deletemovie":
+    include('crud/deleteMovie.php');
 break;
 
 case "deletenews":
     include('crud/deleteNews.php');
 break;
 
+case "deletecompanyinformation":
+    include('crud/deleteCompanyInformation.php');
+break;
+
+
 // edit
 case "edituser":
     include('crud/editUser.php');
+break;
+
+case "editmovie":
+    include('crud/editMovie.php');
 break;
 
 case "editnews":
     include('crud/editNews.php');
 break;
 
+case "editcompanyinformation":
+    include('crud/editCompanyInformation.php');
+break;
+
+
 // update
 case "updateuser":
     include('crud/updateUser.php');
 break;
 
+case "updatemovie":
+    include('crud/updateMovie.php');
+break;
+
 case "updatenews":
-    include('crud/updatenews.php');
+    include('crud/updateNews.php');
+break;
+
+case "updatecompanyinformation":
+    include('crud/updateCompanyInformation.php');
 break;
 
 }  

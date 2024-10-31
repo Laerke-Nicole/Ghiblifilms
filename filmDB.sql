@@ -2,10 +2,19 @@ DROP DATABASE IF EXISTS GhiblifilmsDB;
 CREATE DATABASE GhiblifilmsDB;
 USE GhiblifilmsDB;
 
+
+-- Table with address
+CREATE TABLE Address (
+  `Address` varchar(255) NOT NULL PRIMARY KEY
+) ENGINE=InnoDB;
+
+
 -- Table with postal code
 CREATE TABLE PostalCode (
   PostalCode varchar(20) NOT NULL PRIMARY KEY,
-  City varchar(168)
+  City varchar(168),
+  `Address` varchar(255),
+  FOREIGN KEY (`Address`) REFERENCES `Address`(`Address`)
 ) ENGINE=InnoDB;
 
 

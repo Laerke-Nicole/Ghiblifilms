@@ -1,4 +1,5 @@
 <?php require_once "dbcon.php";?>
+<?php require_once "adminModules/userAdmin.php";?>
 
 
 <!DOCTYPE html>
@@ -15,13 +16,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
+<?php include 'crud/adminModules/userAdmin.php'; ?>
+
+
 <?php
-// get users
+
+// connect to db
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM User");
-$query->execute();
-$getUsers = $query->fetchAll();
+
+
+// get users
+$queryUser = $dbCon->prepare("SELECT * FROM User");
+$queryUser->execute();
+$getUsers = $queryUser->fetchAll();
 //var_dump($getUsers);
+
+// get movies
+$queryMovie = $dbCon->prepare("SELECT * FROM Movie");
+$queryMovie->execute();
+$getMovies = $queryMovie->fetchAll();
 
 // get news
 $queryNews = $dbCon->prepare("SELECT * FROM News");
@@ -29,29 +42,36 @@ $queryNews->execute();
 $getNews = $queryNews->fetchAll();
 
 // get company information
-$dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM CompanyInformation");
-$query->execute();
-$getCompanies = $query->fetchAll();
+$queryCompanyInformation = $dbCon->prepare("SELECT * FROM CompanyInformation");
+$queryCompanyInformation->execute();
+$getCompanyInformation = $queryCompanyInformation->fetchAll();
 
 ?>
 <body>
 
 
-<!-- user -->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- movie -->
 <div class="container">
 
-    <h2>All users</h2>
+    <h2>All movies</h2>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
-            echo "The user " . $_GET['ID'] . " has been successfully deleted!";
+            echo "The movie " . $_GET['ID'] . " has been successfully deleted!";
             echo "<script>M.toast({html: 'Deleted!'})</script>";
         } elseif ($_GET['status'] == "updated") {
-            echo "The user " . $_GET['ID'] . " has been successfully Updated!";
+            echo "The movie " . $_GET['ID'] . " has been successfully Updated!";
             echo "<script>M.toast({html: 'Updated!'})</script>";
         } elseif ($_GET['status'] == "added") {
-            echo "The new user has been successfully added!";
+            echo "The new movie has been successfully added!";
             echo "<script>M.toast({html: 'Added!'})</script>";
         } elseif ($_GET['status'] == 0) {
             echo "Forbidden access - redirected to home!";
@@ -64,13 +84,13 @@ $getCompanies = $query->fetchAll();
             <table class="highlight">
                 <thead>
                 <tr class="secondary-color">
-                    <th>UserID</th>
-                    <th>Username</th>
+                    <th>MovieID</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone number</th>
-                    <th>Address</th>
-                    <th>Postal code</th>
+                    <th>Description</th>
+                    <th>Release year</th>
+                    <th>Duration</th>
+                    <th>Movie Image</th>
+                    <th>ScreenFormatID</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -78,22 +98,21 @@ $getCompanies = $query->fetchAll();
 
                 <tbody class="secondary-color">
                 <?php
-                foreach ($getUsers as $getUser) {
+                foreach ($getMovies as $getMovie) {
                     echo "<tr>";
-                    echo "<td>". $getUser['UserID']."</td>";
-                    echo "<td>". $getUser['Username']."</td>";
-                    echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
-                    echo "<td>". $getUser['Email']."</td>";
-                    echo "<td>". $getUser['PhoneNumber']."</td>";
-                    echo "<td>". $getUser['Address']."</td>";
-                    echo "<td>". $getUser['PostalCode']."</td>";
+                    echo "<td>". $getMovie['MovieID']."</td>";
+                    echo "<td>". $getMovie['Name']."</td>";
+                    echo "<td>". $getMovie['Description']."</td>";
+                    echo "<td>". $getMovie['ReleaseYear']."</td>";
+                    echo "<td>". $getMovie['Duration']."</td>";
+                    echo "<td><img src='" . $getMovie['MovieImg'] . "' alt='Movie Image' width='50'></td>";
+                    echo "<td>". $getMovie['ScreenFormatID']."</td>";
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="index.php?page=edituser&ID='.$getUser['UserID'].'" class="btn">Edit</a></td>';
-                    echo '<td><a href="crud/deleteUser.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=editmovie&ID='.$getMovie['MovieID'].'" class="btn">Edit</a></td>';
+                    echo '<td><a href="crud/deleteMovie.php?MovieID='.$getMovie['MovieID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
 
-                    
                     echo "</tr>";
                 }
                 ?>
@@ -104,55 +123,53 @@ $getCompanies = $query->fetchAll();
 
 
         <hr>
-        <h3>Add new user</h3>
+        <h3>Add new movie</h3>
 
-        <form class="col s12" name="contact" method="post" action="crud/addUser.php">
+        <form class="col s12" method="post" action="crud/addMovie.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true" class="secondary-color">
-                    <label for="Username">Username</label>
+                    <input id="Name" name="Name" type="text" class="validate" required>
+                    <label for="Name">Movie Name</label>
                 </div>
             </div>
             
             <div class="row">
-                <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">
-                    <label for="FirstName">First Name</label>
-                </div>
-                
-                <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" class="validate" required="" aria-required="true">
-                    <label for="LastName">Last Name</label>
+                <div class="input-field col s12">
+                    <textarea id="Description" name="Description" class="materialize-textarea" required></textarea>
+                    <label for="Description">Description</label>
                 </div>
             </div>  
 
             <div class="row">
                 <div class="input-field col s6">
-                        <input id="Email" name="Email" type="email" class="validate" required="" aria-required="true">
-                        <label for="Email">E-Mail</label>
-                    </div>
+                    <input id="ReleaseYear" name="ReleaseYear" type="number" class="validate" required>
+                    <label for="ReleaseYear">Release Year</label>
+                </div>
 
-                    <div class="input-field col s6">
-                        <input id="PhoneNumber" name="PhoneNumber" type="number" class="validate" required="" aria-required="true">
-                        <label for="PhoneNumber">Phone number</label>
-                    </div>
-                </div>  
+                <div class="input-field col s6">
+                    <input id="Duration" name="Duration" type="text" class="validate" required>
+                    <label for="Duration">Duration</label>
+                </div>
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
-                    <input id="Address" name="Address" type="text" class="validate" required="" aria-required="true">
-                    <label for="Address">Address</label>
+                <div class="file-field input-field col s6">
+                    <div class="btn">
+                        <span>Upload Image</span>
+                        <input type="file" name="MovieImage" required>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload movie image">
+                    </div>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
-                    <label for="PostalCode">Postal code</label>
+                    <input id="ScreenFormatID" name="ScreenFormatID" type="text" class="validate" required>
+                    <label for="ScreenFormatID">Screen Format ID</label>
                 </div>
             </div>
 
-            <button class="btn waves-effect waves-light" type="submit" name="submit">Add
-            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="submit">Add Movie</button>
         </form>
     </div>
 </div>
@@ -308,7 +325,7 @@ $getCompanies = $query->fetchAll();
 
                 <tbody class="secondary-color">
                 <?php
-                foreach ($getCompanies as $companyInformation) {
+                foreach ($getCompanyInformation as $companyInformation) {
                     echo "<tr>";
                     echo "<td>". $companyInformation['CompanyInformationID']."</td>";
                     echo "<td>". $companyInformation['NameOfCompany']."</td>";
