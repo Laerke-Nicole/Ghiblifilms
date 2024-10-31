@@ -6,6 +6,7 @@ $dbCon = dbCon($user, $pass);
 $queryUser = $dbCon->prepare("SELECT * FROM User");
 $queryUser->execute();
 $getUsers = $queryUser->fetchAll();
+//var_dump($getUsers);
 ?>
 
 

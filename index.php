@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="script.js">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
         <?php } ?>
     </ul>
 </nav>
+
 
 
 <?php
@@ -135,6 +137,6 @@ break;
 ?>
 
 
-
+<script src="script.js"></script>
 </body>
 </html>
