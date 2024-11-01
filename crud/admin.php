@@ -16,23 +16,23 @@
 
 <body>
 <!-- Buttons to toggle each section -->
-<button class="btn" onclick="toggleSection('movieAdmin')">Toggle Movie Admin</button>
-<button class="btn" onclick="toggleSection('userAdmin')">Toggle User Admin</button>
-<button class="btn" onclick="toggleSection('newsAdmin')">Toggle News Admin</button>
+<button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
+<button class="btn" onclick="toggleSection('userAdmin')">User</button>
+<button class="btn" onclick="toggleSection('newsAdmin')">News</button>
 
-<!-- Movie Admin Section -->
+<!-- Movie Admin Section -->    
 <div id="movieAdmin" style="display: none;">
-    <?php include 'adminModules/movieAdmin.php'; ?>
+    <?php require 'adminModules/movieAdmin.php'; ?>
 </div>
 
 <!-- User Admin Section -->
 <div id="userAdmin" style="display: none;">
-    <?php include 'adminModules/userAdmin.php'; ?>
+    <?php require 'adminModules/userAdmin.php'; ?>
 </div>
 
 <!-- News Admin Section -->
 <div id="newsAdmin" style="display: none;">
-    <?php include 'adminModules/newsAdmin.php'; ?>
+    <?php require 'adminModules/newsAdmin.php'; ?>
 </div>
 
 </body>

@@ -28,7 +28,7 @@ $getNews = $query->fetchAll();
 
 <div class="container">
         <h3>Editing News "<?php echo htmlspecialchars($getNews[0]['Headline']); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="updateNews.php">
+        <form class="col s12" name="contact" method="post" action="updateNews.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Headline" name="Headline" type="text" value="<?php echo htmlspecialchars($getNews[0][1]); ?>" class="validate" required="" aria-required="true">
@@ -52,7 +52,7 @@ $getNews = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s12">
-                    <?php echo "<img src='" . $getNews[0][4] . "' alt='Image of news' width='100'>"; ?>
+                    <?php echo "<img src='../upload/" . $getNews[0][4] . "' alt='Image of news' width='100'>"; ?>
                     <input id="NewsImage" name="NewsImage" type="file" value="<?php echo htmlspecialchars($getNews[0][4]); ?>" class="validate" required="">
                 </div>
             </div>
