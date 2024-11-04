@@ -10,21 +10,21 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
 
     $dbCon = dbCon($user, $pass);
 
-    // Initialize the $newsImage variable to store the file name
-    $newsImage = null;
+    // Initialize the $newsImg variable to store the file name
+    $newsImg = null;
 
     // Check if a new image file is uploaded
-    if (isset($_FILES['NewsImage']) && $_FILES['NewsImage']['error'] == UPLOAD_ERR_OK) {
+    if (isset($_FILES['NewsImg']) && $_FILES['NewsImg']['error'] == UPLOAD_ERR_OK) {
         // Validate the uploaded file (type and size)
         $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg'];
 
-        if (in_array($_FILES['NewsImage']['type'], $allowedTypes) && $_FILES['NewsImage']['size'] < 3000000) {
+        if (in_array($_FILES['NewsImg']['type'], $allowedTypes) && $_FILES['NewsImg']['size'] < 3000000) {
             // Move the uploaded file to the "upload" directory
-            $newsImage = basename($_FILES['NewsImage']['name']);
-            $uploadPath = "../../upload/" . $newsImage;
+            $newsImg = basename($_FILES['NewsImg']['name']);
+            $uploadPath = "../../upload/" . $newsImg;
 
-            if (move_uploaded_file($_FILES['NewsImage']['tmp_name'], $uploadPath)) {
-                // Image upload succeeded, set $newsImage to the new file name
+            if (move_uploaded_file($_FILES['NewsImg']['tmp_name'], $uploadPath)) {
+                // Image upload succeeded, set $newsImg to the new file name
             } else {
                 echo "Failed to move uploaded file.";
                 exit();
@@ -36,12 +36,12 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
         }
     }
     // Prepare statement
-    $query = $dbCon->prepare("UPDATE News SET Headline = :headline, SubHeadline = :subHeadline, TextOfNews = :textOfNews, NewsImage = :newsImage WHERE NewsID = :newsID");
+    $query = $dbCon->prepare("UPDATE News SET Headline = :headline, SubHeadline = :subHeadline, TextOfNews = :textOfNews, NewsImg = :newsImg WHERE NewsID = :newsID");
     
     $query->bindParam(':headline', $headline);
     $query->bindParam(':subHeadline', $subHeadline);
     $query->bindParam(':textOfNews', $textOfNews);
-    $query->bindParam(':newsImage', $newsImage);
+    $query->bindParam(':newsImg', $newsImg);
     $query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
 
     if ($query->execute()) {
@@ -51,6 +51,6 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     }
 
 } else {
-    header("Location: ../index.php?page=admin&status=0");
+    header("Location: ../../index.php?page=admin&status=0");
 }
 ?>

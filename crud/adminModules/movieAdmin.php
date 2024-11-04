@@ -56,13 +56,13 @@ $getMovies = $queryMovie->fetchAll();
                     echo "<td>". $getMovie['Description']."</td>";
                     echo "<td>". $getMovie['ReleaseYear']."</td>";
                     echo "<td>". $getMovie['Duration']."</td>";
-                    echo "<td><img src='" . $getMovie['MovieImg'] . "' alt='Movie Image' width='50'></td>";
+                    echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of news' width='100'></td>";
                     echo "<td>". $getMovie['ScreenFormatID']."</td>";
                     echo "<td>";
 
                     echo "</td>";
                     echo '<td><a href="index.php?page=editmovie&ID='.$getMovie['MovieID'].'" class="btn">Edit</a></td>';
-                    echo '<td><a href="crud/deleteMovie.php?MovieID='.$getMovie['MovieID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=deletemovie&MovieID=' . $getMovie['MovieID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
 
                     echo "</tr>";
                 }
@@ -104,14 +104,8 @@ $getMovies = $queryMovie->fetchAll();
             </div>
 
             <div class="row">
-                <div class="file-field input-field col s6">
-                    <div class="btn">
-                        <span>Upload Image</span>
-                        <input type="file" name="MovieImage" required>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload movie image">
-                    </div>
+                <div class="input-field col s6">
+                    <input id="movieImg" name="movieImg" type="file" class="validate" required="" aria-required="true">
                 </div>
 
                 <div class="input-field col s6">

@@ -167,7 +167,7 @@ CREATE TABLE News (
   Headline varchar(168),
   SubHeadline varchar(168),
   TextOfNews text,
-  NewsImage varchar(255)
+  NewsImg varchar(255)
 ) ENGINE=InnoDB;
 
 

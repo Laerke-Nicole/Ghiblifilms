@@ -57,7 +57,7 @@ $getNews = $queryNews->fetchAll();
                 echo "<td>" . $news['Headline'] . "</td>";
                 echo "<td>" . $news['SubHeadline'] . "</td>";
                 echo "<td>" . $news['TextOfNews'] . "</td>";
-                echo "<td><img src='upload/" . $news['NewsImage'] . "' alt='Image of news' width='100'></td>";
+                echo "<td><img src='upload/" . $news['NewsImg'] . "' alt='Image of news' width='100'></td>";
 
                 echo '<td><a href="index.php?page=editnews&ID=' . $news['NewsID'] . '" class="waves-effect waves-light btn">Edit</a></td>';
                 echo '<td><a href="index.php?page=deletenews&NewsID=' . $news['NewsID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
@@ -95,7 +95,7 @@ $getNews = $queryNews->fetchAll();
             
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="newsImage" name="newsImage" type="file" class="validate" required="" aria-required="true">
+                    <input id="newsImg" name="newsImg" type="file" class="validate" required="" aria-required="true">
                 </div>
             </div>
 

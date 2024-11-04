@@ -57,7 +57,7 @@ $getNews = $query->fetchAll();
             <div class="row">
                 <div class="input-field col s12">
                     <?php echo "<img src='upload/" . $getNews[0][4] . "' alt='Image of news' width='100'>"; ?>
-                    <input id="NewsImage" name="NewsImage" type="file" value="<?php echo htmlspecialchars($getNews[0][4]); ?>" class="validate" required="">
+                    <input id="NewsImg" name="NewsImg" type="file" value="<?php echo htmlspecialchars($getNews[0][4]); ?>" class="validate" required="">
                 </div>
             </div>
 

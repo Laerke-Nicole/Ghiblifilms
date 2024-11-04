@@ -1,5 +1,5 @@
 <?php 
-require_once "../../includes/dbcon.php";
+require_once "includes/dbcon.php";
 if (isset($_GET['ID'])) {
 ?>
 
@@ -24,59 +24,47 @@ $getMovie = $query->fetchAll();
 <body>
 
 <div class="container">
-    <h3>Editing Movie "<?php echo htmlspecialchars($getMovie[0]['Name']); ?>"</h3>
-    <form class="col s12" name="contact" method="post" action="updateMovie.php">
+    <h3>Editing Movie "<?php echo htmlspecialchars($getMovie[0][1]); ?>"</h3>
+    <form class="col s12" name="contact" method="post" action="crud/movie/updateMovie.php">
         <div class="row">
             <div class="input-field col s12">
-                <input id="Name" name="Name" type="text" value="<?php echo htmlspecialchars($getMovie[0]['Name']); ?>" class="validate" required>
+                <input id="Name" name="Name" type="text" value="<?php echo htmlspecialchars($getMovie[0][1]); ?>" class="validate" required>
                 <label for="Name">Movie Name</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <textarea id="Description" name="Description" class="materialize-textarea" required><?php echo htmlspecialchars($getMovie[0]['Description']); ?></textarea>
+                <textarea id="Description" name="Description" class="materialize-textarea" required><?php echo htmlspecialchars($getMovie[0][2]); ?></textarea>
                 <label for="Description">Description</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="ReleaseYear" name="ReleaseYear" type="number" value="<?php echo htmlspecialchars($getMovie[0]['ReleaseYear']); ?>" class="validate" required>
+                <input id="ReleaseYear" name="ReleaseYear" type="number" value="<?php echo htmlspecialchars($getMovie[0][3]); ?>" class="validate" required>
                 <label for="ReleaseYear">Release Year</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="Duration" name="Duration" type="text" value="<?php echo htmlspecialchars($getMovie[0]['Duration']); ?>" class="validate" required>
+                <input id="Duration" name="Duration" type="text" value="<?php echo htmlspecialchars($getMovie[0][4]); ?>" class="validate" required>
                 <label for="Duration">Duration</label>
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
-                <?php echo "<img src='" . $getMovie[0]['MovieImg'] . "' alt='Movie Image' width='100'>"; ?>
-                <input id="MovieImg" name="MovieImg" type="file" value="<?php echo htmlspecialchars($getMovie[0]['MovieImg']); ?>" class="validate">
-                <label for="MovieImg">Movie Image</label>
+                <?php echo "<img src='upload/" . $getMovie[0][5] . "' alt='Image of news' width='100'>"; ?>
+                <input id="MovieImg" name="MovieImg" type="file" value="<?php echo htmlspecialchars($getMovie[0][5]); ?>" class="validate" required="">
             </div>
         </div>
 
         <div class="row">
             <div class="input-field col s12">
                 <label for="ScreenFormatID">Screen Format</label>
-                <select id="ScreenFormatID" name="ScreenFormatID" class="browser-default" required>
-
-                    <?php
-                    $formatQuery = $dbCon->prepare("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
-                    $formatQuery->execute();
-                    $formats = $formatQuery->fetchAll();
-                    foreach ($formats as $format) {
-                        $selected = $format['ScreenFormatID'] == $getMovie[0]['ScreenFormatID'] ? 'selected' : '';
-                        echo "<option value='" . $format['ScreenFormatID'] . "' $selected>" . htmlspecialchars($format['ScreenFormat']) . "</option>";
-                    }
-                    ?>
-                </select>
+                <input id="ScreenFormatID" name="ScreenFormatID" type="text" value="<?php echo htmlspecialchars($getMovie[0][6]); ?>" class="validate" required>
             </div>
         </div>
 

@@ -6,17 +6,15 @@ if (isset($_GET['MovieID'])) {
 
     $dbCon = dbCon($user, $pass);
 
-    // Prepare the statement
+    // Prepare the delete statement
     $query = $dbCon->prepare("DELETE FROM Movie WHERE MovieID = :movieID");
 
-    // bind
+    // Bind the MovieID
     $query->bindParam(':movieID', $movieID, PDO::PARAM_INT);
 
-    if ($query->execute()) {
-        header("Location: ../index.php?page=admin&status=deleted&ID=$movieID");
-    } else {
-        header("Location: ../index.php?page=admin&status=error");
-    }
+    $query->execute();
+
+    header("Location: ../index.php?page=admin&status=deleted&ID=$newsID");
 
 } else {
     header("Location: ../index.php?page=admin&status=0");

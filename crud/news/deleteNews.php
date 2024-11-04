@@ -1,10 +1,9 @@
 <?php
 require_once "../../includes/dbcon.php";
 
-
 if (isset($_GET['NewsID'])) {
     $newsID = htmlspecialchars(trim($_GET['NewsID']));
-
+    
     $dbCon = dbCon($user, $pass);
     
     // Prepare the statement
