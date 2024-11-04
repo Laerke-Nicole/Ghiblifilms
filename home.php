@@ -33,9 +33,9 @@
 
             foreach ($getNews as $news) {
                 echo '<div>';
-                echo "<img src='upload/" . $news['NewsImg'] . "' alt='Image of news'>";
-                echo '<h5 class="weight-400 pb-2">' . $news['Headline'] . '</h5>';
-                echo '<button class="btn" onclick="window.location.href=\'index.php?page=newsdetail&ID=' . $news['NewsID'] . '\'">See more</button>';
+                    echo "<img src='upload/" . $news['NewsImg'] . "' alt='Image of news'>";
+                    echo '<h5 class="weight-400 pb-2">' . $news['Headline'] . '</h5>';
+                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=newsdetail&ID=' . $news['NewsID'] . '\'">See more</button>';
                 echo '</div>';
             }
         ?>

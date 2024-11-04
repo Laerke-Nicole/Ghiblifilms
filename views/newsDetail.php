@@ -17,10 +17,10 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
         // Display the details of the news item
         echo '<section class="pt-24 pb-24 ten-percent">';
             echo '<div>';
-                echo '<h2 class="text-center pb-4">' . htmlspecialchars($newsItem['Headline']) . '</h2>';
-                echo '<img src="upload/' . htmlspecialchars($newsItem['NewsImg']) . '" alt="Image of news" class="pb-4">';
-                echo '<h3 class="text-center pb-2">' . htmlspecialchars($newsItem['SubHeadline']) . '</h3>';
-                echo '<p class="text-lg">' . nl2br(htmlspecialchars($newsItem['TextOfNews'])) . '</p>';
+                echo '<img src="upload/' . $newsItem['NewsImg'] . '" alt="Image of news" class="pb-4">';
+                echo '<h2 class="pb-4">' . $newsItem['Headline'] . '</h2>';
+                echo '<h5 class="pb-2">' . $newsItem['SubHeadline'] . '</h5>';
+                echo '<p>' . $newsItem['TextOfNews'] . '</p>';
             echo '</div>';
         echo '</section>';
     } else {
