@@ -22,6 +22,7 @@
 <button class="btn" onclick="toggleSection('userAdmin')">User</button>
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
 <button class="btn" onclick="toggleSection('companyInformationAdmin')">Company Info</button>
+<button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hour</button>
 
 
 <!-- Movie Admin Section     -->
@@ -42,6 +43,11 @@
 <!-- Company info Admin Section -->
 <div id="companyInformationAdmin" style="display: none;">
     <?php require 'adminModules/companyInformationAdmin.php'; ?>
+</div>
+
+<!-- Opening hour Admin Section -->
+<div id="openingHourAdmin" style="display: none;">
+    <?php require 'adminModules/openingHourAdmin.php'; ?>
 </div>
 
 

@@ -3,34 +3,35 @@ CREATE DATABASE GhiblifilmsDB;
 USE GhiblifilmsDB;
 
 
--- Table with address
-CREATE TABLE Address (
-  `Address` varchar(255) NOT NULL PRIMARY KEY
-) ENGINE=InnoDB;
-
-
 -- Table with postal code
 CREATE TABLE PostalCode (
-  PostalCode varchar(20) NOT NULL PRIMARY KEY,
-  City varchar(168),
-  `Address` varchar(255),
-  FOREIGN KEY (`Address`) REFERENCES `Address`(`Address`)
+  PostalCode INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  City VARCHAR(168) NOT NULL
 ) ENGINE=InnoDB;
 
 
--- user
+-- Table with address
+CREATE TABLE Address (
+  AddressID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Address VARCHAR(255) NOT NULL,
+  PostalCode INT,
+  FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
+) ENGINE=InnoDB;
+
+
+-- user 
 CREATE TABLE User (
   UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,                       
   FirstName VARCHAR(50) NOT NULL,
   LastName VARCHAR(50) NOT NULL,
   Email VARCHAR(63) NOT NULL,
   PhoneNumber VARCHAR(20) NOT NULL,
-  `Address` VARCHAR(255) NOT NULL,
-  PostalCode varchar(20),
-  FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
+  AddressID INT NOT NULL,
+  FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
 
--- user
+
+-- user login
 CREATE TABLE UserLogin (
   UserLoginID int NOT NULL AUTO_INCREMENT PRIMARY KEY,  
   Username VARCHAR(50) NOT NULL,                        
@@ -41,43 +42,43 @@ CREATE TABLE UserLogin (
 -- auditorium
 CREATE TABLE Auditorium (
   AuditoriumID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  AuditoriumNumber varchar(5)
+  AuditoriumNumber varchar(5) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- seat
 CREATE TABLE Seat (
   SeatID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  SeatNumber varchar(3)
+  SeatNumber varchar(3) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- genre
 CREATE TABLE Genre (
   GenreID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  GenreName varchar(30)
+  GenreName varchar(30) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- screen format
 CREATE TABLE ScreenFormat (
   ScreenFormatID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  ScreenFormat varchar(2)
+  ScreenFormat varchar(2) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- role in production
 CREATE TABLE RoleInProduction (
   RoleInProductionID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  NameOfRole varchar(50)
+  NameOfRole varchar(50) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- production
 CREATE TABLE Production (
   ProductionID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  FirstName varchar(50),
-  LastName varchar(50),
+  FirstName varchar(50) NOT NULL,
+  LastName varchar(50) NOT NULL,
   RoleInProductionID INT NOT NULL,
   FOREIGN KEY (RoleInProductionID) REFERENCES RoleInProduction(RoleInProductionID)
 ) ENGINE=InnoDB;
@@ -86,19 +87,19 @@ CREATE TABLE Production (
 -- voice actor
 CREATE TABLE VoiceActor (
   VoiceActorID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  FirstName varchar(50),
-  LastName varchar(50)
+  FirstName varchar(50) NOT NULL,
+  LastName varchar(50) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- movie
 CREATE TABLE Movie (
   MovieID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Name` varchar(100),
-  `Description` text,
-  ReleaseYear int (4),
-  Duration varchar(7),
-  MovieImg varchar(255),
+  `Name` varchar(100) NOT NULL,
+  `Description` text NOT NULL,
+  ReleaseYear int (4) NOT NULL,
+  Duration varchar(7) NOT NULL,
+  MovieImg varchar(255) NOT NULL,
   ScreenFormatID INT NOT NULL,
   FOREIGN KEY (ScreenFormatID) REFERENCES ScreenFormat(ScreenFormatID)
 ) ENGINE=InnoDB;
@@ -137,9 +138,9 @@ CREATE TABLE MovieVoiceActor (
 -- reservation
 CREATE TABLE Reservation (
   ReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Date` date,
-  `Time` varchar(8),
-  NumberOfSeatsBooked int(1),
+  `Date` date NOT NULL,
+  `Time` varchar(8) NOT NULL,
+  NumberOfSeatsBooked int(1) NOT NULL,
   UserID int NOT NULL,
   MovieID int NOT NULL,
   SeatID int NOT NULL,
@@ -164,33 +165,32 @@ CREATE TABLE SeatReservation (
 -- news
 CREATE TABLE News (
   NewsID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Headline varchar(168),
-  SubHeadline varchar(168),
-  TextOfNews text,
-  NewsImg varchar(255)
+  Headline varchar(168) NOT NULL,
+  SubHeadline varchar(168) NOT NULL,
+  TextOfNews text NOT NULL,
+  NewsImg varchar(255) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- company information
 CREATE TABLE CompanyInformation (
   CompanyInformationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  NameOfCompany varchar(11),
-  CompanyDescription text,
-  CompanyEmail varchar(63),
-  CompanyPhoneNumber varchar(20),
-  AddressOfCompany varchar(255),
-  PostalCode varchar(20),
-  FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
+  NameOfCompany varchar(11) NOT NULL,
+  CompanyDescription text NOT NULL,
+  CompanyEmail varchar(63) NOT NULL,
+  CompanyPhoneNumber varchar(20) NOT NULL,
+  AddressID INT NOT NULL,
+  FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
 
 
 -- contact form
 CREATE TABLE ContactForm (
   ContactFormID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  FirstName varchar(50),
-  LastName varchar(50),
-  Email varchar(63),
-  PhoneNumber varchar(20),
+  FirstName varchar(50) NOT NULL,
+  LastName varchar(50) NOT NULL,
+  Email varchar(63) NOT NULL,
+  PhoneNumber varchar(20) NOT NULL,
   MessageText text
 ) ENGINE=InnoDB;
 
@@ -198,78 +198,56 @@ CREATE TABLE ContactForm (
 -- opening hours
 CREATE TABLE OpeningHour (
   OpeningHourID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Day` varchar(9),
-  `Time` varchar(13)
+  `Day` varchar(9) NOT NULL,
+  `Time` varchar(13) NOT NULL
 ) ENGINE=InnoDB;
 
 
 -- payment
 CREATE TABLE Payment (
   PaymentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  PaymentType varchar(9)
+  PaymentType varchar(9) NOT NULL
 ) ENGINE=InnoDB;
-
-
-
-
 
 
 -- data to insert
 
-
 -- postal code 
-insert into PostalCode (PostalCode, City) values ('696 13', 'Kvasy');
-insert into PostalCode (PostalCode, City) values ('P75', 'Alto de la Estancia');
-insert into PostalCode (PostalCode, City) values ('252437', 'Girardot');
-insert into PostalCode (PostalCode, City) values ('58550-000', 'Prata');
-insert into PostalCode (PostalCode, City) values ('M5T', 'Pueblo Nuevo');
-insert into PostalCode (PostalCode, City) values ('925-0215', 'Keyinhe');
-insert into PostalCode (PostalCode, City) values ('352720', 'Tulung');
-insert into PostalCode (PostalCode, City) values ('2140', 'Mzuzu');
-insert into PostalCode (PostalCode, City) values ('57-343', 'Guohe');
-insert into PostalCode (PostalCode, City) values ('66-008', 'Świdnica');
-insert into PostalCode (PostalCode, City) values ('95100', 'Zhujiang');
-insert into PostalCode (PostalCode, City) values ('4663', 'Kristiansand S');
-insert into PostalCode (PostalCode, City) values ('788 32', 'Kakanj');
-insert into PostalCode (PostalCode, City) values ('364 61', 'Město');
-insert into PostalCode (PostalCode, City) values ('59-852', 'As Sawdā');
-insert into PostalCode (PostalCode, City) values ('2383', 'Baiyushan');
-insert into PostalCode (PostalCode, City) values ('358015', 'Shapaja');
-insert into PostalCode (PostalCode, City) values ('369-0137', 'Gyōda');
-insert into PostalCode (PostalCode, City) values ('6340', 'Doljo');
-insert into PostalCode (PostalCode, City) values ('53401', 'Maubara');
-insert into PostalCode (PostalCode, City) values ('9021', 'Butuan');
-insert into PostalCode (PostalCode, City) values ('763029', 'Tuluá');
-insert into PostalCode (PostalCode, City) values ('64058 CEDEX 9', 'Longtian');
-insert into PostalCode (PostalCode, City) values ('188838', 'Ilichëvo');
-insert into PostalCode (PostalCode, City) values ('67137 CEDEX', 'Charlestown');
-insert into PostalCode (PostalCode, City) values ('861-2236', 'Maoyang');
-insert into PostalCode (PostalCode, City) values ('V1Z', 'Chao');
-insert into PostalCode (PostalCode, City) values ('93610', 'Sadar');
-insert into PostalCode (PostalCode, City) values ('813 27', 'Hofors');
-insert into PostalCode (PostalCode, City) values ('6337', 'Gocoton');
-insert into PostalCode (PostalCode, City) values ('9420', 'Río Grande');
-insert into PostalCode (PostalCode, City) values ('18010', 'Granada');
-insert into PostalCode (PostalCode, City) values ('2808', 'Embu');
-insert into PostalCode (PostalCode, City) values ('62-602', 'Jingdang');
-insert into PostalCode (PostalCode, City) values ('4821', 'Flagstaff');
-insert into PostalCode (PostalCode, City) values ('851 88', 'Jantake');
-insert into PostalCode (PostalCode, City) values ('4415-708', 'Masons Bay');
-insert into PostalCode (PostalCode, City) values ('633224', 'Listvyanskiy');
-insert into PostalCode (PostalCode, City) values ('36019 CEDEX', 'Châteauroux');
-insert into PostalCode (PostalCode, City) values ('665689', 'Banjar Budakeling');
-insert into PostalCode (PostalCode, City) values ('692327', 'Zhuli');
-insert into PostalCode (PostalCode, City) values ('88-306', 'Dąbrowa');
-insert into PostalCode (PostalCode, City) values ('06721', 'Watuweri');
-insert into PostalCode (PostalCode, City) values ('8608', 'Lamak');
-insert into PostalCode (PostalCode, City) values ('665670', 'Listvyanka');
-insert into PostalCode (PostalCode, City) values ('959-1146', 'Tegalsari');
-insert into PostalCode (PostalCode, City) values ('29193 ', 'Sapeken');
-insert into PostalCode (PostalCode, City) values ('45700-000', 'Hŭngnam');
-insert into PostalCode (PostalCode, City) values ('44880-000', 'Xindong');
-insert into PostalCode (PostalCode, City) values ('7005-724', 'São Manços');
+INSERT INTO PostalCode (PostalCode, City) VALUES (6700, 'Esbjerg');
+INSERT INTO PostalCode (PostalCode, City) VALUES (6800, 'Varde');
+INSERT INTO PostalCode (PostalCode, City) VALUES (6500, 'Vojens');
 
 
+-- address
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6800');
+
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6800');
+
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6500');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6700');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6800');
+INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6800');
 
 
 -- auditorium

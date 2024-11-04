@@ -25,7 +25,7 @@ $getMovie = $query->fetchAll();
 
 <div class="container">
     <h3>Editing Movie "<?php echo htmlspecialchars($getMovie[0][1]); ?>"</h3>
-    <form class="col s12" name="contact" method="post" action="crud/movie/updateMovie.php">
+    <form class="col s12" name="contact" method="post" action="crud/movie/updateMovie.php" enctype="multipart/form-data">
         <div class="row">
             <div class="input-field col s12">
                 <input id="Name" name="Name" type="text" value="<?php echo htmlspecialchars($getMovie[0][1]); ?>" class="validate" required>

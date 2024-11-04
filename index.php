@@ -94,6 +94,10 @@ case "companyinformationadmin":
     include('crud/adminModules/companyInformationAdmin.php');
 break;
 
+case "openinghour":
+    include('crud/adminModules/openingHourAdmin.php');
+break;
+
 
 // add
 case "adduser":
@@ -110,6 +114,10 @@ break;
 
 case "addcompanyinformation":
     include('crud/companyinformation/addCompanyInformation.php');
+break;
+
+case "addopeninghour":
+    include('crud/openinghour/addOpeningHour.php');
 break;
 
 
@@ -130,6 +138,10 @@ case "deletecompanyinformation":
     include('crud/companyinformation/deleteCompanyInformation.php');
 break;
 
+case "deleteopeninghour":
+    include('crud/openinghour/deleteOpeningHour.php');
+break;
+
 
 // edit
 case "edituser":
@@ -146,6 +158,10 @@ break;
 
 case "editcompanyinformation":
     include('crud/companyinformation/editCompanyInformation.php');
+break;
+
+case "editopeninghour":
+    include('crud/openinghour/editOpeningHour.php');
 break;
 
 
@@ -166,8 +182,25 @@ case "updatecompanyinformation":
     include('crud/companyinformation/updateCompanyInformation.php');
 break;
 
-}  
+case "updateopeninghour":
+    include('crud/openinghour/updateOpeningHour.php');
+break;
 
+
+// detail pages
+case "moviedetail":
+    include('views/movieDetail.php');
+break;
+
+case "newsdetail":
+    include('views/newsDetail.php');
+break;
+
+case "paymentdetail":
+    include('views/paymentDetail.php');
+break;
+
+}
 ?>
 
 

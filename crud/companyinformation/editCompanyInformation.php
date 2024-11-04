@@ -56,8 +56,8 @@ $getCompanyInformation = $query->fetchAll();
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="AddressOfCompany" name="AddressOfCompany" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][5]); ?>" class="validate" required="">
-                        <label for="AddressOfCompany" class="active">Address</label>
+                        <input id="Address" name="Address" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][5]); ?>" class="validate" required="">
+                        <label for="Address" class="active">Address</label>
                     </div>
 
                     <div class="input-field col s6">

@@ -7,13 +7,13 @@ if (isset($_POST['submit'])) {
     $companyDescription = htmlspecialchars(trim($_POST['CompanyDescription']), ENT_QUOTES, 'UTF-8');
     $companyEmail = htmlspecialchars(trim($_POST['CompanyEmail']), ENT_QUOTES, 'UTF-8');
     $companyPhoneNumber = htmlspecialchars(trim($_POST['CompanyPhoneNumber']), ENT_QUOTES, 'UTF-8');
-    $addressOfCompany = htmlspecialchars(trim($_POST['AddressOfCompany']), ENT_QUOTES, 'UTF-8');
+    $address = htmlspecialchars(trim($_POST['Address']), ENT_QUOTES, 'UTF-8');
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']), ENT_QUOTES, 'UTF-8');
 
     $dbCon = dbCon($user, $pass);
 
-    $query = $dbCon->prepare("INSERT INTO CompanyInformation (NameOfCompany, CompanyDescription, CompanyEmail, CompanyPhoneNumber, AddressOfCompany, PostalCode) 
-    VALUES (:nameOfCompany, :companyDescription, :companyEmail, :companyPhoneNumber, :addressOfCompany, :postalCode)");
+    $query = $dbCon->prepare("INSERT INTO CompanyInformation (NameOfCompany, CompanyDescription, CompanyEmail, CompanyPhoneNumber, Address, PostalCode) 
+    VALUES (:nameOfCompany, :companyDescription, :companyEmail, :companyPhoneNumber, :address, :postalCode)");
 
 
     // prepare statements
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':companyDescription', $companyDescription);
     $query->bindParam(':companyEmail', $companyEmail);
     $query->bindParam(':companyPhoneNumber', $companyPhoneNumber);
-    $query->bindParam(':addressOfCompany', $addressOfCompany);
+    $query->bindParam(':address', $address);
     $query->bindParam(':postalCode', $postalCode);
     $query->execute();
 

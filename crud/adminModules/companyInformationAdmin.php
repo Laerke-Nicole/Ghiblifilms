@@ -56,7 +56,7 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
                     echo "<td>". $companyInformation['CompanyDescription']."</td>";
                     echo "<td>". $companyInformation['CompanyEmail']."</td>";
                     echo "<td>". $companyInformation['CompanyPhoneNumber']."</td>";
-                    echo "<td>". $companyInformation['AddressOfCompany']."</td>";
+                    echo "<td>". $companyInformation['Address']."</td>";
                     echo "<td>". $companyInformation['PostalCode']."</td>";
                     echo "<td>";
 
@@ -104,8 +104,8 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="AddressOfCompany" name="AddressOfCompany" type="text" class="validate" required="" aria-required="true">
-                    <label for="AddressOfCompany">Address</label>
+                    <input id="Address" name="Address" type="text" class="validate" required="" aria-required="true">
+                    <label for="Address">Address</label>
                 </div>
 
                 <div class="input-field col s6">

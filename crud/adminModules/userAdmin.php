@@ -112,7 +112,7 @@ $getUsers = $queryUser->fetchAll();
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="PostalCode" type="number" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
             </div>

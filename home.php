@@ -25,20 +25,20 @@
     
     <!-- loop with news -->
     <div class="items">
-    <?php
-        $dbCon = dbCon($user, $pass);
-        $queryNews = $dbCon->prepare("SELECT * FROM News");
-        $queryNews->execute();
-        $getNews = $queryNews->fetchAll();
+        <?php
+            $dbCon = dbCon($user, $pass);
+            $queryNews = $dbCon->prepare("SELECT * FROM News");
+            $queryNews->execute();
+            $getNews = $queryNews->fetchAll();
 
-        foreach ($getNews as $news) {
-            echo '<div>';
-            echo "<img src='upload/" . $news['NewsImage'] . "' alt='Image of news'>";
-            echo '<h4 class="weight-400 pb-2">' . $news['Headline'] . '</h4>';
-            echo '<button class="btn" onclick="window.location.href=\'newsDetail.php?ID=' . $news['NewsID'] . '\'">See more</button>'; 
-            echo '</div>';
-        }
-    ?>
+            foreach ($getNews as $news) {
+                echo '<div>';
+                echo "<img src='upload/" . $news['NewsImg'] . "' alt='Image of news'>";
+                echo '<h5 class="weight-400 pb-2">' . $news['Headline'] . '</h5>';
+                echo '<button class="btn" onclick="window.location.href=\'index.php?page=newsdetail&ID=' . $news['NewsID'] . '\'">See more</button>';
+                echo '</div>';
+            }
+        ?>
     </div>
 
 </section>
@@ -52,36 +52,20 @@
     
     <!-- loop with movies -->
     <div class="items">
-        <div>
-            <img src="img/ged.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">SIRITED AWAY</h4>
-            <button class="btn">Get tickets</button>
-        </div>
-        <div>
-            <img src="img/chihiro.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">PONYO</h4>
-            <button class="btn">Get tickets</button>
-        </div>
-        <div>
-            <img src="img/ponyo.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">HOWL'S MOVING CASTLE</h4>
-            <button class="btn">Get tickets</button>
-        </div>
-        <div>
-            <img src="img/ged.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">SIRITED AWAY</h4>
-            <button class="btn">Get tickets</button>
-        </div>
-        <div>
-            <img src="img/chihiro.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">PONYO</h4>
-            <button class="btn">Get tickets</button>
-        </div>
-        <div>
-            <img src="img/ponyo.jpg" alt="Image of movie">
-            <h4 class="weight-400 pb-2">HOWL'S MOVING CASTLE</h4>
-            <button class="btn">Get tickets</button>
-        </div>
+        <?php
+        $dbCon = dbCon($user, $pass);
+        $queryMovies = $dbCon->prepare("SELECT * FROM Movie");
+        $queryMovies->execute();
+        $getMovies = $queryMovies->fetchAll();
+
+        foreach ($getMovies as $getMovie) { 
+            echo '<div>';
+            echo "<img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie'>";
+            echo '<h5 class="weight-400 pb-2">' . $getMovie['Name'] . '</h5>';
+            echo '<button class="btn" onclick="window.location.href=\'moviedetail.php?ID=' . $getMovie['MovieID'] . '\'">Get tickets</button>'; 
+            echo '</div>';
+        }
+        ?>
     </div>
 
 </section>
@@ -90,17 +74,24 @@
 <!-- about ghiblifilms -->
 <section>
     <div class="about-ghiblifilms flex pt-20 pb-20 justify-around">
-        <div class="flex-1 max-w-xs">
-            <h2 class="primary-color text-6xl">About<br>Ghiblifilms</h2>
-        </div>
+        <?php
+            $dbCon = dbCon($user, $pass);
+            $queryCompanyInformation = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
+            $queryCompanyInformation->execute();
+            $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
-        <div class="flex-1 max-w-lg">
-            <p class="primary-color primary-font text-lg">Welcome to Ghiblifilms, Copenhagen's enchanting cinema dedicated entirely to the magical world of Studio Ghibli. 
-                Nestled in the heart of the city, our cinema is a haven for Ghibli fans, where the charm and wonder of 
-                Hayao Miyazaki's timeless creations come to life. Our screenings exclusively feature Studio Ghibli classics, 
-                offering a truly immersive experience where the magic of the movies extends beyond the screen. </p>
-        </div>
+            foreach ($getCompanyInformation as $companyInfo) {
+                echo '<div class="flex-1 max-w-xs">';
+                    echo '<h2 class="primary-color text-6xl">About<br>' . $companyInfo['NameOfCompany'] . '</h2>';
+                echo '</div>';
+
+                echo '<div class="flex-1 max-w-lg">';
+                    echo '<p class="primary-color primary-font text-lg">' . $companyInfo['CompanyDescription'] . '</p>';
+                echo '</div>';
+            }
+        ?>
     </div>
+            
 </section>
 
 
@@ -147,16 +138,25 @@
         <div class="w-half">
             <div class="box">
                 <h3 class="text-xl pb-4">Prefer a direct contact? You can reach us via email or phone:</h3>
-                <div class="flex flex-col gap-6">
-                    <div>
-                        <h4 class="text-sm">Email us</h4>
-                        <p>test@test</p>
-                    </div>
 
-                    <div>
-                        <h4 class="text-sm">Call us</h4>
-                        <p>34234</p>
-                    </div>
+                <div class="flex flex-col gap-6">
+                    <?php
+                        $dbCon = dbCon($user, $pass);
+                        $queryCompanyInformation = $dbCon->prepare("SELECT CompanyEmail, CompanyPhoneNumber FROM CompanyInformation");
+                        $queryCompanyInformation->execute();
+                        $getCompanyInformation = $queryCompanyInformation->fetchAll();
+
+                        foreach ($getCompanyInformation as $companyInfo) {
+                            echo '<div>';
+                                echo '<h4 class="text-sm">Email us</h4>';
+                                echo '<p>' . $companyInfo['CompanyEmail'] . '</p>';
+                            echo '</div>';
+                            echo '<div>';
+                                echo '<h4 class="text-sm">Call us</h4>';
+                                echo '<p>' . $companyInfo['CompanyPhoneNumber'] . '</p>';
+                            echo '</div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>

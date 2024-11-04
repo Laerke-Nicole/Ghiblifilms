@@ -1,6 +1,6 @@
 function toggleSection(sectionId) {
     // all id from admin.php
-    const sections = ['movieAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin'];
+    const sections = ['movieAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin'];
 
     sections.forEach((section) => {
         const sectionDiv = document.getElementById(section);

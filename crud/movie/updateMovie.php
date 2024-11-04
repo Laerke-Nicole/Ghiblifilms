@@ -19,14 +19,13 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     if (isset($_FILES['MovieImg']) && $_FILES['MovieImg']['error'] == UPLOAD_ERR_OK) {
         // Validate the uploaded file (type and size)
         $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg'];
-
+        
         if (in_array($_FILES['MovieImg']['type'], $allowedTypes) && $_FILES['MovieImg']['size'] < 3000000) {
             // Move the uploaded file to the "upload" directory
             $movieImg = basename($_FILES['MovieImg']['name']);
             $uploadPath = "../../upload/" . $movieImg;
 
-            if (move_uploaded_file($_FILES['MovieImg']['tmp_name'], $uploadPath)) {
-            } else {
+            if (!move_uploaded_file($_FILES['MovieImg']['tmp_name'], $uploadPath)) {
                 echo "Failed to move uploaded file.";
                 exit();
             }
@@ -34,6 +33,12 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
             echo "Invalid file type or file size too large.";
             exit();
         }
+    } else {
+        // If no new image is uploaded, keep the existing one
+        $query = $dbCon->prepare("SELECT MovieImg FROM Movie WHERE MovieID = :movieID");
+        $query->bindParam(':movieID', $movieID, PDO::PARAM_INT);
+        $query->execute();
+        $movieImg = $query->fetchColumn(); // Fetch the current image file name
     }
 
     // Update the movie record

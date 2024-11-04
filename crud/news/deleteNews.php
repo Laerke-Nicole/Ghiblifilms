@@ -1,5 +1,5 @@
 <?php
-require_once "../../includes/dbcon.php";
+require_once "includes/dbcon.php";
 
 if (isset($_GET['NewsID'])) {
     $newsID = htmlspecialchars(trim($_GET['NewsID']));
@@ -14,9 +14,9 @@ if (isset($_GET['NewsID'])) {
 
     $query->execute();
 
-    header("Location: ../index.php?page=admin&status=deleted&ID=$newsID");
+    header("Location: index.php?page=admin&status=deleted&ID=$newsID");
 
 } else {
-    header("Location: ../index.php?page=admin&status=0");
+    header("Location: index.php?page=admin&status=0");
 }
 ?>
