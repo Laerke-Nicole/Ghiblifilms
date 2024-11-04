@@ -1,5 +1,6 @@
 <?php
-require_once "dbcon.php";
+require_once "../../includes/dbcon.php";
+
 
 if (isset($_GET['NewsID'])) {
     $newsID = htmlspecialchars(trim($_GET['NewsID']));
@@ -20,5 +21,3 @@ if (isset($_GET['NewsID'])) {
     header("Location: ../index.php?page=admin&status=0");
 }
 ?>
-
-

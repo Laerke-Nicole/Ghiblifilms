@@ -1,4 +1,5 @@
-<?php require_once "dbcon.php";
+<?php 
+require_once "includes/dbcon.php";
 if (isset($_GET['ID'])) {
 ?>
 
@@ -26,45 +27,38 @@ $getUsers = $query->fetchAll();
 
 <div class="container">
         <h3>Editing user "<?php echo $getUsers[0][1]; ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/updateUser.php">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars($getUsers[0][1]); ?>" class="validate" required="" aria-required="true">
-                    <label for="Username">Username</label>
-                </div>
-            </div>
-
+        <form class="col s12" name="contact" method="post" action="crud/user/updateUser.php">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars($getUsers[0][3]); ?>" class="validate" required="" aria-required="true">
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars($getUsers[0][1]); ?>" class="validate" required="" aria-required="true">
                     <label for="FirstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars($getUsers[0][4]); ?>" class="validate" required="" aria-required="true">
+                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars($getUsers[0][2]); ?>" class="validate" required="" aria-required="true">
                     <label for="LastName">Last Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars($getUsers[0][5]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars($getUsers[0][3]); ?>" class="validate" required="" aria-required="true">
                     <label for="Email">E-Mail</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars($getUsers[0][6]); ?>" class="validate" required="" aria-required="true">
+                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars($getUsers[0][4]); ?>" class="validate" required="" aria-required="true">
                     <label for="PhoneNumber">Phone Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Address" name="Address" type="text" value="<?php echo htmlspecialchars($getUsers[0][7]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Address" name="Address" type="text" value="<?php echo htmlspecialchars($getUsers[0][5]); ?>" class="validate" required="" aria-required="true">
                     <label for="Address">Address</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][8]); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][6]); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
             </div>

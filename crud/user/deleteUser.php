@@ -1,5 +1,5 @@
 <?php
-require_once "dbcon.php";
+require_once "includes/dbcon.php";
 
 if (isset($_GET['UserID'])) {
     $userID = $_GET['UserID'];
@@ -11,9 +11,9 @@ if (isset($_GET['UserID'])) {
     
     $query->execute();
 
-    header("Location: ../index.php?page=admin&status=deleted&ID=$userID");
+    header("Location: index.php?page=admin&status=deleted&ID=$userID");
 
 } else {
-    header("Location: ../index.php?page=admin&status=0");
+    header("Location: index.php?page=admin&status=0");
 }
 ?>  

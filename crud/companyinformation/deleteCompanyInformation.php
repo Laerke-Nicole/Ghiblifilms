@@ -1,5 +1,5 @@
 <?php
-require_once "dbcon.php";
+require_once "includes/dbcon.php";
 
 if (isset($_GET['CompanyInformationID'])) {
     $companyInformationID = $_GET['CompanyInformationID'];
@@ -10,9 +10,9 @@ if (isset($_GET['CompanyInformationID'])) {
     
     $query->execute();
 
-    header("Location: ../index.php?page=admin&status=deleted&ID=$companyInformationID");
+    header("Location: index.php?page=admin&status=deleted&ID=$companyInformationID");
 
 } else {
-    header("Location: ../index.php?page=admin&status=0");
+    header("Location: index.php?page=admin&status=0");
 }
 ?>

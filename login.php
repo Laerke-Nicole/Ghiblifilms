@@ -1,6 +1,7 @@
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/functions.php"); ?>
+
 <?php
 		if (logged_in()) {
 		redirect_to("index.php");
@@ -22,7 +23,7 @@
         
         try {
             // Prepare the SQL query using PDO
-            $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; // Use 'username' instead of 'user'
+            $query = "SELECT UserLoginID, Username, Pass FROM UserLogin WHERE Username = :Username LIMIT 1"; 
             $stmt = $connection->prepare($query);
             
             // Bind the username parameter

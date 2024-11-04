@@ -1,5 +1,5 @@
 <?php
-require_once "dbcon.php";
+require_once "../../includes/dbcon.php";
 
 if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     // Get the input values, including the new image if uploaded
@@ -21,7 +21,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
         if (in_array($_FILES['NewsImage']['type'], $allowedTypes) && $_FILES['NewsImage']['size'] < 3000000) {
             // Move the uploaded file to the "upload" directory
             $newsImage = basename($_FILES['NewsImage']['name']);
-            $uploadPath = "../upload/" . $newsImage;
+            $uploadPath = "../../upload/" . $newsImage;
 
             if (move_uploaded_file($_FILES['NewsImage']['tmp_name'], $uploadPath)) {
                 // Image upload succeeded, set $newsImage to the new file name
@@ -45,7 +45,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
 
     if ($query->execute()) {
-        header("Location: ../index.php?page=admin&status=updated&ID=$newsID");
+        header("Location: ../../index.php?page=admin&status=updated&ID=$newsID");
     } else {
         echo "Failed to update data. Error: " . implode(", ", $query->errorInfo());
     }

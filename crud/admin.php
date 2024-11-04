@@ -1,4 +1,4 @@
-<?php require_once "dbcon.php";?>
+<?php require_once "includes/dbcon.php";?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +15,16 @@
 </head>
 
 <body>
-<!-- Buttons to toggle each section -->
+
+<br>
+
 <button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
 <button class="btn" onclick="toggleSection('userAdmin')">User</button>
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
+<button class="btn" onclick="toggleSection('companyInformationAdmin')">Company Info</button>
 
-<!-- Movie Admin Section -->    
+
+<!-- Movie Admin Section     -->
 <div id="movieAdmin" style="display: none;">
     <?php require 'adminModules/movieAdmin.php'; ?>
 </div>
@@ -34,6 +38,18 @@
 <div id="newsAdmin" style="display: none;">
     <?php require 'adminModules/newsAdmin.php'; ?>
 </div>
+
+<!-- Company info Admin Section -->
+<div id="companyInformationAdmin" style="display: none;">
+    <?php require 'adminModules/companyInformationAdmin.php'; ?>
+</div>
+
+
+
+<br>
+<br>
+<br>
+
 
 </body>
 </html>

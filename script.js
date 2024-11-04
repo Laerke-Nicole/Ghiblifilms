@@ -1,15 +1,18 @@
 function toggleSection(sectionId) {
-    // Array of all section IDs
-    const sections = ['movieAdmin', 'userAdmin', 'newsAdmin'];
+    // all id from admin.php
+    const sections = ['movieAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin'];
 
-    // Loop through all sections
     sections.forEach((section) => {
         const sectionDiv = document.getElementById(section);
         if (section === sectionId) {
-            // Toggle the clicked section
-            sectionDiv.style.display = sectionDiv.style.display === 'none' || sectionDiv.style.display === '' ? 'block' : 'none';
+            if (sectionDiv.style.display === 'block') {
+                sectionDiv.style.display = 'none';
+
+            } else {
+                sectionDiv.style.display = 'block';
+            }
+
         } else {
-            // Hide other sections
             sectionDiv.style.display = 'none';
         }
     });

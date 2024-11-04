@@ -1,5 +1,5 @@
 <?php
-require_once "dbcon.php";
+require_once "../../includes/dbcon.php";
 
 if (isset($_GET['MovieID'])) {
     $movieID = htmlspecialchars(trim($_GET['MovieID']));

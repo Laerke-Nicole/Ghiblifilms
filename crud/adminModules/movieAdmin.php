@@ -76,7 +76,7 @@ $getMovies = $queryMovie->fetchAll();
         <hr>
         <h3>Add new movie</h3>
 
-        <form class="col s12" method="post" action="crud/addMovie.php" enctype="multipart/form-data">
+        <form class="col s12" method="post" action="crud/movie/addMovie.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Name" name="Name" type="text" class="validate" required>

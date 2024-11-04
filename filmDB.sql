@@ -20,9 +20,7 @@ CREATE TABLE PostalCode (
 
 -- user
 CREATE TABLE User (
-  UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,  
-  Username VARCHAR(50) NOT NULL,                        
-  Pass VARCHAR(255) NOT NULL,                       
+  UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,                       
   FirstName VARCHAR(50) NOT NULL,
   LastName VARCHAR(50) NOT NULL,
   Email VARCHAR(63) NOT NULL,
@@ -30,6 +28,13 @@ CREATE TABLE User (
   `Address` VARCHAR(255) NOT NULL,
   PostalCode varchar(20),
   FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
+) ENGINE=InnoDB;
+
+-- user
+CREATE TABLE UserLogin (
+  UserLoginID int NOT NULL AUTO_INCREMENT PRIMARY KEY,  
+  Username VARCHAR(50) NOT NULL,                        
+  Pass VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB;
 
 

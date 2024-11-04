@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) { // Form has been submitted.
 
     try {
         // Prepare the SQL query to insert user
-        $query = "INSERT INTO User (username, pass) VALUES (:username, :hashed_password)";
+        $query = "INSERT INTO UserLogin (username, pass) VALUES (:username, :hashed_password)";
         $stmt = $connection->prepare($query);
 
         // Bind parameters

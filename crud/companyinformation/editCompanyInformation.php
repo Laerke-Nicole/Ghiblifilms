@@ -1,5 +1,5 @@
 <?php 
-require_once "dbcon.php";
+require_once "includes/dbcon.php";
 if (isset($_GET['ID'])) {
 ?>
 
@@ -27,7 +27,7 @@ $getCompanyInformation = $query->fetchAll();
 <div class="container">
         <h3>Editing company information "<?php echo htmlspecialchars($getCompanyInformation[0][1]); ?>"</h3>
         <div class="container">
-            <form class="col s12" name="contact" method="post" action="updateCompanyInformation.php">
+            <form class="col s12" name="contact" method="post" action="crud/companyinformation/updateCompanyInformation.php">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="NameOfCompany" name="NameOfCompany" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][1]); ?>" class="validate" required="" aria-required="true">
@@ -76,7 +76,7 @@ $getCompanyInformation = $query->fetchAll();
 </body>
 </html>
 
-<?php 
+<?php
 } else { 
     header("Location: ../index.php?page=admin&status=0");
 }

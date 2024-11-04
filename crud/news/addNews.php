@@ -1,5 +1,5 @@
 <?php
-require_once "dbcon.php";
+require_once "../../includes/dbcon.php";
 
 if (isset($_POST['submit'])) {
     // trim and htmlspecialchars
@@ -18,11 +18,14 @@ if (isset($_POST['submit'])) {
             if ($_FILES['newsImage']['error'] > 0) {
                 echo "Error: " . $_FILES['newsImage']['error'];
                 exit(); // Stop further execution
+
             } else {
                 // Check if file exists
+
                 if (file_exists("../upload/" . $_FILES['newsImage']['name'])) {
                     echo "Can't upload: " . $_FILES['newsImage']['name'] . " exists.";
                     exit(); // Stop further execution
+                    
                 } else {
                     // Move uploaded file to the "upload" directory
                     move_uploaded_file($_FILES['newsImage']['tmp_name'], "../upload/" . $_FILES['newsImage']['name']);
@@ -39,7 +42,7 @@ if (isset($_POST['submit'])) {
                         
                         // Execute and check for errors
                         if ($query->execute()) {
-                            header("Location: ../index.php?page=admin&status=added");
+                            header("Location: ../../index.php?page=admin&status=added");
                             exit(); // Always call exit after header redirection
                         } else {
                             echo "Failed to insert data. Error: " . implode(", ", $query->errorInfo());
@@ -57,18 +60,7 @@ if (isset($_POST['submit'])) {
     }
 
 } else {
-    header("Location: ../index.php?page=admin&status=0");
-    exit(); // Always call exit after header redirection
+    header("Location: ../../index.php?page=admin&status=0");
+    exit();
 }
 ?>
-
-
-
-
-
-<!-- header("Location: ../index.php?page=admin&status=added");
-
-} else {
-    header("Location: ../index.php?page=admin&status=0");
-}
-?> -->

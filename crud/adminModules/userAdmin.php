@@ -37,7 +37,6 @@ $getUsers = $queryUser->fetchAll();
                 <thead>
                 <tr class="secondary-color">
                     <th>UserID</th>
-                    <th>Username</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone number</th>
@@ -57,7 +56,6 @@ $getUsers = $queryUser->fetchAll();
                 foreach ($getUsers as $getUser) {
                     echo "<tr>";
                     echo "<td>". $getUser['UserID']."</td>";
-                    echo "<td>". $getUser['Username']."</td>";
                     echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
                     echo "<td>". $getUser['Email']."</td>";
                     echo "<td>". $getUser['PhoneNumber']."</td>";
@@ -67,8 +65,7 @@ $getUsers = $queryUser->fetchAll();
 
                     echo "</td>";
                     echo '<td><a href="index.php?page=edituser&ID='.$getUser['UserID'].'" class="btn">Edit</a></td>';
-                    echo '<td><a href="crud/deleteUser.php?UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
-
+                    echo '<td><a href="index.php?page=deleteuser&UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
                     
                     echo "</tr>";
                 }
@@ -82,14 +79,7 @@ $getUsers = $queryUser->fetchAll();
         <hr>
         <h3>Add new user</h3>
 
-        <form class="col s12" name="contact" method="post" action="crud/addUser.php">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true" class="secondary-color">
-                    <label for="Username">Username</label>
-                </div>
-            </div>
-            
+        <form class="col s12" name="contact" method="post" action="crud/user/addUser.php">
             <div class="row">
                 <div class="input-field col s6">
                     <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">

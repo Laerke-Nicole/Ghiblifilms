@@ -59,9 +59,9 @@ $getNews = $queryNews->fetchAll();
                 echo "<td>" . $news['TextOfNews'] . "</td>";
                 echo "<td><img src='upload/" . $news['NewsImage'] . "' alt='Image of news' width='100'></td>";
 
-                echo '<td><a href="crud/editNews.php?ID=' . $news['NewsID'] . '" class="waves-effect waves-light btn">Edit</a></td>';
-                echo '<td><a href="crud/deleteNews.php?NewsID=' . $news['NewsID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
- 
+                echo '<td><a href="index.php?page=editnews&ID=' . $news['NewsID'] . '" class="waves-effect waves-light btn">Edit</a></td>';
+                echo '<td><a href="index.php?page=deletenews&NewsID=' . $news['NewsID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+               
                 echo "</tr>";
             }
             ?>
@@ -71,7 +71,7 @@ $getNews = $queryNews->fetchAll();
 
     <hr>
         <h3>Add New News</h3>
-        <form class="col s12" name="contact" method="post" action="crud/addNews.php" enctype="multipart/form-data">
+        <form class="col s12" name="contact" method="post" action="crud/news/addNews.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Headline" name="Headline" type="text" class="validate" required="" aria-required="true">

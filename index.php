@@ -26,11 +26,27 @@
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
         <li><a href="index.php?page=admin" class="secondary-color">Profile Page</a></li>
 
+        <!-- show log out btn if ur logged in -->
         <?php if (logged_in()) { ?>
             <form action="logout.php" method="post" style="display:inline;">
                 <input type="submit" value="Log Out" class="btn">
             </form>
         <?php } ?>
+
+
+        <!-- <?php
+        $_SESSION['User'] = 'admin'; 
+        $_SESSION['Pass'] = '123456'; 
+
+        if (isset($_SESSION['User']) && $_SESSION['User'] === "admin" && isset($_SESSION['Pass']) && $_SESSION['Pass'] === "123456") {
+            ?>
+            <form action="crud/admin.php" method="post" style="display:inline;">
+                <input type="submit" value="Admin page" class="btn">
+            </form>
+        <?php
+        }
+        ?> -->
+
     </ul>
 </nav>
 
@@ -61,75 +77,93 @@ case "admin":
 break;
 
 
+// admin modules of cruds
+case "movieadmin":
+    include('crud/adminModules/movieAdmin.php');
+break;
+
+case "newsadmin":
+    include('crud/adminModules/newsAdmin.php');
+break;
+
+case "useradmin":
+    include('crud/adminModules/userAdmin.php');
+break;
+
+case "companyinformationadmin":
+    include('crud/adminModules/companyInformationAdmin.php');
+break;
+
+
 // add
 case "adduser":
-    include('crud/addUser.php');
+    include('crud/user/addUser.php');
 break;
 
 case "addmovie":
-    include('crud/addMovie.php');
+    include('crud/movie/addMovie.php');
 break;
 
 case "addnews":
-    include('crud/addNews.php');
+    include('crud/news/addNews.php');
 break;
 
 case "addcompanyinformation":
-    include('crud/addCompanyInformation.php');
+    include('crud/companyinformation/addCompanyInformation.php');
 break;
 
 
 // delete
 case "deleteuser":
-    include('crud/deleteUser.php');
+    include('crud/user/deleteUser.php');
 break;
 
 case "deletemovie":
-    include('crud/deleteMovie.php');
+    include('crud/movie/deleteMovie.php');
 break;
 
 case "deletenews":
-    include('crud/deleteNews.php');
+    include('crud/news/deleteNews.php');
 break;
 
 case "deletecompanyinformation":
-    include('crud/deleteCompanyInformation.php');
+    include('crud/companyinformation/deleteCompanyInformation.php');
 break;
 
 
 // edit
 case "edituser":
-    include('crud/editUser.php');
+    include('crud/user/editUser.php');
 break;
 
 case "editmovie":
-    include('crud/editMovie.php');
+    include('crud/movie/editMovie.php');
 break;
 
 case "editnews":
-    include('crud/editNews.php');
+    include('crud/news/editNews.php');
 break;
 
 case "editcompanyinformation":
-    include('crud/editCompanyInformation.php');
+    include('crud/companyinformation/editCompanyInformation.php');
 break;
 
 
 // update
 case "updateuser":
-    include('crud/updateUser.php');
+    include('crud/user/updateUser.php');
 break;
 
 case "updatemovie":
-    include('crud/updateMovie.php');
+    include('crud/movie/updateMovie.php');
 break;
 
 case "updatenews":
-    include('crud/updateNews.php');
+    include('crud/news/updateNews.php');
 break;
 
 case "updatecompanyinformation":
-    include('crud/updateCompanyInformation.php');
+    include('crud/companyinformation/updateCompanyInformation.php');
 break;
 
 }  

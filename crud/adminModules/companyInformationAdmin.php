@@ -62,9 +62,9 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
                     echo "</td>";
 
-                    echo '<td><a href="crud/editCompanyInformation.php?ID=' . $companyInformation['CompanyInformationID'] . '" class="waves-effect waves-light btn">Edit</a></td>';
-                    echo '<td><a href="crud/deleteCompanyInformation.php?CompanyInformationID=' . $companyInformation['CompanyInformationID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-     
+                    echo '<td><a href="index.php?page=editcompanyinformation&ID=' . $companyInformation['CompanyInformationID'] . '" class="waves-effect waves-light btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deletecompanyinformation&CompanyInformationID=' . $companyInformation['CompanyInformationID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+
                     echo "</tr>";
 
                 }
@@ -75,7 +75,7 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
         <hr>
         <h3>Add new company information</h3>
 
-        <form class="col s12" name="contact" method="post" action="crud/addCompanyInformation.php">
+        <form class="col s12" name="contact" method="post" action="crud/companyinformation/addCompanyInformation.php">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="NameOfCompany" name="NameOfCompany" type="text" class="validate" required="" aria-required="true" class="secondary-color">

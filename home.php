@@ -1,4 +1,4 @@
-<?php require_once ("crud/dbcon.php"); ?>
+<?php require_once ("includes/dbcon.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/connection.php"); ?>
@@ -33,7 +33,7 @@
 
         foreach ($getNews as $news) {
             echo '<div>';
-            echo "<img src='" . $news['NewsImage'] . "' alt='Image of news'>";
+            echo "<img src='upload/" . $news['NewsImage'] . "' alt='Image of news'>";
             echo '<h4 class="weight-400 pb-2">' . $news['Headline'] . '</h4>';
             echo '<button class="btn" onclick="window.location.href=\'newsDetail.php?ID=' . $news['NewsID'] . '\'">See more</button>'; 
             echo '</div>';
