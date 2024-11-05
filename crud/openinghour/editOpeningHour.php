@@ -16,10 +16,10 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$openingHourID = htmlspecialchars($_GET['ID'], ENT_QUOTES, 'UTF-8');
+$openingHourID = htmlspecialchars($_GET['ID']);
 $dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM OpeningHour WHERE OpeningHourID = :openingHourID");
-$query->bindParam(':openingHourID', $openingHourID, PDO::PARAM_INT);
+$query->bindParam(':openingHourID', $openingHourID);
 $query->execute();
 $getOpeningHours = $query->fetchAll();
 ?>

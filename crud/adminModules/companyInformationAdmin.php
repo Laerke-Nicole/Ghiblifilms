@@ -3,7 +3,9 @@
 $dbCon = dbCon($user, $pass);
 
 // get company information
-$queryCompanyInformation = $dbCon->prepare("SELECT * FROM CompanyInformation");
+$queryCompanyInformation = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                                            FROM CompanyInformation C 
+                                            LEFT JOIN Address A ON C.AddressID = A.AddressID");
 $queryCompanyInformation->execute();
 $getCompanyInformation = $queryCompanyInformation->fetchAll();
 ?>
@@ -40,8 +42,10 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
                     <th>Description</th>
                     <th>Email</th>
                     <th>Phone number</th>
-                    <th>Address</th>
+                    <th>Street name</th>
+                    <th>Street number</th>
                     <th>Postal code</th>
+                    <th>Country</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -56,8 +60,10 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
                     echo "<td>". $companyInformation['CompanyDescription']."</td>";
                     echo "<td>". $companyInformation['CompanyEmail']."</td>";
                     echo "<td>". $companyInformation['CompanyPhoneNumber']."</td>";
-                    echo "<td>". $companyInformation['Address']."</td>";
+                    echo "<td>". $companyInformation['StreetName']."</td>";
+                    echo "<td>". $companyInformation['StreetNumber']."</td>";
                     echo "<td>". $companyInformation['PostalCode']."</td>";
+                    echo "<td>". $companyInformation['Country']."</td>";
                     echo "<td>";
 
                     echo "</td>";
@@ -104,13 +110,25 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Address" name="Address" type="text" class="validate" required="" aria-required="true">
-                    <label for="Address">Address</label>
+                    <input id="StreetName" name="StreetName" type="text" class="validate" required="" aria-required="true">
+                    <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
+                    <input id="StreetNumber" name="StreetNumber" type="text" class="validate" required="" aria-required="true">
+                    <label for="StreetNumber">Street Number</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
                     <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
-                    <label for="PostalCode">Postal code</label>
+                    <label for="PostalCode">Postal Code</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input id="Country" name="Country" type="text" class="validate" required="" aria-required="true">
+                    <label for="Country">Country</label>
                 </div>
             </div>
 

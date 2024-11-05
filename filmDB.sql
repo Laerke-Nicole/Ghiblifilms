@@ -3,30 +3,32 @@ CREATE DATABASE GhiblifilmsDB;
 USE GhiblifilmsDB;
 
 
--- Table with postal code
+-- postal code
 CREATE TABLE PostalCode (
-  PostalCode INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  PostalCode VARCHAR(10) NOT NULL PRIMARY KEY,
   City VARCHAR(168) NOT NULL
 ) ENGINE=InnoDB;
 
 
--- Table with address
+-- address
 CREATE TABLE Address (
-  AddressID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Address VARCHAR(255) NOT NULL,
-  PostalCode INT,
+  AddressID INT AUTO_INCREMENT PRIMARY KEY,
+  StreetName VARCHAR(255) NOT NULL,
+  StreetNumber VARCHAR(10) NOT NULL,
+  PostalCode varchar(10) NOT NULL,
+  Country VARCHAR(150) NOT NULL,
   FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB; 
 
 
 -- user 
 CREATE TABLE User (
-  UserID int NOT NULL AUTO_INCREMENT PRIMARY KEY,                       
-  FirstName VARCHAR(50) NOT NULL,
-  LastName VARCHAR(50) NOT NULL,
-  Email VARCHAR(63) NOT NULL,
-  PhoneNumber VARCHAR(20) NOT NULL,
-  AddressID INT NOT NULL,
+  UserID INT AUTO_INCREMENT PRIMARY KEY,
+  FirstName VARCHAR(255) NOT NULL,
+  LastName VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  PhoneNumber VARCHAR(255) NOT NULL,
+  AddressID INT,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
 
@@ -177,9 +179,9 @@ CREATE TABLE CompanyInformation (
   CompanyInformationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NameOfCompany varchar(11) NOT NULL,
   CompanyDescription text NOT NULL,
-  CompanyEmail varchar(63) NOT NULL,
+  CompanyEmail varchar(255) NOT NULL,
   CompanyPhoneNumber varchar(20) NOT NULL,
-  AddressID INT NOT NULL,
+  AddressID INT,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
 
@@ -189,7 +191,7 @@ CREATE TABLE ContactForm (
   ContactFormID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   FirstName varchar(50) NOT NULL,
   LastName varchar(50) NOT NULL,
-  Email varchar(63) NOT NULL,
+  Email varchar(255) NOT NULL,
   PhoneNumber varchar(20) NOT NULL,
   MessageText text
 ) ENGINE=InnoDB;
@@ -210,45 +212,22 @@ CREATE TABLE Payment (
 ) ENGINE=InnoDB;
 
 
+
+
+-- views
+CREATE VIEW UserAddressView AS
+SELECT U.*, A.StreetName, A.StreetNumber, A.Country, A.PostalCode 
+FROM User U 
+LEFT JOIN Address A ON U.AddressID = A.AddressID;
+
+
+
 -- data to insert
 
 -- postal code 
+INSERT INTO PostalCode (PostalCode, City) VALUES (6500, 'Vojens');
 INSERT INTO PostalCode (PostalCode, City) VALUES (6700, 'Esbjerg');
 INSERT INTO PostalCode (PostalCode, City) VALUES (6800, 'Varde');
-INSERT INTO PostalCode (PostalCode, City) VALUES (6500, 'Vojens');
-
-
--- address
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 1', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 2', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kirsebærvej 3', '6800');
-
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 1', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 2', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Kærvej 3', '6800');
-
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6500');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6700');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 1', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 2', '6800');
-INSERT INTO Address (Address, PostalCode) VALUES ('Gyvenvej 3', '6800');
-
 
 -- auditorium
 insert into Auditorium (AuditoriumID, AuditoriumNumber) values (NULL, 'Bio 1');

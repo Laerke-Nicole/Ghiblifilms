@@ -3,10 +3,10 @@ require_once "../../includes/dbcon.php";
 
 if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     // Get the input values, including the new image if uploaded
-    $headline = htmlspecialchars(trim($_POST['Headline']), ENT_QUOTES, 'UTF-8');
-    $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']), ENT_QUOTES, 'UTF-8');
-    $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']), ENT_QUOTES, 'UTF-8');
-    $newsID = htmlspecialchars(trim($_POST['NewsID']), ENT_QUOTES, 'UTF-8');
+    $headline = htmlspecialchars(trim($_POST['Headline']));
+    $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
+    $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
+    $newsID = htmlspecialchars(trim($_POST['NewsID']));
 
     $dbCon = dbCon($user, $pass);
 
@@ -42,7 +42,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $query->bindParam(':subHeadline', $subHeadline);
     $query->bindParam(':textOfNews', $textOfNews);
     $query->bindParam(':newsImg', $newsImg);
-    $query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
+    $query->bindParam(':newsID', $newsID);
 
     if ($query->execute()) {
         header("Location: ../../index.php?page=admin&status=updated&ID=$newsID");

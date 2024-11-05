@@ -10,7 +10,7 @@ if (isset($_GET['NewsID'])) {
     $query = $dbCon->prepare("DELETE FROM News WHERE NewsID = :newsID");
 
     // bind
-    $query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
+    $query->bindParam(':newsID', $newsID);
 
     $query->execute();
 

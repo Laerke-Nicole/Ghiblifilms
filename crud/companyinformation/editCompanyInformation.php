@@ -13,13 +13,18 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$companyInformationID = htmlspecialchars(trim($_GET['ID']), ENT_QUOTES, 'UTF-8');
+$companyInformationID = htmlspecialchars(trim($_GET['ID']));
 $dbCon = dbCon($user, $pass);
 
-$query = $dbCon->prepare("SELECT * FROM CompanyInformation WHERE CompanyInformationID = :companyInformationID");
-$query->bindParam(':companyInformationID', $companyInformationID, PDO::PARAM_INT);
+$query = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                           FROM CompanyInformation C 
+                           LEFT JOIN Address A ON C.AddressID = A.AddressID 
+                           WHERE C.CompanyInformationID = :CompanyInformationID");
+
+$query->bindParam(':CompanyInformationID', $companyInformationID);
 $query->execute();
 $getCompanyInformation = $query->fetchAll();
+
 ?>
 
 <body>
@@ -56,13 +61,25 @@ $getCompanyInformation = $query->fetchAll();
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="Address" name="Address" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][5]); ?>" class="validate" required="">
-                        <label for="Address" class="active">Address</label>
+                        <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][6]); ?>" class="validate" required="" aria-required="true">
+                        <label for="StreetName">Street Name</label>
                     </div>
 
                     <div class="input-field col s6">
-                        <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][6]); ?>" class="validate" required="">
-                        <label for="PostalCode" class="active">Postal code</label>
+                        <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][7]); ?>" class="validate" required="" aria-required="true">
+                        <label for="StreetNumber">Street Number</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][8]); ?>" class="validate" required="" aria-required="true">
+                        <label for="PostalCode">Postal code</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars($getCompanyInformation[0][9]); ?>" class="validate" required="" aria-required="true">
+                        <label for="Country">Country</label>
                     </div>
                 </div>
 

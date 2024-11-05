@@ -17,7 +17,7 @@ $movieID = htmlspecialchars(trim($_GET['ID']));
 $dbCon = dbCon($user, $pass);
 
 $query = $dbCon->prepare("SELECT * FROM Movie WHERE MovieID = :movieID");
-$query->bindParam(':movieID', $movieID, PDO::PARAM_INT);
+$query->bindParam(':movieID', $movieID);
 $query->execute();
 $getMovie = $query->fetchAll();
 ?>

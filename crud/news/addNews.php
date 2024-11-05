@@ -3,9 +3,9 @@ require_once "../../includes/dbcon.php";
 
 if (isset($_POST['submit'])) {
     // trim and htmlspecialchars
-    $headline = htmlspecialchars(trim($_POST['Headline']), ENT_QUOTES, 'UTF-8');
-    $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']), ENT_QUOTES, 'UTF-8');
-    $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']), ENT_QUOTES, 'UTF-8');
+    $headline = htmlspecialchars(trim($_POST['Headline']));
+    $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
+    $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
 
     // image upload
     if (isset($_FILES['newsImg'])) {

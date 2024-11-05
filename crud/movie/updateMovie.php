@@ -3,12 +3,12 @@ require_once "../../includes/dbcon.php";
 
 if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     // Get the input values
-    $name = htmlspecialchars(trim($_POST['Name']), ENT_QUOTES, 'UTF-8');
-    $description = htmlspecialchars(trim($_POST['Description']), ENT_QUOTES, 'UTF-8');
-    $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']), ENT_QUOTES, 'UTF-8');
-    $duration = htmlspecialchars(trim($_POST['Duration']), ENT_QUOTES, 'UTF-8');
-    $screenFormatID = htmlspecialchars(trim($_POST['ScreenFormatID']), ENT_QUOTES, 'UTF-8');
-    $movieID = htmlspecialchars(trim($_POST['MovieID']), ENT_QUOTES, 'UTF-8');
+    $name = htmlspecialchars(trim($_POST['Name']));
+    $description = htmlspecialchars(trim($_POST['Description']));
+    $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
+    $duration = htmlspecialchars(trim($_POST['Duration']));
+    $screenFormatID = htmlspecialchars(trim($_POST['ScreenFormatID']));
+    $movieID = htmlspecialchars(trim($_POST['MovieID']));
 
     $dbCon = dbCon($user, $pass);
 
@@ -36,7 +36,7 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     } else {
         // If no new image is uploaded, keep the existing one
         $query = $dbCon->prepare("SELECT MovieImg FROM Movie WHERE MovieID = :movieID");
-        $query->bindParam(':movieID', $movieID, PDO::PARAM_INT);
+        $query->bindParam(':movieID', $movieID);
         $query->execute();
         $movieImg = $query->fetchColumn(); // Fetch the current image file name
     }
@@ -46,11 +46,11 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
 
     $query->bindParam(':name', $name);
     $query->bindParam(':description', $description);
-    $query->bindParam(':releaseYear', $releaseYear, PDO::PARAM_INT);
+    $query->bindParam(':releaseYear', $releaseYear);
     $query->bindParam(':duration', $duration);
     $query->bindParam(':movieImg', $movieImg);
-    $query->bindParam(':screenFormatID', $screenFormatID, PDO::PARAM_INT);
-    $query->bindParam(':movieID', $movieID, PDO::PARAM_INT);
+    $query->bindParam(':screenFormatID', $screenFormatID);
+    $query->bindParam(':movieID', $movieID);
 
     // Execute the query and check for success
     if ($query->execute()) {

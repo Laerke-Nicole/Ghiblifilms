@@ -2,8 +2,11 @@
 // Connect to db
 $dbCon = dbCon($user, $pass);
 
-// Get users
-$queryUser = $dbCon->prepare("SELECT * FROM User");
+// get users with address details
+$queryUser = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                                FROM User U 
+                                LEFT JOIN Address A ON U.AddressID = A.AddressID");
+
 $queryUser->execute();
 $getUsers = $queryUser->fetchAll();
 //var_dump($getUsers);
@@ -40,8 +43,11 @@ $getUsers = $queryUser->fetchAll();
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone number</th>
-                    <th>Address</th>
+                    <th>Street name</th>
+                    <th>Street number</th>
                     <th>Postal code</th>
+                    <th>Country</th>
+
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -59,8 +65,10 @@ $getUsers = $queryUser->fetchAll();
                     echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
                     echo "<td>". $getUser['Email']."</td>";
                     echo "<td>". $getUser['PhoneNumber']."</td>";
-                    echo "<td>". $getUser['Address']."</td>";
+                    echo "<td>". $getUser['StreetName']."</td>";
+                    echo "<td>". $getUser['StreetNumber']."</td>";
                     echo "<td>". $getUser['PostalCode']."</td>";
+                    echo "<td>". $getUser['Country']."</td>";
                     echo "<td>";
 
                     echo "</td>";
@@ -107,13 +115,25 @@ $getUsers = $queryUser->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Address" name="Address" type="text" class="validate" required="" aria-required="true">
-                    <label for="Address">Address</label>
+                    <input id="StreetName" name="StreetName" type="text" class="validate" required="" aria-required="true">
+                    <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="number" class="validate" required="" aria-required="true">
-                    <label for="PostalCode">Postal code</label>
+                    <input id="StreetNumber" name="StreetNumber" type="text" class="validate" required="" aria-required="true">
+                    <label for="StreetNumber">Street Number</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <label for="PostalCode">Postal Code</label>
+                </div>
+                
+                <div class="input-field col s6">
+                    <input id="Country" name="Country" type="text" class="validate" required="" aria-required="true">
+                    <label for="Country">Country</label>
                 </div>
             </div>
 

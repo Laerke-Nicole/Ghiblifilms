@@ -1,28 +1,37 @@
 <?php
 require_once "../../includes/dbcon.php";
 
-if (isset($_POST['UserID']) && isset($_POST['submit'])) {
-    $firstName = htmlspecialchars(trim($_POST['FirstName']), ENT_QUOTES, 'UTF-8');
-    $lastName = htmlspecialchars(trim($_POST['LastName']), ENT_QUOTES, 'UTF-8');
-    $email = htmlspecialchars(trim($_POST['Email']), ENT_QUOTES, 'UTF-8');
-    $phoneNumber = htmlspecialchars(trim($_POST['PhoneNumber']), ENT_QUOTES, 'UTF-8');
-    $address = htmlspecialchars(trim($_POST['Address']), ENT_QUOTES, 'UTF-8');
-    $postalCode = htmlspecialchars(trim($_POST['PostalCode']), ENT_QUOTES, 'UTF-8');
-    $userID = htmlspecialchars(trim($_POST['UserID']), ENT_QUOTES, 'UTF-8');
+if (isset($_POST['submit'])) {
+    $userID = htmlspecialchars($_POST['UserID']);
+    $firstName = htmlspecialchars($_POST['FirstName']);
+    $lastName = htmlspecialchars($_POST['LastName']);
+    $email = htmlspecialchars($_POST['Email']);
+    $phoneNumber = htmlspecialchars($_POST['PhoneNumber']);
+    $streetName = htmlspecialchars($_POST['StreetName']);
+    $streetNumber = htmlspecialchars($_POST['StreetNumber']);
+    $postalCode = htmlspecialchars($_POST['PostalCode']);
+    $country = htmlspecialchars($_POST['Country']);
 
     $dbCon = dbCon($user, $pass);
+    
+    // update user info
+    $updateUser = $dbCon->prepare("UPDATE User SET FirstName = :firstName, LastName = :lastName, Email = :email, PhoneNumber = :phoneNumber WHERE UserID = :userID");
+    $updateUser->bindParam(':firstName', $firstName);
+    $updateUser->bindParam(':lastName', $lastName);
+    $updateUser->bindParam(':email', $email);
+    $updateUser->bindParam(':phoneNumber', $phoneNumber);
+    $updateUser->bindParam(':userID', $userID);
+    $updateUser->execute();
 
-    $query = $dbCon->prepare("UPDATE User SET `FirstName` = :firstName, `LastName` = :lastName, `Email` = :email, `PhoneNumber` = :phoneNumber, `Address` = :address, `PostalCode` = :postalCode WHERE UserID = :userID");
+    // update address
+    $updateAddress = $dbCon->prepare("UPDATE Address SET StreetName = :streetName, StreetNumber = :streetNumber, PostalCode = :postalCode, Country = :country WHERE AddressID = (SELECT AddressID FROM User WHERE UserID = :userID)");
+    $updateAddress->bindParam(':streetName', $streetName);
+    $updateAddress->bindParam(':streetNumber', $streetNumber);
+    $updateAddress->bindParam(':postalCode', $postalCode);
+    $updateAddress->bindParam(':country', $country);
+    $updateAddress->bindParam(':userID', $userID);
     
-    $query->bindParam(':firstName', $firstName);
-    $query->bindParam(':lastName', $lastName);
-    $query->bindParam(':email', $email);
-    $query->bindParam(':phoneNumber', $phoneNumber);
-    $query->bindParam(':address', $address);
-    $query->bindParam(':postalCode', $postalCode);
-    $query->bindParam(':userID', $userID, PDO::PARAM_INT);
-    
-    $query->execute();
+    $updateAddress->execute();
 
     header("Location: ../../index.php?page=admin&status=updated&ID=$userID");
     

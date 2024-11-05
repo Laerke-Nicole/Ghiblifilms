@@ -3,11 +3,11 @@ require_once "../../includes/dbcon.php";
 
 if (isset($_POST['submit'])) {
     // Trim and htmlspecialchars for input fields
-    $name = htmlspecialchars(trim($_POST['Name']), ENT_QUOTES, 'UTF-8');
-    $description = htmlspecialchars(trim($_POST['Description']), ENT_QUOTES, 'UTF-8');
-    $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']), ENT_QUOTES, 'UTF-8');
-    $duration = htmlspecialchars(trim($_POST['Duration']), ENT_QUOTES, 'UTF-8');
-    $screenFormatID = htmlspecialchars(trim($_POST['ScreenFormatID']), ENT_QUOTES, 'UTF-8');
+    $name = htmlspecialchars(trim($_POST['Name']));
+    $description = htmlspecialchars(trim($_POST['Description']));
+    $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
+    $duration = htmlspecialchars(trim($_POST['Duration']));
+    $screenFormatID = htmlspecialchars(trim($_POST['ScreenFormatID']));
 
     // Image upload
     if (isset($_FILES['movieImg'])) {

@@ -18,7 +18,7 @@ $dbCon = dbCon($user, $pass);
 
 $query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
 
-$query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
+$query->bindParam(':newsID', $newsID);
 
 $query->execute();
 

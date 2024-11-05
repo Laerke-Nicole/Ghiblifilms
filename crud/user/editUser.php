@@ -15,18 +15,22 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$userID = htmlspecialchars($_GET['ID'], ENT_QUOTES, 'UTF-8');
+$userID = htmlspecialchars($_GET['ID']);
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM User WHERE UserID = :userID");
-$query->bindParam(':userID', $userID, PDO::PARAM_INT);
+
+$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                           FROM User U 
+                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
+                           WHERE U.UserID = :userID");
+$query->bindParam(':userID', $userID);
 $query->execute();
-$getUsers = $query->fetchAll();
+$getUsers = $query->fetchAll(); 
 ?>
 
 <body>
 
 <div class="container">
-        <h3>Editing user "<?php echo $getUsers[0][1]; ?>"</h3>
+        <h3>Editing user "<?php echo htmlspecialchars($getUsers[0]['FirstName']); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="crud/user/updateUser.php">
             <div class="row">
                 <div class="input-field col s6">
@@ -53,13 +57,25 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Address" name="Address" type="text" value="<?php echo htmlspecialchars($getUsers[0][5]); ?>" class="validate" required="" aria-required="true">
-                    <label for="Address">Address</label>
+                    <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars($getUsers[0][6]); ?>" class="validate" required="" aria-required="true">
+                    <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][6]); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars($getUsers[0][7]); ?>" class="validate" required="" aria-required="true">
+                    <label for="StreetNumber">Street Number</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][8]); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars($getUsers[0][9]); ?>" class="validate" required="" aria-required="true">
+                    <label for="Country">Country</label>
                 </div>
             </div>
             
@@ -73,9 +89,7 @@ $getUsers = $query->fetchAll();
 </body>
 </html>
 <?php 
-
-}
-
-else {    
+} else {    
     header("Location: ../index.php?page=admin&status=0");
-}?>
+}
+?>
