@@ -62,7 +62,7 @@
             echo '<div>';
             echo "<img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie'>";
             echo '<h5 class="weight-400 pb-2">' . $getMovie['Name'] . '</h5>';
-            echo '<button class="btn" onclick="window.location.href=\'moviedetail.php?ID=' . $getMovie['MovieID'] . '\'">Get tickets</button>'; 
+            echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . $getMovie['MovieID'] . '\'">Get tickets</button>';
             echo '</div>';
         }
         ?>
@@ -101,38 +101,8 @@
 
     <!-- contact form -->
     <div class="flex gap-4">
-        <div class="w-half">
-            <div>
-                <h2 class="text-xl pb-4">Fill out the form below and we will get back to you as soon as possible.</h2>
-            </div>
-
-            <!-- input fields -->
-            <div class="w-half">
-                <form class="contact-form">
-                    <div>
-                        <input type="text" id="name" name="name" placeholder="First name">
-                    </div>
-
-                    <div>
-                        <input type="text" id="name" name="name" placeholder="Last name">
-                    </div>
-
-                    <div>
-                        <input type="email" id="email" name="email" placeholder="Email">
-                    </div>
-
-                    <div>
-                        <input type="tel" id="tel" name="tel" placeholder="Phone number">
-                    </div>
-
-                    <div>
-                        <textarea id="message" name="message" placeholder="Message"></textarea>
-                    </div>
-
-                    <button class="btn">Send mail</button>
-                </form>
-            </div>
-        </div>
+        <!-- display contact form -->
+        <?php require 'modules/contactform/form.php' ?>
         
         <!-- contact info -->
         <div class="w-half">

@@ -76,6 +76,10 @@ case "admin":
     include('crud/admin.php');
 break;
 
+case "form":
+    include('modules/contactform/form.php');
+break;
+
 
 // admin modules of cruds
 case "movieadmin":

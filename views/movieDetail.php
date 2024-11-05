@@ -19,7 +19,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             echo '<div class="half">';
                 // img of movie 
                 echo '<div class="h-full-vh">';
-                    echo '<img src="upload/' . $movieItem['MovieImg'] . '" alt="Image of movie" class="h-90-vh">';
+                    echo '<img src="../upload/' . $movieItem['MovieImg'] . '" alt="Image of movie" class="h-90-vh">';
                 echo '</div>';
         
                 // info 
@@ -27,8 +27,8 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                     // title and description 
                     echo '<div class="pb-12">';
                         echo '<h1 class="pb-4">Ponyo</h1>';
-                        echo '<p class="pb-8">' . $movieItem['MovieDescription'] . '</p>';
-                        echo '<button class="btn">See times</button>';
+                        echo '<p class="pb-8">' . $movieItem['Description'] . '</p>';
+                        echo '<a href="#showings"><button class="btn">See times</button></a>';
                     echo '</div>';
                    
                     // key info 
@@ -100,45 +100,34 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             echo '</div>';
         echo '</section>';
 
-
+        
         // display showings
         if ($showingsItem) {
             // book slots
-            echo '<section class="pb-24">';
+            echo '<section class="pb-24" id="showings">';
                 echo '<div class="half ten-percent pb-12">';
                     // adress 
                     echo '<div class="flex">';
-                        echo '<h3>' . $Item['StreetName'] . $movieItem['StreetNumber']'</h3>';
-                        echo '<h3>' . $movieItem['PostalCode'] . $movieItem['Country']'</h3>';
+                        echo '<h3>' . $movieItem['StreetName'] . ' ' . $movieItem['StreetNumber'] . '</h3>';
+                        echo '<h3>' . $movieItem['PostalCode'] . ' ' . $movieItem['Country'] . '</h3>';
                     echo '</div>';
         
                     echo '<div class="flex flex-col gap-4">';
-                        echo '<div class="box">';
-                            echo '<h4>' . $movieItem['StreetName'] . '</h4>'; // change later
-                            <p>BIO 1</p>
-                            <p>2D</p>
-                        </div>
-        
-                        <div class="box">
-                            <h4>MON 17/9 AT 19.30</h4>
-                            <p>BIO 1</p>
-                            <p>2D</p>
-                        </div>
-        
-                        <div class="box">
-                            <h4>MON 17/9 AT 19.30</h4>
-                            <p>BIO 1</p>
-                            <p>2D</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        // loop
+                        foreach ($showingsItem as $showingsItem) {
+                            echo '<div class="box">';
+                                echo '<h4>' . $showingsItem['ShowingDate'] . 'at' . $showingsItem['ShowingTime'] . '</h4>';
+                                echo '<p>' . $showingsItem['AuditoriumNumber'] . '</p>';
+                                echo '<p>' . $showingsItem['ScreenFormat'] . '</p>';
+                            echo '</div>';
+                        }
+                    echo '</div>';
+                echo '</div>';
+            echo '</section>';
         }
 
-    }else {
+    } else {
         echo '<p>Movie item not found.</p>';
+    }
 }
-
-
-
 ?>

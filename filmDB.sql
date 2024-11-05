@@ -217,11 +217,13 @@ CREATE TABLE Showings (
   ShowingID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   MovieID INT NOT NULL,
   AuditoriumID INT NOT NULL,
+  ScreenFormatID INT NOT NULL,
   ShowingDate DATE NOT NULL,
   ShowingTime TIME NOT NULL,
   SeatsAvailable INT NOT NULL,
   FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID)
+  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID),
+  FOREIGN KEY (ScreenFormatID) REFERENCES ScreenFormat(ScreenFormatID)
 ) ENGINE=InnoDB;
 
 
