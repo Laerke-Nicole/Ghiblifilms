@@ -212,14 +212,32 @@ CREATE TABLE Payment (
 ) ENGINE=InnoDB;
 
 
+-- showings
+CREATE TABLE Showings (
+  ShowingID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  MovieID INT NOT NULL,
+  AuditoriumID INT NOT NULL,
+  ShowingDate DATE NOT NULL,
+  ShowingTime TIME NOT NULL,
+  SeatsAvailable INT NOT NULL,
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
+  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID)
+) ENGINE=InnoDB;
 
 
 -- views
+-- user + address view
 CREATE VIEW UserAddressView AS
 SELECT U.*, A.StreetName, A.StreetNumber, A.Country, A.PostalCode 
 FROM User U 
 LEFT JOIN Address A ON U.AddressID = A.AddressID;
 
+
+-- company + address view
+CREATE VIEW CompanyAddressView AS
+SELECT C.*, A.StreetName, A.StreetNumber, A.Country, A.PostalCode 
+FROM CompanyInformation C 
+LEFT JOIN Address A ON C.AddressID = A.AddressID;
 
 
 -- data to insert

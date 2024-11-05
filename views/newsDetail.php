@@ -1,20 +1,19 @@
 <?php
-require_once("includes/dbcon.php"); // Ensure database connection
+require_once("includes/dbcon.php"); 
 
-// Check if 'ID' is set in the URL and is a valid number
 if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $newsID = $_GET['ID'];
 
-    // Connect to the database and prepare the statement to fetch the news item
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
-    $query->bindParam(':newsID', $newsID, PDO::PARAM_INT);
+    $query->bindParam(':newsID', $newsID);
     $query->execute();
     $newsItem = $query->fetch();
 
-    // Check if a news item was found
+
+    // if statement to show details on news
     if ($newsItem) {
-        // Display the details of the news item
+        // display the details of the news
         echo '<section class="pt-24 pb-24 ten-percent">';
             echo '<div>';
                 echo '<img src="upload/' . $newsItem['NewsImg'] . '" alt="Image of news" class="pb-4">';
@@ -24,7 +23,6 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             echo '</div>';
         echo '</section>';
     } else {
-        // If no news item found, display an error message
         echo '<p>News item not found.</p>';
     }
-} 
+}
