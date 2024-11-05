@@ -16,57 +16,55 @@
 </head>
 <body>
 <?php
-    // START FORM PROCESSING
-    if (isset($_POST['submit'])) { // Form has been submitted.
+
+    if (isset($_POST['submit'])) { 
         $username = trim($_POST['User']);
         $password = trim($_POST['Pass']);
         
         try {
-            // Prepare the SQL query using PDO
             $query = "SELECT UserLoginID, Username, Pass FROM UserLogin WHERE Username = :Username LIMIT 1"; 
             $stmt = $connection->prepare($query);
             
-            // Bind the username parameter
+            // bind the username parameter
             $stmt->bindParam(':Username', $username);
             $stmt->execute();
             
-            // Fetch the result
             $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($found_user) {
-                // Check if the user is an admin
+                // check if the user is an admin
                 if ($username == "admin" && $password == "123456") {
                     $_SESSION['user_id'] = $found_user['UserID'];
                     $_SESSION['User'] = $found_user['Username'];
                     redirect_to("index.php?page=admin");
                 } else {
-                    // Check if the password matches for non-admin users
+                    // check if the password matches for non-admin users
                     if (password_verify($password, $found_user['Pass'])) {
-                        // Username/password authenticated
+                        // username/password authenticated
                         $_SESSION['user_id'] = $found_user['UserID'];
                         $_SESSION['User'] = $found_user['Username'];
                         redirect_to("index.php");
                     } else {
-                        // Password is incorrect
+                        // if password is incorrect
                         $message = "Username/password combination incorrect.<br />
                         Please make sure your caps lock key is off and try again.";
                     }
                 }
             } else {
-                // No user found
+                // if no user found
                 $message = "Username/password combination incorrect.<br />
                 Please make sure your caps lock key is off and try again.";
             }
         } catch (PDOException $e) {
             die("Database query failed: " . $e->getMessage());
         }
-    } else { // Form has not been submitted.
+    } else { // form has not been submitted.
         if (isset($_GET['logout']) && $_GET['logout'] == 1) {
             $message = "You are now logged out.";
         } 
     }
     
-    // Display the message if set
+    // display the message if set
     if (!empty($message)) {
         echo "<p>" . $message . "</p>";
     }
@@ -102,10 +100,11 @@
     </div>
 </form>
 
-<button class="g-recaptcha" 
+<!-- attempting recaptcha -->
+<!-- <button class="g-recaptcha" 
         data-sitekey="6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF" 
         data-callback='onSubmit' 
-        data-action='submit'>Submit</button>
+        data-action='submit'>Submit</button> -->
 
 
 <!-- recaptcha -->

@@ -36,7 +36,7 @@ CREATE TABLE User (
 -- user login
 CREATE TABLE UserLogin (
   UserLoginID int NOT NULL AUTO_INCREMENT PRIMARY KEY,  
-  Username VARCHAR(50) NOT NULL,                        
+  Username VARCHAR(50) NOT NULL UNIQUE,                        
   Pass VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB;
 

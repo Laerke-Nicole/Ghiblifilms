@@ -13,37 +13,48 @@
 
 
 <?php
-// START FORM PROCESSING
-if (isset($_POST['submit'])) { // Form has been submitted.
+if (isset($_POST['submit'])) {
 
-	// Perform validations on the form data
 	$username = trim($_POST['user']);
 	$password = trim($_POST['pass']);
+
+    // check if username already exists
+    $query = "SELECT COUNT(*) FROM UserLogin WHERE Username = :username";
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
 	
-    // Hash the password with bcrypt and cost factor
-    $iterations = ['cost' => 15];
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
+    // fetch the count of usernames found
+    $count = $stmt->fetchColumn();
 
-    try {
-        // Prepare the SQL query to insert user
-        $query = "INSERT INTO UserLogin (username, pass) VALUES (:username, :hashed_password)";
-        $stmt = $connection->prepare($query);
+    if ($count > 0) {
+        // if username already exists
+        $message = "The username '{$username}' is taken. Please choose a different username.";
+    } else {
 
-        // Bind parameters
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':hashed_password', $hashed_password);
+        // hash the password
+        $iterations = ['cost' => 15];
+        $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
-        // Execute the query
-        $result = $stmt->execute();
+        try {
+            $query = "INSERT INTO UserLogin (username, pass) VALUES (:username, :hashed_password)";
+            $stmt = $connection->prepare($query);
 
-        if ($result) {
-            $message = "User Created.";
-            redirect_to("login.php");
-        } else {
-            $message = "User could not be created.";
+            // bind parameters
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':hashed_password', $hashed_password);
+
+            $result = $stmt->execute();
+
+            if ($result) {
+                $message = "User Created.";
+                redirect_to("login.php");
+            } else {
+                $message = "User could not be created.";
+            }
+        } catch (PDOException $e) {
+            $message = "User could not be created. Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        $message = "User could not be created. Error: " . $e->getMessage();
     }
 }
 
