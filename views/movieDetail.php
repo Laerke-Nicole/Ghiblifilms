@@ -19,7 +19,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             echo '<div class="half">';
                 // img of movie 
                 echo '<div class="h-full-vh">';
-                    echo '<img src="../upload/' . $movieItem['MovieImg'] . '" alt="Image of movie" class="h-90-vh">';
+                    echo '<img src="upload/' . $movieItem['MovieImg'] . '" alt="Image of movie" class="h-full-vh pl-12">';
                 echo '</div>';
         
                 // info 

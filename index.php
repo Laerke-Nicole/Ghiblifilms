@@ -1,5 +1,17 @@
 <?php require_once("includes/session.php"); ?>
+<!-- cookies -->
+<?php 
+// create cookie
+if (!isset($_COOKIE["user"])) {
+    setcookie("user", "Lærke Nielsen", time() + 3600);
+}
 
+// expiration time to delete cookie
+if (isset($_GET['delete'])) {
+    $expire = time() + 60*60*24*30;
+    setcookie("user", "", $expire); 
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +25,23 @@
     <link rel="stylesheet" href="script.js">
 </head>
 <body>
+<?php 
+// Retrieve the cookie
+if (isset($_COOKIE["user"])) {
+    echo "Welcome " . htmlspecialchars($_COOKIE["user"]) . "!<br>";
+} else {
+    echo "Welcome guest!<br>";
+}
+
+// print a cookie
+echo $_COOKIE["user"];
+
+echo "<br>";
+
+// View all cookies for debugging
+print_r($_COOKIE);
+?>
+
 
 <nav class="flex justify-between items-center p-6">
     <!-- empty div for left side alignment -->
