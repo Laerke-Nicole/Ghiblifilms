@@ -185,18 +185,6 @@ CREATE TABLE CompanyInformation (
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
 
-
--- contact form
-CREATE TABLE ContactForm (
-  ContactFormID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  FirstName varchar(50) NOT NULL,
-  LastName varchar(50) NOT NULL,
-  Email varchar(255) NOT NULL,
-  PhoneNumber varchar(20) NOT NULL,
-  MessageText text
-) ENGINE=InnoDB;
-
-
 -- opening hours
 CREATE TABLE OpeningHour (
   OpeningHourID int NOT NULL AUTO_INCREMENT PRIMARY KEY,

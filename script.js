@@ -1,3 +1,4 @@
+// Toggle button on admin page
 function toggleSection(sectionId) {
     // all id from admin.php
     const sections = ['movieAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin'];
@@ -17,3 +18,11 @@ function toggleSection(sectionId) {
         }
     });
 }
+
+
+
+// drowdown to select values
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    M.FormSelect.init(elems);
+});

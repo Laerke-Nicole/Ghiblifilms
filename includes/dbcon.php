@@ -1,6 +1,6 @@
 <?php
-$user = "root";
-$pass = "";
+$user = "Laerke";
+$pass = "WebDev123";
 function dbCon($user, $pass){
     try {
         $dbCon = new PDO('mysql:host=localhost;dbname=ghiblifilmsdb;charset=utf8', $user, $pass);
@@ -10,4 +10,3 @@ function dbCon($user, $pass){
         die();
     }
 }
-

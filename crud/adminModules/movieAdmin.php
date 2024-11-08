@@ -42,6 +42,9 @@ $getMovies = $queryMovie->fetchAll();
                     <th>Duration</th>
                     <th>Movie Image</th>
                     <th>ScreenFormatID</th>
+                    <th>Genres</th>
+                    <th>Production</th>
+                    <th>Voice Actors</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -58,6 +61,25 @@ $getMovies = $queryMovie->fetchAll();
                     echo "<td>". $getMovie['Duration']."</td>";
                     echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of news' width='100'></td>";
                     echo "<td>". $getMovie['ScreenFormatID']."</td>";
+
+                    // get and display genres
+                    $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
+                    $genreQuery->execute([$getMovie['MovieID']]);
+                    $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
+                    echo "<td>" . implode(", ", $genres) . "</td>";
+
+                    // get and display production team
+                    $productionQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Production INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID WHERE MovieProduction.MovieID = ?");
+                    $productionQuery->execute([$getMovie['MovieID']]);
+                    $productions = $productionQuery->fetchAll(PDO::FETCH_COLUMN);
+                    echo "<td>" . implode(", ", $productions) . "</td>";
+
+                    // get and display voice actors
+                    $voiceActorQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM VoiceActor INNER JOIN MovieVoiceActor ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID WHERE MovieVoiceActor.MovieID = ?");
+                    $voiceActorQuery->execute([$getMovie['MovieID']]);
+                    $voiceActors = $voiceActorQuery->fetchAll(PDO::FETCH_COLUMN);
+                    echo "<td>" . implode(", ", $voiceActors) . "</td>";
+
                     echo "<td>";
 
                     echo "</td>";
@@ -109,8 +131,58 @@ $getMovies = $queryMovie->fetchAll();
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="ScreenFormatID" name="ScreenFormatID" type="text" class="validate" required>
-                    <label for="ScreenFormatID">Screen Format ID</label>
+                    <p>ScreenFormat</p>
+                    <select name="ScreenFormatID[]" id="ScreenFormatID">
+                        <?php
+                        $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+                        while ($screenFormat = $screenFormatQuery->fetch()) {
+                            echo "<option value='{$screenFormat['ScreenFormatID']}'>{$screenFormat['ScreenFormat']}</option>";
+
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label for="Genres">Genres</label>
+                    <select name="Genres[]" id="Genres" multiple>
+                        <?php
+                        $genreQuery = $dbCon->query("SELECT GenreID, GenreName FROM Genre");
+                        while ($genre = $genreQuery->fetch()) {
+                            echo "<option value='{$genre['GenreID']}'>{$genre['GenreName']}</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="Production">Production</label>
+                    <select name="Production[]" id="Production" multiple>
+                        <?php
+                        $productionQuery = $dbCon->query("SELECT ProductionID, FirstName, LastName FROM Production");
+                        while ($production = $productionQuery->fetch()) {
+                            echo "<option value='{$production['ProductionID']}'>{$production['FirstName']} {$production['LastName']}</option>";
+
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="input-field col s6">
+                    <label for="VoiceActors">Voice actors</label>
+                    <select name="VoiceActors[]" id="VoiceActors" multiple>
+                        <?php
+                        $voiceActorsQuery = $dbCon->query("SELECT VoiceActorID, FirstName, LastName FROM VoiceActor");
+                        while ($voiceActors = $voiceActorsQuery->fetch()) {
+                            echo "<option value='{$voiceActors['VoiceActorID']}'>{$voiceActors['FirstName']} {$voiceActors['LastName']}</option>";
+
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 

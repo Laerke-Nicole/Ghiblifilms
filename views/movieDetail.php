@@ -35,7 +35,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                     echo '<div class="flex flex-col gap-6">';
                         // duration
                         echo '<div>';
-                            echo '<h4 class="text-sm">' . $movieItem['Duration'] . '</h4>';
+                            echo '<h4 class="text-sm">Duration</h4>';
                             echo '<p>' . $movieItem['Duration'] . '</p>';
                         echo '</div>';
         
