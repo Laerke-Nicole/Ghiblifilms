@@ -132,15 +132,15 @@ $getMovies = $queryMovie->fetchAll();
 
                 <div class="input-field col s6">
                     <p>ScreenFormat</p>
-                    <select name="ScreenFormatID[]" id="ScreenFormatID">
+                    <select name="ScreenFormatID" id="ScreenFormatID">
                         <?php
-                        $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
-                        while ($screenFormat = $screenFormatQuery->fetch()) {
-                            echo "<option value='{$screenFormat['ScreenFormatID']}'>{$screenFormat['ScreenFormat']}</option>";
-
-                        }
+                            $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+                            while ($screenFormat = $screenFormatQuery->fetch()) {
+                                echo "<option value='{$screenFormat['ScreenFormatID']}'>{$screenFormat['ScreenFormat']}</option>";
+                            }
                         ?>
                     </select>
+
                 </div>
             </div>
             <button class="btn waves-effect waves-light" type="submit" name="submit">Add Movie</button>
