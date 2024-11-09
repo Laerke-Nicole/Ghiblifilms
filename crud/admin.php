@@ -18,6 +18,9 @@
 
 <br>
 
+<!-- buttons to open content of cruds -->
+<button class="btn" onclick="toggleSection('postalCodeAdmin')">Postal code</button>
+<button class="btn" onclick="toggleSection('genreAdmin')">Genres</button>
 <button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
 <button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genre</button>
 <button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
@@ -28,22 +31,33 @@
 <button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hour</button>
 
 
-<!-- Movie Admin Section     -->
+
+<!-- Postal Code Section -->
+<div id="postalCodeAdmin" style="display: none;">
+    <?php require 'adminModules/postalCodeAdmin.php'; ?>
+</div>
+
+<!-- Genre Section -->
+<div id="genreAdmin" style="display: none;">
+    <?php require 'adminModules/genreAdmin.php'; ?>
+</div>
+
+<!-- Movie Admin Section -->
 <div id="movieAdmin" style="display: none;">
     <?php require 'adminModules/movieAdmin.php'; ?>
 </div>
 
-<!-- Movie Genre Admin Section     -->
+<!-- Movie Genre Admin Section -->
 <div id="movieGenreAdmin" style="display: none;">
     <?php require 'adminModules/movieGenreAdmin.php'; ?>
 </div>
 
-<!-- Movie Production Admin Section     -->
+<!-- Movie Production Admin Section -->
 <div id="movieProductionAdmin" style="display: none;">
     <?php require 'adminModules/movieProductionAdmin.php'; ?>
 </div>
 
-<!-- Movie Voice Actor Admin Section     -->
+<!-- Movie Voice Actor Admin Section -->
 <div id="movieVoiceActorAdmin" style="display: none;">
     <?php require 'adminModules/movieVoiceActorAdmin.php'; ?>
 </div>

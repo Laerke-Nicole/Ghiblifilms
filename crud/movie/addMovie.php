@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
                     exit(); // Stop further execution
                 } else {
                     // Move uploaded file to the "upload" directory
-                    move_uploaded_file($_FILES['movieImg']['tmp_name'], "../upload/" . $_FILES['movieImg']['name']);
+                    move_uploaded_file($_FILES['movieImg']['tmp_name'], "../../upload/" . $_FILES['movieImg']['name']);
                     $movieImg = $_FILES['movieImg']['name']; // Get the filename
 
                     // Insert data into the database

@@ -127,15 +127,8 @@ $getUsers = $queryUser->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                <p>PostalCode</p>
-                <select name="PostalCode[]" id="PostalCode">
-                    <?php
-                    $postalCodeQuery = $dbCon->query("SELECT PostalCode, City FROM PostalCode");
-                    while ($postalCode = $postalCodeQuery->fetch()) {
-                        echo "<option value='{$postalCode['PostalCode']}'>{$postalCode['PostalCode']} {$postalCode['City']}</option>";
-                    }
-                    ?>
-                </select>
+                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <label for="PostalCode">Postal Code</label>
                 </div>
                 
                 <div class="input-field col s6">

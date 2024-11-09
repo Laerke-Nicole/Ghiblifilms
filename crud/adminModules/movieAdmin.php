@@ -59,7 +59,7 @@ $getMovies = $queryMovie->fetchAll();
                     echo "<td>". $getMovie['Description']."</td>";
                     echo "<td>". $getMovie['ReleaseYear']."</td>";
                     echo "<td>". $getMovie['Duration']."</td>";
-                    echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of news' width='100'></td>";
+                    echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie' width='100'></td>";
                     echo "<td>". $getMovie['ScreenFormatID']."</td>";
 
                     // get and display genres

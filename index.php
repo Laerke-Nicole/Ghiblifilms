@@ -113,6 +113,14 @@ break;
 
 
 // admin modules of cruds
+case "postalcodeadmin":
+    include('crud/adminModules/postalCodeAdmin.php');
+break;
+
+case "genreadmin":
+    include('crud/adminModules/genreAdmin.php');
+break;
+
 case "movieadmin":
     include('crud/adminModules/movieAdmin.php');
 break;
@@ -129,12 +137,12 @@ case "movievoiceactoradmin":
     include('crud/adminModules/movieVoiceActorAdmin.php');
 break;
 
-case "newsadmin":
-    include('crud/adminModules/newsAdmin.php');
-break;
-
 case "useradmin":
     include('crud/adminModules/userAdmin.php');
+break;
+
+case "newsadmin":
+    include('crud/adminModules/newsAdmin.php');
 break;
 
 case "companyinformationadmin":
@@ -147,8 +155,12 @@ break;
 
 
 // add
-case "adduser":
-    include('crud/user/addUser.php');
+case "addpostalcode":
+    include('crud/postalCode/addPostalCode.php');
+break;
+
+case "addgenre":
+    include('crud/genre/addGenre.php');
 break;
 
 case "addmovie":
@@ -167,6 +179,10 @@ case "addmovievoiceactor":
     include('crud/movieVoiceActor/addMovieVoiceActor.php');
 break;
 
+case "adduser":
+    include('crud/user/addUser.php');
+break;
+
 case "addnews":
     include('crud/news/addNews.php');
 break;
@@ -181,8 +197,12 @@ break;
 
 
 // delete
-case "deleteuser":
-    include('crud/user/deleteUser.php');
+case "deletepostalcode":
+    include('crud/postalCode/deletePostalCode.php');
+break;
+
+case "deletegenre":
+    include('crud/genre/deleteGenre.php');
 break;
 
 case "deletemovie":
@@ -201,6 +221,10 @@ case "deletemovievoiceactor":
     include('crud/movieVoiceActor/deleteMovieVoiceActor.php');
 break;
 
+case "deleteuser":
+    include('crud/user/deleteUser.php');
+break;
+
 case "deletenews":
     include('crud/news/deleteNews.php');
 break;
@@ -215,8 +239,12 @@ break;
 
 
 // edit
-case "edituser":
-    include('crud/user/editUser.php');
+case "editpostalcode":
+    include('crud/postalCode/editPostalCode.php');
+break;
+
+case "editgenre":
+    include('crud/genre/editGenre.php');
 break;
 
 case "editmovie":
@@ -235,6 +263,10 @@ case "editmovievoiceactor":
     include('crud/movieVoiceActor/editMovieVoiceActor.php');
 break;
 
+case "edituser":
+    include('crud/user/editUser.php');
+break;
+
 case "editnews":
     include('crud/news/editNews.php');
 break;
@@ -249,8 +281,12 @@ break;
 
 
 // update
-case "updateuser":
-    include('crud/user/updateUser.php');
+case "updatepostalcode":
+    include('crud/postalCode/updatePostalCode.php');
+break;
+
+case "updategenre":
+    include('crud/genre/updateGenre.php');
 break;
 
 case "updatemovie":
@@ -267,6 +303,10 @@ break;
 
 case "updatemovievoiceactor":
     include('crud/movieVoiceActor/updateMovieVoiceActor.php');
+break;
+
+case "updateuser":
+    include('crud/user/updateUser.php');
 break;
 
 case "updatenews":

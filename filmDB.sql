@@ -16,7 +16,7 @@ CREATE TABLE Address (
   AddressID INT AUTO_INCREMENT PRIMARY KEY,
   StreetName VARCHAR(255) NOT NULL,
   StreetNumber VARCHAR(10) NOT NULL,
-  PostalCode varchar(10) NOT NULL,
+  PostalCode VARCHAR(10) NOT NULL,
   Country VARCHAR(150) NOT NULL,
   FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
 ) ENGINE=InnoDB; 
@@ -231,12 +231,7 @@ FROM CompanyInformation C
 LEFT JOIN Address A ON C.AddressID = A.AddressID;
 
 
--- data to insert
-
--- postal code 
-INSERT INTO PostalCode (PostalCode, City) VALUES (6500, 'Vojens');
-INSERT INTO PostalCode (PostalCode, City) VALUES (6700, 'Esbjerg');
-INSERT INTO PostalCode (PostalCode, City) VALUES (6800, 'Varde');
+-- static data to insert
 
 -- auditorium
 insert into Auditorium (AuditoriumID, AuditoriumNumber) values (NULL, 'Bio 1');
