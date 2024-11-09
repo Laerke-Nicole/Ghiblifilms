@@ -1,6 +1,7 @@
-DROP DATABASE IF EXISTS GhiblifilmsDB;
-CREATE DATABASE GhiblifilmsDB;
-USE GhiblifilmsDB;
+DROP DATABASE IF EXISTS cb26w5b3u_ghiblifilmsdb;
+CREATE DATABASE cb26w5b3u_ghiblifilmsdb;
+USE cb26w5b3u_ghiblifilmsdb;
+
 
 
 -- postal code

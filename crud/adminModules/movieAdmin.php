@@ -143,49 +143,6 @@ $getMovies = $queryMovie->fetchAll();
                     </select>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <label for="Genres">Genres</label>
-                    <select name="Genres[]" id="Genres" multiple>
-                        <?php
-                        $genreQuery = $dbCon->query("SELECT GenreID, GenreName FROM Genre");
-                        while ($genre = $genreQuery->fetch()) {
-                            echo "<option value='{$genre['GenreID']}'>{$genre['GenreName']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="Production">Production</label>
-                    <select name="Production[]" id="Production" multiple>
-                        <?php
-                        $productionQuery = $dbCon->query("SELECT ProductionID, FirstName, LastName FROM Production");
-                        while ($production = $productionQuery->fetch()) {
-                            echo "<option value='{$production['ProductionID']}'>{$production['FirstName']} {$production['LastName']}</option>";
-
-                        }
-                        ?>
-                    </select>
-                </div>
-
-                <div class="input-field col s6">
-                    <label for="VoiceActors">Voice actors</label>
-                    <select name="VoiceActors[]" id="VoiceActors" multiple>
-                        <?php
-                        $voiceActorsQuery = $dbCon->query("SELECT VoiceActorID, FirstName, LastName FROM VoiceActor");
-                        while ($voiceActors = $voiceActorsQuery->fetch()) {
-                            echo "<option value='{$voiceActors['VoiceActorID']}'>{$voiceActors['FirstName']} {$voiceActors['LastName']}</option>";
-
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-
             <button class="btn waves-effect waves-light" type="submit" name="submit">Add Movie</button>
         </form>
     </div>

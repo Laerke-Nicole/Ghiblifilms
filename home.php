@@ -132,5 +132,24 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="ten-percent">
+        <h5>Opening hours:</h5>
+        <?php
+            $dbCon = dbCon($user, $pass);
+            $queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
+            $queryOpeningHour->execute();
+            $getOpeningHour = $queryOpeningHour->fetchAll();
+
+            foreach ($getOpeningHour as $openingHour) {
+                echo '<div>';
+                    echo '<p class="text-sm">' . $openingHour['Day'] . '</p>';
+                    echo '<p class="pb-4 text-sm">' . $openingHour['Time'] . '</p>';
+                echo '</div>';
+            }
+        ?>
+    </div>
+</section>
 </body>
 </html>
