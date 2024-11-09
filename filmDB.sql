@@ -488,19 +488,19 @@ insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 
 insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami', 'Nagasawa');
 
 
--- movie
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The boy and the heron', 'In the wake of his mothers death and his fathers remarriage, a headstrong boy named Mahito ventures into a dreamlike world shared by both the living and the dead.', 2023, '2h 4m', 'imglink', 3);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Spirited away', 'During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.', 2001, '2h 4m', 'imglink', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Howls moving castle', 'When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.', 2004, '1h 59m', 'imglink', 2);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Princess Mononoke', 'On a journey to find the cure for a Tatarigamis curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.', 1997, '2h 13m', 'img link', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'My neighbour Totoro', 'When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.', 1988, '1h 26m', 'imglink', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Ponyo', 'A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.', 2008, '1h 41m', 'imglink', 3);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Kikis delivery service', 'Along with her black cat Jiji, Kiki settles in a seaside town and starts a high-flying delivery service. Here begins her magical encounter with independence and responsibility, making lifelong friends and finding her place in the world.', 1989, '1h 43m', 'imglink', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Tales from Earthsea', 'In a mythical land, a man and a young boy investigate a series of unusual occurrences.', 2006, '1h 55m', 'imglink', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The tale of the princess Kaguya', 'Kaguya is a beautiful young woman coveted by five nobles. To try to avoid marrying a stranger she doesnt love, she sends her suitors on seemingly impossible tasks. But she will have to face her fate and punishment for her choices.', 2013, '2h 17m', 'imglink', 3);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The secret world of Arrietty', 'The Clock family are four-inch-tall people who live anonymously in another familys residence, borrowing simple items to make their home. Life changes for the Clocks when their teenage daughter Arrietty is discovered.', 2010, '1h 34m', 'imglink', 3);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The wind rises', 'Jiro Horikoshi studies assiduously to fulfill his aim of becoming an aeronautical engineer. As WWII begins, fighter aircraft designed by him end up getting used by the Japanese Empire against its foes.', 2013, '2h 6m', 'imglink', 1);
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'imglink', 2);
+-- -- movie
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The boy and the heron', 'In the wake of his mothers death and his fathers remarriage, a headstrong boy named Mahito ventures into a dreamlike world shared by both the living and the dead.', 2023, '2h 4m', 'imglink', 3);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Spirited away', 'During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.', 2001, '2h 4m', 'imglink', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Howls moving castle', 'When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.', 2004, '1h 59m', 'imglink', 2);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Princess Mononoke', 'On a journey to find the cure for a Tatarigamis curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.', 1997, '2h 13m', 'img link', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'My neighbour Totoro', 'When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.', 1988, '1h 26m', 'imglink', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Ponyo', 'A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.', 2008, '1h 41m', 'imglink', 3);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Kikis delivery service', 'Along with her black cat Jiji, Kiki settles in a seaside town and starts a high-flying delivery service. Here begins her magical encounter with independence and responsibility, making lifelong friends and finding her place in the world.', 1989, '1h 43m', 'imglink', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'Tales from Earthsea', 'In a mythical land, a man and a young boy investigate a series of unusual occurrences.', 2006, '1h 55m', 'imglink', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The tale of the princess Kaguya', 'Kaguya is a beautiful young woman coveted by five nobles. To try to avoid marrying a stranger she doesnt love, she sends her suitors on seemingly impossible tasks. But she will have to face her fate and punishment for her choices.', 2013, '2h 17m', 'imglink', 3);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The secret world of Arrietty', 'The Clock family are four-inch-tall people who live anonymously in another familys residence, borrowing simple items to make their home. Life changes for the Clocks when their teenage daughter Arrietty is discovered.', 2010, '1h 34m', 'imglink', 3);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'The wind rises', 'Jiro Horikoshi studies assiduously to fulfill his aim of becoming an aeronautical engineer. As WWII begins, fighter aircraft designed by him end up getting used by the Japanese Empire against its foes.', 2013, '2h 6m', 'imglink', 1);
+-- insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'imglink', 2);
 
 
 -- -- movie genres
@@ -677,102 +677,102 @@ insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieI
 -- insert into MovieProduction (MovieID, ProductionID) values (12, 11);
 
 
--- MovieVoiceActor here
--- the boy and the heron
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 1);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 2);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 3);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 4);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 5);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 6);
+-- -- MovieVoiceActor here
+-- -- the boy and the heron
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 1);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 2);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 3);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 4);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 5);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 6);
 
--- spirited away
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 7);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 8);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 9);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 10);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 11);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 12);
+-- -- spirited away
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 7);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 8);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 9);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 10);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 11);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 12);
 
--- howls moving castle
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 13);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 6);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 12);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 14);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 15);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 16);
+-- -- howls moving castle
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 13);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 6);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 12);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 14);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 15);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 16);
 
--- princess mononoke
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 17);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 18);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 19);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 20);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 21);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 22);
+-- -- princess mononoke
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 17);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 18);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 19);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 20);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 21);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 22);
 
--- my neighbour Totoro
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 23);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 24);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 25);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 26);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 27);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 28);
+-- -- my neighbour Totoro
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 23);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 24);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 25);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 26);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 27);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 28);
 
--- ponyo
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 29);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 30);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 31);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 32);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 33);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 34);
+-- -- ponyo
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 29);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 30);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 31);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 32);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 33);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 34);
 
--- kikis delivery service
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 35);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 36);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 37);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 38);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 39);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 40);
+-- -- kikis delivery service
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 35);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 36);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 37);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 38);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 39);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 40);
 
--- tales from Earthsea
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 41);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 42);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 19);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 43);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 44);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 10);
+-- -- tales from Earthsea
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 41);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 42);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 19);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 43);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 44);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 10);
 
--- the tale of the princess Kaguya
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 45);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 46);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 47);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 48);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 49);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 50);
+-- -- the tale of the princess Kaguya
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 45);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 46);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 47);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 48);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 49);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 50);
 
--- the secret world of Arrietty
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 51);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 15);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 52);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 53);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 54);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 10);
+-- -- the secret world of Arrietty
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 51);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 15);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 52);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 53);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 54);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 10);
 
--- the wind rises
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 55);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 56);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 57);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 58);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 59);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 60);
+-- -- the wind rises
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 55);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 56);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 57);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 58);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 59);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 60);
 
--- from up on Poppy Hill
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 61);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 54);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
-insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
+-- -- from up on Poppy Hill
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 61);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 54);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
+-- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
 
 
 

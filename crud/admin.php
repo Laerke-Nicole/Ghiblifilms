@@ -21,6 +21,7 @@
 <button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
 <button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genre</button>
 <button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
+<button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actor</button>
 <button class="btn" onclick="toggleSection('userAdmin')">User</button>
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
 <button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
@@ -40,6 +41,11 @@
 <!-- Movie Production Admin Section     -->
 <div id="movieProductionAdmin" style="display: none;">
     <?php require 'adminModules/movieProductionAdmin.php'; ?>
+</div>
+
+<!-- Movie Voice Actor Admin Section     -->
+<div id="movieVoiceActorAdmin" style="display: none;">
+    <?php require 'adminModules/movieVoiceActorAdmin.php'; ?>
 </div>
 
 <!-- User Admin Section -->

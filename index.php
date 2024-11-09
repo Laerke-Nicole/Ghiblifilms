@@ -125,6 +125,10 @@ case "movieproductionadmin":
     include('crud/adminModules/movieProductionAdmin.php');
 break;
 
+case "movievoiceactoradmin":
+    include('crud/adminModules/movieVoiceActorAdmin.php');
+break;
+
 case "newsadmin":
     include('crud/adminModules/newsAdmin.php');
 break;
@@ -159,6 +163,10 @@ case "addmovieproduction":
     include('crud/movieProduction/addMovieProduction.php');
 break;
 
+case "addmovievoiceactor":
+    include('crud/movieVoiceActor/addMovieVoiceActor.php');
+break;
+
 case "addnews":
     include('crud/news/addNews.php');
 break;
@@ -187,6 +195,10 @@ break;
 
 case "deletemovieproduction":
     include('crud/movieProduction/deleteMovieProduction.php');
+break;
+
+case "deletemovievoiceactor":
+    include('crud/movieVoiceActor/deleteMovieVoiceActor.php');
 break;
 
 case "deletenews":
@@ -219,6 +231,10 @@ case "editmovieproduction":
     include('crud/movieProduction/editMovieProduction.php');
 break;
 
+case "editmovievoiceactor":
+    include('crud/movieVoiceActor/editMovieVoiceActor.php');
+break;
+
 case "editnews":
     include('crud/news/editNews.php');
 break;
@@ -247,6 +263,10 @@ break;
 
 case "updatemovieproduction":
     include('crud/movieProduction/updateMovieProduction.php');
+break;
+
+case "updatemovievoiceactor":
+    include('crud/movieVoiceActor/updateMovieVoiceActor.php');
 break;
 
 case "updatenews":

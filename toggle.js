@@ -1,7 +1,7 @@
 // Toggle button on admin page
 function toggleSection(sectionId) {
     // all id from admin.php
-    const sections = ['movieAdmin', 'movieGenreAdmin', 'movieProductionAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin'];
+    const sections = ['movieAdmin', 'movieGenreAdmin', 'movieProductionAdmin', 'movieVoiceActorAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin'];
 
     sections.forEach((section) => {
         const sectionDiv = document.getElementById(section);

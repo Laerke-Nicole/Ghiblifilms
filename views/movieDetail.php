@@ -71,6 +71,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                 echo '<div class="flex">';
                     echo '<h3>VOICE ACTORS</h3>';
                 echo '</div>';
+                    // inner join to get the first and last name of the voice actor
                     $voiceActorQuery = $dbCon->prepare("SELECT FirstName, LastName
                                                     FROM VoiceActor 
                                                     INNER JOIN MovieVoiceActor 
@@ -79,12 +80,12 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                                                     ");
 
                     $voiceActorQuery->execute([$movieItem['MovieID']]);
-                    $voiceActor = $voiceActorQuery->fetchAll(PDO::FETCH_COLUMN);
+                    $voiceActor = $voiceActorQuery->fetchAll(PDO::FETCH_ASSOC);
         
                     echo '<div class="flex flex-col w-half">';
                         // loop with voice actors
                         foreach ($voiceActor as $voiceActor) {
-                            echo '<p class="primary-font secondary-color text-lg">' . $voiceActor['FirstName'] . $voiceActor['LastName'] . '</p>';
+                            echo '<p class="primary-font secondary-color text-lg">' . $voiceActor['FirstName'] . ' ' . $voiceActor['LastName'] . '</p>';
                         }
                     echo '</div>'; 
             echo '</div>';
@@ -95,36 +96,39 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                 echo '<div class="flex">';
                     echo '<h3>PRODUCTION TEAM</h3>';
                 echo '</div>';
-
+                
             // list of production team 
             echo '<div>';
-                echo '<div class="flex flex-col w-half">';
-                    $productionQuery = $dbCon->prepare("
-                        SELECT RoleInProduction.NameOfRole, Production.FirstName, Production.LastName
-                        FROM Production
-                        INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID
-                        INNER JOIN RoleInProduction ON Production.RoleInProductionID = RoleInProduction.RoleInProductionID
-                        WHERE MovieProduction.MovieID = ?
-                        ");
+                echo '<div class="flex flex-col w-full">'; 
 
-                    $productionQuery->execute([$movieItem['MovieID']]);
-                    $production = $productionQuery->fetchAll(PDO::FETCH_ASSOC);
-                    
-                    foreach ($production as $prod) {
-                        echo '<div class="flex justify-between gap-6">';
-                            // role
-                            echo '<div class="flex-1 text-right">';
-                                echo '<p class="primary-font secondary-color text-lg">' . htmlspecialchars($prod['NameOfRole']) . '</p>';
-                            echo '</div>';
+                // inner join to get the role in production
+                $productionQuery = $dbCon->prepare("
+                    SELECT RoleInProduction.NameOfRole, Production.FirstName, Production.LastName
+                    FROM Production
+                    INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID
+                    INNER JOIN RoleInProduction ON Production.RoleInProductionID = RoleInProduction.RoleInProductionID
+                    WHERE MovieProduction.MovieID = ?
+                ");
 
-                            // name 
-                            echo '<div class="flex-1">';
-                                echo '<p class="secondary-color text-lg">' . htmlspecialchars($prod['FirstName']) . ' ' . htmlspecialchars($prod['LastName']) . '</p>';
-                            echo '</div>';
+                $productionQuery->execute([$movieItem['MovieID']]);
+                $production = $productionQuery->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach ($production as $prod) {
+                    echo '<div class="flex items-center justify-between gap-6 pb-2">'; 
+                        // role
+                        echo '<div class="flex-shrink-0 w-33 text-right">';
+                            echo '<p class="primary-font secondary-color text-lg">' . $prod['NameOfRole'] . '</p>';
                         echo '</div>';
-                    }
-                echo '</div>';        
+                        
+                        // first and last name
+                        echo '<div class="flex-1">';
+                            echo '<p class="secondary-color text-lg">' . $prod['FirstName'] . ' ' . $prod['LastName'] . '</p>';
+                        echo '</div>';
+                    echo '</div>';
+                }
+                echo '</div>';
             echo '</div>';
+
         echo '</section>';
 
         
