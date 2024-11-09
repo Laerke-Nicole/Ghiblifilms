@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="style/responsive.css">
-    <link rel="stylesheet" href="script.js">
 </head>
+
 <body>
 <!-- <?php 
 // Retrieve the cookie
@@ -279,6 +279,8 @@ break;
 ?>
 
 
-<script src="script.js"></script>
+<!-- JavaScript -->
+<script src="toggle.js"></script>
+<script src="dropdown.js"></script>
 </body>
 </html>

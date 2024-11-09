@@ -48,7 +48,13 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                         // genre 
                         echo '<div>';
                             echo '<h4 class="text-sm">Genre</h4>';
-                            $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
+                            $genreQuery = $dbCon->prepare("SELECT GenreName 
+                                                            FROM Genre 
+                                                            INNER JOIN MovieGenre 
+                                                            ON Genre.GenreID = MovieGenre.GenreID 
+                                                            WHERE MovieGenre.MovieID = ?
+                                                            ");
+
                             $genreQuery->execute([$movieItem['MovieID']]);
                             $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
                             echo "<p>" . implode(", ", $genres) . "</p>";
@@ -65,15 +71,22 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                 echo '<div class="flex">';
                     echo '<h3>VOICE ACTORS</h3>';
                 echo '</div>';
+                    $voiceActorQuery = $dbCon->prepare("SELECT FirstName, LastName
+                                                    FROM VoiceActor 
+                                                    INNER JOIN MovieVoiceActor 
+                                                    ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID 
+                                                    WHERE MovieVoiceActor.MovieID = ?
+                                                    ");
+
+                    $voiceActorQuery->execute([$movieItem['MovieID']]);
+                    $voiceActor = $voiceActorQuery->fetchAll(PDO::FETCH_COLUMN);
         
-                if ($voiceActor) { 
                     echo '<div class="flex flex-col w-half">';
-                    // loop
-                    foreach ($voiceActor as $voiceActor) {
-                        echo '<p class="primary-font secondary-color text-lg">' . $voiceActor['FirstName'] . $voiceActor['LastName'] . '</p>';
-                    }
-                    echo '</div>';
-                }    
+                        // loop with voice actors
+                        foreach ($voiceActor as $voiceActor) {
+                            echo '<p class="primary-font secondary-color text-lg">' . $voiceActor['FirstName'] . $voiceActor['LastName'] . '</p>';
+                        }
+                    echo '</div>'; 
             echo '</div>';
         
         
@@ -82,25 +95,35 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                 echo '<div class="flex">';
                     echo '<h3>PRODUCTION TEAM</h3>';
                 echo '</div>';
-        
+
+            // list of production team 
+            echo '<div>';
                 echo '<div class="flex flex-col w-half">';
-                    if ($production) { 
+                    $productionQuery = $dbCon->prepare("
+                        SELECT RoleInProduction.NameOfRole, Production.FirstName, Production.LastName
+                        FROM Production
+                        INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID
+                        INNER JOIN RoleInProduction ON Production.RoleInProductionID = RoleInProduction.RoleInProductionID
+                        WHERE MovieProduction.MovieID = ?
+                        ");
+
+                    $productionQuery->execute([$movieItem['MovieID']]);
+                    $production = $productionQuery->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    foreach ($production as $prod) {
                         echo '<div class="flex justify-between gap-6">';
-                        // loop
-                            foreach ($production as $production) {
-                                // role
-                                echo '<div class="flex-1 text-right">';
-                                    echo '<p class="primary-font secondary-color text-lg">PLANNING AND SCRIPT</p>';
-                                echo '</div>';
-                
-                                // name 
-                                echo '<div class="flex-1">';
-                                    echo '<p class="secondary-color text-lg">' . $production['FirstName'] . $production['LastName'] . '</p>';
-                                echo '</div>';
-                            } 
+                            // role
+                            echo '<div class="flex-1 text-right">';
+                                echo '<p class="primary-font secondary-color text-lg">' . htmlspecialchars($prod['NameOfRole']) . '</p>';
+                            echo '</div>';
+
+                            // name 
+                            echo '<div class="flex-1">';
+                                echo '<p class="secondary-color text-lg">' . htmlspecialchars($prod['FirstName']) . ' ' . htmlspecialchars($prod['LastName']) . '</p>';
+                            echo '</div>';
                         echo '</div>';
                     }
-                echo '</div>';
+                echo '</div>';        
             echo '</div>';
         echo '</section>';
 

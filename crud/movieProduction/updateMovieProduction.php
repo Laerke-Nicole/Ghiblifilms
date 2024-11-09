@@ -2,7 +2,7 @@
 require_once "../../includes/dbcon.php";
 
 if (isset($_POST['MovieID']) && isset($_POST['ProductionID']) && isset($_POST['originalMovieID']) && isset($_POST['originalProductionID']) && isset($_POST['submit'])) {
-    // get the new values from the form on editMovieGenre.php
+    // get the new values from the form on editMovieProduction.php
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
     $productionID = htmlspecialchars(trim($_POST['ProductionID']));
     

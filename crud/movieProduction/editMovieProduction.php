@@ -28,15 +28,15 @@ $getMovieProduction = $query->fetchAll();
 
 <body>
 <div class="container">
-    <h3>Editing movie production team for "<?php echo htmlspecialchars($getMovieProduction[0][1]); ?>"</h3>
+    <h3>Editing movie production team for "<?php echo htmlspecialchars($getMovieProduction[0]['MovieID']); ?>"</h3>
     <form class="col s12" name="contact" method="post" action="crud/movieProduction/updateMovieProduction.php">
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0][1]); ?>" class="validate" required="" aria-required="true">
+                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0]['MovieID']); ?>" class="validate" required="" aria-required="true">
                 <label for="MovieID">MovieID</label>
             </div>
             <div class="input-field col s6">
-                <input id="ProductionID" name="ProductionID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0][2]); ?>" class="validate" required="" aria-required="true">
+                <input id="ProductionID" name="ProductionID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0]['ProductionID']); ?>" class="validate" required="" aria-required="true">
                 <label for="ProductionID">ProductionID</label>
             </div>
         </div>
