@@ -4,14 +4,14 @@ require_once "../../includes/dbcon.php";
 if (isset($_POST['submit'])) {
     // Trim and htmlspecialchars
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
-    $genreID = htmlspecialchars(trim($_POST['GenreID']));
+    $productionID = htmlspecialchars(trim($_POST['ProductionID']));
 
     $dbCon = dbCon($user, $pass);
-    $query = $dbCon->prepare("INSERT INTO MovieGenre (MovieID, GenreID) VALUES (:movieID, :genreID)");
+    $query = $dbCon->prepare("INSERT INTO MovieProduction (MovieID, ProductionID) VALUES (:movieID, :productionID)");
 
     // Prepare statements
     $query->bindParam(':movieID', $movieID);
-    $query->bindParam(':genreID', $genreID);
+    $query->bindParam(':productionID', $productionID);
     $query->execute();
 
     header("Location: ../../index.php?page=admin&status=added");

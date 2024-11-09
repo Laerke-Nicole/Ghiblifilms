@@ -19,15 +19,27 @@
 <br>
 
 <button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
+<button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genre</button>
+<button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
 <button class="btn" onclick="toggleSection('userAdmin')">User</button>
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
-<button class="btn" onclick="toggleSection('companyInformationAdmin')">Company Info</button>
+<button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
 <button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hour</button>
 
 
 <!-- Movie Admin Section     -->
 <div id="movieAdmin" style="display: none;">
     <?php require 'adminModules/movieAdmin.php'; ?>
+</div>
+
+<!-- Movie Genre Admin Section     -->
+<div id="movieGenreAdmin" style="display: none;">
+    <?php require 'adminModules/movieGenreAdmin.php'; ?>
+</div>
+
+<!-- Movie Production Admin Section     -->
+<div id="movieProductionAdmin" style="display: none;">
+    <?php require 'adminModules/movieProductionAdmin.php'; ?>
 </div>
 
 <!-- User Admin Section -->

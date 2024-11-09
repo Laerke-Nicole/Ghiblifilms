@@ -47,7 +47,11 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
         
                         // genre 
                         echo '<div>';
-                            echo '<p>' . $movieItem['GenreName'] . '</p>';
+                            echo '<h4 class="text-sm">Genre</h4>';
+                            $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
+                            $genreQuery->execute([$movieItem['MovieID']]);
+                            $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
+                            echo "<p>" . implode(", ", $genres) . "</p>";
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';

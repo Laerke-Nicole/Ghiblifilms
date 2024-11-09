@@ -117,6 +117,14 @@ case "movieadmin":
     include('crud/adminModules/movieAdmin.php');
 break;
 
+case "moviegenreadmin":
+    include('crud/adminModules/movieGenreAdmin.php');
+break;
+
+case "movieproductionadmin":
+    include('crud/adminModules/movieProductionAdmin.php');
+break;
+
 case "newsadmin":
     include('crud/adminModules/newsAdmin.php');
 break;
@@ -143,6 +151,14 @@ case "addmovie":
     include('crud/movie/addMovie.php');
 break;
 
+case "addmoviegenre":
+    include('crud/movieGenre/addMovieGenre.php');
+break;
+
+case "addmovieproduction":
+    include('crud/movieProduction/addMovieProduction.php');
+break;
+
 case "addnews":
     include('crud/news/addNews.php');
 break;
@@ -163,6 +179,14 @@ break;
 
 case "deletemovie":
     include('crud/movie/deleteMovie.php');
+break;
+
+case "deletemoviegenre":
+    include('crud/movieGenre/deleteMovieGenre.php');
+break;
+
+case "deletemovieproduction":
+    include('crud/movieProduction/deleteMovieProduction.php');
 break;
 
 case "deletenews":
@@ -187,6 +211,14 @@ case "editmovie":
     include('crud/movie/editMovie.php');
 break;
 
+case "editmoviegenre":
+    include('crud/movieGenre/editMovieGenre.php');
+break;
+
+case "editmovieproduction":
+    include('crud/movieProduction/editMovieProduction.php');
+break;
+
 case "editnews":
     include('crud/news/editNews.php');
 break;
@@ -207,6 +239,14 @@ break;
 
 case "updatemovie":
     include('crud/movie/updateMovie.php');
+break;
+
+case "updatemoviegenre":
+    include('crud/movieGenre/updateMovieGenre.php');
+break;
+
+case "updatemovieproduction":
+    include('crud/movieProduction/updateMovieProduction.php');
 break;
 
 case "updatenews":

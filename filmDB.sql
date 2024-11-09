@@ -100,7 +100,7 @@ CREATE TABLE Movie (
   MovieID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Name` varchar(100) NOT NULL,
   `Description` text NOT NULL,
-  ReleaseYear int (4) NOT NULL,
+  ReleaseYear INT(4) NOT NULL,
   Duration varchar(7) NOT NULL,
   MovieImg varchar(255) NOT NULL,
   ScreenFormatID INT NOT NULL,
@@ -503,68 +503,68 @@ insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieI
 insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'imglink', 2);
 
 
--- movie genres
--- the boy and the heron
-insert into MovieGenre (MovieID, GenreID) values (1, 2);
-insert into MovieGenre (MovieID, GenreID) values (1, 3);
-insert into MovieGenre (MovieID, GenreID) values (1, 4);
+-- -- movie genres
+-- -- the boy and the heron
+-- insert into MovieGenre (MovieID, GenreID) values (1, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (1, 3);
+-- insert into MovieGenre (MovieID, GenreID) values (1, 4);
 
--- spirited away
-insert into MovieGenre (MovieID, GenreID) values (2, 2);
-insert into MovieGenre (MovieID, GenreID) values (2, 4);
-insert into MovieGenre (MovieID, GenreID) values (2, 6);
-insert into MovieGenre (MovieID, GenreID) values (2, 7);
-insert into MovieGenre (MovieID, GenreID) values (2, 10);
+-- -- spirited away
+-- insert into MovieGenre (MovieID, GenreID) values (2, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (2, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (2, 6);
+-- insert into MovieGenre (MovieID, GenreID) values (2, 7);
+-- insert into MovieGenre (MovieID, GenreID) values (2, 10);
 
--- howls moving castle
-insert into MovieGenre (MovieID, GenreID) values (3, 2);
-insert into MovieGenre (MovieID, GenreID) values (3, 4);
-insert into MovieGenre (MovieID, GenreID) values (3, 7);
+-- -- howls moving castle
+-- insert into MovieGenre (MovieID, GenreID) values (3, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (3, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (3, 7);
 
--- princess mononoke
-insert into MovieGenre (MovieID, GenreID) values (4, 2);
-insert into MovieGenre (MovieID, GenreID) values (4, 4);
-insert into MovieGenre (MovieID, GenreID) values (4, 5);
+-- -- princess mononoke
+-- insert into MovieGenre (MovieID, GenreID) values (4, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (4, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (4, 5);
 
--- my neighbour Totoro
-insert into MovieGenre (MovieID, GenreID) values (5, 4);
-insert into MovieGenre (MovieID, GenreID) values (5, 7);
-insert into MovieGenre (MovieID, GenreID) values (5, 11);
+-- -- my neighbour Totoro
+-- insert into MovieGenre (MovieID, GenreID) values (5, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (5, 7);
+-- insert into MovieGenre (MovieID, GenreID) values (5, 11);
 
--- ponyo
-insert into MovieGenre (MovieID, GenreID) values (6, 2);
-insert into MovieGenre (MovieID, GenreID) values (6, 4);
-insert into MovieGenre (MovieID, GenreID) values (6, 7);
-insert into MovieGenre (MovieID, GenreID) values (6, 11);
+-- -- ponyo
+-- insert into MovieGenre (MovieID, GenreID) values (6, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (6, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (6, 7);
+-- insert into MovieGenre (MovieID, GenreID) values (6, 11);
 
--- kikis delivery service
-insert into MovieGenre (MovieID, GenreID) values (7, 4);
-insert into MovieGenre (MovieID, GenreID) values (7, 7);
+-- -- kikis delivery service
+-- insert into MovieGenre (MovieID, GenreID) values (7, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (7, 7);
 
--- tales from Earthsea
-insert into MovieGenre (MovieID, GenreID) values (8, 2);
-insert into MovieGenre (MovieID, GenreID) values (8, 4);
+-- -- tales from Earthsea
+-- insert into MovieGenre (MovieID, GenreID) values (8, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (8, 4);
 
--- the tale of the princess kaguya
-insert into MovieGenre (MovieID, GenreID) values (9, 3);
-insert into MovieGenre (MovieID, GenreID) values (9, 10);
-insert into MovieGenre (MovieID, GenreID) values (9, 12);
+-- -- the tale of the princess kaguya
+-- insert into MovieGenre (MovieID, GenreID) values (9, 3);
+-- insert into MovieGenre (MovieID, GenreID) values (9, 10);
+-- insert into MovieGenre (MovieID, GenreID) values (9, 12);
 
--- the secret world of arrietty
-insert into MovieGenre (MovieID, GenreID) values (10, 2);
-insert into MovieGenre (MovieID, GenreID) values (10, 3);
-insert into MovieGenre (MovieID, GenreID) values (10, 4);
-insert into MovieGenre (MovieID, GenreID) values (10, 7);
+-- -- the secret world of arrietty
+-- insert into MovieGenre (MovieID, GenreID) values (10, 2);
+-- insert into MovieGenre (MovieID, GenreID) values (10, 3);
+-- insert into MovieGenre (MovieID, GenreID) values (10, 4);
+-- insert into MovieGenre (MovieID, GenreID) values (10, 7);
 
--- the wind rises
-insert into MovieGenre (MovieID, GenreID) values (11, 8);
-insert into MovieGenre (MovieID, GenreID) values (11, 12);
+-- -- the wind rises
+-- insert into MovieGenre (MovieID, GenreID) values (11, 8);
+-- insert into MovieGenre (MovieID, GenreID) values (11, 12);
 
--- from up on poppy hill
-insert into MovieGenre (MovieID, GenreID) values (12, 1);
-insert into MovieGenre (MovieID, GenreID) values (12, 3);
-insert into MovieGenre (MovieID, GenreID) values (12, 8);
-insert into MovieGenre (MovieID, GenreID) values (12, 11);
+-- -- from up on poppy hill
+-- insert into MovieGenre (MovieID, GenreID) values (12, 1);
+-- insert into MovieGenre (MovieID, GenreID) values (12, 3);
+-- insert into MovieGenre (MovieID, GenreID) values (12, 8);
+-- insert into MovieGenre (MovieID, GenreID) values (12, 11);
 
 
 -- movie production actor

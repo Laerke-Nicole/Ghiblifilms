@@ -1,16 +1,16 @@
 <?php 
 require_once "includes/dbcon.php";
 
-if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
+if (isset($_GET['MovieID']) && isset($_GET['ProductionID'])) {
     $movieID = htmlspecialchars($_GET['MovieID']);
-    $genreID = htmlspecialchars($_GET['GenreID']);
+    $productionID = htmlspecialchars($_GET['ProductionID']);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit movie genre</title>
+    <title>Edit movie production</title>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -19,30 +19,30 @@ if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
 
 <?php
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT * FROM MovieGenre WHERE MovieID = :movieID AND GenreID = :genreID");
+$query = $dbCon->prepare("SELECT * FROM MovieProduction WHERE MovieID = :movieID AND ProductionID = :productionID");
 $query->bindParam(':movieID', $movieID);
-$query->bindParam(':genreID', $genreID);
+$query->bindParam(':productionID', $productionID);
 $query->execute();
-$getMovieGenre = $query->fetchAll();
+$getMovieProduction = $query->fetchAll();
 ?>
 
 <body>
 <div class="container">
-    <h3>Editing movie genre for "<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>"</h3>
-    <form class="col s12" name="contact" method="post" action="crud/movieGenre/updateMovieGenre.php">
+    <h3>Editing movie production team for "<?php echo htmlspecialchars($getMovieProduction[0][1]); ?>"</h3>
+    <form class="col s12" name="contact" method="post" action="crud/movieProduction/updateMovieProduction.php">
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>" class="validate" required="" aria-required="true">
+                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0][1]); ?>" class="validate" required="" aria-required="true">
                 <label for="MovieID">MovieID</label>
             </div>
             <div class="input-field col s6">
-                <input id="GenreID" name="GenreID" type="number" value="<?php echo htmlspecialchars($getMovieGenre[0]['GenreID']); ?>" class="validate" required="" aria-required="true">
-                <label for="GenreID">GenreID</label>
+                <input id="ProductionID" name="ProductionID" type="number" value="<?php echo htmlspecialchars($getMovieProduction[0][2]); ?>" class="validate" required="" aria-required="true">
+                <label for="ProductionID">ProductionID</label>
             </div>
         </div>
 
         <input type="hidden" name="originalMovieID" value="<?php echo htmlspecialchars($movieID); ?>">
-        <input type="hidden" name="originalGenreID" value="<?php echo htmlspecialchars($genreID); ?>">
+        <input type="hidden" name="originalProductionID" value="<?php echo htmlspecialchars($productionID); ?>">
 
         <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
     </form>
