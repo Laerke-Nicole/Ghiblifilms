@@ -386,3 +386,9 @@ button {
 tr:hover {
     background-color: transparent !important;
 }
+
+/* half and half */
+.half{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -219,16 +219,18 @@ CREATE TABLE Showings (
 -- views
 -- user + address view
 CREATE VIEW UserAddressView AS
-SELECT U.*, A.StreetName, A.StreetNumber, A.Country, A.PostalCode 
+SELECT U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
 FROM User U 
-LEFT JOIN Address A ON U.AddressID = A.AddressID;
+LEFT JOIN Address A ON U.AddressID = A.AddressID
+LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
 
 
 -- company + address view
 CREATE VIEW CompanyAddressView AS
-SELECT C.*, A.StreetName, A.StreetNumber, A.Country, A.PostalCode 
+SELECT C.NameOfCompany, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City 
 FROM CompanyInformation C 
-LEFT JOIN Address A ON C.AddressID = A.AddressID;
+LEFT JOIN Address A ON C.AddressID = A.AddressID
+LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
 
 
 -- static data to insert
@@ -294,19 +296,19 @@ insert into Seat (SeatID, SeatNumber) values (NULL, 'E9');
 insert into Seat (SeatID, SeatNumber) values (NULL, 'E10');
 
 
--- genre
-insert into Genre (GenreID, GenreName) values (1, 'Romance');
-insert into Genre (GenreID, GenreName) values (2, 'Adventure');
-insert into Genre (GenreID, GenreName) values (3, 'Drama');
-insert into Genre (GenreID, GenreName) values (4, 'Fantasy');
-insert into Genre (GenreID, GenreName) values (5, 'Dark fantasy');
-insert into Genre (GenreID, GenreName) values (6, 'Mystery');
-insert into Genre (GenreID, GenreName) values (7, 'Family');
-insert into Genre (GenreID, GenreName) values (8, 'Slice of Life');
-insert into Genre (GenreID, GenreName) values (9, 'Historical');
-insert into Genre (GenreID, GenreName) values (10, 'Coming-of-Age');
-insert into Genre (GenreID, GenreName) values (11, 'Comedy');
-insert into Genre (GenreID, GenreName) values (12, 'Tragedy');
+-- -- genre
+-- insert into Genre (GenreID, GenreName) values (1, 'Romance');
+-- insert into Genre (GenreID, GenreName) values (2, 'Adventure');
+-- insert into Genre (GenreID, GenreName) values (3, 'Drama');
+-- insert into Genre (GenreID, GenreName) values (4, 'Fantasy');
+-- insert into Genre (GenreID, GenreName) values (5, 'Dark fantasy');
+-- insert into Genre (GenreID, GenreName) values (6, 'Mystery');
+-- insert into Genre (GenreID, GenreName) values (7, 'Family');
+-- insert into Genre (GenreID, GenreName) values (8, 'Slice of Life');
+-- insert into Genre (GenreID, GenreName) values (9, 'Historical');
+-- insert into Genre (GenreID, GenreName) values (10, 'Coming-of-Age');
+-- insert into Genre (GenreID, GenreName) values (11, 'Comedy');
+-- insert into Genre (GenreID, GenreName) values (12, 'Tragedy');
 
 
 -- screen format
@@ -771,11 +773,11 @@ insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami
 
 
 
--- opening hours
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Tuesday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (3, 'Wednesday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (4, 'Thursday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (5, 'Friday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (6, 'Saturday', '12.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.00 - 22.00');
+-- -- opening hours
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Tuesday', '17.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (3, 'Wednesday', '17.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (4, 'Thursday', '17.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (5, 'Friday', '17.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (6, 'Saturday', '12.00 - 22.00');
+-- insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.00 - 22.00');

@@ -155,16 +155,3 @@ p {
     border-bottom: 1px solid var(--secondary-color);
     padding: 10px;
 }
-
-
-/* half and half */
-.half{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-
-
-
-
-/* contact form */

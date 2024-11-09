@@ -4,6 +4,11 @@
 <?php require_once("includes/connection.php"); ?>
 <?php //confirm_logged_in(); ?>
 
+<?php
+// connect to db
+$dbCon = dbCon($user, $pass);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +25,7 @@
 <!-- news -->
 <section class="pt-24 pb-24 ten-percent">
     <div>
-        <h2 class="text-center pb-4">NEWS</h2>
+        <?php echo '<h2 class="text-center pb-4">NEWS</h2>';?>
     </div>
     
     <!-- loop with news -->
@@ -47,7 +52,7 @@
 <!-- upcoming movies -->
 <section class="pb-24 ten-percent">
     <div>
-        <h2 class="text-center pb-4">Upcoming movies</h2>
+        <?php echo '<h2 class="text-center pb-4">Upcoming movies</h2>';?>
     </div>
     
     <!-- loop with movies -->
@@ -97,7 +102,7 @@
 
 <!-- contact form -->
 <section class="ten-percent pt-24 pb-24">
-    <h1 class="text-3xl weight-400 pb-12">Contact us with any questions</h1>
+    <?php echo '<h1 class="text-3xl weight-400 pb-12">Contact us with any questions</h1>';?>
 
     <!-- contact form -->
     <div class="flex gap-4">
@@ -107,8 +112,9 @@
         <!-- contact info -->
         <div class="w-half">
             <div class="box">
-                <h3 class="text-xl pb-4">Prefer a direct contact? You can reach us via email or phone:</h3>
-
+                
+                <?php echo '<h3 class="text-xl pb-4">Prefer a direct contact? You can reach us via email or phone:</h3>';?>
+                
                 <div class="flex flex-col gap-6">
                     <?php
                         $dbCon = dbCon($user, $pass);
@@ -133,15 +139,15 @@
     </div>
 </section>
 
+<!-- opening hours -->
 <section>
-    <div class="ten-percent">
-        <h5>Opening hours:</h5>
-        <?php
-            $dbCon = dbCon($user, $pass);
+    <div class="ten-percent pb-24">
+        <?php          
             $queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
             $queryOpeningHour->execute();
             $getOpeningHour = $queryOpeningHour->fetchAll();
 
+            echo '<h5>Opening hours:</h5>';
             foreach ($getOpeningHour as $openingHour) {
                 echo '<div>';
                     echo '<p class="text-sm">' . $openingHour['Day'] . '</p>';
@@ -150,6 +156,38 @@
             }
         ?>
     </div>
+</section>
+
+<!-- company address -->
+<section>
+<?php
+// get view with company address info
+$queryCompanyAddressView = $dbCon->prepare("SELECT *
+                                            FROM CompanyAddressView");
+
+$queryCompanyAddressView->execute();
+$getCompanyAddressView = $queryCompanyAddressView->fetchAll();
+?>
+
+<!-- display company address info -->
+<div class="ten-percent pb-24">
+    
+    <?php    
+    foreach ($getCompanyAddressView as $companyAddress) {
+        echo "<h5>Find ". $companyAddress['NameOfCompany']." address:</h5>";
+        echo "<div>";
+            echo "<p>". $companyAddress['StreetName']."</p>";
+            echo "<p>". $companyAddress['StreetNumber']."</p>";
+        echo "</div>";
+
+        echo "<div>";
+            echo "<p>". $companyAddress['Country']."</p>";
+            echo "<p>". $companyAddress['PostalCode']."</p>";
+            echo "<p>". $companyAddress['City']."</p>";
+        echo "</div>";
+    }
+    ?>
+</div>
 </section>
 </body>
 </html>
