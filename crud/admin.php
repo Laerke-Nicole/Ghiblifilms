@@ -16,19 +16,50 @@
 
 <body>
 
+<!-- change to a link and id # -->
+<h1>Scroll down when clicking a btn</h1>
+
+<br>
+<br>
 <br>
 
 <!-- buttons to open content of cruds -->
+<h5>FK to multiple tables</h5>
+
 <button class="btn" onclick="toggleSection('postalCodeAdmin')">Postal code</button>
+
+<br>
+<br>
+<br>
+
+<h5>Movie related</h5>
+
 <button class="btn" onclick="toggleSection('genreAdmin')">Genres</button>
+<button class="btn" onclick="toggleSection('roleInProductionAdmin')">Role in production</button>
+<button class="btn" onclick="toggleSection('productionAdmin')">Production</button>
+<button class="btn" onclick="toggleSection('voiceActorAdmin')">voice actor</button>
 <button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
 <button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genre</button>
 <button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
 <button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actor</button>
-<button class="btn" onclick="toggleSection('userAdmin')">User</button>
+
+<br>
+<br>
+<br>
+
+<h5>Comapany related</h5>
+
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
 <button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
 <button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hour</button>
+
+<br>
+<br>
+<br>
+
+<h5>User related</h5>
+
+<button class="btn" onclick="toggleSection('userAdmin')">User</button>
 
 
 
@@ -40,6 +71,21 @@
 <!-- Genre Section -->
 <div id="genreAdmin" style="display: none;">
     <?php require 'adminModules/genreAdmin.php'; ?>
+</div>
+
+<!-- Role In Production Section -->
+<div id="roleInProductionAdmin" style="display: none;">
+    <?php require 'adminModules/roleInProductionAdmin.php'; ?>
+</div>
+
+<!-- Production Section -->
+<div id="productionAdmin" style="display: none;">
+    <?php require 'adminModules/productionAdmin.php'; ?>
+</div>
+
+<!-- Voice Actor Section -->
+<div id="voiceActorAdmin" style="display: none;">
+    <?php require 'adminModules/voiceActorAdmin.php'; ?>
 </div>
 
 <!-- Movie Admin Section -->

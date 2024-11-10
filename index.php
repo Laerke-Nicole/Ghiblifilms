@@ -55,7 +55,8 @@ print_r($_COOKIE);
         
         <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
-        <li><a href="index.php?page=admin" class="secondary-color">Profile Page</a></li>
+        <li><a href="index.php?page=profilepage" class="secondary-color">Profile Page</a></li>
+        <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
 
         <!-- show log out btn if ur logged in -->
         <?php if (logged_in()) { ?>
@@ -121,6 +122,18 @@ case "genreadmin":
     include('crud/adminModules/genreAdmin.php');
 break;
 
+case "roleinproductionadmin":
+    include('crud/adminModules/roleInProductionAdmin.php');
+break;
+
+case "productionadmin":
+    include('crud/adminModules/productionAdmin.php');
+break;
+
+case "voiceactoradmin":
+    include('crud/adminModules/voiceActorAdmin.php');
+break;
+
 case "movieadmin":
     include('crud/adminModules/movieAdmin.php');
 break;
@@ -133,8 +146,8 @@ case "movieproductionadmin":
     include('crud/adminModules/movieProductionAdmin.php');
 break;
 
-case "movievoiceactoradmin":
-    include('crud/adminModules/movieVoiceActorAdmin.php');
+case "voiceactoradmin":
+    include('crud/adminModules/voiceActorAdmin.php');
 break;
 
 case "useradmin":
@@ -161,6 +174,18 @@ break;
 
 case "addgenre":
     include('crud/genre/addGenre.php');
+break;
+
+case "addroleinproduction":
+    include('crud/roleInProduction/addRoleInProduction.php');
+break;
+
+case "addproduction":
+    include('crud/production/addProduction.php');
+break;
+
+case "addvoiceactor":
+    include('crud/voiceActor/addVoiceActor.php');
 break;
 
 case "addmovie":
@@ -205,6 +230,18 @@ case "deletegenre":
     include('crud/genre/deleteGenre.php');
 break;
 
+case "deleteroleinproduction":
+    include('crud/roleInProduction/deleteRoleInProduction.php');
+break;
+
+case "deleteproduction":
+    include('crud/production/deleteProduction.php');
+break;
+
+case "deletevoiceactor":
+    include('crud/voiceActor/deleteVoiceActor.php');
+break;
+
 case "deletemovie":
     include('crud/movie/deleteMovie.php');
 break;
@@ -247,6 +284,18 @@ case "editgenre":
     include('crud/genre/editGenre.php');
 break;
 
+case "editroleinproduction":
+    include('crud/roleInProduction/editRoleInProduction.php');
+break;
+
+case "editproduction":
+    include('crud/production/editProduction.php');
+break;
+
+case "editvoiceactor":
+    include('crud/voiceActor/editVoiceActor.php');
+break;
+
 case "editmovie":
     include('crud/movie/editMovie.php');
 break;
@@ -287,6 +336,18 @@ break;
 
 case "updategenre":
     include('crud/genre/updateGenre.php');
+break;
+
+case "updateroleinproduction":
+    include('crud/roleInProduction/updateRoleInProduction.php');
+break;
+
+case "updateproduction":
+    include('crud/production/updateProduction.php');
+break;
+
+case "updatevoiceactor":
+    include('crud/voiceActor/updateVoiceActor.php');
 break;
 
 case "updatemovie":

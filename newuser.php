@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 
             if ($result) {
                 $message = "User Created.";
-                redirect_to("login.php");
+                redirect_to("index.php?page=login");
             } else {
                 $message = "User could not be created.";
             }
