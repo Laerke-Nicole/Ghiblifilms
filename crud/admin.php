@@ -37,11 +37,19 @@
 <button class="btn" onclick="toggleSection('genreAdmin')">Genres</button>
 <button class="btn" onclick="toggleSection('roleInProductionAdmin')">Role in production</button>
 <button class="btn" onclick="toggleSection('productionAdmin')">Production</button>
-<button class="btn" onclick="toggleSection('voiceActorAdmin')">voice actor</button>
-<button class="btn" onclick="toggleSection('movieAdmin')">Movie</button>
-<button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genre</button>
+<button class="btn" onclick="toggleSection('voiceActorAdmin')">voice actors</button>
+<button class="btn" onclick="toggleSection('movieAdmin')">Movies</button>
+<button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genres</button>
 <button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
-<button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actor</button>
+<button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actors</button>
+
+<br>
+<br>
+<br>
+
+<h5>Daily premieres</h5>
+
+<button class="btn" onclick="toggleSection('premiereAdmin')">Premieres</button>
 
 <br>
 <br>
@@ -51,7 +59,7 @@
 
 <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
 <button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
-<button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hour</button>
+<button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hours</button>
 
 <br>
 <br>
@@ -59,7 +67,7 @@
 
 <h5>User related</h5>
 
-<button class="btn" onclick="toggleSection('userAdmin')">User</button>
+<button class="btn" onclick="toggleSection('userAdmin')">Users</button>
 
 
 
@@ -106,6 +114,11 @@
 <!-- Movie Voice Actor Admin Section -->
 <div id="movieVoiceActorAdmin" style="display: none;">
     <?php require 'adminModules/movieVoiceActorAdmin.php'; ?>
+</div>
+
+<!-- User Admin Section -->
+<div id="premiereAdmin" style="display: none;">
+    <?php require 'adminModules/premiereAdmin.php'; ?>
 </div>
 
 <!-- User Admin Section -->

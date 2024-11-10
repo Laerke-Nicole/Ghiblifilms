@@ -201,6 +201,15 @@ CREATE TABLE Payment (
 ) ENGINE=InnoDB;
 
 
+-- premiere date
+CREATE TABLE Premiere (
+  PremiereID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  MovieID int NOT NULL,
+  PremiereDate DATE NOT NULL,
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID)
+) ENGINE=InnoDB;
+
+
 -- showings
 CREATE TABLE Showings (
   ShowingID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -217,6 +226,48 @@ CREATE TABLE Showings (
 
 
 -- views
+-- daily showings
+CREATE VIEW Movies AS
+SELECT MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID
+FROM Movie;
+
+
+-- -- daily showings
+-- CREATE VIEW DailyPremieres AS
+-- SELECT m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg, m.ScreenFormatID
+-- FROM Movie m
+-- JOIN Premiere p ON m.MovieID = p.MovieID
+-- WHERE p.PremiereDate = CURDATE();
+
+
+-- daily showings
+CREATE VIEW DailyPremieres AS
+SELECT 
+  m.MovieID, 
+  m.`Name`, 
+  m.Description, 
+  m.ReleaseYear, 
+  m.Duration, 
+  m.MovieImg, 
+  m.ScreenFormatID,
+  sf.ScreenFormat, 
+  GROUP_CONCAT(DISTINCT g.GenreName ORDER BY g.GenreName) AS Genres,
+  GROUP_CONCAT(DISTINCT CONCAT(p1.FirstName, ' ', p1.LastName, ' (', r.NameOfRole, ')') ORDER BY p1.LastName) AS ProductionStaff,
+  GROUP_CONCAT(DISTINCT CONCAT(va.FirstName, ' ', va.LastName) ORDER BY va.LastName) AS VoiceActors
+FROM Movie m
+JOIN Premiere p ON m.MovieID = p.MovieID
+JOIN ScreenFormat sf ON m.ScreenFormatID = sf.ScreenFormatID
+LEFT JOIN MovieGenre mg ON m.MovieID = mg.MovieID
+LEFT JOIN Genre g ON mg.GenreID = g.GenreID
+LEFT JOIN MovieProduction mp ON m.MovieID = mp.MovieID
+LEFT JOIN Production p1 ON mp.ProductionID = p1.ProductionID
+LEFT JOIN RoleInProduction r ON p1.RoleInProductionID = r.RoleInProductionID
+LEFT JOIN MovieVoiceActor mva ON m.MovieID = mva.MovieID
+LEFT JOIN VoiceActor va ON mva.VoiceActorID = va.VoiceActorID
+WHERE p.PremiereDate = CURDATE()
+GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg, m.ScreenFormatID, sf.ScreenFormat;
+
+
 -- user + address view
 CREATE VIEW UserAddressView AS
 SELECT U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
@@ -397,92 +448,92 @@ insert into ScreenFormat (ScreenFormatID, ScreenFormat) values (NULL, '4D');
 -- insert into Production (ProductionID, FirstName, LastName, RoleInProductionID) values (44, 'Satoshi', 'Takebe', 5);
 
 
--- voice actor
--- The boy and the heron
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Soma', 'Santoki');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masaki', 'Suda');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kô', 'Shibasaki');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aimyon', 'Himi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yoshino', 'Kimura');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takuya', 'Kimura');
+-- -- voice actor
+-- -- The boy and the heron
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Soma', 'Santoki');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masaki', 'Suda');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kô', 'Shibasaki');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aimyon', 'Himi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yoshino', 'Kimura');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takuya', 'Kimura');
 
--- spirited away
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miyu', 'Irino');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rumi', 'Hiiragi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mari', 'Natsuki');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takashi', 'Naitô');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yasuko', 'Sawaguchi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Gashûin');
+-- -- spirited away
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miyu', 'Irino');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rumi', 'Hiiragi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mari', 'Natsuki');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takashi', 'Naitô');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yasuko', 'Sawaguchi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Gashûin');
 
--- howls moving castle
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chieko', 'Baishô');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Akihiro', 'Miwa');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Ryunosuke', 'Kamiki');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mitsunori', 'Isaki');
+-- -- howls moving castle
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chieko', 'Baishô');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Akihiro', 'Miwa');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Ryunosuke', 'Kamiki');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mitsunori', 'Isaki');
 
--- princess mononoke
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yôji', 'Matsuda');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuriko', 'Ishida');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûko', 'Tanaka');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kei', 'Iinuma');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Michiko', 'Yamamoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shirô', 'Saitô');
+-- -- princess mononoke
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yôji', 'Matsuda');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuriko', 'Ishida');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûko', 'Tanaka');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kei', 'Iinuma');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Michiko', 'Yamamoto');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shirô', 'Saitô');
 
--- my neighbour Totoro
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hitoshi', 'Takagi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Noriko', 'Hidaka');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chika', 'Sakamoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shigesato', 'Itoi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Sumi', 'Shimamoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tanie', 'Kitabayashi');
+-- -- my neighbour Totoro
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hitoshi', 'Takagi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Noriko', 'Hidaka');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Chika', 'Sakamoto');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shigesato', 'Itoi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Sumi', 'Shimamoto');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tanie', 'Kitabayashi');
 
--- ponyo
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Yamaguchi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kazushige', 'Nagashima');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûki', 'Amami');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'George', 'Tokoro');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuria', 'Nara');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hiroki', 'Doi');
+-- -- ponyo
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Yamaguchi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kazushige', 'Nagashima');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yûki', 'Amami');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'George', 'Tokoro');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Yuria', 'Nara');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hiroki', 'Doi');
 
--- kikis delivery service
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Minami', 'Takayama');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rei', 'Sakuma');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kappei', 'Yamaguchi');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Toda');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mieko', 'Nobusawa');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kôichi', 'Miura');
+-- -- kikis delivery service
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Minami', 'Takayama');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Rei', 'Sakuma');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kappei', 'Yamaguchi');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Toda');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mieko', 'Nobusawa');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kôichi', 'Miura');
 
--- tales from Earthsea
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aoi', 'Teshima');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Bunta', 'Sugawara');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Teruyuki', 'Kagawa');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Fubuki');
+-- -- tales from Earthsea
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aoi', 'Teshima');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Bunta', 'Sugawara');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Teruyuki', 'Kagawa');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Fubuki');
 
--- the tale of the princess Kaguya
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aki', 'Asakura');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kengo', 'Kôra');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takeo', 'Chii');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Nobuko', 'Miyamoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Atsuko', 'Takahata');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Tabata');
+-- -- the tale of the princess Kaguya
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Aki', 'Asakura');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Kengo', 'Kôra');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Takeo', 'Chii');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Nobuko', 'Miyamoto');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Atsuko', 'Takahata');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomoko', 'Tabata');
 
--- the secret world of Arrietty
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mirai', 'Shida');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Fujiwara');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomokazu', 'Miura');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shinobu', 'Ôtake');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Takeshita');
+-- -- the secret world of Arrietty
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mirai', 'Shida');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tatsuya', 'Fujiwara');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Tomokazu', 'Miura');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Shinobu', 'Ôtake');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Keiko', 'Takeshita');
 
--- the wind rises
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hideaki', 'Anno');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hidetoshi', 'Nishijima');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miori', 'Takimoto');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masahiko', 'Nishimura');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mansai', 'Nomura');
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Kunimura');
+-- -- the wind rises
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hideaki', 'Anno');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Hidetoshi', 'Nishijima');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Miori', 'Takimoto');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masahiko', 'Nishimura');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Mansai', 'Nomura');
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Jun', 'Kunimura');
 
--- from up on Poppy Hill
-insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami', 'Nagasawa');
+-- -- from up on Poppy Hill
+-- insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami', 'Nagasawa');
 
 
 -- -- movie

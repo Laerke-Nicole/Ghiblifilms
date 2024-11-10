@@ -150,6 +150,10 @@ case "voiceactoradmin":
     include('crud/adminModules/voiceActorAdmin.php');
 break;
 
+case "premiereadmin":
+    include('crud/adminModules/premiereAdmin.php');
+break;
+
 case "useradmin":
     include('crud/adminModules/userAdmin.php');
 break;
@@ -202,6 +206,10 @@ break;
 
 case "addmovievoiceactor":
     include('crud/movieVoiceActor/addMovieVoiceActor.php');
+break;
+
+case "addpremiere":
+    include('crud/premiere/addPremiere.php');
 break;
 
 case "adduser":
@@ -258,6 +266,10 @@ case "deletemovievoiceactor":
     include('crud/movieVoiceActor/deleteMovieVoiceActor.php');
 break;
 
+case "deletepremiere":
+    include('crud/premiere/deletePremiere.php');
+break;
+
 case "deleteuser":
     include('crud/user/deleteUser.php');
 break;
@@ -312,6 +324,10 @@ case "editmovievoiceactor":
     include('crud/movieVoiceActor/editMovieVoiceActor.php');
 break;
 
+case "editpremiere":
+    include('crud/premiere/editPremiere.php');
+break;
+
 case "edituser":
     include('crud/user/editUser.php');
 break;
@@ -364,6 +380,10 @@ break;
 
 case "updatemovievoiceactor":
     include('crud/movieVoiceActor/updateMovieVoiceActor.php');
+break;
+
+case "updatepremiere":
+    include('crud/premiere/updatePremiere.php');
 break;
 
 case "updateuser":

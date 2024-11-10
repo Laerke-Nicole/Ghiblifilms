@@ -21,7 +21,31 @@ $dbCon = dbCon($user, $pass);
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
 </head>
 <body>
-    
+
+
+<!-- daily premieres -->
+<?php
+$queryPremieres = $dbCon->prepare("SELECT * FROM DailyPremieres");
+$queryPremieres->execute();
+$dailyPremieres = $queryPremieres->fetchAll();
+
+if ($dailyPremieres) {
+    echo '<section class="pt-24 ten-percent">';
+        echo '<h2 class="text-center pb-4">Daily Premieres</h2>';
+        echo '<div class="items">';
+            foreach ($dailyPremieres as $premiere) { 
+                echo '<div>';
+                    echo "<img src='upload/" . $premiere['MovieImg'] . "' alt='Image of movie'>";
+                    echo '<h5 class="weight-400 pb-2">' . $premiere['Name'] . '</h5>';
+                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . $premiere['MovieID'] . '\'">Get tickets</button>';
+                echo '</div>';
+            }
+        echo '</div>';
+    echo '</section>';
+}
+?>  
+   
+
 <!-- news -->
 <section class="pt-24 pb-24 ten-percent">
     <div>
