@@ -32,18 +32,13 @@
             $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($found_user) {
-                // check if the user is an admin
-                if ($username == "admin" && $password == "123456") {
-                    $_SESSION['user_id'] = $found_user['UserID'];
-                    $_SESSION['User'] = $found_user['Username'];
-                    redirect_to("index.php?page=admin");
-                } else {
+                if (password_verify($password, $found_user['Pass'])) {                                          
                     // check if the password matches for non-admin users
                     if (password_verify($password, $found_user['Pass'])) {
                         // username/password authenticated
                         $_SESSION['user_id'] = $found_user['UserID'];
                         $_SESSION['User'] = $found_user['Username'];
-                        redirect_to("index.php");
+                        redirect_to("index.php?page=admin");
                     } else {
                         // if password is incorrect
                         $message = "Username/password combination incorrect.<br />
@@ -97,6 +92,10 @@
 
     <div class="cursor">
         <input type="submit" name="submit" value="Login" class="btn" />
+    </div>
+
+    <div>
+        <a href="index.php?page=newuser" class="secondary-color">Got no user? Create a new user here</a>
     </div>
 </form>
 

@@ -55,6 +55,7 @@ print_r($_COOKIE);
         
         <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
+        <li><a href="index.php?page=logout" class="secondary-color">Log out</a></li>
         <li><a href="index.php?page=profilepage" class="secondary-color">Profile Page</a></li>
         <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
 
@@ -106,6 +107,10 @@ break;
 
 case "admin":
     include('crud/admin.php');
+break;
+
+case "profilepage":
+    include('views/profilePage.php');
 break;
 
 case "form":

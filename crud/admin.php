@@ -1,4 +1,6 @@
-<?php require_once "includes/dbcon.php";?>
+<?php require_once ("includes/dbcon.php");?>
+<?php require_once("includes/session.php"); ?>
+<?php //confirm_logged_in(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +86,7 @@
 <br>
 
 
-<h5>Comapany related</h5>
+<h5>Company related</h5>
 
 <a href="#newsAdmin">
     <button class="btn" onclick="toggleSection('newsAdmin')">News</button>

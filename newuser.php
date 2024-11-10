@@ -1,7 +1,7 @@
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php // confirm_logged_in(); ?>
+<?php //confirm_logged_in(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +92,10 @@ if (!empty($message)) {
 
     <div class="cursor">
         <input type="submit" name="submit" value="Create" class="btn" />
+    </div>
+
+    <div>
+        <a href="index.php?page=login" class="secondary-color">Aldready got a user? Log in here</a>
     </div>
 </form>
 
