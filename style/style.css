@@ -49,7 +49,7 @@ body {
 /* text style */
 h1 {
     font-family: var(--primary-font);
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 700;
     color: var(--secondary-color);
     text-transform: uppercase;
@@ -57,7 +57,7 @@ h1 {
 
 h2 {
     font-family: var(--primary-font);
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
@@ -65,7 +65,7 @@ h2 {
 
 h3 {
     font-family: var(--primary-font);
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
@@ -73,7 +73,7 @@ h3 {
 
 h4 {
     font-family: var(--primary-font);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 400;
     color: var(--secondary-color);
     text-transform: uppercase;
@@ -89,7 +89,7 @@ h5 {
 
 p {
     font-family: var(--secondary-font);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: var(--tertiary-color);
 }

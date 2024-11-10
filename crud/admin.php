@@ -16,59 +16,99 @@
 
 <body>
 
-<!-- change to a link and id # -->
-<h1>Scroll down when clicking a btn</h1>
+<br>
 
-<br>
-<br>
-<br>
 
 <!-- buttons to open content of cruds -->
 <h5>FK to multiple tables</h5>
 
-<button class="btn" onclick="toggleSection('postalCodeAdmin')">Postal code</button>
+<a href="#postalCodeAdmin">
+    <button class="btn" onclick="toggleSection('postalCodeAdmin')">Postal code</button>
+</a>
+
 
 <br>
 <br>
 <br>
+
 
 <h5>Movie related</h5>
 
-<button class="btn" onclick="toggleSection('genreAdmin')">Genres</button>
-<button class="btn" onclick="toggleSection('roleInProductionAdmin')">Role in production</button>
-<button class="btn" onclick="toggleSection('productionAdmin')">Production</button>
-<button class="btn" onclick="toggleSection('voiceActorAdmin')">voice actors</button>
-<button class="btn" onclick="toggleSection('movieAdmin')">Movies</button>
-<button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genres</button>
-<button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
-<button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actors</button>
+<a href="#genreAdmin">
+    <button class="btn" onclick="toggleSection('genreAdmin')">Genres</button>
+</a>
+
+<a href="#roleInProductionAdmin">
+    <button class="btn" onclick="toggleSection('roleInProductionAdmin')">Role in production</button>
+</a>
+
+<a href="#productionAdmin">
+    <button class="btn" onclick="toggleSection('productionAdmin')">Production</button>
+</a>
+
+<a href="#voiceActorAdmin">
+    <button class="btn" onclick="toggleSection('voiceActorAdmin')">voice actors</button>
+</a>
+
+<a href="#movieAdmin">
+    <button class="btn" onclick="toggleSection('movieAdmin')">Movies</button>
+</a>
+
+<a href="#movieGenreAdmin">
+    <button class="btn" onclick="toggleSection('movieGenreAdmin')">Movie genres</button>
+</a>
+
+<a href="#movieProductionAdmin">
+    <button class="btn" onclick="toggleSection('movieProductionAdmin')">Movie production</button>
+</a>
+
+<a href="#movieVoiceActorAdmin">
+    <button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actors</button>
+</a>
+
 
 <br>
 <br>
 <br>
+
 
 <h5>Daily premieres</h5>
 
-<button class="btn" onclick="toggleSection('premiereAdmin')">Premieres</button>
+<a href="#premiereAdmin">
+    <button class="btn" onclick="toggleSection('premiereAdmin')">Premieres</button>
+</a>
+
 
 <br>
 <br>
 <br>
+
 
 <h5>Comapany related</h5>
 
-<button class="btn" onclick="toggleSection('newsAdmin')">News</button>
-<button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
-<button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hours</button>
+<a href="#newsAdmin">
+    <button class="btn" onclick="toggleSection('newsAdmin')">News</button>
+</a>
+
+<a href="#companyInformationAdmin">
+    <button class="btn" onclick="toggleSection('companyInformationAdmin')">Company info</button>
+</a>
+
+<a href="#openingHourAdmin">
+    <button class="btn" onclick="toggleSection('openingHourAdmin')">Opening hours</button>
+</a>
+
 
 <br>
 <br>
 <br>
+
 
 <h5>User related</h5>
 
-<button class="btn" onclick="toggleSection('userAdmin')">Users</button>
-
+<a href="#userAdmin">
+    <button class="btn" onclick="toggleSection('userAdmin')">Users</button>
+</a>
 
 
 <!-- Postal Code Section -->

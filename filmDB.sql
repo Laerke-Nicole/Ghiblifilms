@@ -227,20 +227,6 @@ CREATE TABLE Showings (
 
 -- views
 -- daily showings
-CREATE VIEW Movies AS
-SELECT MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, ScreenFormatID
-FROM Movie;
-
-
--- -- daily showings
--- CREATE VIEW DailyPremieres AS
--- SELECT m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg, m.ScreenFormatID
--- FROM Movie m
--- JOIN Premiere p ON m.MovieID = p.MovieID
--- WHERE p.PremiereDate = CURDATE();
-
-
--- daily showings
 CREATE VIEW DailyPremieres AS
 SELECT 
   m.MovieID, 
