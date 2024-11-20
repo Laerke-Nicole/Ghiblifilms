@@ -68,6 +68,10 @@
     <button class="btn" onclick="toggleSection('movieVoiceActorAdmin')">Movie voice actors</button>
 </a>
 
+<a href="#showingsAdmin">
+    <button class="btn" onclick="toggleSection('showingsAdmin')">Showings</button>
+</a>
+
 
 <br>
 <br>
@@ -158,7 +162,12 @@
     <?php require 'adminModules/movieVoiceActorAdmin.php'; ?>
 </div>
 
-<!-- User Admin Section -->
+<!-- Showings Admin Section -->
+<div id="showingsAdmin" style="display: none;">
+    <?php require 'adminModules/showingsAdmin.php'; ?>
+</div>
+
+<!-- premiere Section -->
 <div id="premiereAdmin" style="display: none;">
     <?php require 'adminModules/premiereAdmin.php'; ?>
 </div>

@@ -1,3 +1,4 @@
+<!-- session for log in -->
 <?php
 	session_start();
 	

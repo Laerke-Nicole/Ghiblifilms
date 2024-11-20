@@ -16,7 +16,6 @@ $dbCon = dbCon($user, $pass);
     <title>Ghiblifilms</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
-    <link rel="stylesheet" href="style/responsive.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
 </head>
 <body>

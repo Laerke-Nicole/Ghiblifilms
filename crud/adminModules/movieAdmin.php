@@ -41,7 +41,6 @@ $getMovies = $queryMovie->fetchAll();
                     <th>Release year</th>
                     <th>Duration</th>
                     <th>Movie Image</th>
-                    <th>ScreenFormatID</th>
                     <th>Genres</th>
                     <th>Production</th>
                     <th>Voice Actors</th>
@@ -60,7 +59,6 @@ $getMovies = $queryMovie->fetchAll();
                     echo "<td>". $getMovie['ReleaseYear']."</td>";
                     echo "<td>". $getMovie['Duration']."</td>";
                     echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie' width='100'></td>";
-                    echo "<td>". $getMovie['ScreenFormatID']."</td>";
 
                     // get and display genres
                     $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
@@ -126,23 +124,11 @@ $getMovies = $queryMovie->fetchAll();
             </div>
 
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12">
                     <input id="movieImg" name="movieImg" type="file" class="validate" required="" aria-required="true">
                 </div>
-
-                <div class="input-field col s6">
-                    <p>ScreenFormat</p>
-                    <select name="ScreenFormatID" id="ScreenFormatID">
-                        <?php
-                            $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
-                            while ($screenFormat = $screenFormatQuery->fetch()) {
-                                echo "<option value='{$screenFormat['ScreenFormatID']}'>{$screenFormat['ScreenFormat']}</option>";
-                            }
-                        ?>
-                    </select>
-
-                </div>
             </div>
+            
             <button class="btn waves-effect waves-light" type="submit" name="submit">Add Movie</button>
         </form>
     </div>

@@ -1,3 +1,8 @@
+<head>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/library.css">
+</head>
+
 <?php
 require_once("includes/dbcon.php"); 
 
@@ -133,29 +138,38 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
         
         // display showings
-        if ($showingsItem) {
-            // book slots
-            echo '<section class="pb-24" id="showings">';
-                echo '<div class="half ten-percent pb-12">';
-                    // adress 
-                    echo '<div class="flex">';
-                        echo '<h3>' . $movieItem['StreetName'] . ' ' . $movieItem['StreetNumber'] . '</h3>';
-                        echo '<h3>' . $movieItem['PostalCode'] . ' ' . $movieItem['Country'] . '</h3>';
+        if ($showingsItem) { 
+            echo '<div class="flex gap-8 p-4 pb-16">';
+                // left side with address
+                echo '<div class="w-33">';
+                    echo '<h3>CHOOSE WHEN YOU WOULD LIKE TO WATCH THE MOVIE</h3>';
+                    echo '<div>';
+                        echo '<p>' . $companyAddress['StreetName']. '</p>';
+                        echo '<p>' . $companyAddress['StreetNumber']. '</p>';
                     echo '</div>';
-        
-                    echo '<div class="flex flex-col gap-4">';
-                        // loop
-                        foreach ($showingsItem as $showingsItem) {
-                            echo '<div class="box">';
-                                echo '<h4>' . $showingsItem['ShowingDate'] . 'at' . $showingsItem['ShowingTime'] . '</h4>';
-                                echo '<p>' . $showingsItem['AuditoriumNumber'] . '</p>';
-                                echo '<p>' . $showingsItem['ScreenFormat'] . '</p>';
-                            echo '</div>';
-                        }
+                    echo '<div>';
+                        echo '<p>' . $companyAddress['Country']. '</p>';
+                        echo '<p>' . $companyAddress['PostalCode']. '</p>';
+                        echo '<p>' . $companyAddress['City']. '</p>';
                     echo '</div>';
                 echo '</div>';
-            echo '</section>';
+
+                // right side with showings
+                // book slots
+                echo '<div class="flex gap-8 w-66">';
+                    echo '<div>';
+                        echo '<h3>Ons, 20/11</h3>';
+
+                        echo '<div class="time s-bg p-4">';
+                            echo '<p class="primary-color"><strong>Bio 2</strong></p>';
+                            echo '<p class="primary-color">18.00</p>';
+                            echo '<p class="primary-color">2D, Engelsk tale, Forpremiere</p>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
         }
+        
 
     } else {
         echo '<p>Movie item not found.</p>';

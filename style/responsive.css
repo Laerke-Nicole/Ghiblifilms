@@ -1,6 +1,0 @@
-/* 1024px screen  */
-@media (max-width: 1024px) {
-    .items {
-        grid-template-columns: repeat(2, minmax(1px, 1fr)); 
-    }
-}

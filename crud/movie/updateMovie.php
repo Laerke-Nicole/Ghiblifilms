@@ -7,7 +7,6 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     $description = htmlspecialchars(trim($_POST['Description']));
     $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
     $duration = htmlspecialchars(trim($_POST['Duration']));
-    $screenFormatID = htmlspecialchars(trim($_POST['ScreenFormatID']));
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
 
     $dbCon = dbCon($user, $pass);
@@ -42,14 +41,13 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     }
 
     // Update the movie record
-    $query = $dbCon->prepare("UPDATE Movie SET Name = :name, Description = :description, `ReleaseYear` = :releaseYear, `Duration` = :duration, `MovieImg` = :movieImg, `ScreenFormatID` = :screenFormatID WHERE MovieID = :movieID");
+    $query = $dbCon->prepare("UPDATE Movie SET Name = :name, Description = :description, `ReleaseYear` = :releaseYear, `Duration` = :duration, `MovieImg` = :movieImg WHERE MovieID = :movieID");
 
     $query->bindParam(':name', $name);
     $query->bindParam(':description', $description);
     $query->bindParam(':releaseYear', $releaseYear);
     $query->bindParam(':duration', $duration);
     $query->bindParam(':movieImg', $movieImg);
-    $query->bindParam(':screenFormatID', $screenFormatID);
     $query->bindParam(':movieID', $movieID);
 
     // Execute the query and check for success

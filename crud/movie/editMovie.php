@@ -61,13 +61,6 @@ $getMovie = $query->fetchAll();
             </div>
         </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="ScreenFormatID">Screen Format</label>
-                <input id="ScreenFormatID" name="ScreenFormatID" type="text" value="<?php echo htmlspecialchars($getMovie[0][6]); ?>" class="validate" required>
-            </div>
-        </div>
-
         <input type="hidden" name="MovieID" value="<?php echo htmlspecialchars($movieID); ?>">
 
         <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>

@@ -11,7 +11,7 @@
 //     $expire = time() + 60*60*24*30;
 //     setcookie("user", "", $expire); 
 // }
-// ?> 
+?> 
 
 
 
@@ -23,26 +23,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
-    <link rel="stylesheet" href="style/responsive.css">
 </head>
 
 <body>
-<!-- <?php 
+<?php 
 // Retrieve the cookie
-if (isset($_COOKIE["user"])) {
-    echo "Welcome " . htmlspecialchars($_COOKIE["user"]) . "!<br>";
-} else {
-    echo "Welcome guest!<br>";
-}
+// if (isset($_COOKIE["user"])) {
+//     echo "Welcome " . htmlspecialchars($_COOKIE["user"]) . "!<br>";
+// } else {
+//     echo "Welcome guest!<br>";
+// }
 
 // print a cookie
-echo $_COOKIE["user"];
+// echo $_COOKIE["user"];
 
-echo "<br>";
+// echo "<br>";
 
 // View all cookies for debugging
-print_r($_COOKIE);
-?> -->
+// print_r($_COOKIE);
+?>
 
 
 <nav class="flex justify-between items-center p-6">
@@ -155,6 +154,10 @@ case "voiceactoradmin":
     include('crud/adminModules/voiceActorAdmin.php');
 break;
 
+case "showingsadmin":
+    include('crud/adminModules/showingsAdmin.php');
+break;
+
 case "premiereadmin":
     include('crud/adminModules/premiereAdmin.php');
 break;
@@ -211,6 +214,10 @@ break;
 
 case "addmovievoiceactor":
     include('crud/movieVoiceActor/addMovieVoiceActor.php');
+break;
+
+case "addshowings":
+    include('crud/showings/addShowings.php');
 break;
 
 case "addpremiere":
@@ -271,6 +278,10 @@ case "deletemovievoiceactor":
     include('crud/movieVoiceActor/deleteMovieVoiceActor.php');
 break;
 
+case "deleteshowings":
+    include('crud/showings/deleteShowings.php');
+break;
+
 case "deletepremiere":
     include('crud/premiere/deletePremiere.php');
 break;
@@ -329,6 +340,10 @@ case "editmovievoiceactor":
     include('crud/movieVoiceActor/editMovieVoiceActor.php');
 break;
 
+case "editshowings":
+    include('crud/showings/editShowings.php');
+break;
+
 case "editpremiere":
     include('crud/premiere/editPremiere.php');
 break;
@@ -385,6 +400,10 @@ break;
 
 case "updatemovievoiceactor":
     include('crud/movieVoiceActor/updateMovieVoiceActor.php');
+break;
+
+case "updateshowings":
+    include('crud/showings/updateShowings.php');
 break;
 
 case "updatepremiere":
