@@ -215,16 +215,14 @@ CREATE TABLE Showings (
 
 -- seat reservation
 CREATE TABLE SeatReservation (
-  ReservationID int NOT NULL,
+  ReservationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   ShowingsID INT NOT NULL,
-  SeatID int NOT NULL,
+  SeatID INT NOT NULL,
   UserID INT NOT NULL,
   ReservationStatus ENUM('Reserved', 'Paid') DEFAULT 'Reserved',
-  CONSTRAINT PK_SeatReservation PRIMARY KEY (ReservationID, SeatID),
-  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
-  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID),
+  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingID),
   FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
-  FOREIGN KEY (UserID) REFERENCES User(UserID)
+  FOREIGN KEY (UserID) REFERENCES Users(UserID)
 ) ENGINE=InnoDB;
 
 -- views

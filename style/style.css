@@ -154,17 +154,3 @@ p {
     border-bottom: 1px solid var(--secondary-color);
     padding: 10px;
 }
-
-
-
-
-
-
-
-/* booking on movie detail page */
-.time {
-    background-color: var(--secondary-color);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;        
-}

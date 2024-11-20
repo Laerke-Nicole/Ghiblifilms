@@ -2,7 +2,7 @@
 // Connect to db
 $dbCon = dbCon($user, $pass);
 
-// Get opening hours
+// Get showings
 $queryShowings = $dbCon->prepare("SELECT * FROM Showings");
 $queryShowings->execute();
 $getShowings = $queryShowings->fetchAll();

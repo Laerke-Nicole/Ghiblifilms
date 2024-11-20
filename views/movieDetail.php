@@ -136,40 +136,41 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
         echo '</section>';
 
+
         
         // display showings
-        if ($showingsItem) { 
-            echo '<div class="flex gap-8 p-4 pb-16">';
-                // left side with address
-                echo '<div class="w-33">';
-                    echo '<h3>CHOOSE WHEN YOU WOULD LIKE TO WATCH THE MOVIE</h3>';
-                    echo '<div>';
-                        echo '<p>' . $companyAddress['StreetName']. '</p>';
-                        echo '<p>' . $companyAddress['StreetNumber']. '</p>';
-                    echo '</div>';
-                    echo '<div>';
-                        echo '<p>' . $companyAddress['Country']. '</p>';
-                        echo '<p>' . $companyAddress['PostalCode']. '</p>';
-                        echo '<p>' . $companyAddress['City']. '</p>';
-                    echo '</div>';
-                echo '</div>';
-
-                // right side with showings
-                // book slots
-                echo '<div class="flex gap-8 w-66">';
-                    echo '<div>';
-                        echo '<h3>Ons, 20/11</h3>';
-
-                        echo '<div class="time s-bg p-4">';
-                            echo '<p class="primary-color"><strong>Bio 2</strong></p>';
-                            echo '<p class="primary-color">18.00</p>';
-                            echo '<p class="primary-color">2D, Engelsk tale, Forpremiere</p>';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
+        echo '<div class="flex gap-8 p-4 pb-16 ten-percent">';
+            // left side with address
+            echo '<div class="w-33">';
+                echo '<h3>CHOOSE WHEN YOU WOULD LIKE TO WATCH THE MOVIE</h3>';
             echo '</div>';
-        }
-        
+
+            // right side with showings
+            // Get showings
+            $queryShowings = $dbCon->prepare("SELECT s.*, a.AuditoriumNumber, sf.ScreenFormat
+                                                FROM Showings s
+                                                JOIN Auditorium a ON s.AuditoriumID = a.AuditoriumID
+                                                JOIN ScreenFormat sf ON s.ScreenFormatID = sf.ScreenFormatID
+                                                WHERE s.MovieID = :movieID");
+
+            $queryShowings->bindParam(':movieID', $movieID);
+
+            $queryShowings->execute();
+            $getShowings = $queryShowings->fetchAll();
+            
+
+            // book slots
+            echo '<div class="flex flex-col gap-8 w-66">';
+                foreach ($getShowings as $showings) {
+                    echo '<a href="index.php?page=seatreservationdetail&showingsID=' . $showings['ShowingsID'] . '" class="time s-bg p-6 w-full">';
+                        echo '<h4 class="primary-color"><strong>' . $showings['ShowingDate'] . ' ' . 'at' . ' ' . $showings['ShowingTime'] . '</strong></h4>';
+                        echo '<p class="primary-color">' . $showings['AuditoriumNumber'] . '</p>';
+                        echo '<p class="primary-color">' . $showings['ScreenFormat'] . '</p>';
+                    echo '</a>';
+                }
+            echo '</div>';
+        echo '</div>';   
+
 
     } else {
         echo '<p>Movie item not found.</p>';

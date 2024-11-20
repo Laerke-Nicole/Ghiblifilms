@@ -116,6 +116,10 @@ case "form":
     include('modules/contactform/form.php');
 break;
 
+case "seatreservationdetail":
+    include('views/seatReservationDetail.php');
+break;
+
 
 // admin modules of cruds
 case "postalcodeadmin":
