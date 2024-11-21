@@ -7,17 +7,18 @@
 
 <?php
 require_once("includes/dbcon.php");
-include("includes/session.php");
+require_once("includes/session.php"); 
 
-// Make sure showingID is set
-if (!isset($_GET['showingsID'])) {
+// ShowingsID in URL 
+if (!isset($_GET['ShowingsID'])) {
     die("ShowingsID not specified.");
 }
 
-$showingsID = $_GET['showingsID']; // Get ShowingsID from URL
+$showingsID = $_GET['ShowingsID']; 
+
 $dbCon = dbCon($user, $pass);
 
-// Fetch already reserved seats for the showing
+// fetch already reserved seats for the showing
 $queryReservedSeats = $dbCon->prepare("
     SELECT s.SeatNumber
     FROM Seat s
@@ -28,10 +29,10 @@ $queryReservedSeats->bindParam(':showingsID', $showingsID);
 $queryReservedSeats->execute();
 $reservedSeats = $queryReservedSeats->fetchAll();
 
-// Display reserved seats
+// display reserved seats
 $reservedSeatList = implode(", ", array_column($reservedSeats, 'SeatNumber'));
 
-// Fetch available seats for the showing
+// fetch available seats for the showing
 $querySeats = $dbCon->prepare("
     SELECT s.SeatID, s.SeatNumber
     FROM Seat s
@@ -50,13 +51,13 @@ $availableSeats = $querySeats->fetchAll();
         <div>
             <h1>Choose seats</h1>
             
-            <!-- Display reserved seats -->
+            <!-- display reserved seats -->
             <div class="flex pb-2">
                 <p>Taken seats:</p>
                 <p><?php echo $reservedSeatList; ?></p>
             </div>
 
-            <!-- Seat selection form -->
+            <!-- seat selection form -->
             <form method="POST">
                 <div class="pb-4">
                     <label for="seats">Select Seats (Up to 5):</label>

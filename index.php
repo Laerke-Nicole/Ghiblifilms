@@ -1,4 +1,5 @@
 <?php require_once("includes/session.php"); ?>
+<?php require_once ("includes/dbcon.php"); ?>
 <!-- cookies -->
 <?php 
 // create cookie
@@ -44,6 +45,19 @@
 ?>
 
 
+<?php
+// check if the user is logged in
+if (isset($_SESSION['UserID'])) {
+    // get the logged in users id
+    $userID = $_SESSION['UserID'];
+} else {
+    $userID = null; // there are no users logged in
+}
+
+
+?>
+
+
 <nav class="flex justify-between items-center p-6">
     <!-- empty div for left side alignment -->
     <div></div>
@@ -54,8 +68,9 @@
         
         <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
-        <li><a href="index.php?page=logout" class="secondary-color">Log out</a></li>
-        <li><a href="index.php?page=profilepage" class="secondary-color">Profile Page</a></li>
+        <?php if ($userID): ?>
+            <li><a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color">Profile Page</a></li>
+        <?php endif; ?>
         <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
 
         <!-- show log out btn if ur logged in -->
@@ -108,8 +123,8 @@ case "admin":
     include('crud/admin.php');
 break;
 
-case "profilepage":
-    include('views/profilePage.php');
+case "userprofile":
+    include('views/userProfile.php');
 break;
 
 case "form":
@@ -356,6 +371,10 @@ case "edituser":
     include('crud/user/editUser.php');
 break;
 
+case "edituserprofile":
+    include('modules/userprofile/editUserProfile.php');
+break;
+
 case "editnews":
     include('crud/news/editNews.php');
 break;
@@ -416,6 +435,10 @@ break;
 
 case "updateuser":
     include('crud/user/updateUser.php');
+break;
+
+case "updateuserprofile":
+    include('modules/userprofile/updateUserProfile.php');
 break;
 
 case "updatenews":

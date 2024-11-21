@@ -22,7 +22,7 @@
         $password = trim($_POST['Pass']);
         
         try {
-            $query = "SELECT UserLoginID, Username, Pass FROM UserLogin WHERE Username = :Username LIMIT 1"; 
+            $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; 
             $stmt = $connection->prepare($query);
             
             // bind the username parameter
@@ -36,9 +36,9 @@
                     // check if the password matches for non-admin users
                     if (password_verify($password, $found_user['Pass'])) {
                         // username/password authenticated
-                        $_SESSION['user_id'] = $found_user['UserID'];
+                        $_SESSION['UserID'] = $found_user['UserID'];
                         $_SESSION['User'] = $found_user['Username'];
-                        redirect_to("index.php?page=admin");
+                        redirect_to("index.php?page=index");
                     } else {
                         // if password is incorrect
                         $message = "Username/password combination incorrect.<br />
@@ -82,12 +82,12 @@
 <form action="" method="post" class="flex flex-col">
     <div class="pb-4">
         <p>Username:</p>
-        <input type="text" name="User" maxlength="30" value="" />
+        <input type="text" name="User" maxlength="30" value="" class="validate" required="" aria-required="true" />
     </div>
     
     <div class="pb-4">
         <p>Password:</p>
-        <input type="password" name="Pass" maxlength="30" value="" />
+        <input type="password" name="Pass" maxlength="30" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="cursor">

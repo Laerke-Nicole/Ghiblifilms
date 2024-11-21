@@ -25,20 +25,14 @@ CREATE TABLE Address (
 -- user 
 CREATE TABLE User (
   UserID INT AUTO_INCREMENT PRIMARY KEY,
+  Username VARCHAR(50) NOT NULL UNIQUE,                        
+  Pass VARCHAR(255) NOT NULL,
   FirstName VARCHAR(255) NOT NULL,
   LastName VARCHAR(255) NOT NULL,
   Email VARCHAR(255) NOT NULL,
   PhoneNumber VARCHAR(255) NOT NULL,
   AddressID INT,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
-) ENGINE=InnoDB;
-
-
--- user login
-CREATE TABLE UserLogin (
-  UserLoginID int NOT NULL AUTO_INCREMENT PRIMARY KEY,  
-  Username VARCHAR(50) NOT NULL UNIQUE,                        
-  Pass VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB;
 
 
@@ -141,7 +135,6 @@ CREATE TABLE Reservation (
   ReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Date` date NOT NULL,
   `Time` varchar(8) NOT NULL,
-  NumberOfSeatsBooked int(1) NOT NULL,
   UserID int NOT NULL,
   MovieID int NOT NULL,
   SeatID int NOT NULL,
@@ -220,9 +213,9 @@ CREATE TABLE SeatReservation (
   SeatID INT NOT NULL,
   UserID INT NOT NULL,
   ReservationStatus ENUM('Reserved', 'Paid') DEFAULT 'Reserved',
-  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingID),
+  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
   FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
-  FOREIGN KEY (UserID) REFERENCES Users(UserID)
+  FOREIGN KEY (UserID) REFERENCES User(UserID)
 ) ENGINE=InnoDB;
 
 -- views
@@ -253,7 +246,7 @@ GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieI
 
 -- user + address view
 CREATE VIEW UserProfileView AS
-SELECT U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
+SELECT U.UserID, U.Username, U.Pass, U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
 FROM User U 
 LEFT JOIN Address A ON U.AddressID = A.AddressID
 LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;

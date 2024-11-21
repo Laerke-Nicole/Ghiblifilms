@@ -162,7 +162,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             // book slots
             echo '<div class="flex flex-col gap-8 w-66">';
                 foreach ($getShowings as $showings) {
-                    echo '<a href="index.php?page=seatreservationdetail&showingsID=' . $showings['ShowingsID'] . '" class="time s-bg p-6 w-full">';
+                    echo '<a href="index.php?page=seatreservationdetail&ShowingsID=' . $showings['ShowingsID'] . '" class="time s-bg p-6 w-full">';
                         echo '<h4 class="primary-color"><strong>' . $showings['ShowingDate'] . ' ' . 'at' . ' ' . $showings['ShowingTime'] . '</strong></h4>';
                         echo '<p class="primary-color">' . $showings['AuditoriumNumber'] . '</p>';
                         echo '<p class="primary-color">' . $showings['ScreenFormat'] . '</p>';

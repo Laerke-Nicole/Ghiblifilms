@@ -15,11 +15,19 @@
 <?php
 if (isset($_POST['submit'])) {
 
-	$username = trim($_POST['user']);
-	$password = trim($_POST['pass']);
+	$username = htmlspecialchars(trim($_POST['Username']));
+	$password = htmlspecialchars(trim($_POST['Pass']));
+    $firstName = htmlspecialchars(trim($_POST['FirstName']));
+    $lastName = htmlspecialchars(trim($_POST['LastName']));
+    $email = htmlspecialchars(trim($_POST['Email']));
+    $phoneNumber = htmlspecialchars(trim($_POST['PhoneNumber']));
+    $streetName = htmlspecialchars(trim($_POST['StreetName']));
+    $streetNumber = htmlspecialchars(trim($_POST['StreetNumber']));
+    $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
+    $country = htmlspecialchars(trim($_POST['Country']));
 
     // check if username already exists
-    $query = "SELECT COUNT(*) FROM UserLogin WHERE Username = :username";
+    $query = "SELECT COUNT(*) FROM User WHERE Username = :username";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
@@ -37,12 +45,30 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
         try {
-            $query = "INSERT INTO UserLogin (username, pass) VALUES (:username, :hashed_password)";
+            // first insert the address
+            $queryAddress = $connection->prepare("INSERT INTO Address (StreetName, StreetNumber, PostalCode, Country) 
+                                            VALUES (:streetName, :streetNumber, :postalCode, :country)");
+            $queryAddress->bindParam(':streetName', $streetName);
+            $queryAddress->bindParam(':streetNumber', $streetNumber);
+            $queryAddress->bindParam(':postalCode', $postalCode);
+            $queryAddress->bindParam(':country', $country);
+            $queryAddress->execute();
+
+            // get the last inserted AddressID
+            $addressID = $connection->lastInsertId();
+
+
+            $query = "INSERT INTO User (Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID) VALUES (:username, :hashed_password, :firstName, :lastName, :email, :phoneNumber, :addressID)";
             $stmt = $connection->prepare($query);
 
             // bind parameters
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':hashed_password', $hashed_password);
+            $stmt->bindParam(':firstName', $firstName);
+            $stmt->bindParam(':lastName', $lastName);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phoneNumber', $phoneNumber);
+            $stmt->bindParam(':addressID', $addressID);
 
             $result = $stmt->execute();
 
@@ -82,12 +108,52 @@ if (!empty($message)) {
 <form action="" method="post" class="flex flex-col">
     <div class="pb-4">
         <p>Username:</p>
-        <input type="text" name="user" maxlength="30" value="" />
+        <input type="text" name="Username" maxlength="30" value="" class="validate" required="" aria-required="true" />
     </div>
     
     <div class="pb-4">
         <p>Password:</p>
-        <input type="password" name="pass" maxlength="30" value="" />
+        <input type="password" name="Pass" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>First name:</p>
+        <input type="text" name="FirstName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Last name:</p>
+        <input type="text" name="LastName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Email:</p>
+        <input type="text" name="Email" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Phone number:</p>
+        <input type="text" name="PhoneNumber" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Street name:</p>
+        <input type="text" name="StreetName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Street number:</p>
+        <input type="number" name="StreetNumber" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Postal code:</p>
+        <input type="text" name="PostalCode" maxlength="30" value="" class="validate" required="" aria-required="true" />
+    </div>
+
+    <div class="pb-4">
+        <p>Country:</p>
+        <input type="text" name="Country" maxlength="30" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="cursor">

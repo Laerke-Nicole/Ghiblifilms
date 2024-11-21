@@ -35,9 +35,9 @@ if (isset($_POST['submit'])) {
     
     $updateAddress->execute();
 
-    header("Location: ../../index.php?page=admin&status=updated&ID=$userID");
+    header("Location: ../../index.php?page=userprofile&status=updated&UserID=$userID");
     
 } else {
-    header("Location: ../../index.php?page=admin&status=0");
+    header("Location: ../../index.php?page=userprofile&status=0");
 }
 ?>

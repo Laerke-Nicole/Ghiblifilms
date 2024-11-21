@@ -40,6 +40,7 @@ $getUsers = $queryUser->fetchAll();
                 <thead>
                 <tr class="secondary-color">
                     <th>UserID</th>
+                    <th>Username</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone number</th>
@@ -62,6 +63,7 @@ $getUsers = $queryUser->fetchAll();
                 foreach ($getUsers as $getUser) {
                     echo "<tr>";
                     echo "<td>". $getUser['UserID']."</td>";
+                    echo "<td>". $getUser['Username']."</td>";
                     echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
                     echo "<td>". $getUser['Email']."</td>";
                     echo "<td>". $getUser['PhoneNumber']."</td>";
@@ -88,6 +90,13 @@ $getUsers = $queryUser->fetchAll();
         <h3>Add new user</h3>
 
         <form class="col s12" name="contact" method="post" action="crud/user/addUser.php">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true">
+                    <label for="Username">Username</label>
+                </div>
+            </div> 
+
             <div class="row">
                 <div class="input-field col s6">
                     <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">
@@ -120,7 +129,7 @@ $getUsers = $queryUser->fetchAll();
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="StreetNumber" type="text" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="StreetNumber" type="number" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>

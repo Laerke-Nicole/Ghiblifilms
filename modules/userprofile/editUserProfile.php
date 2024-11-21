@@ -31,7 +31,7 @@ $getUsers = $query->fetchAll();
 
 <div class="container">
         <h3>Editing user "<?php echo htmlspecialchars($getUsers[0]['Username']); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/user/updateUser.php">
+        <form class="col s12" name="contact" method="post" action="modules/userprofile/updateUserProfile.php">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars($getUsers[0][1]); ?>" class="validate" required="" aria-required="true">
@@ -88,8 +88,7 @@ $getUsers = $query->fetchAll();
             
             <input type="hidden" name="UserID" value="<?php echo htmlspecialchars($userID); ?>">
 
-            <button class="btn waves-effect waves-light" type="submit" name="submit">Update
-            </button>
+            <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
         </form>
     </div>
 </div>
@@ -97,6 +96,6 @@ $getUsers = $query->fetchAll();
 </html>
 <?php 
 } else {    
-    header("Location: ../index.php?page=admin&status=0");
+    header("Location: ../index.php?page=userprofile&status=0");
 }
 ?>

@@ -3,6 +3,7 @@ require_once "../../includes/dbcon.php";
 
 if (isset($_POST['submit'])) {
     // Trim and htmlspecialchars
+    $username = htmlspecialchars(trim($_POST['Username']));
     $firstName = htmlspecialchars(trim($_POST['FirstName']));
     $lastName = htmlspecialchars(trim($_POST['LastName']));
     $email = htmlspecialchars(trim($_POST['Email']));
@@ -28,9 +29,10 @@ if (isset($_POST['submit'])) {
     
 
     // Now insert the user
-    $queryUser = $dbCon->prepare("INSERT INTO User (FirstName, LastName, Email, PhoneNumber, AddressID) 
-    VALUES (:firstName, :lastName, :email, :phoneNumber, :addressID)");
+    $queryUser = $dbCon->prepare("INSERT INTO User (Username, FirstName, LastName, Email, PhoneNumber, AddressID) 
+    VALUES (:username, :firstName, :lastName, :email, :phoneNumber, :addressID)");
 
+    $queryUser->bindParam(':username', $username);
     $queryUser->bindParam(':firstName', $firstName);
     $queryUser->bindParam(':lastName', $lastName);
     $queryUser->bindParam(':email', $email);
