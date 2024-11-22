@@ -52,9 +52,11 @@ if (isset($_POST['submit'])) {
             }
         } else {
             echo "Invalid file type or size too large.";
+            echo '<a href="../../index.php?page=admin">Go back</a>';
         }
     } else {
         echo "No file was uploaded.";
+        echo '<a href="../../index.php?page=admin">Go back</a>';
     }
 
 } else {

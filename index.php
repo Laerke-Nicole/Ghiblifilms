@@ -1,5 +1,9 @@
-<?php require_once("includes/session.php"); ?>
-<?php require_once ("includes/dbcon.php"); ?>
+<?php 
+require_once("includes/session.php");
+require_once ("includes/dbcon.php"); 
+require_once("includes/functions.php");
+?>
+
 <!-- cookies -->
 <?php 
 // create cookie
@@ -51,7 +55,7 @@ if (isset($_SESSION['UserID'])) {
     // get the logged in users id
     $userID = $_SESSION['UserID'];
 } else {
-    $userID = null; // there are no users logged in
+    $userID = null;
 }
 
 
@@ -133,6 +137,14 @@ break;
 
 case "seatreservationdetail":
     include('views/seatReservationDetail.php');
+break;
+
+case "seatreservationform":
+    include('modules/seatreservation/form.php');
+break;
+
+case "invoicedetail":
+    include('views/invoiceDetail.php');
 break;
 
 

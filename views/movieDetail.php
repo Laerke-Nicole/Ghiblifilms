@@ -31,7 +31,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                 echo '<div class="pt-20 pr-4 w-half">';
                     // title and description 
                     echo '<div class="pb-12">';
-                        echo '<h1 class="pb-4">Ponyo</h1>';
+                        echo '<h1 class="pb-4">' . $movieItem['Name'] . '</h1>';
                         echo '<p class="pb-8">' . $movieItem['Description'] . '</p>';
                         echo '<a href="#showings"><button class="btn">See times</button></a>';
                     echo '</div>';
@@ -82,7 +82,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                                                     INNER JOIN MovieVoiceActor 
                                                     ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID 
                                                     WHERE MovieVoiceActor.MovieID = ?
-                                                    ");
+                                                    ORDER BY FirstName");
 
                     $voiceActorQuery->execute([$movieItem['MovieID']]);
                     $voiceActor = $voiceActorQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -108,12 +108,12 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
                 // inner join to get the role in production
                 $productionQuery = $dbCon->prepare("
-                    SELECT RoleInProduction.NameOfRole, Production.FirstName, Production.LastName
+                    SELECT RoleInProduction.RoleInProductionID, RoleInProduction.NameOfRole, Production.FirstName, Production.LastName
                     FROM Production
                     INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID
                     INNER JOIN RoleInProduction ON Production.RoleInProductionID = RoleInProduction.RoleInProductionID
                     WHERE MovieProduction.MovieID = ?
-                ");
+                    ORDER BY RoleInProduction.RoleInProductionID");
 
                 $productionQuery->execute([$movieItem['MovieID']]);
                 $production = $productionQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -139,19 +139,20 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
         
         // display showings
-        echo '<div class="flex gap-8 p-4 pb-16 ten-percent">';
+        echo '<div class="flex gap-8 p-4 pb-16 ten-percent" id="showings">';
             // left side with address
             echo '<div class="w-33">';
                 echo '<h3>CHOOSE WHEN YOU WOULD LIKE TO WATCH THE MOVIE</h3>';
             echo '</div>';
 
             // right side with showings
-            // Get showings
+            // get showings sorted by date and time
             $queryShowings = $dbCon->prepare("SELECT s.*, a.AuditoriumNumber, sf.ScreenFormat
                                                 FROM Showings s
                                                 JOIN Auditorium a ON s.AuditoriumID = a.AuditoriumID
                                                 JOIN ScreenFormat sf ON s.ScreenFormatID = sf.ScreenFormatID
-                                                WHERE s.MovieID = :movieID");
+                                                WHERE s.MovieID = :movieID
+                                                ORDER BY s.ShowingDate, s.ShowingTime");
 
             $queryShowings->bindParam(':movieID', $movieID);
 

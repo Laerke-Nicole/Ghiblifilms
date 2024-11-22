@@ -8,6 +8,10 @@
 <?php
 require_once("includes/dbcon.php");
 require_once("includes/session.php"); 
+require_once("includes/functions.php");
+include("modules/seatreservation/form.php"); 
+
+confirm_logged_in();
 
 // ShowingsID in URL 
 if (!isset($_GET['ShowingsID'])) {
@@ -29,8 +33,10 @@ $queryReservedSeats->bindParam(':showingsID', $showingsID);
 $queryReservedSeats->execute();
 $reservedSeats = $queryReservedSeats->fetchAll();
 
-// display reserved seats
+// display reserved seats in a line
 $reservedSeatList = implode(", ", array_column($reservedSeats, 'SeatNumber'));
+
+
 
 // fetch available seats for the showing
 $querySeats = $dbCon->prepare("
@@ -38,13 +44,14 @@ $querySeats = $dbCon->prepare("
     FROM Seat s
     LEFT JOIN SeatReservation sr ON s.SeatID = sr.SeatID AND sr.ShowingsID = :showingsID
     WHERE sr.SeatID IS NULL
-    ORDER BY s.SeatNumber
+    ORDER BY s.SeatNumber 
 ");
+
 $querySeats->bindParam(':showingsID', $showingsID);
 $querySeats->execute();
 $availableSeats = $querySeats->fetchAll();
-
 ?>
+
 
 <div class="ten-percent">
     <div class="grid-cols-2">
@@ -52,7 +59,7 @@ $availableSeats = $querySeats->fetchAll();
             <h1>Choose seats</h1>
             
             <!-- display reserved seats -->
-            <div class="flex pb-2">
+            <div class="flex pb-4">
                 <p>Taken seats:</p>
                 <p><?php echo $reservedSeatList; ?></p>
             </div>
@@ -60,8 +67,8 @@ $availableSeats = $querySeats->fetchAll();
             <!-- seat selection form -->
             <form method="POST">
                 <div class="pb-4">
-                    <label for="seats">Select Seats (Up to 5):</label>
-                    <select name="seats[]" id="seats" multiple size="5">
+                    <label for="Seats">Select seats, up to 5:</label>
+                    <select name="Seats[]" id="Seats" multiple size="5">
                         <?php
                         foreach ($availableSeats as $seat) {
                             echo '<option value="' . $seat['SeatID'] . '">' . $seat['SeatNumber'] . '</option>';
@@ -70,6 +77,7 @@ $availableSeats = $querySeats->fetchAll();
                     </select>
                 </div>
 
+                <input type="hidden" name="ShowingsID" value="<?php echo htmlspecialchars($showingsID); ?>">
                 <button type="submit" class="btn">Choose seats</button>
             </form>
         </div>
@@ -79,39 +87,3 @@ $availableSeats = $querySeats->fetchAll();
         </div>
     </div>
 </div>
-
-<?php
-// Process the reservation when the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['seats'])) {
-    $selectedSeats = $_POST['seats'];
-
-    // Validate that no more than 5 seats are selected
-    if (count($selectedSeats) > 5) {
-        echo "<p style='color: red;'>You can only select up to 5 seats.</p>";
-    } else {
-        // Save the selected seats in the session
-        $_SESSION['selected_seats'] = $selectedSeats;
-
-        // Check if the user is logged in
-        if (!isset($_SESSION['userID'])) {
-            echo "<p style='color: red;'>Please log in to reserve seats.</p>";
-        } else {
-            // Insert reservation records for each selected seat
-            foreach ($selectedSeats as $seatID) {
-                $queryReserveSeat = $dbCon->prepare("
-                    INSERT INTO SeatReservation (ShowingsID, SeatID, UserID, ReservationStatus)
-                    VALUES (:showingsID, :seatID, :userID, 'Reserved')
-                ");
-                $queryReserveSeat->bindParam(':showingsID', $showingsID);
-                $queryReserveSeat->bindParam(':seatID', $seatID);
-                $queryReserveSeat->bindParam(':userID', $_SESSION['userID']);
-                $queryReserveSeat->execute();
-            }
-
-            // Redirect to a confirmation or payment page
-            header('Location: confirmation.php');
-            exit();
-        }
-    }
-}
-?>

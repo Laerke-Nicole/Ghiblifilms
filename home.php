@@ -117,8 +117,7 @@ if ($dailyPremieres) {
                 echo '</div>';
             }
         ?>
-    </div>
-            
+    </div>    
 </section>
 
 
@@ -160,6 +159,7 @@ if ($dailyPremieres) {
         </div>
     </div>
 </section>
+
 
 <!-- opening hours -->
 <section>

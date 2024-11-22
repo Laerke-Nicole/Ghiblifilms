@@ -100,7 +100,7 @@ CREATE TABLE Movie (
 ) ENGINE=InnoDB;
 
 
--- movie genres
+-- movie genres junction table
 CREATE TABLE MovieGenre (
   MovieID INT NOT NULL,
   GenreID INT NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE MovieGenre (
 ) ENGINE=InnoDB;
 
 
--- movie production actor
+-- movie production actor junction table
 CREATE TABLE MovieProduction (
   MovieID INT NOT NULL,
   ProductionID INT NOT NULL,
@@ -120,29 +120,13 @@ CREATE TABLE MovieProduction (
 ) ENGINE=InnoDB;
 
 
--- movie voice actor
+-- movie voice actor junction table
 CREATE TABLE MovieVoiceActor (
   MovieID INT NOT NULL,
   VoiceActorID INT NOT NULL,
   CONSTRAINT PK_MovieVoiceActor PRIMARY KEY (MovieID, VoiceActorID),
   FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
   FOREIGN KEY (VoiceActorID) REFERENCES VoiceActor(VoiceActorID)
-) ENGINE=InnoDB;
-
-
--- reservation
-CREATE TABLE Reservation (
-  ReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Date` date NOT NULL,
-  `Time` varchar(8) NOT NULL,
-  UserID int NOT NULL,
-  MovieID int NOT NULL,
-  SeatID int NOT NULL,
-  AuditoriumID int NOT NULL,
-  FOREIGN KEY (UserID) REFERENCES User(UserID),
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
-  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID)
 ) ENGINE=InnoDB;
 
 
@@ -175,13 +159,6 @@ CREATE TABLE OpeningHour (
 ) ENGINE=InnoDB;
 
 
--- payment
-CREATE TABLE Payment (
-  PaymentID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  PaymentType varchar(9) NOT NULL
-) ENGINE=InnoDB;
-
-
 -- premiere date
 CREATE TABLE Premiere (
   PremiereID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -205,18 +182,42 @@ CREATE TABLE Showings (
 ) ENGINE=InnoDB;
 
 
+-- reservation
+CREATE TABLE Reservation (
+  ReservationID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  UserID int NOT NULL,
+  ShowingsID int NOT NULL,
+  ReservationDate DATETIME NOT NULL DEFAULT NOW(),
+  PaymentStatus ENUM('Pending', 'Paid') DEFAULT 'Pending',
+  FOREIGN KEY (UserID) REFERENCES User(UserID),
+  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID)
+) ENGINE=InnoDB;
+
 
 -- seat reservation
 CREATE TABLE SeatReservation (
-  ReservationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  SeatReservationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ReservationID INT NULL,
   ShowingsID INT NOT NULL,
   SeatID INT NOT NULL,
-  UserID INT NOT NULL,
   ReservationStatus ENUM('Reserved', 'Paid') DEFAULT 'Reserved',
+  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE,
   FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
-  FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
-  FOREIGN KEY (UserID) REFERENCES User(UserID)
+  FOREIGN KEY (SeatID) REFERENCES Seat(SeatID)
 ) ENGINE=InnoDB;
+
+
+-- payment
+CREATE TABLE Payment (
+  PaymentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ReservationID INT NOT NULL,
+  PaymentType ENUM('CreditCard', 'Cash', 'Test') NOT NULL,
+  PaymentDate DATETIME NOT NULL DEFAULT NOW(),
+  Amount DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)
+) ENGINE=InnoDB;
+
+
 
 -- views
 -- daily showings
@@ -246,7 +247,7 @@ GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieI
 
 -- user + address view
 CREATE VIEW UserProfileView AS
-SELECT U.UserID, U.Username, U.Pass, U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
+SELECT U.UserID, U.Username, U.FirstName, U.LastName, U.Email, U.PhoneNumber, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P.City
 FROM User U 
 LEFT JOIN Address A ON U.AddressID = A.AddressID
 LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
@@ -258,6 +259,24 @@ SELECT C.NameOfCompany, A.StreetName, A.StreetNumber, A.Country, A.PostalCode, P
 FROM CompanyInformation C 
 LEFT JOIN Address A ON C.AddressID = A.AddressID
 LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
+
+
+-- invoice view
+-- CREATE VIEW InvoiceView AS
+
+
+
+
+
+-- triggers
+DELIMITER //
+CREATE TRIGGER SetReservationStatusAfterInsert
+BEFORE INSERT ON SeatReservation
+FOR EACH ROW
+BEGIN
+  SET NEW.ReservationStatus = 'Reserved';
+END//
+DELIMITER ;
 
 
 -- static data to insert

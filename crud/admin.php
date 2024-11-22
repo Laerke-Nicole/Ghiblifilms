@@ -1,6 +1,10 @@
-<?php require_once ("includes/dbcon.php");?>
-<?php require_once("includes/session.php"); ?>
-<?php //confirm_logged_in(); ?>
+<?php 
+require_once ("includes/dbcon.php");
+require_once("includes/session.php"); 
+require_once("includes/functions.php");
+//confirm_logged_in(); 
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
