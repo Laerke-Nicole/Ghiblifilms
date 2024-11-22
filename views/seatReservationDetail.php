@@ -64,6 +64,10 @@ $availableSeats = $querySeats->fetchAll();
                 <p><?php echo $reservedSeatList; ?></p>
             </div>
 
+            <div>
+                <p>Price per seat: 12 euros</p>
+            </div>
+
             <!-- seat selection form -->
             <form method="POST">
                 <div class="pb-4">

@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Seats'])) {
+
     $selectedSeats = $_POST['Seats'];
     $showingsID = $_POST['ShowingsID'];
 

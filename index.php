@@ -70,11 +70,20 @@ if (isset($_SESSION['UserID'])) {
 
     <ul class="flex gap-6">
         
-        <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
+        <!-- only show log in btn if ur not logged in -->
+        <?php if (!logged_in()) { ?>
+            <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
+        <?php } ?>
+
+        <!-- only show create new user btn if ur not logged in -->
+        <?php if (!logged_in()) { ?>
         <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
+        <?php } ?>
+
         <?php if ($userID): ?>
             <li><a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color">Profile Page</a></li>
         <?php endif; ?>
+
         <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
 
         <!-- show log out btn if ur logged in -->

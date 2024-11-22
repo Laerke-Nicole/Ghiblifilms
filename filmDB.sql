@@ -261,9 +261,33 @@ LEFT JOIN Address A ON C.AddressID = A.AddressID
 LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
 
 
--- invoice view
--- CREATE VIEW InvoiceView AS
-
+-- reservation details view
+CREATE VIEW ReservationDetails AS
+SELECT 
+r.ReservationID,
+u.UserID,
+u.FirstName,
+u.LastName, 
+u.Email,
+s.ShowingDate,
+s.ShowingTime,
+m.Name AS MovieName,
+GROUP_CONCAT(seat.SeatNumber ORDER BY seat.SeatNumber) AS SeatNumbers,
+COUNT(sr.SeatID) AS TotalSeats
+FROM 
+Reservation r
+JOIN 
+User u ON r.UserID = u.UserID
+JOIN 
+Showings s ON r.ShowingsID = s.ShowingsID
+JOIN 
+Movie m ON s.MovieID = m.MovieID
+JOIN 
+SeatReservation sr ON r.ReservationID = sr.ReservationID
+JOIN 
+Seat seat ON sr.SeatID = seat.SeatID
+GROUP BY 
+r.ReservationID;
 
 
 

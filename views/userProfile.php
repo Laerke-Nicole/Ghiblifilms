@@ -95,10 +95,7 @@ $getUserReservations = $queryUserReservations->fetchAll();
         <tr class="secondary-color">
             <th>Date</th>
             <th>Time</th>
-            <th>NumberOfSeatsBooked</th>
             <th>MovieID</th>
-            <th>SeatID</th>
-            <th>AuditoriumID</th>
         </tr>
         </thead>
 
@@ -109,8 +106,6 @@ $getUserReservations = $queryUserReservations->fetchAll();
             echo "<td>" . htmlspecialchars($reservation['Date']) . "</td>";
             echo "<td>" . htmlspecialchars($reservation['Time']) . "</td>";
             echo "<td>" . htmlspecialchars($reservation['MovieID']) . "</td>";
-            echo "<td>" . htmlspecialchars($reservation['SeatID']) . "</td>";
-            echo "<td>" . htmlspecialchars($reservation['AuditoriumID']) . "</td>";
             echo "</tr>";
         }
         ?>
