@@ -33,9 +33,9 @@ if ($dailyPremieres) {
         echo '<div class="items">';
             foreach ($dailyPremieres as $premiere) { 
                 echo '<div>';
-                    echo "<img src='upload/" . $premiere['MovieImg'] . "' alt='Image of movie'>";
-                    echo '<h5 class="weight-400 pb-2">' . $premiere['Name'] . '</h5>';
-                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . $premiere['MovieID'] . '\'">Get tickets</button>';
+                    echo "<img src='upload/" . htmlspecialchars($premiere['MovieImg']) . "' alt='Image of movie'>";
+                    echo '<h5 class="weight-400 pb-2">' . htmlspecialchars($premiere['Name']) . '</h5>';
+                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars($premiere['MovieID']) . '\'">Get tickets</button>';
                 echo '</div>';
             }
         echo '</div>';
@@ -60,9 +60,9 @@ if ($dailyPremieres) {
 
             foreach ($getNews as $news) {
                 echo '<div>';
-                    echo "<img src='upload/" . $news['NewsImg'] . "' alt='Image of news'>";
-                    echo '<h5 class="weight-400 pb-2">' . $news['Headline'] . '</h5>';
-                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=newsdetail&ID=' . $news['NewsID'] . '\'">See more</button>';
+                    echo "<img src='upload/" . htmlspecialchars($news['NewsImg']) . "' alt='Image of news'>";
+                    echo '<h5 class="weight-400 pb-2">' . htmlspecialchars($news['Headline']) . '</h5>';
+                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=newsdetail&ID=' . htmlspecialchars($news['NewsID']) . '\'">See more</button>';
                 echo '</div>';
             }
         ?>
@@ -87,9 +87,9 @@ if ($dailyPremieres) {
 
         foreach ($getMovies as $getMovie) { 
             echo '<div>';
-            echo "<img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie'>";
-            echo '<h5 class="weight-400 pb-2">' . $getMovie['Name'] . '</h5>';
-            echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . $getMovie['MovieID'] . '\'">Get tickets</button>';
+            echo "<img src='upload/" . htmlspecialchars($getMovie['MovieImg']) . "' alt='Image of movie'>";
+            echo '<h5 class="weight-400 pb-2">' . htmlspecialchars($getMovie['Name']) . '</h5>';
+            echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars($getMovie['MovieID']) . '\'">Get tickets</button>';
             echo '</div>';
         }
         ?>
@@ -109,11 +109,11 @@ if ($dailyPremieres) {
 
             foreach ($getCompanyInformation as $companyInfo) {
                 echo '<div class="flex-1 max-w-xs">';
-                    echo '<h2 class="primary-color text-6xl">About<br>' . $companyInfo['NameOfCompany'] . '</h2>';
+                    echo '<h2 class="primary-color text-6xl">About<br>' . htmlspecialchars($companyInfo['NameOfCompany']) . '</h2>';
                 echo '</div>';
 
                 echo '<div class="flex-1 max-w-lg">';
-                    echo '<p class="primary-color primary-font text-lg">' . $companyInfo['CompanyDescription'] . '</p>';
+                    echo '<p class="primary-color primary-font text-lg">' . htmlspecialchars($companyInfo['CompanyDescription']) . '</p>';
                 echo '</div>';
             }
         ?>
@@ -130,7 +130,7 @@ if ($dailyPremieres) {
         <!-- display contact form -->
         <?php require 'modules/contactform/form.php' ?>
         
-        
+
         <!-- contact info -->
         <div class="w-half">
             <div class="box">
@@ -147,11 +147,11 @@ if ($dailyPremieres) {
                         foreach ($getCompanyInformation as $companyInfo) {
                             echo '<div>';
                                 echo '<h4 class="text-sm">Email us</h4>';
-                                echo '<p>' . $companyInfo['CompanyEmail'] . '</p>';
+                                echo '<p>' . htmlspecialchars($companyInfo['CompanyEmail']) . '</p>';
                             echo '</div>';
                             echo '<div>';
                                 echo '<h4 class="text-sm">Call us</h4>';
-                                echo '<p>' . $companyInfo['CompanyPhoneNumber'] . '</p>';
+                                echo '<p>' . htmlspecialchars($companyInfo['CompanyPhoneNumber']) . '</p>';
                             echo '</div>';
                         }
                     ?>
@@ -173,8 +173,8 @@ if ($dailyPremieres) {
             echo '<h5>Opening hours:</h5>';
             foreach ($getOpeningHour as $openingHour) {
                 echo '<div>';
-                    echo '<p class="text-sm">' . $openingHour['Day'] . '</p>';
-                    echo '<p class="pb-4 text-sm">' . $openingHour['Time'] . '</p>';
+                    echo '<p class="text-sm">' . htmlspecialchars($openingHour['Day']) . '</p>';
+                    echo '<p class="pb-4 text-sm">' . htmlspecialchars($openingHour['Time']) . '</p>';
                 echo '</div>';
             }
         ?>
@@ -197,16 +197,16 @@ $getCompanyAddressView = $queryCompanyAddressView->fetchAll();
     
     <?php    
     foreach ($getCompanyAddressView as $companyAddress) {
-        echo "<h5>Find ". $companyAddress['NameOfCompany']." address:</h5>";
+        echo "<h5>Find ". htmlspecialchars($companyAddress['NameOfCompany']) . " address:</h5>";
         echo "<div>";
-            echo "<p>". $companyAddress['StreetName']."</p>";
-            echo "<p>". $companyAddress['StreetNumber']."</p>";
+            echo "<p>". htmlspecialchars($companyAddress['StreetName']) . "</p>";
+            echo "<p>". htmlspecialchars($companyAddress['StreetNumber']) . "</p>";
         echo "</div>";
 
         echo "<div>";
-            echo "<p>". $companyAddress['Country']."</p>";
-            echo "<p>". $companyAddress['PostalCode']."</p>";
-            echo "<p>". $companyAddress['City']."</p>";
+            echo "<p>". htmlspecialchars($companyAddress['Country']) . "</p>";
+            echo "<p>". htmlspecialchars($companyAddress['PostalCode']) . "</p>";
+            echo "<p>". htmlspecialchars($companyAddress['City']) . "</p>";
         echo "</div>";
     }
     ?>
