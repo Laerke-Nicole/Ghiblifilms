@@ -33,6 +33,7 @@ if (!empty($getReservationDetails)) {
 }
 ?>
 
+
 <div class="row ten-percent grid-cols-2">
     <div>
         <h2>Order overview</h2>
@@ -49,6 +50,9 @@ if (!empty($getReservationDetails)) {
             <p>Time: <?php echo htmlspecialchars($Reservation['ShowingTime']); ?></p>
             <p>Seats chosen: <?php echo htmlspecialchars($Reservation['SeatNumbers']); ?></p>
             <p>Total seats chosen: <?php echo htmlspecialchars($Reservation['TotalSeats']); ?></p>
+
+            <br/>
+            <img src="img/seats.png" alt="Seating chart" height="200">
         <?php else: ?>
             <p>No reservations found.</p>
         <?php endif; ?>
@@ -60,6 +64,7 @@ if (!empty($getReservationDetails)) {
         <!-- Display total price -->
         <p><strong>Total Price: €<?php echo number_format($totalPrice, 2); ?></strong></p>
 
+        <br/>
         <br/>
         <p>Please fill in your payment details</p>
         <form action="payment.php" method="post">
@@ -76,7 +81,14 @@ if (!empty($getReservationDetails)) {
             <input type="text" id="CardHolder" name="CardHolder" required>
             <br>
             <input type="hidden" name="Amount" value="<?php echo $totalPrice; ?>">
+
+            <br/>
+            
+            <input type="hidden" name="ReservationID" value="<?php echo $Reservation['ReservationID']; ?>">
             <button type="submit" class="btn">Pay</button>
         </form>
     </div>
+
+    <br/>
+    <br/>
 </div>

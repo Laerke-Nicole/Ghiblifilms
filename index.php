@@ -92,21 +92,6 @@ if (isset($_SESSION['UserID'])) {
                 <input type="submit" value="Log Out" class="btn">
             </form>
         <?php } ?>
-
-
-        <!-- <?php
-        $_SESSION['User'] = 'admin'; 
-        $_SESSION['Pass'] = '123456'; 
-
-        if (isset($_SESSION['User']) && $_SESSION['User'] === "admin" && isset($_SESSION['Pass']) && $_SESSION['Pass'] === "123456") {
-            ?>
-            <form action="crud/admin.php" method="post" style="display:inline;">
-                <input type="submit" value="Admin page" class="btn">
-            </form>
-        <?php
-        }
-        ?> -->
-
     </ul>
 </nav>
 

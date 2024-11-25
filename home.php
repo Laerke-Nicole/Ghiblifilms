@@ -130,6 +130,7 @@ if ($dailyPremieres) {
         <!-- display contact form -->
         <?php require 'modules/contactform/form.php' ?>
         
+        
         <!-- contact info -->
         <div class="w-half">
             <div class="box">

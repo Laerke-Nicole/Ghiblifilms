@@ -1,7 +1,6 @@
 <?php require_once("includes/functions.php"); ?>
 <?php
 		// Four steps to closing a session
-		// (i.e. logging out)
 
 		// 1. Find the session
 		session_start();
