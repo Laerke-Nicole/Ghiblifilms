@@ -39,17 +39,17 @@ if (!empty($getReservationDetails)) {
         <h2>Order overview</h2>
         <?php if (!empty($Reservation)): ?>
             <p><strong>Your details:</strong></p>
-            <p><?php echo htmlspecialchars($Reservation['FirstName']) . " " . htmlspecialchars($Reservation['LastName']); ?></p>
-            <p><?php echo htmlspecialchars($Reservation['Email']); ?></p>
+            <p><?php echo htmlspecialchars(trim($Reservation['FirstName'])) . " " . htmlspecialchars(trim($Reservation['LastName'])); ?></p>
+            <p><?php echo htmlspecialchars(trim($Reservation['Email'])); ?></p>
 
             <br><br>
 
             <p><strong>Booking for:</strong></p>
-            <p><?php echo htmlspecialchars($Reservation['MovieName']); ?></p>
-            <p>Date: <?php echo htmlspecialchars($Reservation['ShowingDate']); ?></p>
-            <p>Time: <?php echo htmlspecialchars($Reservation['ShowingTime']); ?></p>
-            <p>Seats chosen: <?php echo htmlspecialchars($Reservation['SeatNumbers']); ?></p>
-            <p>Total seats chosen: <?php echo htmlspecialchars($Reservation['TotalSeats']); ?></p>
+            <p><?php echo htmlspecialchars(trim($Reservation['MovieName'])); ?></p>
+            <p>Date: <?php echo htmlspecialchars(trim($Reservation['ShowingDate'])); ?></p>
+            <p>Time: <?php echo htmlspecialchars(trim($Reservation['ShowingTime'])); ?></p>
+            <p>Seats chosen: <?php echo htmlspecialchars(trim($Reservation['SeatNumbers'])); ?></p>
+            <p>Total seats chosen: <?php echo htmlspecialchars(trim($Reservation['TotalSeats'])); ?></p>
 
             <br/>
             <img src="img/seats.png" alt="Seating chart" height="200">

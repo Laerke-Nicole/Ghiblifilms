@@ -15,7 +15,7 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$userID = htmlspecialchars($_GET['ID']);
+$userID = htmlspecialchars(trim($_GET['ID']);
 $dbCon = dbCon($user, $pass);
 
 $query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
@@ -30,63 +30,63 @@ $getUsers = $query->fetchAll();
 <body>
 
 <div class="container">
-        <h3>Editing user "<?php echo htmlspecialchars($getUsers[0]['Username']); ?>"</h3>
+        <h3>Editing user "<?php echo htmlspecialchars(trim($getUsers[0]['Username'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="modules/userprofile/updateUserProfile.php">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars($getUsers[0][1]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][1])); ?>" class="validate" required="" aria-required="true">
                     <label for="Username">Username</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars($getUsers[0][3]); ?>" class="validate" required="" aria-required="true">
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][3])); ?>" class="validate" required="" aria-required="true">
                     <label for="FirstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars($getUsers[0][4]); ?>" class="validate" required="" aria-required="true">
+                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][4])); ?>" class="validate" required="" aria-required="true">
                     <label for="LastName">Last Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars($getUsers[0][5]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars(trim($getUsers[0][5])); ?>" class="validate" required="" aria-required="true">
                     <label for="Email">E-Mail</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars($getUsers[0][6]); ?>" class="validate" required="" aria-required="true">
+                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars(trim($getUsers[0][6])); ?>" class="validate" required="" aria-required="true">
                     <label for="PhoneNumber">Phone Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars($getUsers[0][8]); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars($getUsers[0][7]); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][7])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][10]); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][10])); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars($getUsers[0][11]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][11])); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>
             
-            <input type="hidden" name="UserID" value="<?php echo htmlspecialchars($userID); ?>">
+            <input type="hidden" name="UserID" value="<?php echo htmlspecialchars(trim($userID)); ?>">
 
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
         </form>

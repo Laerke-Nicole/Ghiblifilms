@@ -24,15 +24,15 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             echo '<div class="half">';
                 // img of movie 
                 echo '<div class="h-full-vh">';
-                    echo '<img src="upload/' . $movieItem['MovieImg'] . '" alt="Image of movie" class="h-full-vh pl-12">';
+                    echo '<img src="upload/' . htmlspecialchars(trim($movieItem['MovieImg'])) . '" alt="Image of movie" class="h-full-vh pl-12">';
                 echo '</div>';
         
                 // info 
                 echo '<div class="pt-20 pr-4 w-half">';
                     // title and description 
                     echo '<div class="pb-12">';
-                        echo '<h1 class="pb-4">' . $movieItem['Name'] . '</h1>';
-                        echo '<p class="pb-8">' . $movieItem['Description'] . '</p>';
+                        echo '<h1 class="pb-4">' . htmlspecialchars(trim($movieItem['Name'])) . '</h1>';
+                        echo '<p class="pb-8">' . htmlspecialchars(trim($movieItem['Description'])) . '</p>';
                         echo '<a href="#showings"><button class="btn">See times</button></a>';
                     echo '</div>';
                    
@@ -41,13 +41,13 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                         // duration
                         echo '<div>';
                             echo '<h4 class="text-sm">Duration</h4>';
-                            echo '<p>' . $movieItem['Duration'] . '</p>';
+                            echo '<p>' . htmlspecialchars(trim($movieItem['Duration'])) . '</p>';
                         echo '</div>';
         
                         // release date 
                         echo '<div>';
                             echo '<h4 class="text-sm">Release year</h4>';
-                            echo '<p>' . $movieItem['ReleaseYear'] . '</p>';
+                            echo '<p>' . htmlspecialchars(trim($movieItem['ReleaseYear'])) . '</p>';
                         echo '</div>';
         
                         // genre 
@@ -62,7 +62,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
                             $genreQuery->execute([$movieItem['MovieID']]);
                             $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
-                            echo "<p>" . implode(", ", $genres) . "</p>";
+                            echo "<p>" . implode(", ", htmlspecialchars(trim($genres))) . "</p>";
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';
@@ -90,7 +90,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                     echo '<div class="flex flex-col w-half">';
                         // loop with voice actors
                         foreach ($voiceActor as $voiceActor) {
-                            echo '<p class="primary-font secondary-color text-lg">' . $voiceActor['FirstName'] . ' ' . $voiceActor['LastName'] . '</p>';
+                            echo '<p class="primary-font secondary-color text-lg">' . htmlspecialchars(trim($voiceActor['FirstName'])) . ' ' . htmlspecialchars(trim($voiceActor['LastName'])) . '</p>';
                         }
                     echo '</div>'; 
             echo '</div>';
@@ -122,12 +122,12 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                     echo '<div class="flex items-center justify-between gap-6 pb-2">'; 
                         // role
                         echo '<div class="flex-shrink-0 w-33 text-right">';
-                            echo '<p class="primary-font secondary-color text-lg">' . $prod['NameOfRole'] . '</p>';
+                            echo '<p class="primary-font secondary-color text-lg">' . htmlspecialchars(trim($prod['NameOfRole'])) . '</p>';
                         echo '</div>';
                         
                         // first and last name
                         echo '<div class="flex-1">';
-                            echo '<p class="secondary-color text-lg">' . $prod['FirstName'] . ' ' . $prod['LastName'] . '</p>';
+                            echo '<p class="secondary-color text-lg">' . htmlspecialchars(trim($prod['FirstName'])) . ' ' . htmlspecialchars(trim($prod['LastName'])) . '</p>';
                         echo '</div>';
                     echo '</div>';
                 }
@@ -163,10 +163,10 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             // book slots
             echo '<div class="flex flex-col gap-8 w-66">';
                 foreach ($getShowings as $showings) {
-                    echo '<a href="index.php?page=seatreservationdetail&ShowingsID=' . $showings['ShowingsID'] . '" class="time s-bg p-6 w-full">';
-                        echo '<h4 class="primary-color"><strong>' . $showings['ShowingDate'] . ' ' . 'at' . ' ' . $showings['ShowingTime'] . '</strong></h4>';
-                        echo '<p class="primary-color">' . $showings['AuditoriumNumber'] . '</p>';
-                        echo '<p class="primary-color">' . $showings['ScreenFormat'] . '</p>';
+                    echo '<a href="index.php?page=seatreservationdetail&ShowingsID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="time s-bg p-6 w-full">';
+                        echo '<h4 class="primary-color"><strong>' . htmlspecialchars(trim($showings['ShowingDate'])) . ' ' . 'at' . ' ' . htmlspecialchars(trim($showings['ShowingTime'])) . '</strong></h4>';
+                        echo '<p class="primary-color">' . htmlspecialchars(trim($showings['AuditoriumNumber'])) . '</p>';
+                        echo '<p class="primary-color">' . htmlspecialchars(trim($showings['ScreenFormat'])) . '</p>';
                     echo '</a>';
                 }
             echo '</div>';

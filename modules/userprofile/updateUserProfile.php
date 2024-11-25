@@ -2,16 +2,16 @@
 require_once "../../includes/dbcon.php";
 
 if (isset($_POST['submit'])) {
-    $userID = htmlspecialchars($_POST['UserID']);
-    $username = htmlspecialchars($_POST['Username']);
-    $firstName = htmlspecialchars($_POST['FirstName']);
-    $lastName = htmlspecialchars($_POST['LastName']);
-    $email = htmlspecialchars($_POST['Email']);
-    $phoneNumber = htmlspecialchars($_POST['PhoneNumber']);
-    $streetName = htmlspecialchars($_POST['StreetName']);
-    $streetNumber = htmlspecialchars($_POST['StreetNumber']);
-    $postalCode = htmlspecialchars($_POST['PostalCode']);
-    $country = htmlspecialchars($_POST['Country']);
+    $userID = htmlspecialchars(trim($_POST['UserID']));
+    $username = htmlspecialchars(trim($_POST['Username']));
+    $firstName = htmlspecialchars(trim($_POST['FirstName']));
+    $lastName = htmlspecialchars(trim($_POST['LastName']));
+    $email = htmlspecialchars(trim($_POST['Email']));
+    $phoneNumber = htmlspecialchars(trim($_POST['PhoneNumber']));
+    $streetName = htmlspecialchars(trim($_POST['StreetName']));
+    $streetNumber = htmlspecialchars(trim($_POST['StreetNumber']));
+    $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
+    $country = htmlspecialchars(trim($_POST['Country']));
 
     $dbCon = dbCon($user, $pass);
     

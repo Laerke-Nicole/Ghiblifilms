@@ -59,16 +59,16 @@ $getUserReservations = $queryUserReservations->fetchAll();
         <?php
         if ($userProfile = $getUserProfileView[0]) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars($userProfile['Username']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['FirstName']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['LastName']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['Email']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['PhoneNumber']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['StreetName']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['StreetNumber']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['Country']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['PostalCode']) . "</td>";
-            echo "<td>" . htmlspecialchars($userProfile['City']) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['Username'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['FirstName'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['LastName'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['Email'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['PhoneNumber'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['StreetName'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['StreetNumber'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['Country'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['PostalCode'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($userProfile['City'])) . "</td>";
             echo "<td>";
 
             echo "</td>";
@@ -103,9 +103,9 @@ $getUserReservations = $queryUserReservations->fetchAll();
         <?php
         foreach ($getUserReservations as $reservation) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars($reservation['Date']) . "</td>";
-            echo "<td>" . htmlspecialchars($reservation['Time']) . "</td>";
-            echo "<td>" . htmlspecialchars($reservation['MovieID']) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['Date'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['Time'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['MovieID'])) . "</td>";
             echo "</tr>";
         }
         ?>

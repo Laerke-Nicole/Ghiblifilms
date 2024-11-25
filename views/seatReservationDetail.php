@@ -81,7 +81,7 @@ $availableSeats = $querySeats->fetchAll();
                     </select>
                 </div>
 
-                <input type="hidden" name="ShowingsID" value="<?php echo htmlspecialchars($showingsID); ?>">
+                <input type="hidden" name="ShowingsID" value="<?php echo htmlspecialchars(trim($showingsID)); ?>">
                 <button type="submit" class="btn">Choose seats</button>
             </form>
         </div>
