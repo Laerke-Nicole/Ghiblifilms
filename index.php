@@ -109,8 +109,16 @@ default:
     include('home.php');
 break;
 
+case "test":
+    include('crud/test.php');
+break;
+
 case "login":
     include('login.php');
+break;
+
+case "logout":
+    include('logout.php');
 break;
 
 case "newuser":
@@ -139,6 +147,10 @@ break;
 
 case "invoicedetail":
     include('views/invoiceDetail.php');
+break;
+
+case "invoice":
+    include('modules/invoice/invoice.php');
 break;
 
 

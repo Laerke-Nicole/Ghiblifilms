@@ -13,25 +13,25 @@ if (isset($_POST['submit'])) {
             $_FILES['newsImg']['type'] == "image/pjpeg" ||
             $_FILES['newsImg']['type'] == "image/gif" ||
             $_FILES['newsImg']['type'] == "image/jpg") && 
-            ($_FILES['newsImg']['size'] < 3000000)) { 
+            ($_FILES['newsImg']['size'] < 600000)) { 
 
             if ($_FILES['newsImg']['error'] > 0) {
                 echo "Error: " . $_FILES['newsImg']['error'];
-                exit(); // Stop further execution
+                exit(); // stop further execution
 
             } else {
-                // Check if file exists
 
+                // check if file exists
                 if (file_exists("../upload/" . $_FILES['newsImg']['name'])) {
                     echo "Can't upload: " . $_FILES['newsImg']['name'] . " exists.";
-                    exit(); // Stop further execution
+                    exit(); // stop further execution
                     
                 } else {
-                    // Move uploaded file to the "upload" directory
+                    // move uploaded file to the "upload" directory
                     move_uploaded_file($_FILES['newsImg']['tmp_name'], "../../upload/" . $_FILES['newsImg']['name']);
                     $newsImg = $_FILES['newsImg']['name']; // Get the filename
 
-                    // Insert data into the database
+                    // insert data into the database
                     try {
                         $dbCon = dbCon($user, $pass);
                         $query = $dbCon->prepare("INSERT INTO News (Headline, SubHeadline, TextOfNews, NewsImg) VALUES (:headline, :subHeadline, :textOfNews, :newsImg)");

@@ -197,11 +197,10 @@ CREATE TABLE Reservation (
 -- seat reservation
 CREATE TABLE SeatReservation (
   SeatReservationID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  ReservationID INT NULL,
+  ReservationID INT NOT NULL,
   ShowingsID INT NOT NULL,
   SeatID INT NOT NULL,
-  ReservationStatus ENUM('Reserved', 'Paid') DEFAULT 'Reserved',
-  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE,
+  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID),
   FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
   FOREIGN KEY (SeatID) REFERENCES Seat(SeatID)
 ) ENGINE=InnoDB;
@@ -211,12 +210,19 @@ CREATE TABLE SeatReservation (
 CREATE TABLE Payment (
   PaymentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   ReservationID INT NOT NULL,
-  PaymentType ENUM('CreditCard', 'Cash', 'Test') NOT NULL,
+  PaymentType VARCHAR(100) NOT NULL,
   PaymentDate DATETIME NOT NULL DEFAULT NOW(),
   Amount DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)
 ) ENGINE=InnoDB;
 
+
+CREATE TABLE BankAccount
+(
+  AccountID int NOT NULL PRIMARY KEY,
+  Description varchar(200),
+  Balance decimal(8,2) -- 999999.99 to -999999.99 
+);
 
 
 -- views
@@ -293,14 +299,20 @@ r.ReservationID;
 
 
 -- triggers
+-- update bankaccount balance after payment
 DELIMITER //
-CREATE TRIGGER SetReservationStatusAfterInsert
-BEFORE INSERT ON SeatReservation
+
+CREATE TRIGGER AfterPaymentInsert 
+AFTER INSERT ON Payment
 FOR EACH ROW
 BEGIN
-  SET NEW.ReservationStatus = 'Reserved';
-END//
+    UPDATE BankAccount
+    SET Balance = Balance + NEW.Amount
+    WHERE AccountID = 1; 
+END //
+
 DELIMITER ;
+
 
 
 -- static data to insert
@@ -841,8 +853,6 @@ insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
 
-
-
 -- opening hours
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Tuesday', '17.00 - 22.00');
@@ -851,3 +861,7 @@ insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (4, 'Thursday', '1
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (5, 'Friday', '17.00 - 22.00');
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (6, 'Saturday', '12.00 - 22.00');
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.00 - 22.00');
+
+
+-- bank account
+INSERT INTO BankAccount (AccountID, Description, Balance) VALUES (1, 'Money balance', 0.00);

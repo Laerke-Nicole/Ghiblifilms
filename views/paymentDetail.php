@@ -1,94 +1,63 @@
-<?php require_once("includes/dbcon.php"); ?>
-<?php require_once("includes/functions.php"); ?>
-<?php require_once("includes/session.php"); ?>
-<?php require_once("includes/connection.php"); ?>
-<?php confirm_logged_in(); ?>
-
 <?php
-// Ensure user is logged in
-if (!isset($_SESSION['UserID'])) {
-    die("User not logged in.");
-}
+require_once("includes/dbcon.php");
+require_once("includes/functions.php");
+require_once("includes/session.php");
 
-$userID = $_SESSION['UserID'];
+confirm_logged_in();
+
+// Retrieve session data
+$showingsID = $_SESSION['ShowingsID'] ?? null;
+$selectedSeatIDs = $_SESSION['SelectedSeats'] ?? [];
+if (!$showingsID || empty($selectedSeatIDs)) {
+    die("No reservation details found.");
+}
 
 // Connect to the database
 $dbCon = dbCon($user, $pass);
 
-// Fetch reservation details for the logged-in user
-$queryReservationDetails = $dbCon->prepare("
-    SELECT * FROM ReservationDetails WHERE UserID = :userID
+// Fetch seat numbers based on seat IDs
+$seatPlaceholders = implode(", ", array_fill(0, count($selectedSeatIDs), "?"));
+$querySeats = $dbCon->prepare("
+    SELECT SeatNumber 
+    FROM Seat 
+    WHERE SeatID IN ($seatPlaceholders)
 ");
-$queryReservationDetails->bindParam(':userID', $userID);
-$queryReservationDetails->execute();
-$getReservationDetails = $queryReservationDetails->fetchAll(PDO::FETCH_ASSOC);
+$querySeats->execute($selectedSeatIDs);
+$seatNumbers = $querySeats->fetchAll(PDO::FETCH_COLUMN);
 
 // Calculate the total price
 $pricePerSeat = 12;
-$totalPrice = 0;
-
-if (!empty($getReservationDetails)) {
-    $Reservation = $getReservationDetails[0];
-    $totalPrice = $Reservation['TotalSeats'] * $pricePerSeat;
-}
+$totalPrice = count($selectedSeatIDs) * $pricePerSeat;
 ?>
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="modules/payment/stripe.js" defer></script>
+</head>
+<body>
 <div class="row ten-percent grid-cols-2">
     <div>
-        <h2>Order overview</h2>
-        <?php if (!empty($Reservation)): ?>
-            <p><strong>Your details:</strong></p>
-            <p><?php echo htmlspecialchars(trim($Reservation['FirstName'])) . " " . htmlspecialchars(trim($Reservation['LastName'])); ?></p>
-            <p><?php echo htmlspecialchars(trim($Reservation['Email'])); ?></p>
-
-            <br><br>
-
-            <p><strong>Booking for:</strong></p>
-            <p><?php echo htmlspecialchars(trim($Reservation['MovieName'])); ?></p>
-            <p>Date: <?php echo htmlspecialchars(trim($Reservation['ShowingDate'])); ?></p>
-            <p>Time: <?php echo htmlspecialchars(trim($Reservation['ShowingTime'])); ?></p>
-            <p>Seats chosen: <?php echo htmlspecialchars(trim($Reservation['SeatNumbers'])); ?></p>
-            <p>Total seats chosen: <?php echo htmlspecialchars(trim($Reservation['TotalSeats'])); ?></p>
-
-            <br/>
-            <img src="img/seats.png" alt="Seating chart" height="200">
-        <?php else: ?>
-            <p>No reservations found.</p>
-        <?php endif; ?>
+        <h2>Order Overview</h2>
+        <p><strong>Selected Seats:</strong> <?php echo implode(", ", $seatNumbers); ?></p>
+        <p><strong>Total Price:</strong> €<?php echo number_format($totalPrice, 2); ?></p>
+        <img src="img/seats.png" alt="Seating chart" height="100">
     </div>
 
     <div>
         <h2>Payment</h2>
-
-        <!-- Display total price -->
-        <p><strong>Total Price: €<?php echo number_format($totalPrice, 2); ?></strong></p>
-
-        <br/>
-        <br/>
-        <p>Please fill in your payment details</p>
-        <form action="payment.php" method="post">
-            <label for="CardNumber">Card number</label>
-            <input type="text" id="CardNumber" name="CardNumber" required>
-            <br>
-            <label for="ExpiryDate">Expiry date</label>
-            <input type="text" id="ExpiryDate" name="ExpiryDate" required>
-            <br>
-            <label for="CVV">CVV</label>
-            <input type="text" id="CVV" name="CVV" required>
-            <br>
-            <label for="CardHolder">Card holder</label>
-            <input type="text" id="CardHolder" name="CardHolder" required>
-            <br>
-            <input type="hidden" name="Amount" value="<?php echo $totalPrice; ?>">
-
-            <br/>
-            
-            <input type="hidden" name="ReservationID" value="<?php echo $Reservation['ReservationID']; ?>">
-            <button type="submit" class="btn">Pay</button>
+        <form id="payment-form">
+            <div id="card-element">
+                <!-- Stripe.js adds fields here -->
+            </div>
+            <button id="submit">Pay</button>
+            <div id="error-message"></div> <!-- Error display -->
         </form>
     </div>
-
-    <br/>
-    <br/>
 </div>
+</body>
+</html>

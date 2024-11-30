@@ -62,7 +62,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
                             $genreQuery->execute([$movieItem['MovieID']]);
                             $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
-                            echo "<p>" . implode(", ", htmlspecialchars(trim($genres))) . "</p>";
+                            echo "<p>" . implode(", ", ($genres)) . "</p>";
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';

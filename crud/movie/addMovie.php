@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
             $_FILES['movieImg']['type'] == "image/pjpeg" ||
             $_FILES['movieImg']['type'] == "image/gif" ||
             $_FILES['movieImg']['type'] == "image/jpg") && 
-            ($_FILES['movieImg']['size'] < 3000000)) { 
+            ($_FILES['movieImg']['size'] < 600000)) { 
 
             if ($_FILES['movieImg']['error'] > 0) {
                 echo "Error: " . $_FILES['movieImg']['error'];
