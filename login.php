@@ -3,10 +3,10 @@
 <?php require_once("includes/functions.php"); ?>
 
 <?php
-		if (logged_in()) {
-		redirect_to("index.php");
-	}
- ?>
+if (logged_in()) {
+    redirect_to("index.php?page=home");
+}
+?>
 
 
 <html>
@@ -38,7 +38,7 @@
                         // username/password authenticated
                         $_SESSION['UserID'] = $found_user['UserID'];
                         $_SESSION['User'] = $found_user['Username'];
-                        redirect_to("index.php?page=index");
+                        redirect_to("index.php?page=successfullogindetail");
                     } else {
                         // if password is incorrect
                         $message = "Username/password combination incorrect.<br />

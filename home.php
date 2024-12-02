@@ -6,6 +6,59 @@
 <?php
 // connect to db
 $dbCon = dbCon($user, $pass);
+
+// get daily premieres from db
+$queryPremieres = $dbCon->prepare("SELECT * FROM DailyPremieres");
+$queryPremieres->execute();
+$dailyPremieres = $queryPremieres->fetchAll();
+
+
+// get news from db
+$dbCon = dbCon($user, $pass);
+$queryNews = $dbCon->prepare("SELECT * FROM News");
+$queryNews->execute();
+$getNews = $queryNews->fetchAll();
+
+
+// get movies from db
+$dbCon = dbCon($user, $pass);
+$queryMovies = $dbCon->prepare("SELECT * FROM Movie");
+$queryMovies->execute();
+$getMovies = $queryMovies->fetchAll();
+
+
+// get about ghiblifilms from db
+$queryCompanyInformation = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
+$queryCompanyInformation->execute();
+$getCompanyInformation = $queryCompanyInformation->fetchAll();
+
+
+// get company info from db
+$dbCon = dbCon($user, $pass);
+$queryCompanyInformation = $dbCon->prepare("SELECT CompanyEmail, CompanyPhoneNumber FROM CompanyInformation");
+$queryCompanyInformation->execute();
+$getCompanyInformation = $queryCompanyInformation->fetchAll();
+
+
+// get opening hours  from db 
+$queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
+$queryOpeningHour->execute();
+$getOpeningHour = $queryOpeningHour->fetchAll();
+
+
+// get view with company address info from db
+$queryCompanyAddressView = $dbCon->prepare("SELECT *
+                                            FROM CompanyAddressView");
+$queryCompanyAddressView->execute();
+$getCompanyAddressView = $queryCompanyAddressView->fetchAll();
+
+
+// get auditorium/venues from db
+$queryAuditorium = $dbCon->prepare("SELECT AuditoriumNumber
+                                    FROM Auditorium");
+$queryAuditorium->execute();
+$getAuditorium = $queryAuditorium->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -23,12 +76,8 @@ $dbCon = dbCon($user, $pass);
 
 <!-- daily premieres -->
 <?php
-$queryPremieres = $dbCon->prepare("SELECT * FROM DailyPremieres");
-$queryPremieres->execute();
-$dailyPremieres = $queryPremieres->fetchAll();
-
 if ($dailyPremieres) {
-    echo '<section class="pt-24 ten-percent">';
+    echo '<section class="pt-24 ten-percent" id="daily-showings">';
         echo '<h2 class="text-center pb-4">Daily Premieres</h2>';
         echo '<div class="items">';
             foreach ($dailyPremieres as $premiere) { 
@@ -45,7 +94,7 @@ if ($dailyPremieres) {
    
 
 <!-- news -->
-<section class="pt-24 pb-24 ten-percent">
+<section class="pt-24 pb-24 ten-percent" id="news">
     <div>
         <?php echo '<h2 class="text-center pb-4">NEWS</h2>';?>
     </div>
@@ -53,11 +102,6 @@ if ($dailyPremieres) {
     <!-- loop with news -->
     <div class="items">
         <?php
-            $dbCon = dbCon($user, $pass);
-            $queryNews = $dbCon->prepare("SELECT * FROM News");
-            $queryNews->execute();
-            $getNews = $queryNews->fetchAll();
-
             foreach ($getNews as $news) {
                 echo '<div>';
                     echo "<img src='upload/" . htmlspecialchars(trim($news['NewsImg'])) . "' alt='Image of news'>";
@@ -72,7 +116,7 @@ if ($dailyPremieres) {
 
 
 <!-- upcoming movies -->
-<section class="pb-24 ten-percent">
+<section class="pb-24 ten-percent" id="movies">
     <div>
         <?php echo '<h2 class="text-center pb-4">Upcoming movies</h2>';?>
     </div>
@@ -80,11 +124,6 @@ if ($dailyPremieres) {
     <!-- loop with movies -->
     <div class="items">
         <?php
-        $dbCon = dbCon($user, $pass);
-        $queryMovies = $dbCon->prepare("SELECT * FROM Movie");
-        $queryMovies->execute();
-        $getMovies = $queryMovies->fetchAll();
-
         foreach ($getMovies as $getMovie) { 
             echo '<div>';
             echo "<img src='upload/" . htmlspecialchars(trim($getMovie['MovieImg'])) . "' alt='Image of movie'>";
@@ -99,14 +138,9 @@ if ($dailyPremieres) {
 
 
 <!-- about ghiblifilms -->
-<section>
+<section id="about-us">
     <div class="about-ghiblifilms flex pt-20 pb-20 justify-around">
         <?php
-            $dbCon = dbCon($user, $pass);
-            $queryCompanyInformation = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
-            $queryCompanyInformation->execute();
-            $getCompanyInformation = $queryCompanyInformation->fetchAll();
-
             foreach ($getCompanyInformation as $companyInfo) {
                 echo '<div class="flex-1 max-w-xs">';
                     echo '<h2 class="primary-color text-6xl">About<br>' . htmlspecialchars(trim($companyInfo['NameOfCompany'])) . '</h2>';
@@ -139,11 +173,6 @@ if ($dailyPremieres) {
                 
                 <div class="flex flex-col gap-6">
                     <?php
-                        $dbCon = dbCon($user, $pass);
-                        $queryCompanyInformation = $dbCon->prepare("SELECT CompanyEmail, CompanyPhoneNumber FROM CompanyInformation");
-                        $queryCompanyInformation->execute();
-                        $getCompanyInformation = $queryCompanyInformation->fetchAll();
-
                         foreach ($getCompanyInformation as $companyInfo) {
                             echo '<div>';
                                 echo '<h4 class="text-sm">Email us</h4>';
@@ -165,11 +194,7 @@ if ($dailyPremieres) {
 <!-- opening hours -->
 <section>
     <div class="ten-percent pb-24">
-        <?php          
-            $queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
-            $queryOpeningHour->execute();
-            $getOpeningHour = $queryOpeningHour->fetchAll();
-
+        <?php       
             echo '<h5>Opening hours:</h5>';
             foreach ($getOpeningHour as $openingHour) {
                 echo '<div>';
@@ -183,15 +208,6 @@ if ($dailyPremieres) {
 
 <!-- company address -->
 <section>
-<?php
-// get view with company address info
-$queryCompanyAddressView = $dbCon->prepare("SELECT *
-                                            FROM CompanyAddressView");
-
-$queryCompanyAddressView->execute();
-$getCompanyAddressView = $queryCompanyAddressView->fetchAll();
-?>
-
 <!-- display company address info -->
 <div class="ten-percent pb-24">
     
@@ -212,5 +228,23 @@ $getCompanyAddressView = $queryCompanyAddressView->fetchAll();
     ?>
 </div>
 </section>
+
+
+<!-- venues/auditorium -->
+<section>
+<!-- display info -->
+<div class="ten-percent pb-24">
+    
+    <?php    
+        echo "<h5>All our venues:</h5>";
+        echo "<div>";
+            foreach ($getAuditorium as $auditorium) {
+                echo "<p>". htmlspecialchars(trim($auditorium['AuditoriumNumber'])) . "</p>";
+            }
+        echo "</div>";
+    ?>
+</div>
+</section>
+
 </body>
 </html>

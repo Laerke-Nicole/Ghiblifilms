@@ -61,8 +61,11 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                                                             ");
 
                             $genreQuery->execute([$movieItem['MovieID']]);
-                            $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
-                            echo "<p>" . implode(", ", ($genres)) . "</p>";
+                            $genres = $genreQuery->fetchAll();
+
+                            // display genres in an array with , between each name
+                            $genreNames = array_column($genres, 'GenreName');
+                            echo "<p>" . htmlspecialchars(implode(", ", $genreNames)) . "</p>";
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';
@@ -85,7 +88,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                                                     ORDER BY FirstName");
 
                     $voiceActorQuery->execute([$movieItem['MovieID']]);
-                    $voiceActor = $voiceActorQuery->fetchAll(PDO::FETCH_ASSOC);
+                    $voiceActor = $voiceActorQuery->fetchAll();
         
                     echo '<div class="flex flex-col w-half">';
                         // loop with voice actors
@@ -116,7 +119,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
                     ORDER BY RoleInProduction.RoleInProductionID");
 
                 $productionQuery->execute([$movieItem['MovieID']]);
-                $production = $productionQuery->fetchAll(PDO::FETCH_ASSOC);
+                $production = $productionQuery->fetchAll();
                 
                 foreach ($production as $prod) {
                     echo '<div class="flex items-center justify-between gap-6 pb-2">'; 
@@ -161,6 +164,10 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
             
 
             // book slots
+            if (!$getShowings) {
+                echo '<p>No showings right now.</p>';
+            }
+
             echo '<div class="flex flex-col gap-8 w-66">';
                 foreach ($getShowings as $showings) {
                     echo '<a href="index.php?page=seatreservationdetail&ShowingsID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="time s-bg p-6 w-full">';

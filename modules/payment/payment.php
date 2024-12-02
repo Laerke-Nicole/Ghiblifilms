@@ -10,20 +10,13 @@ $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
 if (!isset($data['paymentMethodId'])) {
-    echo json_encode([
-        'success' => true,
-        'payment_intent' => $paymentIntent->id,
-        'raw_response' => $paymentIntent // Add raw response for debugging
-    ]);
+    echo json_encode(['error' => 'Payment method not provided.']);
     exit;
 }
 
 try {
+    // API Key
     \Stripe\Stripe::setApiKey('sk_test_51QPRkfJdwUEjEc4U9XNhhHmwGq2j6TsckXUKqjCmzKzXy0QOucvUHze5JfZ4lNT5t34vq9RItphIqu418cTCCtYG00i8gkOzZC');
-
-    // Build the return URL dynamically
-    $returnUrl = 'http://localhost/ghiblifilms/index.php?page=invoicedetail';
-
 
     // Fetch session data
     $dbCon = dbCon($user, $pass);
@@ -31,20 +24,9 @@ try {
     $showingsID = $_SESSION['ShowingsID'];
     $selectedSeats = $_SESSION['SelectedSeats']; // Fetch the seat IDs
 
-
     // Calculate the total price
     $pricePerSeat = 1200;
     $totalPrice = count($selectedSeats) * $pricePerSeat;
-
-    // Create a PaymentIntent
-    $paymentIntent = \Stripe\PaymentIntent::create([
-        'amount' => $totalPrice, // Total amount in cents
-        'currency' => 'eur',
-        'payment_method' => $data['paymentMethodId'],
-        'confirmation_method' => 'manual',
-        'confirm' => true,
-        'return_url' => $returnUrl, // Dynamic return URL
-    ]);
 
     // Insert reservation into the database
     $queryCreateReservation = $dbCon->prepare("
@@ -55,7 +37,9 @@ try {
     $queryCreateReservation->bindParam(':showingsID', $showingsID);
     $queryCreateReservation->execute();
 
+    // Get the newly created ReservationID
     $reservationID = $dbCon->lastInsertId();
+    $_SESSION['ReservationID'] = $reservationID;
 
     // Insert seats into SeatReservation table
     foreach ($selectedSeats as $seatID) {
@@ -69,14 +53,13 @@ try {
         $queryReserveSeat->execute();
     }
 
-
     // Insert payment record into Payment table
     $queryPayment = $dbCon->prepare("
         INSERT INTO Payment (ReservationID, PaymentType, Amount) 
         VALUES (:reservationID, 'CreditCard', :amount)
     ");
     $queryPayment->bindParam(':reservationID', $reservationID);
-    $queryPayment->bindParam(':amount', $paymentIntent->amount);
+    $queryPayment->bindParam(':amount', $totalPrice);
     $queryPayment->execute();
 
     // Update Reservation table PaymentStatus to Paid
@@ -87,6 +70,19 @@ try {
     ");
     $queryUpdateReservation->bindParam(':reservationID', $reservationID);
     $queryUpdateReservation->execute();
+
+    // the return URL to go to invoice page
+    $returnUrl = 'http://localhost/ghiblifilms/index.php?page=invoicedetail';
+    
+    // Create a PaymentIntent
+    $paymentIntent = \Stripe\PaymentIntent::create([
+        'amount' => $totalPrice, // Total amount in cents
+        'currency' => 'eur',
+        'payment_method' => $data['paymentMethodId'],
+        'confirmation_method' => 'manual',
+        'confirm' => true,
+        'return_url' => $returnUrl,
+    ]);
 
     // Clear session
     unset($_SESSION['ShowingsID'], $_SESSION['SelectedSeats']);

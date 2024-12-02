@@ -44,6 +44,18 @@ body {
     cursor: pointer;
 }
 
+button {
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-family: var(--primary-font);
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    background-color: transparent;
+    cursor: pointer;
+}
+
 
 /* text style */
 h1 {

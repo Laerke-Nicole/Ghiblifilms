@@ -15,6 +15,24 @@ if (!$showingsID || empty($selectedSeatIDs)) {
 // Connect to the database
 $dbCon = dbCon($user, $pass);
 
+// get showings info
+$queryShowingsInfo = $dbCon->prepare("
+    SELECT s.ShowingDate, s.ShowingTime, m.Name AS MovieName
+    FROM Showings s
+    JOIN Movie m ON s.MovieID = m.MovieID
+    WHERE s.ShowingsID = :showingsID
+");
+$queryShowingsInfo->bindParam(':showingsID', $showingsID);
+$queryShowingsInfo->execute();
+$getShowingsInfo = $queryShowingsInfo->fetch();
+
+// get user info
+$queryUserInfo = $dbCon->prepare("SELECT FirstName, LastName, Email FROM User WHERE UserID = :userID");
+$queryUserInfo->bindParam(':userID', $userID);
+$queryUserInfo->execute();
+$getUserInfo = $queryUserInfo->fetch();
+
+
 // Fetch seat numbers based on seat IDs
 $seatPlaceholders = implode(", ", array_fill(0, count($selectedSeatIDs), "?"));
 $querySeats = $dbCon->prepare("
@@ -23,7 +41,7 @@ $querySeats = $dbCon->prepare("
     WHERE SeatID IN ($seatPlaceholders)
 ");
 $querySeats->execute($selectedSeatIDs);
-$seatNumbers = $querySeats->fetchAll(PDO::FETCH_COLUMN);
+$seatNumbers = array_column($querySeats->fetchAll(), 'SeatNumber');
 
 // Calculate the total price
 $pricePerSeat = 12;
@@ -43,9 +61,21 @@ $totalPrice = count($selectedSeatIDs) * $pricePerSeat;
 <div class="row ten-percent grid-cols-2">
     <div>
         <h2>Order Overview</h2>
+
+        <p><strong>Movie:</strong> <?php echo $getShowingsInfo['MovieName']; ?></p>
+        <p><strong>Showing Date:</strong> <?php echo $getShowingsInfo['ShowingDate']; ?></p>
+        <p><strong>Showing Time:</strong> <?php echo $getShowingsInfo['ShowingTime']; ?></p>
+        
+        <br />
+        
+        <p><strong>Name:</strong> <?php echo $getUserInfo['FirstName'] . ' ' . $getUserInfo['LastName']; ?></p>
+        <p><strong>Email:</strong> <?php echo $getUserInfo['Email']; ?></p>
+        
+        <br />
+
         <p><strong>Selected Seats:</strong> <?php echo implode(", ", $seatNumbers); ?></p>
         <p><strong>Total Price:</strong> €<?php echo number_format($totalPrice, 2); ?></p>
-        <img src="img/seats.png" alt="Seating chart" height="100">
+        <img src="img/seats.png" alt="Seating chart" height="200">
     </div>
 
     <div>

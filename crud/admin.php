@@ -32,6 +32,9 @@ require_once("includes/functions.php");
     <button class="btn" onclick="toggleSection('postalCodeAdmin')">Postal code</button>
 </a>
 
+<a href="#reservationAdmin">
+    <button class="btn" onclick="toggleSection('reservationAdmin')">Reservation</button>
+</a>
 
 <br>
 <br>
@@ -124,6 +127,10 @@ require_once("includes/functions.php");
 <!-- Postal Code Section -->
 <div id="postalCodeAdmin" style="display: none;">
     <?php require 'adminModules/postalCodeAdmin.php'; ?>
+</div>
+
+<div id="reservationAdmin" style="display: none;">
+    <?php require 'adminModules/reservationAdmin.php'; ?>
 </div>
 
 <!-- Genre Section -->

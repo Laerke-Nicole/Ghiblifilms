@@ -1,5 +1,5 @@
 function toggleSection(sectionId) {
-    const sections = ['postalCodeAdmin', 'genreAdmin', 'roleInProductionAdmin', 'productionAdmin', 'voiceActorAdmin', 'movieAdmin', 'movieGenreAdmin', 'movieProductionAdmin', 'movieVoiceActorAdmin', 'showingsAdmin', 'premiereAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin'];
+    const sections = ['postalCodeAdmin', 'genreAdmin', 'roleInProductionAdmin', 'productionAdmin', 'voiceActorAdmin', 'movieAdmin', 'movieGenreAdmin', 'movieProductionAdmin', 'movieVoiceActorAdmin', 'showingsAdmin', 'premiereAdmin', 'userAdmin', 'newsAdmin', 'companyInformationAdmin', 'openingHourAdmin', 'reservationAdmin'];
 
     sections.forEach((section) => {
         const sectionDiv = document.getElementById(section);

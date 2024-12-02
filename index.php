@@ -28,6 +28,8 @@ require_once("includes/functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
@@ -149,9 +151,15 @@ case "invoicedetail":
     include('views/invoiceDetail.php');
 break;
 
+case "successfullogindetail":
+    include('views/successfulLogInDetail.php');
+break;
+
 case "invoice":
     include('modules/invoice/invoice.php');
 break;
+
+
 
 
 // admin modules of cruds
@@ -337,6 +345,10 @@ break;
 
 case "deleteopeninghour":
     include('crud/openinghour/deleteOpeningHour.php');
+break;
+
+case "deletereservation":
+    include('crud/reservation/deletereservation.php');
 break;
 
 

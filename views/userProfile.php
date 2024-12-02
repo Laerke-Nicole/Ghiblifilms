@@ -27,7 +27,7 @@ $getUserProfileView = $queryUserProfileView->fetchAll();
 
 
 // get user reservations
-$queryUserReservations = $dbCon->prepare("SELECT * FROM Reservation WHERE UserID = :userID");
+$queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView WHERE UserID = :userID");
 $queryUserReservations->bindParam(':userID', $userID);
 $queryUserReservations->execute();
 $getUserReservations = $queryUserReservations->fetchAll();
@@ -59,20 +59,21 @@ $getUserReservations = $queryUserReservations->fetchAll();
         <?php
         if ($userProfile = $getUserProfileView[0]) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['Username'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['FirstName'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['LastName'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['Email'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['PhoneNumber'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['StreetName'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['StreetNumber'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['Country'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['PostalCode'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($userProfile['City'])) . "</td>";
-            echo "<td>";
 
-            echo "</td>";
-            echo '<td><a href="index.php?page=edituserprofile&ID='.$userProfile['UserID'].'" class="btn">Edit</a></td>';
+                echo "<td>" . htmlspecialchars(trim($userProfile['Username'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['FirstName'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['LastName'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['Email'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['PhoneNumber'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['StreetName'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['StreetNumber'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['Country'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['PostalCode'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($userProfile['City'])) . "</td>";
+                echo "<td>";
+
+                echo "</td>";
+                echo '<td><a href="index.php?page=edituserprofile&ID='.$userProfile['UserID'].'" class="btn">Edit</a></td>';
             echo "</tr>";
         }
         ?>
@@ -90,25 +91,41 @@ $getUserReservations = $queryUserReservations->fetchAll();
 <div class="row ten-percent">
     <h2>Your bookings</h2>
     <br>
-    <table class="highlight">
-        <thead>
-        <tr class="secondary-color">
-            <th>Date</th>
-            <th>Time</th>
-            <th>MovieID</th>
-        </tr>
-        </thead>
+    <?php
+    if (!$getUserReservations) {
+        echo "You have no bookings.";
+    } else {
+        echo '<table class="highlight">';
+        echo '<thead>';
+            echo '<tr class="secondary-color">';
+                echo '<th>Movie</th>';
+                echo '<th>Date</th>';
+                echo '<th>Time</th>';
+                echo '<th>Total</th>';
+                echo '<th>Payment date</th>';
+                echo '<th>Payment type</th>';
 
-        <tbody class="secondary-color">
-        <?php
+                echo '<th>Cancel booking</th>';
+            echo '</tr>';
+        echo '</thead>';
+        echo '<tbody class="secondary-color">';
+
         foreach ($getUserReservations as $reservation) {
             echo "<tr>";
-            echo "<td>" . htmlspecialchars(trim($reservation['Date'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($reservation['Time'])) . "</td>";
-            echo "<td>" . htmlspecialchars(trim($reservation['MovieID'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['MovieName'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['ShowingDate'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['ShowingTime'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['Amount'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['PaymentDate'])) . "</td>";
+            echo "<td>" . htmlspecialchars(trim($reservation['PaymentType'])) . "</td>";
+            
+            echo "<td></td>";
+            echo '<td><a href="index.php?page=deletereservation&ReservationID=' . $reservation['ReservationID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Cancel booking</a></td>';
             echo "</tr>";
         }
-        ?>
-        </tbody>
-    </table>
+
+        echo '</tbody>';
+        echo '</table>';
+    }
+    ?>
 </div>

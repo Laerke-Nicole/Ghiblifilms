@@ -200,7 +200,7 @@ CREATE TABLE SeatReservation (
   ReservationID INT NOT NULL,
   ShowingsID INT NOT NULL,
   SeatID INT NOT NULL,
-  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID),
+  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE,
   FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
   FOREIGN KEY (SeatID) REFERENCES Seat(SeatID)
 ) ENGINE=InnoDB;
@@ -213,7 +213,7 @@ CREATE TABLE Payment (
   PaymentType VARCHAR(100) NOT NULL,
   PaymentDate DATETIME NOT NULL DEFAULT NOW(),
   Amount DECIMAL(10, 2) NOT NULL,
-  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID)
+  FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -267,35 +267,14 @@ LEFT JOIN Address A ON C.AddressID = A.AddressID
 LEFT JOIN PostalCode P ON A.PostalCode = P.PostalCode;
 
 
--- reservation details view
-CREATE VIEW ReservationDetails AS
-SELECT 
-r.ReservationID,
-u.UserID,
-u.FirstName,
-u.LastName, 
-u.Email,
-s.ShowingDate,
-s.ShowingTime,
-m.Name AS MovieName,
-GROUP_CONCAT(seat.SeatNumber ORDER BY seat.SeatNumber) AS SeatNumbers,
-COUNT(sr.SeatID) AS TotalSeats
-FROM 
-Reservation r
-JOIN 
-User u ON r.UserID = u.UserID
-JOIN 
-Showings s ON r.ShowingsID = s.ShowingsID
-JOIN 
-Movie m ON s.MovieID = m.MovieID
-JOIN 
-SeatReservation sr ON r.ReservationID = sr.ReservationID
-JOIN 
-Seat seat ON sr.SeatID = seat.SeatID
-GROUP BY 
-r.ReservationID;
-
-
+-- user reservation 
+CREATE VIEW UserReservationView AS
+SELECT R.UserID, U.FirstName, U.LastName, R.ReservationID, S.ShowingDate, S.ShowingTime, M.Name as MovieName, P.PaymentType, P.Amount, P.PaymentDate
+FROM Reservation R
+LEFT JOIN Showings S ON R.ShowingsID = S.ShowingsID
+LEFT JOIN Movie M ON S.MovieID = M.MovieID
+LEFT JOIN Payment P ON R.ReservationID = P.ReservationID
+LEFT JOIN User U ON R.UserID = U.UserID;
 
 
 -- triggers

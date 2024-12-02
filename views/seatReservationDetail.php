@@ -48,8 +48,8 @@ $availableSeats = $querySeats->fetchAll();
             <h1>Choose seats</h1>
             
             <!-- Display reserved seats -->
-            <div class="flex pb-4">
-                <p>Taken seats:</p>
+            <div class="flex pb-4 gap-4">
+                <p><strong>Taken seats:</strong></p>
                 <p><?php echo $reservedSeatList; ?></p>
             </div>
 
@@ -57,17 +57,20 @@ $availableSeats = $querySeats->fetchAll();
                 <p>Price per seat: 12 euros</p>
             </div>
 
+            <br/>
+
             <!-- Seat selection form -->
             <form method="POST" action="index.php?page=seatreservationform">
                 <div class="pb-4">
                     <label for="Seats">Select seats, up to 5:</label>
-                    <select name="Seats[]" id="Seats" multiple size="5">
-                        <?php
-                        foreach ($availableSeats as $seat) {
-                            echo '<option value="' . $seat['SeatID'] . '">' . $seat['SeatNumber'] . '</option>';
-                        }
-                        ?>
-                    </select>
+                    <div id="Seats">
+                        <?php foreach ($availableSeats as $seat): ?>
+                            <label>
+                                <input type="checkbox" name="Seats[]" value="<?php echo $seat['SeatID']; ?>">
+                                <?php echo htmlspecialchars($seat['SeatNumber']); ?>
+                            </label><br>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn">Choose seats</button>
