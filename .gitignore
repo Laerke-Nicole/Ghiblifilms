@@ -1,1 +1,5 @@
 includes/constants.php
+
+modules/payment/stripe.js
+
+modules/payment/payment.php

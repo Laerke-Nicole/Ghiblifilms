@@ -53,11 +53,7 @@ if (logged_in()) {
         } catch (PDOException $e) {
             die("Database query failed: " . $e->getMessage());
         }
-    } else { // form has not been submitted.
-        if (isset($_GET['logout']) && $_GET['logout'] == 1) {
-            $message = "You are now logged out.";
-        } 
-    }
+    } 
     
     // display the message if set
     if (!empty($message)) {
