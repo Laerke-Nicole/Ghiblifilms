@@ -5,6 +5,14 @@ require_once("includes/session.php");
 
 confirm_logged_in();
 
+// check if the user is logged in
+if (isset($_SESSION['UserID'])) {
+    // get the logged in users id
+    $userID = $_SESSION['UserID'];
+} else {
+    $userID = null;
+}
+
 // Retrieve session data
 $showingsID = $_SESSION['ShowingsID'] ?? null;
 $selectedSeatIDs = $_SESSION['SelectedSeats'] ?? [];
@@ -24,7 +32,7 @@ $queryShowingsInfo->execute();
 $getShowingsInfo = $queryShowingsInfo->fetch();
 
 // get user info
-$queryUserInfo = $dbCon->prepare("SELECT FirstName, LastName, Email FROM User WHERE UserID = :userID");
+$queryUserInfo = $dbCon->prepare("SELECT FirstName, LastName, Email, PhoneNumber FROM User WHERE UserID = :userID");
 $queryUserInfo->bindParam(':userID', $userID);
 $queryUserInfo->execute();
 $getUserInfo = $queryUserInfo->fetch();
@@ -51,8 +59,10 @@ $totalPrice = count($selectedSeatIDs) * $pricePerSeat;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
     <script src="modules/payment/stripe.js" defer></script>
+    
 </head>
 <body>
 <div class="row ten-percent grid-cols-2">
@@ -65,8 +75,11 @@ $totalPrice = count($selectedSeatIDs) * $pricePerSeat;
         
         <br />
         
+        <!-- icon of a pencil -->
+        <a href="index.php?page=edituserinfo&UserID=<?php echo htmlspecialchars($userID); ?>"><i class="material-icons pencil secondary-color">edit</i></a>
         <p><strong>Name:</strong> <?php echo $getUserInfo['FirstName'] . ' ' . $getUserInfo['LastName']; ?></p>
         <p><strong>Email:</strong> <?php echo $getUserInfo['Email']; ?></p>
+        <p><strong>Phone Number:</strong> <?php echo $getUserInfo['PhoneNumber']; ?></p>
         
         <br />
 

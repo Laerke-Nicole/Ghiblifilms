@@ -128,6 +128,10 @@ case "updateuserprofile":
     include('modules/userprofile/updateUserProfile.php');
 break;
 
+case "edituserinfo":
+    include('modules/userpayment/editUserInfo.php');
+break;
+
 
 // admin modules of cruds
 case "postalcodeadmin":

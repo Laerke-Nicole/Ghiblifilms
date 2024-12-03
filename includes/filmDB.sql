@@ -284,6 +284,20 @@ END //
 
 DELIMITER ;
 
+-- update bankaccount balance after user cancels booking
+DELIMITER //
+
+CREATE TRIGGER AfterCancelInsert 
+AFTER INSERT ON Payment
+FOR EACH ROW
+BEGIN
+    UPDATE BankAccount
+    SET Balance = Balance - NEW.Amount
+    WHERE AccountID = 1; 
+END //
+
+DELIMITER ;
+
 
 
 -- static data to insert

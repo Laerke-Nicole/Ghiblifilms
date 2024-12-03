@@ -10,7 +10,7 @@
     
     <h4>Here is what you can do now</h4>
 
-    <a href="index.php?page=home#daily-showings"><button>Look at daily premieres</button></a>
+    <a href="index.php?page=home#daily-showings"><button>Look at daily showings</button></a>
 
     <a href="index.php?page=home#movies"><button>Look at movies to book</button></a>
 
