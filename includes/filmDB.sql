@@ -277,26 +277,38 @@ CREATE TRIGGER AfterPaymentInsert
 AFTER INSERT ON Payment
 FOR EACH ROW
 BEGIN
-    UPDATE BankAccount
-    SET Balance = Balance + NEW.Amount
-    WHERE AccountID = 1; 
+  UPDATE BankAccount
+  SET Balance = Balance + NEW.Amount
+  WHERE AccountID = 1; 
 END //
 
 DELIMITER ;
 
--- update bankaccount balance after user cancels booking
+
 DELIMITER //
 
-CREATE TRIGGER AfterCancelInsert 
-AFTER INSERT ON Payment
+CREATE TRIGGER AfterCancelDelete
+AFTER DELETE ON Showings
 FOR EACH ROW
 BEGIN
-    UPDATE BankAccount
-    SET Balance = Balance - NEW.Amount
-    WHERE AccountID = 1; 
+  -- storing in ReservationID and Amount 
+  DECLARE reservationID INT;
+  DECLARE amount DECIMAL(8, 2);
+
+  -- get ReservationID and amount from Payment table where ReservationID is the same as ShowingsID
+  SELECT ReservationID, Amount 
+  INTO reservationID, amount
+  FROM Payment 
+  WHERE ReservationID = OLD.ShowingsID;
+
+  -- minus the amount the payment is on the bank account
+  UPDATE BankAccount
+  SET Balance = Balance - amount
+  WHERE AccountID = 1;
 END //
 
 DELIMITER ;
+
 
 
 

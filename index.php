@@ -128,6 +128,10 @@ case "updateuserprofile":
     include('modules/userprofile/updateUserProfile.php');
 break;
 
+case "deleteuserprofile":
+    include('modules/userprofile/deleteUserBooking.php');
+break;
+
 case "edituserinfo":
     include('modules/userpayment/editUserInfo.php');
 break;

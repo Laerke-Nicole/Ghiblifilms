@@ -117,7 +117,7 @@ $getUserReservations = $queryUserReservations->fetchAll();
             echo "<td>" . htmlspecialchars(trim($reservation['PaymentType'])) . "</td>";
             
             echo "<td></td>";
-            echo '<td><a href="index.php?page=deletereservation&ReservationID=' . $reservation['ReservationID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Cancel booking</a></td>';
+            echo '<td><a href="index.php?page=deleteuserprofile&ReservationID=' . $reservation['ReservationID'] . '&UserID=' . $userID . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Cancel booking</a></td>';
             echo "</tr>";
         }
 
