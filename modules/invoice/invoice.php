@@ -9,7 +9,6 @@ require_once("includes/session.php");
     <p>You can now check your booking out on your profile page or go to the homepage to see more movies.</p>
     <br/>
     
-    <a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color">
     <button class="btn" onclick="window.location.href='index.php?page=userprofile&UserID=<?php echo $userID; ?>'">Go to your profile</button>
-    <button class="btn" onclick="window.location.href='index.php?page=default'">Go to home page</button>
+    <button class="btn" onclick="window.location.href='index.php?page=home'">Go to home page</button>
 </div>

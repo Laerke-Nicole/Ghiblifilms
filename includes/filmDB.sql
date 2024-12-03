@@ -292,26 +292,25 @@ CREATE TRIGGER AfterCancelDelete
 AFTER DELETE ON Reservation
 FOR EACH ROW
 BEGIN
-    -- Declare a variable to store the amount
+    -- declare amount variable
     DECLARE amount DECIMAL(8, 2);
 
-    -- Retrieve the amount from the Payment table for the deleted ReservationID
+    -- get amount from payment where reservationid matches old reservationid
     SELECT Amount
     INTO amount
     FROM Payment
     WHERE ReservationID = OLD.ReservationID;
 
-    -- Subtract the amount from the BankAccount
-    UPDATE BankAccount
-    SET Balance = Balance - amount
-    WHERE AccountID = 1;
+    -- check if amount is NULL
+    IF amount IS NOT NULL THEN
+        -- minus the amount from the bankaccount balance
+        UPDATE BankAccount
+        SET Balance = Balance - amount
+        WHERE AccountID = 1;
+    END IF;
 END //
 
 DELIMITER ;
-
-
-
-
 
 
 -- static data to insert
