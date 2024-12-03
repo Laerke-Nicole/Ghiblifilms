@@ -4,6 +4,7 @@ require_once "../../includes/dbcon.php";
 if (isset($_POST['submit'])) {
     // Trim and htmlspecialchars
     $username = htmlspecialchars(trim($_POST['Username']));
+    $pass = htmlspecialchars(trim($_POST['Pass']));
     $firstName = htmlspecialchars(trim($_POST['FirstName']));
     $lastName = htmlspecialchars(trim($_POST['LastName']));
     $email = htmlspecialchars(trim($_POST['Email']));
@@ -12,6 +13,10 @@ if (isset($_POST['submit'])) {
     $streetNumber = htmlspecialchars(trim($_POST['StreetNumber']));
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
     $country = htmlspecialchars(trim($_POST['Country']));
+
+    // hash the password
+    $iterations = ['cost' => 15];
+    $hashed_password = password_hash($pass, PASSWORD_BCRYPT, $iterations);
 
     // First insert the address
     $queryAddress = $dbCon->prepare("INSERT INTO Address (StreetName, StreetNumber, PostalCode, Country) 
@@ -27,10 +32,11 @@ if (isset($_POST['submit'])) {
     
 
     // Now insert the user
-    $queryUser = $dbCon->prepare("INSERT INTO User (Username, FirstName, LastName, Email, PhoneNumber, AddressID) 
-    VALUES (:username, :firstName, :lastName, :email, :phoneNumber, :addressID)");
+    $queryUser = $dbCon->prepare("INSERT INTO User (Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID) 
+    VALUES (:username, :pass, :firstName, :lastName, :email, :phoneNumber, :addressID)");
 
     $queryUser->bindParam(':username', $username);
+    $queryUser->bindParam(':pass', $hashed_password);
     $queryUser->bindParam(':firstName', $firstName);
     $queryUser->bindParam(':lastName', $lastName);
     $queryUser->bindParam(':email', $email);

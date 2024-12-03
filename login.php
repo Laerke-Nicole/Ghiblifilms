@@ -78,7 +78,7 @@ if (logged_in()) {
 <form action="" method="post" class="flex flex-col">
     <div class="pb-4">
         <p>Username:</p>
-        <input type="text" name="User" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="User" maxlength="50" value="" class="validate" required="" aria-required="true" />
     </div>
     
     <div class="pb-4">
@@ -105,6 +105,7 @@ if (logged_in()) {
 <!-- recaptcha -->
 <script src="https://www.google.com/recaptcha/api.js"></script>
 
+<!-- recaptcha -->
 <script>
    function onSubmit(token) {
      document.getElementById("demo-form").submit();

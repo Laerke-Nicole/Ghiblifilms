@@ -88,9 +88,14 @@ $getUsers = $queryUser->fetchAll();
 
         <form class="col s12" name="contact" method="post" action="crud/user/addUser.php">
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s6">
                     <input id="Username" name="Username" type="text" class="validate" required="" aria-required="true">
                     <label for="Username">Username</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="Pass" name="Pass" type="password" class="validate" required="" aria-required="true" />
+                    <label for="Pass">Password</label>
                 </div>
             </div> 
 

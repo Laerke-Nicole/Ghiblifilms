@@ -58,7 +58,9 @@ $getGenre = $queryGenre->fetchAll();
     <hr>
     <h4>Add New Genre</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/genre/addGenre.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="Genre">
         <div class="row">
             <div class="input-field col s6">
                 <input id="GenreName" name="GenreName" type="text" class="validate" required="" aria-required="true">

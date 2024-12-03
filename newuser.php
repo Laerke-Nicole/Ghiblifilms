@@ -108,52 +108,52 @@ if (!empty($message)) {
 <form action="" method="post" class="flex flex-col">
     <div class="pb-4">
         <p>Username:</p>
-        <input type="text" name="Username" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="Username" maxlength="50" value="" class="validate" required="" aria-required="true" />
     </div>
     
     <div class="pb-4">
         <p>Password:</p>
-        <input type="password" name="Pass" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="password" name="Pass" maxlength="255" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>First name:</p>
-        <input type="text" name="FirstName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="FirstName" maxlength="50" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Last name:</p>
-        <input type="text" name="LastName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="LastName" maxlength="50" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Email:</p>
-        <input type="text" name="Email" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="Email" maxlength="255" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Phone number:</p>
-        <input type="text" name="PhoneNumber" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="PhoneNumber" maxlength="20" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Street name:</p>
-        <input type="text" name="StreetName" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="StreetName" maxlength="255" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Street number:</p>
-        <input type="number" name="StreetNumber" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="number" name="StreetNumber" maxlength="10" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Postal code:</p>
-        <input type="text" name="PostalCode" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="PostalCode" maxlength="10" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="pb-4">
         <p>Country:</p>
-        <input type="text" name="Country" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="Country" maxlength="150" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="cursor">

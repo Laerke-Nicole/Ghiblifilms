@@ -78,10 +78,6 @@ default:
     include('home.php');
 break;
 
-case "test":
-    include('crud/test.php');
-break;
-
 case "login":
     include('login.php');
 break;
@@ -96,6 +92,34 @@ break;
 
 case "admin":
     include('crud/admin.php');
+break;
+
+
+// controllers
+case "controllercreate":
+    include('controllers/create.php');
+break;
+
+case "controllerdelete":
+    include('controllers/delete.php');
+break;
+
+case "controllerupdate":
+    include('controllers/update.php');
+case "controllerupdate":
+
+
+// oop
+case "createoop":
+    include('oop/createOOP.php');
+break;
+
+case "updateoop":
+    include('oop/updateOOP.php');
+break;
+
+case "deleteoop":
+    include('oop/deleteOOP.php');
 break;
 
 
