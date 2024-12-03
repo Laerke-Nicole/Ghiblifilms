@@ -10,7 +10,7 @@ $getMovieProduction = $queryMovieProduction->fetchAll();
 
 <!-- Movie production -->
 <div class="container">
-    <h2>All Movies with their production team</h2>
+    <h4>All Movies with their production team</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -61,7 +61,7 @@ $getMovieProduction = $queryMovieProduction->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Movie with the production team</h3>
+    <h4>Add New Movie with the production team</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/movieProduction/addMovieProduction.php">
         <div class="row">

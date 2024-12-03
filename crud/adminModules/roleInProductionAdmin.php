@@ -10,7 +10,7 @@ $getRoleInProduction = $queryRoleInProduction->fetchAll();
 
 <!-- Role In Production -->
 <div class="container">
-    <h2>All Role In Production</h2>
+    <h4>All Role In Production</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -59,7 +59,7 @@ $getRoleInProduction = $queryRoleInProduction->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Role In Production</h3>
+    <h4>Add New Role In Production</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/roleInProduction/addRoleInProduction.php">
         <div class="row">

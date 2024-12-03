@@ -10,7 +10,7 @@ $getUserReservations = $queryUserReservations->fetchAll();
 
 <!-- Opening Hours -->
 <div class="container">
-    <h2>All Reservations sorted by user ID</h2>
+    <h4>All Reservations sorted by user ID</h4>
     
     <?php
     if (!$getUserReservations) {

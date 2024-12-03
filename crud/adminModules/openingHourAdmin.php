@@ -10,7 +10,7 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
 
 <!-- Opening Hours -->
 <div class="container">
-    <h2>All Opening Hours</h2>
+    <h4>All Opening Hours</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -61,7 +61,7 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Opening Hour</h3>
+    <h4>Add New Opening Hour</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/openingHour/addOpeningHour.php">
         <div class="row">

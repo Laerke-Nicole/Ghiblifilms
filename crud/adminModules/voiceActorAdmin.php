@@ -10,7 +10,7 @@ $getVoiceActor = $queryVoiceActor->fetchAll();
 
 <!--  voice actor -->
 <div class="container">
-    <h2>All s with their voice actors</h2>
+    <h4>All s with their voice actors</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -63,7 +63,7 @@ $getVoiceActor = $queryVoiceActor->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New voice actor</h3>
+    <h4>Add New voice actor</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/voiceActor/addVoiceActor.php">
         <div class="row">

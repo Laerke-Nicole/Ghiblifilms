@@ -14,7 +14,7 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 <!-- company information -->
 <div class="container">
 
-    <h2>Company information</h2>
+    <h4>Company information</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -79,7 +79,7 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
             </table>
         </div>
         <hr>
-        <h3>Add new company information</h3>
+        <h4>Add new company information</h4>
 
         <form class="col s12" name="contact" method="post" action="crud/companyinformation/addCompanyInformation.php">
             <div class="row">

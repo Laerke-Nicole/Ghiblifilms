@@ -10,7 +10,7 @@ $getProduction = $queryProduction->fetchAll();
 
 <!-- Production -->
 <div class="container">
-    <h2>All Production</h2>
+    <h4>All Production</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -63,7 +63,7 @@ $getProduction = $queryProduction->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Production</h3>
+    <h4>Add New Production</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/production/addProduction.php">
         <div class="row">

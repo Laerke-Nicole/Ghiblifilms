@@ -10,7 +10,7 @@ $getPremiere = $queryPremiere->fetchAll();
 
 <!-- Premiere -->
 <div class="container">
-    <h2>All Premiere</h2>
+    <h4>All Premiere</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -61,7 +61,7 @@ $getPremiere = $queryPremiere->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Premiere</h3>
+    <h4>Add New Premiere</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/premiere/addPremiere.php">
         <div class="row">

@@ -10,7 +10,7 @@ $getShowings = $queryShowings->fetchAll();
 
 <!-- showings -->
 <div class="container">
-    <h2>All showings</h2>
+    <h4>All showings</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -67,7 +67,7 @@ $getShowings = $queryShowings->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Showing</h3>
+    <h4>Add New Showing</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/showings/addShowings.php">
         <div class="row">

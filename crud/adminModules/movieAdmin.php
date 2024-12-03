@@ -12,7 +12,7 @@ $getMovies = $queryMovie->fetchAll();
 <!-- movie -->
 <div class="container">
 
-    <h2>All movies</h2>
+    <h4>All movies</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -94,7 +94,7 @@ $getMovies = $queryMovie->fetchAll();
 
 
         <hr>
-        <h3>Add new movie</h3>
+        <h4>Add new movie</h4>
 
         <form class="col s12" method="post" action="crud/movie/addMovie.php" enctype="multipart/form-data">
             <div class="row">

@@ -13,7 +13,7 @@ $getNews = $queryNews->fetchAll();
 <!-- news -->
 <div class="container">
 
-    <h2>All news</h2>
+    <h4>All news</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -70,7 +70,7 @@ $getNews = $queryNews->fetchAll();
     </div>
 
     <hr>
-        <h3>Add New News</h3>
+        <h4>Add New News</h4>
         <form class="col s12" name="contact" method="post" action="crud/news/addNews.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">

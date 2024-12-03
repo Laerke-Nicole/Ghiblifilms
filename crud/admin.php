@@ -13,41 +13,11 @@ require_once("includes/functions.php");
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/showCategory.js" defer></script>
     <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-        main {
-            flex: 1 0 auto;
-            padding: 20px;
-        }
-        .sidenav {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background-color: #ffffff;
-        }
-        .content-area {
-            margin-left: 250px; 
-            padding: 20px;
-            flex: 1;
-        }
-        .category-section {
-            display: none;
-        }
-        .card {
-            cursor: pointer;
-            background-color: var(--secondary-color);
-        }
-        .content {
-            margin-left: 250px;
-        }
+        
     </style>
 </head>
 <body>
@@ -66,7 +36,7 @@ require_once("includes/functions.php");
     </main>
 
     <!-- display the added ones and add new -->
-    <div class="content">
+    <div class="ml-250">
         <?php include("modules/admin/createAndAdded.php"); ?>
     </div>
 

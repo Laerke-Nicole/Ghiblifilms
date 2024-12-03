@@ -16,7 +16,7 @@ $getUsers = $queryUser->fetchAll();
 <!-- user -->
 <div class="container">
 
-    <h2>All users</h2>
+    <h4>All users</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -87,7 +87,7 @@ $getUsers = $queryUser->fetchAll();
 
 
         <hr>
-        <h3>Add new user</h3>
+        <h4>Add new user</h3>
 
         <form class="col s12" name="contact" method="post" action="crud/user/addUser.php">
             <div class="row">

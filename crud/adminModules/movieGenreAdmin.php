@@ -10,7 +10,7 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
 
 <!-- Movie genre -->
 <div class="container">
-    <h2>All Movies with their Genre</h2>
+    <h4>All Movies with their Genre</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -62,7 +62,7 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Movie with their Genre</h3>
+    <h4>Add New Movie with their Genre</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/movieGenre/addMovieGenre.php">
         <div class="row">

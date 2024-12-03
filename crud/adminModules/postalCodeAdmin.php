@@ -10,7 +10,7 @@ $getPostalCode = $queryPostalCode->fetchAll();
 
 <!-- Postal Code -->
 <div class="container">
-    <h2>All Postal codes + their city</h2>
+    <h4>All Postal codes + their city</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -59,7 +59,7 @@ $getPostalCode = $queryPostalCode->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Postal Code</h3>
+    <h4>Add New Postal Code</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/postalCode/addPostalCode.php">
         <div class="row">

@@ -10,7 +10,7 @@ $getGenre = $queryGenre->fetchAll();
 
 <!-- Opening Hours -->
 <div class="container">
-    <h2>All Genres</h2>
+    <h4>All Genres</h4>
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == "deleted") {
@@ -59,7 +59,7 @@ $getGenre = $queryGenre->fetchAll();
     </div>
 
     <hr>
-    <h3>Add New Genre</h3>
+    <h4>Add New Genre</h4>
 
     <form class="col s12" name="contact" method="post" action="crud/genre/addGenre.php">
         <div class="row">
