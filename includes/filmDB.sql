@@ -285,29 +285,31 @@ END //
 DELIMITER ;
 
 
+-- update bankaccount balance after delete booking
 DELIMITER //
 
 CREATE TRIGGER AfterCancelDelete
-AFTER DELETE ON Showings
+AFTER DELETE ON Reservation
 FOR EACH ROW
 BEGIN
-  -- storing in ReservationID and Amount 
-  DECLARE reservationID INT;
-  DECLARE amount DECIMAL(8, 2);
+    -- Declare a variable to store the amount
+    DECLARE amount DECIMAL(8, 2);
 
-  -- get ReservationID and amount from Payment table where ReservationID is the same as ShowingsID
-  SELECT ReservationID, Amount 
-  INTO reservationID, amount
-  FROM Payment 
-  WHERE ReservationID = OLD.ShowingsID;
+    -- Retrieve the amount from the Payment table for the deleted ReservationID
+    SELECT Amount
+    INTO amount
+    FROM Payment
+    WHERE ReservationID = OLD.ReservationID;
 
-  -- minus the amount the payment is on the bank account
-  UPDATE BankAccount
-  SET Balance = Balance - amount
-  WHERE AccountID = 1;
+    -- Subtract the amount from the BankAccount
+    UPDATE BankAccount
+    SET Balance = Balance - amount
+    WHERE AccountID = 1;
 END //
 
 DELIMITER ;
+
+
 
 
 
