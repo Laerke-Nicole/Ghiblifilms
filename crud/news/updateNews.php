@@ -8,8 +8,6 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
     $newsID = htmlspecialchars(trim($_POST['NewsID']));
 
-    $dbCon = dbCon($user, $pass);
-
     // Initialize the $newsImg variable to store the file name
     $newsImg = null;
 

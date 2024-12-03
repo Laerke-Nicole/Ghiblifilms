@@ -4,8 +4,6 @@ require_once "includes/dbcon.php";
 if (isset($_GET['VoiceActorID'])) {
     $voiceActorID = $_GET['VoiceActorID'];
 
-    $dbCon = dbCon($user, $pass);
-
     // Prepare the statement
     $query = $dbCon->prepare("DELETE FROM VoiceActor WHERE VoiceActorID = :voiceActorID");
     

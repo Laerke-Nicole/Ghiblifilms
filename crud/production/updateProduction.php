@@ -7,8 +7,6 @@ if (isset($_POST['ProductionID']) && isset($_POST['submit'])) {
     $roleInProductionID = htmlspecialchars(trim($_POST['RoleInProductionID']));
     $productionID = htmlspecialchars(trim($_POST['ProductionID']));
 
-    $dbCon = dbCon($user, $pass);
-
     $query = $dbCon->prepare("UPDATE Production SET FirstName = :firstname, LastName = :lastName, RoleInProductionID = :roleInProductionID WHERE ProductionID = :productionID");
     
     $query->bindParam(':firstname', $firstname);

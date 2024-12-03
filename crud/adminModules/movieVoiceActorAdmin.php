@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get Movie Production
 $queryMovieVoiceActor = $dbCon->prepare("SELECT * FROM MovieVoiceActor");
 $queryMovieVoiceActor->execute();

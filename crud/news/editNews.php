@@ -14,8 +14,6 @@ if (isset($_GET['ID'])) {
 <?php
 $newsID = htmlspecialchars(trim($_GET['ID']));
 
-$dbCon = dbCon($user, $pass);
-
 $query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
 
 $query->bindParam(':newsID', $newsID);

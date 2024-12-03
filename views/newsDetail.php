@@ -4,7 +4,6 @@ require_once("includes/dbcon.php");
 if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $newsID = $_GET['ID'];
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
     $query->bindParam(':newsID', $newsID);
     $query->execute();

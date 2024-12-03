@@ -5,8 +5,6 @@ if (isset($_POST['GenreID']) && isset($_POST['submit'])) {
     $genreName = htmlspecialchars(trim($_POST['GenreName']));
     $genreID = htmlspecialchars(trim($_POST['GenreID']));
 
-    $dbCon = dbCon($user, $pass);
-
     $query = $dbCon->prepare("UPDATE Genre SET GenreName = :genreName WHERE GenreID = :genreID");
     
     $query->bindParam(':genreName', $genreName);

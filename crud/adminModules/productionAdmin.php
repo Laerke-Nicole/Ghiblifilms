@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get opening hours
 $queryProduction = $dbCon->prepare("SELECT * FROM Production");
 $queryProduction->execute();

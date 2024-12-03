@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get Movie Genre
 $queryMovieGenre = $dbCon->prepare("SELECT * FROM MovieGenre");
 $queryMovieGenre->execute();

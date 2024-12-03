@@ -32,8 +32,7 @@ if (isset($_POST['submit'])) {
                     $newsImg = $_FILES['newsImg']['name']; // Get the filename
 
                     // insert data into the database
-                    try {
-                        $dbCon = dbCon($user, $pass);
+                    try {                  
                         $query = $dbCon->prepare("INSERT INTO News (Headline, SubHeadline, TextOfNews, NewsImg) VALUES (:headline, :subHeadline, :textOfNews, :newsImg)");
                         $query->bindParam(':headline', $headline);
                         $query->bindParam(':subHeadline', $subHeadline);

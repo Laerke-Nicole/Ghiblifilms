@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get showings
 $queryShowings = $dbCon->prepare("SELECT * FROM Showings");
 $queryShowings->execute();

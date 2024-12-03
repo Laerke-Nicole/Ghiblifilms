@@ -14,8 +14,6 @@ if (isset($_GET['ID'])) {
 <?php
 $movieID = htmlspecialchars(trim($_GET['ID']));
 
-$dbCon = dbCon($user, $pass);
-
 $query = $dbCon->prepare("SELECT * FROM Movie WHERE MovieID = :movieID");
 $query->bindParam(':movieID', $movieID);
 $query->execute();

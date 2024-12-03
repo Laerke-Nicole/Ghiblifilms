@@ -4,8 +4,6 @@ require_once "includes/dbcon.php";
 if (isset($_GET['ShowingsID'])) {
     $showingsID = $_GET['ShowingsID'];
 
-    $dbCon = dbCon($user, $pass);
-
     // Prepare the statement
     $query = $dbCon->prepare("DELETE FROM Showings WHERE ShowingsID = :showingsID");
     

@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get opening hours
 $queryGenre = $dbCon->prepare("SELECT * FROM Genre");
 $queryGenre->execute();

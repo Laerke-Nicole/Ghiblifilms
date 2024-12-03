@@ -9,8 +9,6 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     $duration = htmlspecialchars(trim($_POST['Duration']));
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
 
-    $dbCon = dbCon($user, $pass);
-
     // Initialize the $movieImg variable
     $movieImg = null;
 

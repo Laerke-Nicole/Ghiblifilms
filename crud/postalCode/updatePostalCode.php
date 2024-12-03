@@ -5,8 +5,6 @@ if (isset($_POST['PostalCode']) && isset($_POST['submit'])) {
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
     $city = htmlspecialchars(trim($_POST['City']));
 
-    $dbCon = dbCon($user, $pass);
-
     $query = $dbCon->prepare("UPDATE PostalCode SET PostalCode = :postalCode, City = :city WHERE PostalCode = :postalCode");
     
     $query->bindParam(':postalCode', $postalCode);

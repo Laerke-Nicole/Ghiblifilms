@@ -18,7 +18,6 @@ if (isset($_GET['MovieID']) && isset($_GET['ProductionID'])) {
 </head>
 
 <?php
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM MovieProduction WHERE MovieID = :movieID AND ProductionID = :productionID");
 $query->bindParam(':movieID', $movieID);
 $query->bindParam(':productionID', $productionID);

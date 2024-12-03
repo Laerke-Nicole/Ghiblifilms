@@ -2,22 +2,8 @@
 require_once("includes/session.php");
 require_once ("includes/dbcon.php"); 
 require_once("includes/functions.php");
+require_once("includes/connection.php");
 ?>
-
-<!-- cookies -->
-<?php 
-// create cookie
-// if (!isset($_COOKIE["user"])) {
-//     setcookie("user", "Lærke Nielsen", time() + 3600);
-// }
-
-// expiration time to delete cookie
-// if (isset($_GET['delete'])) {
-//     $expire = time() + 60*60*24*30;
-//     setcookie("user", "", $expire); 
-// }
-?> 
-
 
 
 <!DOCTYPE html>
@@ -33,23 +19,6 @@ require_once("includes/functions.php");
 </head>
 
 <body>
-<?php 
-// Retrieve the cookie
-// if (isset($_COOKIE["user"])) {
-//     echo "Welcome " . htmlspecialchars($_COOKIE["user"]) . "!<br>";
-// } else {
-//     echo "Welcome guest!<br>";
-// }
-
-// print a cookie
-// echo $_COOKIE["user"];
-
-// echo "<br>";
-
-// View all cookies for debugging
-// print_r($_COOKIE);
-?>
-
 
 <?php
 // check if the user is logged in
@@ -59,8 +28,6 @@ if (isset($_SESSION['UserID'])) {
 } else {
     $userID = null;
 }
-
-
 ?>
 
 
@@ -203,10 +170,6 @@ case "showingsadmin":
     include('crud/adminModules/showingsAdmin.php');
 break;
 
-case "premiereadmin":
-    include('crud/adminModules/premiereAdmin.php');
-break;
-
 case "useradmin":
     include('crud/adminModules/userAdmin.php');
 break;
@@ -265,10 +228,6 @@ case "addshowings":
     include('crud/showings/addShowings.php');
 break;
 
-case "addpremiere":
-    include('crud/premiere/addPremiere.php');
-break;
-
 case "adduser":
     include('crud/user/addUser.php');
 break;
@@ -325,10 +284,6 @@ break;
 
 case "deleteshowings":
     include('crud/showings/deleteShowings.php');
-break;
-
-case "deletepremiere":
-    include('crud/premiere/deletePremiere.php');
 break;
 
 case "deleteuser":
@@ -393,10 +348,6 @@ case "editshowings":
     include('crud/showings/editShowings.php');
 break;
 
-case "editpremiere":
-    include('crud/premiere/editPremiere.php');
-break;
-
 case "edituser":
     include('crud/user/editUser.php');
 break;
@@ -453,10 +404,6 @@ break;
 
 case "updateshowings":
     include('crud/showings/updateShowings.php');
-break;
-
-case "updatepremiere":
-    include('crud/premiere/updatePremiere.php');
 break;
 
 case "updateuser":

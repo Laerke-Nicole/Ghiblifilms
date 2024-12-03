@@ -4,8 +4,6 @@ require_once "includes/dbcon.php";
 if (isset($_GET['MovieID'])) {
     $movieID = htmlspecialchars(trim($_GET['MovieID']));
 
-    $dbCon = dbCon($user, $pass);
-
     // Delete related entries in moviegenre
     $queryDeleteGenre = $dbCon->prepare("DELETE FROM moviegenre WHERE MovieID = :movieID");
     $queryDeleteGenre->bindParam(':movieID', $movieID);

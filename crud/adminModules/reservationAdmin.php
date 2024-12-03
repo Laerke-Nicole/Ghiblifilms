@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // get user reservations
 $queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView ORDER BY UserID");
 $queryUserReservations->execute();

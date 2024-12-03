@@ -4,8 +4,6 @@ require_once "includes/dbcon.php";
 if (isset($_GET['RoleInProductionID'])) {
     $roleInProductionID = $_GET['RoleInProductionID'];
 
-    $dbCon = dbCon($user, $pass);
-
     // First delete the role in production that is linked to the production
     $deleteProductionQuery = $dbCon->prepare("DELETE FROM Production WHERE RoleInProductionID = :roleInProductionID");
     $deleteProductionQuery->bindParam(':roleInProductionID', $roleInProductionID);

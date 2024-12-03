@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $voiceActorID = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM VoiceActor WHERE VoiceActorID = :voiceActorID");
 $query->bindParam(':voiceActorID', $voiceActorID);
 $query->execute();

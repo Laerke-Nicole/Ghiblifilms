@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get news
 $queryMovie = $dbCon->prepare("SELECT * FROM Movie");
 $queryMovie->execute();

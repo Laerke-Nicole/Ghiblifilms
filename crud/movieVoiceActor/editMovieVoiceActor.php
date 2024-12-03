@@ -18,7 +18,6 @@ if (isset($_GET['MovieID']) && isset($_GET['VoiceActorID'])) {
 </head>
 
 <?php
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM MovieVoiceActor WHERE MovieID = :movieID AND VoiceActorID = :voiceActorID");
 $query->bindParam(':movieID', $movieID);
 $query->bindParam(':voiceActorID', $voiceActorID);

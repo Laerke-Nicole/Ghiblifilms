@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
     $city = htmlspecialchars(trim($_POST['City']));
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("INSERT INTO PostalCode (PostalCode, City) VALUES (:postalCode, :city)");
 
     // Prepare statements

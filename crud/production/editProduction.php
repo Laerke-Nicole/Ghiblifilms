@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $productionID = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM Production WHERE ProductionID = :productionID");
 $query->bindParam(':productionID', $productionID);
 $query->execute();

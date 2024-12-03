@@ -9,8 +9,6 @@ if (isset($_POST['ShowingsID']) && isset($_POST['submit'])) {
     $showingDate = htmlspecialchars(trim($_POST['ShowingDate']));
     $showingTime = htmlspecialchars(trim($_POST['ShowingTime']));
 
-    $dbCon = dbCon($user, $pass);
-
     $query = $dbCon->prepare("UPDATE Showings SET MovieID = :movieID, AuditoriumID = :auditoriumID, ScreenFormatID = :screenFormatID, ShowingDate = :showingDate, ShowingTime = :showingTime WHERE ShowingsID = :showingsID");
     
     $query->bindParam(':movieID', $movieID);

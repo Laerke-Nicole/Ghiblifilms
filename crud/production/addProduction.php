@@ -7,7 +7,6 @@ if (isset($_POST['submit'])) {
     $lastName = htmlspecialchars(trim($_POST['LastName']));
     $roleInProductionID = htmlspecialchars(trim($_POST['RoleInProductionID']));
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("INSERT INTO Production (FirstName, LastName, RoleInProductionID) VALUES (:firstName, :lastName, :roleInProductionID)");
 
     // Prepare statements

@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get news
 $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();

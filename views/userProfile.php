@@ -16,9 +16,6 @@ $userID = $_GET['UserID'];
 ?>
 
 <?php
-// connect to db
-$dbCon = dbCon($user, $pass);
-
 // get user view
 $queryUserProfileView = $dbCon->prepare("SELECT * FROM UserProfileView WHERE UserID = :userID");
 $queryUserProfileView->bindParam(':userID', $userID);

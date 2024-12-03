@@ -18,8 +18,6 @@ if (isset($_GET['ID'])) {
 <?php
 $showingsID = htmlspecialchars($_GET['ID']);
 
-$dbCon = dbCon($user, $pass);
-
 $query = $dbCon->prepare("SELECT * FROM Showings WHERE ShowingsID = :showingsID");
 $query->bindParam(':showingsID', $showingsID);
 

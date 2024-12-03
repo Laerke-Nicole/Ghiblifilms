@@ -6,8 +6,6 @@ if (isset($_POST['VoiceActorID']) && isset($_POST['submit'])) {
     $lastname = htmlspecialchars(trim($_POST['LastName']));
     $voiceActorID = htmlspecialchars(trim($_POST['VoiceActorID']));
 
-    $dbCon = dbCon($user, $pass);
-
     $query = $dbCon->prepare("UPDATE VoiceActor SET FirstName = :firstname, LastName = :lastName WHERE VoiceActorID = :voiceActorID");
     
     $query->bindParam(':firstname', $firstname);

@@ -8,8 +8,7 @@ require_once("includes/dbcon.php");
 
 if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $movieID = $_GET['ID'];
-
-    $dbCon = dbCon($user, $pass);
+    
     $query = $dbCon->prepare("SELECT * FROM Movie WHERE MovieID = :movieID");
     $query->bindParam(':movieID', $movieID);
     $query->execute();

@@ -2,9 +2,6 @@
 require("includes/connection.php");
 require_once ("includes/dbcon.php");
 
-$dbCon = dbCon($user, $pass);
-
-
 try {
 
     // start a new transaction (disable auto-commit)

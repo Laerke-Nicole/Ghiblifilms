@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get voice actor
 $queryVoiceActor = $dbCon->prepare("SELECT * FROM VoiceActor");
 $queryVoiceActor->execute();

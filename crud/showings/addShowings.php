@@ -10,7 +10,6 @@ if (isset($_POST['submit'])) {
     $ShowingDate = htmlspecialchars(trim($_POST['ShowingDate']));
     $ShowingTime = htmlspecialchars(trim($_POST['ShowingTime']));
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("INSERT INTO Showings (MovieID, AuditoriumID, ScreenFormatID, ShowingDate, ShowingTime) VALUES (:movieID, :auditoriumID, :screenFormatID, :showingDate, :showingTime)");
 
     // Prepare statements

@@ -10,8 +10,6 @@ if (isset($_POST['MovieID']) && isset($_POST['VoiceActorID']) && isset($_POST['o
     $originalMovieID = htmlspecialchars(trim($_POST['originalMovieID']));
     $originalVoiceActorID = htmlspecialchars(trim($_POST['originalVoiceActorID']));
 
-    $dbCon = dbCon($user, $pass);
-
     // prepare the statement using original keys in the WHERE clause
     $query = $dbCon->prepare("UPDATE MovieVoiceActor SET MovieID = :movieID, VoiceActorID = :voiceActorID WHERE MovieID = :originalMovieID AND VoiceActorID = :originalVoiceActorID");
 
@@ -43,8 +41,6 @@ if (isset($_POST['MovieID']) && isset($_POST['VoiceActorID']) && isset($_POST['o
     // Get original values to identify the record
     $originalMovieID = htmlspecialchars(trim($_POST['originalMovieID']));
     $originalVoiceActorID = htmlspecialchars(trim($_POST['originalVoiceActorID']));
-
-    $dbCon = dbCon($user, $pass);
 
     // Prepare the statement using original keys in the WHERE clause
     $query = $dbCon->prepare("UPDATE MovieVoiceActor SET MovieID = :movieID, VoiceActorID = :voiceActorID WHERE MovieID = :originalMovieID AND VoiceActorID = :originalVoiceActorID");

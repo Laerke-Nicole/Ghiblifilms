@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $postalCode = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCode");
 $query->bindParam(':postalCode', $postalCode);
 $query->execute();

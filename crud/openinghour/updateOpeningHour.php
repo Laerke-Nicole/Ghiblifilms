@@ -5,9 +5,7 @@ if (isset($_POST['OpeningHourID']) && isset($_POST['submit'])) {
     $day = htmlspecialchars(trim($_POST['Day']));
     $time = htmlspecialchars(trim($_POST['Time']));
     $openingHourID = htmlspecialchars(trim($_POST['OpeningHourID']));
-
-    $dbCon = dbCon($user, $pass);
-
+    
     $query = $dbCon->prepare("UPDATE OpeningHour SET `Day` = :day, `Time` = :time WHERE OpeningHourID = :openingHourID");
     
     $query->bindParam(':day', $day);

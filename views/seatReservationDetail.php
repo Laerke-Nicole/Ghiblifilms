@@ -13,8 +13,6 @@ if (!isset($_GET['ShowingsID'])) {
 $showingsID = $_GET['ShowingsID']; 
 $_SESSION['ShowingsID'] = $showingsID; // Save ShowingsID in session
 
-$dbCon = dbCon($user, $pass);
-
 // Fetch already reserved seats for the showing
 $queryReservedSeats = $dbCon->prepare("
     SELECT s.SeatNumber

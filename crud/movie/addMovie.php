@@ -31,7 +31,6 @@ if (isset($_POST['submit'])) {
 
                     // Insert data into the database
                     try {
-                        $dbCon = dbCon($user, $pass);
                         $query = $dbCon->prepare("INSERT INTO Movie (`Name`, `Description`, ReleaseYear, Duration, MovieImg) VALUES (:name, :description, :releaseYear, :duration, :movieImg)");
                         $query->bindParam(':name', $name);
                         $query->bindParam(':description', $description);

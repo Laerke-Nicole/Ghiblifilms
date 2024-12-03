@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get Movie Production
 $queryMovieProduction = $dbCon->prepare("SELECT * FROM MovieProduction");
 $queryMovieProduction->execute();

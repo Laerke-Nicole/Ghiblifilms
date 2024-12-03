@@ -14,7 +14,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $companyInformationID = htmlspecialchars(trim($_GET['ID']));
-$dbCon = dbCon($user, $pass);
 
 $query = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
                            FROM CompanyInformation C 

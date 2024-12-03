@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $openingHourID = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM OpeningHour WHERE OpeningHourID = :openingHourID");
 $query->bindParam(':openingHourID', $openingHourID);
 $query->execute();

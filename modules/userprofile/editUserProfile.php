@@ -15,8 +15,7 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$userID = htmlspecialchars(trim($_GET['ID']);
-$dbCon = dbCon($user, $pass);
+$userID = htmlspecialchars(trim($_GET['ID']));
 
 $query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
                            FROM User U 

@@ -10,3 +10,6 @@ function dbCon($user, $pass){
         die();
     }
 }
+
+// connect to db
+$dbCon = dbCon($user, $pass);

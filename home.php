@@ -4,24 +4,19 @@
 <?php require_once("includes/connection.php"); ?>
 
 <?php
-// connect to db
-$dbCon = dbCon($user, $pass);
-
-// get daily premieres from db
+// get daily showings from db
 $queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");
 $queryShowings->execute();
 $dailyShowingsViews = $queryShowings->fetchAll();
 
 
 // get news from db
-$dbCon = dbCon($user, $pass);
 $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();
 $getNews = $queryNews->fetchAll();
 
 
 // get movies from db
-$dbCon = dbCon($user, $pass);
 $queryMovies = $dbCon->prepare("SELECT * FROM Movie");
 $queryMovies->execute();
 $getMovies = $queryMovies->fetchAll();
@@ -34,7 +29,6 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
 
 // get company info from db
-$dbCon = dbCon($user, $pass);
 $queryCompanyInformation = $dbCon->prepare("SELECT CompanyEmail, CompanyPhoneNumber FROM CompanyInformation");
 $queryCompanyInformation->execute();
 $getCompanyInformation = $queryCompanyInformation->fetchAll();

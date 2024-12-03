@@ -11,8 +11,6 @@ if (isset($_POST['submit'])) {
     $streetNumber = htmlspecialchars($_POST['StreetNumber']);
     $postalCode = htmlspecialchars($_POST['PostalCode']);
     $country = htmlspecialchars($_POST['Country']);
-
-    $dbCon = dbCon($user, $pass);
     
     // update company information
     $updateCompany = $dbCon->prepare("UPDATE CompanyInformation SET 

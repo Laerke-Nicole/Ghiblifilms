@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get postal codes
 $queryPostalCode = $dbCon->prepare("SELECT * FROM PostalCode");
 $queryPostalCode->execute();

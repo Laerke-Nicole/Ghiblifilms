@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $genreID = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM Genre WHERE GenreID = :genreID");
 $query->bindParam(':genreID', $genreID);
 $query->execute();

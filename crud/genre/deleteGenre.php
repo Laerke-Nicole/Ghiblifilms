@@ -4,8 +4,6 @@ require_once "includes/dbcon.php";
 if (isset($_GET['GenreID'])) {
     $genreID = $_GET['GenreID'];
 
-    $dbCon = dbCon($user, $pass);
-
     // Prepare the statement
     $query = $dbCon->prepare("DELETE FROM Genre WHERE GenreID = :genreID");
     

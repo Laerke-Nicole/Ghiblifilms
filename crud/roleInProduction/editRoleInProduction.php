@@ -17,7 +17,6 @@ if (isset($_GET['ID'])) {
 
 <?php
 $roleInProductionID = htmlspecialchars($_GET['ID']);
-$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT * FROM RoleInProduction WHERE RoleInProductionID = :roleInProductionID");
 $query->bindParam(':roleInProductionID', $roleInProductionID);
 $query->execute();

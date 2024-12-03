@@ -5,8 +5,7 @@ if (isset($_POST['submit'])) {
     // Trim and htmlspecialchars
     $firstName = htmlspecialchars(trim($_POST['FirstName']));
     $lastName = htmlspecialchars(trim($_POST['LastName']));
-
-    $dbCon = dbCon($user, $pass);
+    
     $query = $dbCon->prepare("INSERT INTO VoiceActor (FirstName, LastName) VALUES (:firstName, :lastName)");
 
     // Prepare statements

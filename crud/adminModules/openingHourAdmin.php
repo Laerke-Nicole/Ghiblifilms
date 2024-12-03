@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get opening hours
 $queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
 $queryOpeningHour->execute();

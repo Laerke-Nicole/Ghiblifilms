@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
     $productionID = htmlspecialchars(trim($_POST['ProductionID']));
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("INSERT INTO MovieProduction (MovieID, ProductionID) VALUES (:movieID, :productionID)");
 
     // Prepare statements

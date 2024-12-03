@@ -5,7 +5,6 @@ require_once("includes/session.php");
 require_once("includes/functions.php");
 //confirm_logged_in(); 
 
-$dbCon = dbCon($user, $pass);
 $crud = new CRUD($dbCon);
 
 // Fetch the selected table from the URL

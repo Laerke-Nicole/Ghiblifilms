@@ -5,8 +5,6 @@ if (isset($_GET['MovieID']) && isset($_GET['ProductionID'])) {
     $movieID = $_GET['MovieID'];
     $productionID = $_GET['ProductionID'];
 
-    $dbCon = dbCon($user, $pass);
-
     // Prepare the statement
     $query = $dbCon->prepare("DELETE FROM MovieProduction WHERE MovieID = :movieID AND ProductionID = :productionID");
     

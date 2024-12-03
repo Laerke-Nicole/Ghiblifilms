@@ -12,9 +12,6 @@ if (!$showingsID || empty($selectedSeatIDs)) {
     die("No reservation details found.");
 }
 
-// Connect to the database
-$dbCon = dbCon($user, $pass);
-
 // get showings info
 $queryShowingsInfo = $dbCon->prepare("
     SELECT s.ShowingDate, s.ShowingTime, m.Name AS MovieName

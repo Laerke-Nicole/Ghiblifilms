@@ -12,8 +12,6 @@ if (isset($_POST['submit'])) {
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
     $country = htmlspecialchars(trim($_POST['Country']));
 
-    $dbCon = dbCon($user, $pass);
-
     // First insert the address
     $queryAddress = $dbCon->prepare("INSERT INTO Address (StreetName, StreetNumber, PostalCode, Country) 
                                       VALUES (:streetName, :streetNumber, :postalCode, :country)");

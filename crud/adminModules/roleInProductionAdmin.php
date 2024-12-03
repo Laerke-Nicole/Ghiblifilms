@@ -1,7 +1,4 @@
 <?php
-// Connect to db
-$dbCon = dbCon($user, $pass);
-
 // Get opening hours
 $queryRoleInProduction = $dbCon->prepare("SELECT * FROM RoleInProduction");
 $queryRoleInProduction->execute();

@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
     $voiceActorID = htmlspecialchars(trim($_POST['VoiceActorID']));
 
-    $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("INSERT INTO MovieVoiceActor (MovieID, VoiceActorID) VALUES (:movieID, :voiceActorID)");
 
     // Prepare statements
