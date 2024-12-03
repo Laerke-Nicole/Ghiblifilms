@@ -60,7 +60,9 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
     <hr>
     <h4>Add New Opening Hour</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/openingHour/addOpeningHour.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="OpeningHour">
         <div class="row">
             <div class="input-field col s6">
                 <input id="Day" name="Day" type="text" class="validate" required="" aria-required="true">

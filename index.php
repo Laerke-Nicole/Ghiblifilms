@@ -224,10 +224,6 @@ case "addpostalcode":
     include('crud/postalCode/addPostalCode.php');
 break;
 
-case "addgenre":
-    include('crud/genre/addGenre.php');
-break;
-
 case "addroleinproduction":
     include('crud/roleInProduction/addRoleInProduction.php');
 break;
