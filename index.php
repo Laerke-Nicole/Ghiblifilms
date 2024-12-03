@@ -131,35 +131,35 @@ case "admin":
     include('crud/admin.php');
 break;
 
-case "userprofile":
-    include('views/userProfile.php');
+
+// modules
+case "categoriesadmin":
+    include('modules/admin/categories.php');
+break;
+
+case "createandadded":
+    include('modules/admin/createAndAdded.php');
 break;
 
 case "form":
     include('modules/contactform/form.php');
 break;
 
-case "seatreservationdetail":
-    include('views/seatReservationDetail.php');
+case "invoice":
+    include('modules/invoice/invoice.php');
 break;
 
 case "seatreservationform":
     include('modules/seatreservation/form.php');
 break;
 
-case "invoicedetail":
-    include('views/invoiceDetail.php');
+case "edituserprofile":
+    include('modules/userprofile/editUserProfile.php');
 break;
 
-case "successfullogindetail":
-    include('views/successfulLogInDetail.php');
+case "updateuserprofile":
+    include('modules/userprofile/updateUserProfile.php');
 break;
-
-case "invoice":
-    include('modules/invoice/invoice.php');
-break;
-
-
 
 
 // admin modules of cruds
@@ -401,10 +401,6 @@ case "edituser":
     include('crud/user/editUser.php');
 break;
 
-case "edituserprofile":
-    include('modules/userprofile/editUserProfile.php');
-break;
-
 case "editnews":
     include('crud/news/editNews.php');
 break;
@@ -467,10 +463,6 @@ case "updateuser":
     include('crud/user/updateUser.php');
 break;
 
-case "updateuserprofile":
-    include('modules/userprofile/updateUserProfile.php');
-break;
-
 case "updatenews":
     include('crud/news/updateNews.php');
 break;
@@ -484,7 +476,7 @@ case "updateopeninghour":
 break;
 
 
-// detail pages
+// view/detail pages
 case "moviedetail":
     include('views/movieDetail.php');
 break;
@@ -497,12 +489,28 @@ case "paymentdetail":
     include('views/paymentDetail.php');
 break;
 
+case "userprofile":
+    include('views/userProfile.php');
+break;
+
+case "seatreservationdetail":
+    include('views/seatReservationDetail.php');
+break;
+
+case "invoicedetail":
+    include('views/invoiceDetail.php');
+break;
+
+case "successfullogindetail":
+    include('views/successfulLogInDetail.php');
+break;
+
 }
 ?>
 
 
-<!-- JavaScript -->
-<script src="toggle.js"></script>
-<script src="dropdown.js"></script>
+<!-- javascript -->
+<script src="/js/showCategory.js" defer></script>
+<script src="/js/dropdown.js"></script>
 </body>
 </html>

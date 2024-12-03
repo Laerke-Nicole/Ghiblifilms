@@ -27,10 +27,10 @@ CREATE TABLE User (
   UserID INT AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(50) NOT NULL UNIQUE,                        
   Pass VARCHAR(255) NOT NULL,
-  FirstName VARCHAR(255) NOT NULL,
-  LastName VARCHAR(255) NOT NULL,
+  FirstName VARCHAR(50) NOT NULL,
+  LastName VARCHAR(50) NOT NULL,
   Email VARCHAR(255) NOT NULL,
-  PhoneNumber VARCHAR(255) NOT NULL,
+  PhoneNumber VARCHAR(20) NOT NULL,
   AddressID INT,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
 ) ENGINE=InnoDB;
@@ -159,13 +159,13 @@ CREATE TABLE OpeningHour (
 ) ENGINE=InnoDB;
 
 
--- premiere date
-CREATE TABLE Premiere (
-  PremiereID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  MovieID int NOT NULL,
-  PremiereDate DATE NOT NULL,
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID)
-) ENGINE=InnoDB;
+-- -- premiere date
+-- CREATE TABLE Premiere (
+--   PremiereID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   MovieID int NOT NULL,
+--   PremiereDate DATE NOT NULL,
+--   FOREIGN KEY (MovieID) REFERENCES Movie(MovieID)
+-- ) ENGINE=InnoDB;
 
 
 -- showings
@@ -188,7 +188,7 @@ CREATE TABLE Reservation (
   UserID int NOT NULL,
   ShowingsID int NOT NULL,
   ReservationDate DATETIME NOT NULL DEFAULT NOW(),
-  PaymentStatus ENUM('Pending', 'Paid') DEFAULT 'Pending',
+  PaymentStatus VARCHAR(4),
   FOREIGN KEY (UserID) REFERENCES User(UserID),
   FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID)
 ) ENGINE=InnoDB;
@@ -212,22 +212,44 @@ CREATE TABLE Payment (
   ReservationID INT NOT NULL,
   PaymentType VARCHAR(100) NOT NULL,
   PaymentDate DATETIME NOT NULL DEFAULT NOW(),
-  Amount DECIMAL(10, 2) NOT NULL,
+  Amount DECIMAL(8, 2) NOT NULL,
   FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
 CREATE TABLE BankAccount
 (
-  AccountID int NOT NULL PRIMARY KEY,
-  Description varchar(200),
-  Balance decimal(8,2) -- 999999.99 to -999999.99 
+  AccountID INT NOT NULL PRIMARY KEY,
+  Description VARCHAR(200),
+  Balance DECIMAL(8,2) -- 999999.99 to -999999.99 
 );
 
 
 -- views
 -- daily showings
-CREATE VIEW DailyPremieres AS
+-- CREATE VIEW DailyPremieres AS
+-- SELECT 
+--   m.MovieID, 
+--   m.`Name`, 
+--   m.Description, 
+--   m.ReleaseYear, 
+--   m.Duration, 
+--   m.MovieImg, 
+--   GROUP_CONCAT(DISTINCT g.GenreName ORDER BY g.GenreName) AS Genres,
+--   GROUP_CONCAT(DISTINCT CONCAT(p1.FirstName, ' ', p1.LastName, ' (', r.NameOfRole, ')') ORDER BY p1.LastName) AS ProductionStaff,
+--   GROUP_CONCAT(DISTINCT CONCAT(va.FirstName, ' ', va.LastName) ORDER BY va.LastName) AS VoiceActors
+-- FROM Movie m
+-- JOIN Premiere p ON m.MovieID = p.MovieID
+-- LEFT JOIN MovieGenre mg ON m.MovieID = mg.MovieID
+-- LEFT JOIN Genre g ON mg.GenreID = g.GenreID
+-- LEFT JOIN MovieProduction mp ON m.MovieID = mp.MovieID
+-- LEFT JOIN Production p1 ON mp.ProductionID = p1.ProductionID
+-- LEFT JOIN RoleInProduction r ON p1.RoleInProductionID = r.RoleInProductionID
+-- LEFT JOIN MovieVoiceActor mva ON m.MovieID = mva.MovieID
+-- LEFT JOIN VoiceActor va ON mva.VoiceActorID = va.VoiceActorID
+-- WHERE p.PremiereDate = CURDATE()
+-- GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg;
+CREATE VIEW DailyShowingsView AS
 SELECT 
   m.MovieID, 
   m.`Name`, 
@@ -239,7 +261,7 @@ SELECT
   GROUP_CONCAT(DISTINCT CONCAT(p1.FirstName, ' ', p1.LastName, ' (', r.NameOfRole, ')') ORDER BY p1.LastName) AS ProductionStaff,
   GROUP_CONCAT(DISTINCT CONCAT(va.FirstName, ' ', va.LastName) ORDER BY va.LastName) AS VoiceActors
 FROM Movie m
-JOIN Premiere p ON m.MovieID = p.MovieID
+JOIN Showings s ON m.MovieID = s.MovieID
 LEFT JOIN MovieGenre mg ON m.MovieID = mg.MovieID
 LEFT JOIN Genre g ON mg.GenreID = g.GenreID
 LEFT JOIN MovieProduction mp ON m.MovieID = mp.MovieID
@@ -247,7 +269,7 @@ LEFT JOIN Production p1 ON mp.ProductionID = p1.ProductionID
 LEFT JOIN RoleInProduction r ON p1.RoleInProductionID = r.RoleInProductionID
 LEFT JOIN MovieVoiceActor mva ON m.MovieID = mva.MovieID
 LEFT JOIN VoiceActor va ON mva.VoiceActorID = va.VoiceActorID
-WHERE p.PremiereDate = CURDATE()
+WHERE s.ShowingDate = CURDATE()
 GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg;
 
 

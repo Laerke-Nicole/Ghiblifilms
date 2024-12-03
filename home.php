@@ -8,9 +8,9 @@
 $dbCon = dbCon($user, $pass);
 
 // get daily premieres from db
-$queryPremieres = $dbCon->prepare("SELECT * FROM DailyPremieres");
-$queryPremieres->execute();
-$dailyPremieres = $queryPremieres->fetchAll();
+$queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");
+$queryShowings->execute();
+$dailyShowingsViews = $queryShowings->fetchAll();
 
 
 // get news from db
@@ -74,17 +74,17 @@ $getAuditorium = $queryAuditorium->fetchAll();
 <body>
 
 
-<!-- daily premieres -->
+<!-- daily showings -->
 <?php
-if ($dailyPremieres) {
+if ($dailyShowingsViews) {
     echo '<section class="pt-24 ten-percent" id="daily-showings">';
-        echo '<h2 class="text-center pb-4">Daily Premieres</h2>';
+        echo '<h2 class="text-center pb-4">Daily Showings</h2>';
         echo '<div class="items">';
-            foreach ($dailyPremieres as $premiere) { 
+            foreach ($dailyShowingsViews as $showings) { 
                 echo '<div>';
-                    echo "<img src='upload/" . htmlspecialchars(trim($premiere['MovieImg'])) . "' alt='Image of movie'>";
-                    echo '<h5 class="weight-400 pb-2">' . htmlspecialchars(trim($premiere['Name'])) . '</h5>';
-                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars(trim($premiere['MovieID'])) . '\'">Get tickets</button>';
+                    echo "<img src='upload/" . htmlspecialchars(trim($showings['MovieImg'])) . "' alt='Image of movie'>";
+                    echo '<h5 class="weight-400 pb-2">' . htmlspecialchars(trim($showings['Name'])) . '</h5>';
+                    echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars(trim($showings['MovieID'])) . '\'">Get tickets</button>';
                 echo '</div>';
             }
         echo '</div>';

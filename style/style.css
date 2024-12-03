@@ -166,3 +166,18 @@ p {
     border-bottom: 1px solid var(--secondary-color);
     padding: 10px;
 }
+
+
+/* admin page */
+.sidenav {
+    width: 250px;
+}
+.dashboard-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+.card {
+    flex: 1;
+    margin: 10px;
+}
