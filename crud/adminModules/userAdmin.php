@@ -145,12 +145,6 @@ $getUsers = $queryUser->fetchAll();
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="City" name="fk_Address_City" type="text" class="validate" required="" aria-required="true">
-                    <label for="City">City</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
                     <input id="Country" name="fk_Address_Country" type="text" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>

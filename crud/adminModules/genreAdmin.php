@@ -47,7 +47,9 @@ $getGenre = $queryGenre->fetchAll();
                 echo "<td>" . $genre['GenreID'] . "</td>";
                 echo "<td>" . $genre['GenreName'] . "</td>";
                 echo '<td><a href="index.php?page=editgenre&ID=' . $genre['GenreID'] . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletegenre&GenreID=' . $genre['GenreID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                echo '<td><a href="controllers/delete.php?table=Genre&primaryKey=GenreID&id=' . $genre['GenreID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                
+                // echo '<td><a href="index.php?page=deletegenre&GenreID=' . $genre['GenreID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>

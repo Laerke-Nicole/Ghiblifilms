@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
                 $foreignKeys[$foreignTable] = [
                     'table' => $foreignTable,
                     'data' => [],
-                    'primaryKey' => $foreignTable . 'ID', // Assuming primary key is `{TableName}ID`
+                    'primaryKey' => $foreignTable . 'ID', // Assuming primary key is {TableName}ID
                 ];
             }
 

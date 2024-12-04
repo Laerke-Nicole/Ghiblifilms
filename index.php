@@ -220,56 +220,12 @@ break;
 
 
 // add
-case "addpostalcode":
-    include('crud/postalCode/addPostalCode.php');
-break;
-
-case "addroleinproduction":
-    include('crud/roleInProduction/addRoleInProduction.php');
-break;
-
-case "addproduction":
-    include('crud/production/addProduction.php');
-break;
-
-case "addvoiceactor":
-    include('crud/voiceActor/addVoiceActor.php');
-break;
-
 case "addmovie":
     include('crud/movie/addMovie.php');
 break;
 
-case "addmoviegenre":
-    include('crud/movieGenre/addMovieGenre.php');
-break;
-
-case "addmovieproduction":
-    include('crud/movieProduction/addMovieProduction.php');
-break;
-
-case "addmovievoiceactor":
-    include('crud/movieVoiceActor/addMovieVoiceActor.php');
-break;
-
-case "addshowings":
-    include('crud/showings/addShowings.php');
-break;
-
-case "adduser":
-    include('crud/user/addUser.php');
-break;
-
 case "addnews":
     include('crud/news/addNews.php');
-break;
-
-case "addcompanyinformation":
-    include('crud/companyinformation/addCompanyInformation.php');
-break;
-
-case "addopeninghour":
-    include('crud/openinghour/addOpeningHour.php');
 break;
 
 
