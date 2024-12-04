@@ -1,18 +1,10 @@
-<?php require_once("includes/session.php"); ?>
-<?php require_once("includes/connection.php"); ?>
-<?php require_once("includes/functions.php"); ?>
-<?php //confirm_logged_in(); ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New user</title>
-</head>
+<?php 
+require_once("includes/session.php"); 
+require_once("includes/connection.php"); 
+require_once("includes/functions.php"); 
+//confirm_logged_in(); 
 
 
-<?php
 if (isset($_POST['submit'])) {
 
 	$username = htmlspecialchars(trim($_POST['Username']));
@@ -87,16 +79,15 @@ if (isset($_POST['submit'])) {
 if (!empty($message)) {
     echo "<p>" . $message . "</p>";
 }
-
-
-
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghiblifilms</title>
+    <title>New user</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="style/responsive.css">

@@ -1,6 +1,9 @@
-<?php require_once("includes/functions.php"); ?>
-<?php require_once("includes/session.php"); ?>
-<?php confirm_logged_in(); ?>
+<?php 
+require_once("includes/functions.php"); 
+require_once("includes/session.php"); 
+confirm_logged_in(); 
+?>
+
 
 <div class="ten-percent">
     <h3>Logged in successfully</h3>

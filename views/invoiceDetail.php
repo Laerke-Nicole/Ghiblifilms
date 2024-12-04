@@ -32,11 +32,6 @@ try {
 }
 
 
-
-
-
-
-
 // update payment status to 'paid' in the database
 if ($paymentIntent->status === 'succeeded') {    
     $reservationID = $_SESSION['ReservationID']; // Store Reservation ID in the session
@@ -51,5 +46,4 @@ if ($paymentIntent->status === 'succeeded') {
 }
 
 $_SESSION['ReservationID'] = $reservationID;
-
 ?>

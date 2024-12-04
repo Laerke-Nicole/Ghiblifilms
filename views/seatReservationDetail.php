@@ -2,7 +2,6 @@
 require_once("includes/dbcon.php");
 require_once("includes/functions.php");
 require_once("includes/session.php");
-
 confirm_logged_in();
 
 // ShowingsID in URL
@@ -39,6 +38,7 @@ $querySeats->bindParam(':showingsID', $showingsID);
 $querySeats->execute();
 $availableSeats = $querySeats->fetchAll();
 ?>
+
 
 <div class="ten-percent">
     <div class="grid-cols-2">

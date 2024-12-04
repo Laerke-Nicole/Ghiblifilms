@@ -1,10 +1,11 @@
-<?php require_once ("includes/dbcon.php"); ?>
-<?php require_once("includes/functions.php"); ?>
-<?php require_once("includes/session.php"); ?>
-<?php require_once("includes/connection.php"); ?>
-<?php confirm_logged_in(); ?>
+<?php 
+require_once ("includes/dbcon.php"); 
+require_once("includes/functions.php"); 
+require_once("includes/session.php"); 
+require_once("includes/connection.php"); 
+confirm_logged_in(); 
 
-<?php
+
 // userID in URL
 if (!isset($_GET['UserID'])) {
     die("UserID not specified.");
@@ -13,9 +14,6 @@ if (!isset($_GET['UserID'])) {
 $userID = $_GET['UserID']; 
 
 
-?>
-
-<?php
 // get user view
 $queryUserProfileView = $dbCon->prepare("SELECT * FROM UserProfileView WHERE UserID = :userID");
 $queryUserProfileView->bindParam(':userID', $userID);

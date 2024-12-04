@@ -1,72 +1,64 @@
-<?php require_once("includes/connection.php"); ?>
-<?php require_once("includes/session.php"); ?>
-<?php require_once("includes/functions.php"); ?>
+<?php 
+require_once("includes/connection.php"); 
+require_once("includes/session.php"); 
+require_once("includes/functions.php"); 
 
-<?php
+
 if (logged_in()) {
     redirect_to("index.php?page=home");
 }
-?>
 
-
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
-    <title>Log in</title>
-</head>
-<body>
-<?php
-
-    if (isset($_POST['submit'])) { 
-        $username = trim($_POST['User']);
-        $password = trim($_POST['Pass']);
-        
-        try {
-            $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; 
-            $stmt = $connection->prepare($query);
-            
-            // bind the username parameter
-            $stmt->bindParam(':Username', $username);
-            $stmt->execute();
-            
-            $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            if ($found_user) {
-                if (password_verify($password, $found_user['Pass'])) {                                          
-                    // check if the password matches for non-admin users
-                    if (password_verify($password, $found_user['Pass'])) {
-                        // username/password authenticated
-                        $_SESSION['UserID'] = $found_user['UserID'];
-                        $_SESSION['User'] = $found_user['Username'];
-                        redirect_to("index.php?page=successfullogindetail");
-                    } else {
-                        // if password is incorrect
-                        $message = "Username/password combination incorrect.<br />
-                        Please make sure your caps lock key is off and try again.";
-                    }
-                }
-            } else {
-                // if no user found
-                $message = "Username/password combination incorrect.<br />
-                Please make sure your caps lock key is off and try again.";
-            }
-        } catch (PDOException $e) {
-            die("Database query failed: " . $e->getMessage());
-        }
-    } 
+if (isset($_POST['submit'])) { 
+    $username = trim($_POST['User']);
+    $password = trim($_POST['Pass']);
     
-    // display the message if set
-    if (!empty($message)) {
-        echo "<p>" . $message . "</p>";
+    try {
+        $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; 
+        $stmt = $connection->prepare($query);
+        
+        // bind the username parameter
+        $stmt->bindParam(':Username', $username);
+        $stmt->execute();
+        
+        $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($found_user) {
+            if (password_verify($password, $found_user['Pass'])) {                                          
+                // check if the password matches for non-admin users
+                if (password_verify($password, $found_user['Pass'])) {
+                    // username/password authenticated
+                    $_SESSION['UserID'] = $found_user['UserID'];
+                    $_SESSION['User'] = $found_user['Username'];
+                    redirect_to("index.php?page=successfullogindetail");
+                } else {
+                    // if password is incorrect
+                    $message = "Username/password combination incorrect.<br />
+                    Please make sure your caps lock key is off and try again.";
+                }
+            }
+        } else {
+            // if no user found
+            $message = "Username/password combination incorrect.<br />
+            Please make sure your caps lock key is off and try again.";
+        }
+    } catch (PDOException $e) {
+        die("Database query failed: " . $e->getMessage());
     }
+} 
+
+// display the message if set
+if (!empty($message)) {
+    echo "<p>" . $message . "</p>";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghiblifilms</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="style/responsive.css">

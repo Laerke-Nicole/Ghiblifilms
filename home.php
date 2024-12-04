@@ -1,9 +1,9 @@
-<?php require_once ("includes/dbcon.php"); ?>
-<?php require_once("includes/functions.php"); ?>
-<?php require_once("includes/session.php"); ?>
-<?php require_once("includes/connection.php"); ?>
+<?php 
+require_once ("includes/dbcon.php"); 
+require_once("includes/functions.php"); 
+require_once("includes/session.php"); 
+require_once("includes/connection.php"); 
 
-<?php
 // get daily showings from db
 $queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");
 $queryShowings->execute();

@@ -4,6 +4,7 @@ require_once("includes/functions.php");
 require_once("includes/session.php");
 ?>
 
+
 <div class="ten-percent">
     <h1>Payment succeeded</h1>
     <p>You can now check your booking out on your profile page or go to the homepage to see more movies.</p>

@@ -3,6 +3,14 @@ require_once("includes/session.php");
 require_once ("includes/dbcon.php"); 
 require_once("includes/functions.php");
 require_once("includes/connection.php");
+
+// check if the user is logged in
+if (isset($_SESSION['UserID'])) {
+    // get the logged in users id
+    $userID = $_SESSION['UserID'];
+} else {
+    $userID = null;
+}
 ?>
 
 
@@ -19,17 +27,6 @@ require_once("includes/connection.php");
 </head>
 
 <body>
-
-<?php
-// check if the user is logged in
-if (isset($_SESSION['UserID'])) {
-    // get the logged in users id
-    $userID = $_SESSION['UserID'];
-} else {
-    $userID = null;
-}
-?>
-
 
 <nav class="flex justify-between items-center p-6">
     <!-- empty div for left side alignment -->

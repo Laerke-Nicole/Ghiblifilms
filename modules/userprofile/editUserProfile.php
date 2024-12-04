@@ -1,7 +1,19 @@
 <?php 
 require_once "includes/dbcon.php";
 if (isset($_GET['ID'])) {
+
+// get user info from user table
+$userID = htmlspecialchars(trim($_GET['ID']));
+
+$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                           FROM User U 
+                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
+                           WHERE U.UserID = :userID");
+$query->bindParam(':userID', $userID);
+$query->execute();
+$getUsers = $query->fetchAll(); 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,20 +26,7 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$userID = htmlspecialchars(trim($_GET['ID']));
-
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
-?>
-
 <body>
-
 <div class="container">
         <h3>Editing user "<?php echo htmlspecialchars(trim($getUsers[0]['Username'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="modules/userprofile/updateUserProfile.php">

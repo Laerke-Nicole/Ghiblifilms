@@ -9,7 +9,24 @@ if (isset($_GET['UserID'])) {
     $userID = htmlspecialchars(trim($_GET['UserID']));
     
 $userID = $_GET['UserID']; 
+
+
+if (isset($_GET['UserID'])) {
+    $userID = htmlspecialchars(trim($_GET['UserID']));
+} else {
+    die("User ID is required.");
+}
+
+// get user info to edit
+$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                           FROM User U 
+                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
+                           WHERE U.UserID = :userID");
+$query->bindParam(':userID', $userID);
+$query->execute();
+$getUsers = $query->fetchAll(); 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,24 +39,7 @@ $userID = $_GET['UserID'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-if (isset($_GET['UserID'])) {
-    $userID = htmlspecialchars(trim($_GET['UserID']));
-} else {
-    die("User ID is required.");
-}
-
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
-?>
-
 <body>
-
 <div class="container">
         <h3>Editing your information</h3>
         <form class="col s12" name="contact" method="post" action="modules/userpayment/updateUserInfo.php">
