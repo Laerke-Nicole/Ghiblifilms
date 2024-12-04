@@ -60,7 +60,9 @@ $getMovieVoiceActor = $queryMovieVoiceActor->fetchAll();
     <hr>
     <h4>Add New Movie with the voice actors</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/movieVoiceActor/addMovieVoiceActor.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="MovieVoiceActor">
         <div class="row">
             <div class="input-field col s6">
                 <input id="MovieID" name="MovieID" type="number" class="validate" required="" aria-required="true">

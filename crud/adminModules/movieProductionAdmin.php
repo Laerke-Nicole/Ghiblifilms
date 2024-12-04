@@ -60,7 +60,9 @@ $getMovieProduction = $queryMovieProduction->fetchAll();
     <hr>
     <h4>Add New Movie with the production team</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/movieProduction/addMovieProduction.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="MovieProduction">
         <div class="row">
             <div class="input-field col s6">
                 <input id="MovieID" name="MovieID" type="number" class="validate" required="" aria-required="true">

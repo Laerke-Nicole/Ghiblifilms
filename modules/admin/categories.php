@@ -47,20 +47,20 @@
             </div>
         </div>
 
-        <!-- movie production junction -->
-        <div class="col s12 m6 l4">
-            <div class="card" onclick="expandSection('movieProductionSection')">
-                <div class="card-content">
-                    <span class="card-title">J - Movie production</span>
-                </div>
-            </div>
-        </div>
-
         <!-- production -->
         <div class="col s12 m6 l4">
             <div class="card" onclick="expandSection('productionSection')">
                 <div class="card-content">
                     <span class="card-title">Production</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- movie production junction -->
+        <div class="col s12 m6 l4">
+            <div class="card" onclick="expandSection('movieProductionSection')">
+                <div class="card-content">
+                    <span class="card-title">J - Movie production</span>
                 </div>
             </div>
         </div>

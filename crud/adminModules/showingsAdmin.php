@@ -66,7 +66,9 @@ $getShowings = $queryShowings->fetchAll();
     <hr>
     <h4>Add New Showing</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/showings/addShowings.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="Showings">
         <div class="row">
             <div class="input-field col s12">
                 <input id="MovieID" name="MovieID" type="text" class="validate" required="" aria-required="true">

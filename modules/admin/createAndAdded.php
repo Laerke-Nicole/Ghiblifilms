@@ -19,12 +19,12 @@
     <?php require 'crud/adminModules/roleInProductionAdmin.php'; ?>
 </div>
 
-<div id="movieProductionSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/movieProductionAdmin.php'; ?>
-</div>
-
 <div id="productionSection" class="expanded-section" style="display: none;">
     <?php require 'crud/adminModules/ProductionAdmin.php'; ?>
+</div>
+
+<div id="movieProductionSection" class="expanded-section" style="display: none;">
+    <?php require 'crud/adminModules/movieProductionAdmin.php'; ?>
 </div>
 
 <div id="voiceActorSection" class="expanded-section" style="display: none;">

@@ -78,7 +78,9 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
         <hr>
         <h4>Add new company information</h4>
 
-        <form class="col s12" name="contact" method="post" action="crud/companyinformation/addCompanyInformation.php">
+        <form class="col s12" name="contact" method="post" action="controllers/create.php">
+            <!-- to tell create.php which table to insert data into -->
+            <input type="hidden" name="table" value="CompanyInformation">
             <div class="row">
                 <div class="input-field col s12">
                     <input id="NameOfCompany" name="NameOfCompany" type="text" class="validate" required="" aria-required="true" class="secondary-color">
@@ -107,24 +109,24 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="StreetName" type="text" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="StreetNumber" type="text" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal Code</label>
                 </div>
                 
                 <div class="input-field col s6">
-                    <input id="Country" name="Country" type="text" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

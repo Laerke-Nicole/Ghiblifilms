@@ -62,7 +62,9 @@ $getVoiceActor = $queryVoiceActor->fetchAll();
     <hr>
     <h4>Add New voice actor</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/voiceActor/addVoiceActor.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="VoiceActor">
         <div class="row">
             <div class="input-field col s6">
                 <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">

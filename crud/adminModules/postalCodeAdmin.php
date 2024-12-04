@@ -58,7 +58,9 @@ $getPostalCode = $queryPostalCode->fetchAll();
     <hr>
     <h4>Add New Postal Code</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/postalCode/addPostalCode.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="PostalCode">
         <div class="row">
             <div class="input-field col s6">
                 <input id="PostalCode" name="PostalCode" type="text" class="validate" required="" aria-required="true">

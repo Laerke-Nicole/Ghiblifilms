@@ -58,7 +58,9 @@ $getRoleInProduction = $queryRoleInProduction->fetchAll();
     <hr>
     <h4>Add New Role In Production</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/roleInProduction/addRoleInProduction.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="RoleInProduction">
         <div class="row">
             <div class="input-field col s12">
                 <input id="NameOfRole" name="NameOfRole" type="text" class="validate" required="" aria-required="true">

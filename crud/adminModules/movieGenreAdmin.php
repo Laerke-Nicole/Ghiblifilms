@@ -61,7 +61,9 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
     <hr>
     <h4>Add New Movie with their Genre</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/movieGenre/addMovieGenre.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="MovieGenre">
         <div class="row">
             <div class="input-field col s6">
                 <input id="MovieID" name="MovieID" type="number" class="validate" required="" aria-required="true">

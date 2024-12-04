@@ -62,7 +62,9 @@ $getProduction = $queryProduction->fetchAll();
     <hr>
     <h4>Add New Production</h4>
 
-    <form class="col s12" name="contact" method="post" action="crud/production/addProduction.php">
+    <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- to tell create.php which table to insert data into -->
+        <input type="hidden" name="table" value="Production">
         <div class="row">
             <div class="input-field col s6">
                 <input id="FirstName" name="FirstName" type="text" class="validate" required="" aria-required="true">
