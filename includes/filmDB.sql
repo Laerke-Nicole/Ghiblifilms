@@ -269,6 +269,14 @@ LEFT JOIN Payment P ON R.ReservationID = P.ReservationID
 LEFT JOIN User U ON R.UserID = U.UserID;
 
 
+-- movie genre view
+CREATE VIEW MovieGenreView AS
+SELECT M.MovieID, M.`Name`, GROUP_CONCAT(DISTINCT G.GenreName ORDER BY G.GenreName) AS Genres
+FROM Movie M
+LEFT JOIN MovieGenre MG ON M.MovieID = MG.MovieID
+LEFT JOIN Genre G ON MG.GenreID = G.GenreID
+
+
 -- triggers
 -- update bankaccount balance after payment
 DELIMITER //

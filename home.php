@@ -23,9 +23,9 @@ $getMovies = $queryMovies->fetchAll();
 
 
 // get about ghiblifilms from db
-$queryCompanyInformation = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
-$queryCompanyInformation->execute();
-$getCompanyInformation = $queryCompanyInformation->fetchAll();
+$queryAboutCompany = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
+$queryAboutCompany->execute();
+$getAboutCompany = $queryAboutCompany->fetchAll();
 
 
 // get company info from db
@@ -135,13 +135,13 @@ if ($dailyShowingsViews) {
 <section id="about-us">
     <div class="about-ghiblifilms flex pt-20 pb-20 justify-around">
         <?php
-            foreach ($getCompanyInformation as $companyInfo) {
+            foreach ($getAboutCompany as $about) {
                 echo '<div class="flex-1 max-w-xs">';
-                    echo '<h2 class="primary-color text-6xl">About<br>' . htmlspecialchars(trim($companyInfo['NameOfCompany'])) . '</h2>';
+                    echo '<h2 class="primary-color text-6xl">About<br>' . htmlspecialchars(trim($about['NameOfCompany'])) . '</h2>';
                 echo '</div>';
 
                 echo '<div class="flex-1 max-w-lg">';
-                    echo '<p class="primary-color primary-font text-lg">' . htmlspecialchars(trim($companyInfo['CompanyDescription'])) . '</p>';
+                    echo '<p class="primary-color primary-font text-lg">' . htmlspecialchars(trim($about['CompanyDescription'])) . '</p>';
                 echo '</div>';
             }
         ?>
@@ -214,8 +214,9 @@ if ($dailyShowingsViews) {
         echo "</div>";
 
         echo "<div>";
-            echo "<p>". htmlspecialchars(trim($companyAddress['Country'])) . "</p>";
             echo "<p>". htmlspecialchars(trim($companyAddress['PostalCode'])) . "</p>";
+            echo "<p>". htmlspecialchars(trim($companyAddress['City'])) . "</p>";
+            echo "<p>". htmlspecialchars(trim($companyAddress['Country'])) . "</p>";
             echo "<p>". htmlspecialchars(trim($companyAddress['City'])) . "</p>";
         echo "</div>";
     }

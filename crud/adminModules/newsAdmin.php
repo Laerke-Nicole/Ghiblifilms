@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get news
 $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();

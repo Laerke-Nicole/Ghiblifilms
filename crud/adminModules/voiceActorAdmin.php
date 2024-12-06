@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get voice actor
 $queryVoiceActor = $dbCon->prepare("SELECT * FROM VoiceActor");
 $queryVoiceActor->execute();

@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get Movie Genre
 $queryMovieGenre = $dbCon->prepare("SELECT * FROM MovieGenre");
 $queryMovieGenre->execute();

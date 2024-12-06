@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get opening hours
 $queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
 $queryOpeningHour->execute();

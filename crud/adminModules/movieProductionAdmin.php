@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get Movie Production
 $queryMovieProduction = $dbCon->prepare("SELECT * FROM MovieProduction");
 $queryMovieProduction->execute();

@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // get company information
 $queryCompanyInformation = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
                                             FROM CompanyInformation C 

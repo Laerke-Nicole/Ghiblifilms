@@ -27,7 +27,10 @@ $getGenre = $query->fetchAll();
 
 <div class="container">
         <h3>Editing genre for "<?php echo htmlspecialchars($getGenre[0]['GenreName']); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/genre/updateGenre.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="Genre">
+
             <div class="row">
                 <div class="input-field col s12">
                     <input id="GenreName" name="GenreName" type="text" value="<?php echo htmlspecialchars($getGenre[0]['GenreName']); ?>" class="validate" required="" aria-required="true">

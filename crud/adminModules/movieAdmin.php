@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get news
 $queryMovie = $dbCon->prepare("SELECT * FROM Movie");
 $queryMovie->execute();

@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // get users with address details
 $queryUser = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
                                 FROM User U 
@@ -6,7 +8,7 @@ $queryUser = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.Postal
 
 $queryUser->execute();
 $getUsers = $queryUser->fetchAll();
-//var_dump($getUsers);
+var_dump($getUsers);
 ?>
 
 

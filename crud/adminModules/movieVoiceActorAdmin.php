@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get Movie Production
 $queryMovieVoiceActor = $dbCon->prepare("SELECT * FROM MovieVoiceActor");
 $queryMovieVoiceActor->execute();

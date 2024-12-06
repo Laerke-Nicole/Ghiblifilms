@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get opening hours
 $queryGenre = $dbCon->prepare("SELECT * FROM Genre");
 $queryGenre->execute();

@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get postal codes
 $queryPostalCode = $dbCon->prepare("SELECT * FROM PostalCode");
 $queryPostalCode->execute();

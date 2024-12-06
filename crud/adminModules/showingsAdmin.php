@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get showings
 $queryShowings = $dbCon->prepare("SELECT * FROM Showings");
 $queryShowings->execute();

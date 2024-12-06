@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get opening hours
 $queryRoleInProduction = $dbCon->prepare("SELECT * FROM RoleInProduction");
 $queryRoleInProduction->execute();

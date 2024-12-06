@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // get user reservations
 $queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView ORDER BY UserID");
 $queryUserReservations->execute();

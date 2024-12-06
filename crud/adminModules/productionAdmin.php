@@ -1,4 +1,6 @@
 <?php
+confirm_logged_in();
+
 // Get opening hours
 $queryProduction = $dbCon->prepare("SELECT * FROM Production");
 $queryProduction->execute();

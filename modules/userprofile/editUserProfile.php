@@ -1,5 +1,7 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
+
 if (isset($_GET['ID'])) {
 
 // get user info from user table
