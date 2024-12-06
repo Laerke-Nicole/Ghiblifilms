@@ -106,8 +106,12 @@ case "homeabout":
     include('modules/homepage/about.php');
 break;
 
-case "homeabout":
-    include('modules/homepage/contactForm.php');
+case "homecontactformandcontactinfo":
+    include('modules/homepage/contactFormAndContactInfo.php');
+break;
+
+case "homecontactinfo":
+    include('modules/homepage/contactinfo.php');
 break;
 
 case "homeopeninghours":
@@ -415,6 +419,8 @@ break;
 case "logindetail":
     include('views/loginDetail.php');
 break;
+
+
 
 }
 ?>

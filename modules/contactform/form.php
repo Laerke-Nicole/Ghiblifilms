@@ -30,6 +30,9 @@
                 <textarea id="message" name="message" placeholder="Message" class="validate" required="" aria-required="true"></textarea>
             </div>
 
+            <!-- hidden input for reCAPTCHA token -->
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+
             <input type="submit" id="submit" name="submit" value="Send" class="btn">
 
         </form>

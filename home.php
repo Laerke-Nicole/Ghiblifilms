@@ -64,6 +64,11 @@ $getAuditorium = $queryAuditorium->fetchAll();
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
+
+    <script src="js/recaptcha.js" defer></script>
 </head>
 <body>
 
@@ -81,7 +86,7 @@ echo include("modules/homepage/movies.php");
 echo include("modules/homepage/about.php");
 
 // contact form
-echo include("modules/homepage/contactForm.php");
+echo include("modules/homepage/contactFormAndContactInfo.php");
 
 // opening hours
 echo include("modules/homepage/openingHours.php");

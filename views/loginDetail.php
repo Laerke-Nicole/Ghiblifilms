@@ -28,22 +28,5 @@
     </div>
 </form>
 
-<!-- attempting recaptcha -->
-<!-- <button class="g-recaptcha" 
-        data-sitekey="6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF" 
-        data-callback='onSubmit' 
-        data-action='submit'>Submit</button> -->
-
-
-<!-- recaptcha -->
-<script src="https://www.google.com/recaptcha/api.js"></script>
-
-<!-- recaptcha -->
-<script>
-   function onSubmit(token) {
-     document.getElementById("demo-form").submit();
-   }
-</script>
-
 </body>
 </html>
