@@ -1,61 +1,62 @@
-<!-- movie management -->
-<div id="movieSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/movieAdmin.php'; ?>
-</div>
+<?php
+// movie management
+echo '<div id="movieSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/movieAdmin.php';
+echo '</div>';
 
-<div id="showingSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/showingsAdmin.php'; ?>
-</div>
+echo '<div id="showingSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/showingsAdmin.php'; 
+echo '</div>';
 
-<div id="genreSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/genreAdmin.php'; ?>
-</div>
+echo '<div id="genreSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/genreAdmin.php'; 
+echo '</div>';
 
-<div id="movieGenreSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/movieGenreAdmin.php'; ?>
-</div>
+echo '<div id="movieGenreSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/movieGenreAdmin.php'; 
+echo '</div>';
 
-<div id="roleInProductionSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/roleInProductionAdmin.php'; ?>
-</div>
+echo '<div id="roleInProductionSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/roleInProductionAdmin.php'; 
+echo '</div>';
 
-<div id="productionSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/ProductionAdmin.php'; ?>
-</div>
+echo '<div id="productionSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/ProductionAdmin.php'; 
+echo '</div>';
 
-<div id="movieProductionSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/movieProductionAdmin.php'; ?>
-</div>
+echo '<div id="movieProductionSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/movieProductionAdmin.php'; 
+echo '</div>';
 
-<div id="voiceActorSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/voiceActorAdmin.php'; ?>
-</div>
+echo '<div id="voiceActorSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/voiceActorAdmin.php'; 
+echo '</div>';
 
-<div id="movieVoiceActorSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/movieVoiceActorAdmin.php'; ?>
-</div>
+echo '<div id="movieVoiceActorSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/movieVoiceActorAdmin.php'; 
+echo '</div>';
 
     
-<!-- company management -->
-<div id="companyInfoSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/companyInformationAdmin.php'; ?>
-</div>
+// company management
+echo '<div id="companyInfoSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/companyInformationAdmin.php'; 
+echo '</div>';
 
-<div id="openingHourSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/openingHourAdmin.php'; ?>
-</div>
+echo '<div id="openingHourSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/openingHourAdmin.php'; 
+echo '</div>';
 
-<div id="newsSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/newsAdmin.php'; ?>
-</div>
+echo '<div id="newsSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/newsAdmin.php'; 
+echo '</div>';
 
 
-<!-- user management -->
-<div id="userSection" class="expanded-section ml-250" style="display: none;">
-    <?php require 'crud/adminModules/userAdmin.php'; ?>
-</div>
+// user management
+echo '<div id="userSection" class="expanded-section ml-250" style="display: none;">';
+    require 'crud/adminModules/userAdmin.php'; 
+echo '</div>';
 
-<!-- address management -->
-<div id="postalCodeSection" class="expanded-section ml-250" style="display: none;">
-    <?php require 'crud/adminModules/postalCodeAdmin.php'; ?>
-</div>
+// address management
+echo '<div id="postalCodeSection" class="expanded-section ml-250" style="display: none;">';
+    require 'crud/adminModules/postalCodeAdmin.php'; 
+echo '</div>';

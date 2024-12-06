@@ -29,7 +29,7 @@ if (isset($_SESSION['UserID'])) {
 
 <body>
 <!-- header to include on all pages -->
-<?php include("modules/header/header.php") ?>
+<?php include("modules/header/header.php"); ?>
 
 
 <?php
@@ -90,6 +90,38 @@ break;
 
 
 // modules
+case "homeshowings":
+    include('modules/homepage/showings.php');
+break;
+
+case "homenews":
+    include('modules/homepage/news.php');
+break;
+
+case "homemovies":
+    include('modules/homepage/movies.php');
+break;
+
+case "homeabout":
+    include('modules/homepage/about.php');
+break;
+
+case "homeabout":
+    include('modules/homepage/contactForm.php');
+break;
+
+case "homeopeninghours":
+    include('modules/homepage/openingHours.php');
+break;
+
+case "homeauditorium":
+    include('modules/homepage/auditorium.php');
+break;
+
+case "homeaddress":
+    include('modules/homepage/address.php');
+break;
+
 case "moviedetails":
     include('modules/movie/movieDetails.php');
 break;
@@ -376,12 +408,20 @@ case "successfullogindetail":
     include('views/successfulLogInDetail.php');
 break;
 
+case "newuserdetail":
+    include('views/newUserDetail.php');
+break;
+
+case "logindetail":
+    include('views/loginDetail.php');
+break;
+
 }
 ?>
 
 
 <!-- footer to include on all pages -->
-<?php include("modules/footer/footer.php") ?>
+<?php include("modules/footer/footer.php"); ?>
 
 <!-- javascript -->
 <script src="/js/showCategory.js" defer></script>

@@ -26,13 +26,15 @@ $queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView WHER
 $queryUserReservations->bindParam(':userID', $userID);
 $queryUserReservations->execute();
 $getUserReservations = $queryUserReservations->fetchAll();
-?>
 
-<?php include("modules/userprofile/userInfo.php") ?>
 
-<br>
-<br>
-<br>
-<br>
+// user info 
+include("modules/userprofile/userInfo.php");
 
-<?php include("modules/userprofile/userBookings.php") ?>
+echo '<br>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+
+// list of bookings the user has made 
+include("modules/userprofile/userBookings.php"); 

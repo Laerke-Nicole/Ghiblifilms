@@ -51,5 +51,6 @@ $seatNumbers = array_column($querySeats->fetchAll(), 'SeatNumber');
 $pricePerSeat = 12;
 $totalPrice = count($selectedSeatIDs) * $pricePerSeat;
 
-include ("modules/payment/paymentContent.php")
+// display the payment page with form
+include ("modules/payment/paymentContent.php");
 ?>

@@ -26,4 +26,3 @@ elseif ($_POST['submit'])
 	echo '<h1>"Thanks for your mail"</h1>';
     echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=home\'">Go back to front page</button>';
 }
-?>

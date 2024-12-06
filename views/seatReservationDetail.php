@@ -38,6 +38,7 @@ $querySeats->bindParam(':showingsID', $showingsID);
 $querySeats->execute();
 $availableSeats = $querySeats->fetchAll();
 
+// display the available seats, the seat options, and image of seats
 include ("modules/seatreservation/seatReservationContent.php");
 ?>
 

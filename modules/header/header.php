@@ -1,33 +1,33 @@
+<?php
+echo '<nav class="flex justify-between items-center p-6">';
+    // empty div for left side alignment 
+    echo '<div></div>';
 
-<nav class="flex justify-between items-center p-6">
-    <!-- empty div for left side alignment -->
-    <div></div>
+    echo '<a href="index.php?page=home" class="secondary-color text-3xl caps">Ghiblifilms</a>';
 
-    <a href="index.php?page=home" class="secondary-color text-3xl caps">Ghiblifilms</a>
-
-    <ul class="flex gap-6">
+    echo '<ul class="flex gap-6">';
         
-        <!-- only show log in btn if ur not logged in -->
-        <?php if (!logged_in()) { ?>
-            <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
-        <?php } ?>
+        // only show log in btn if ur not logged in 
+        if (!logged_in()) { 
+            echo '<li><a href="index.php?page=login" class="secondary-color">Log in</a></li>';
+        } 
 
-        <!-- only show create new user btn if ur not logged in -->
-        <?php if (!logged_in()) { ?>
-        <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
-        <?php } ?>
+        // only show create new user btn if ur not logged in 
+        if (!logged_in()) { 
+        echo '<li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>';
+        } 
 
-        <?php if ($userID): ?>
-            <li><a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color">Profile Page</a></li>
-        <?php endif; ?>
+        if ($userID): 
+            echo '<li><a href="index.php?page=userprofile&UserID=echo $userID; " class="secondary-color">Profile Page</a></li>';
+        endif; 
 
-        <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
+        echo '<li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>';
 
-        <!-- show log out btn if ur logged in -->
-        <?php if (logged_in()) { ?>
-            <form action="logout.php" method="post" style="display:inline;">
-                <input type="submit" value="Log Out" class="btn">
-            </form>
-        <?php } ?>
-    </ul>
-</nav>
+        // show log out btn if ur logged in 
+        if (logged_in()) { 
+            echo '<form action="logout.php" method="post" style="display:inline;">';
+                echo '<input type="submit" value="Log Out" class="btn">';
+            echo '</form>';
+        } 
+    echo '</ul>';
+echo '</nav>';
