@@ -103,7 +103,7 @@ break;
 
 case "controllerupdate":
     include('controllers/update.php');
-case "controllerupdate":
+break;
 
 
 // oop

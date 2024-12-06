@@ -30,7 +30,12 @@ $getShowings = $query->fetchAll();
 
     <div class="container">
         <h3>Editing showings for "<?php echo htmlspecialchars($getShowings[0]['ShowingsID']) ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/showings/updateShowings.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="Showings">
+            <input type="hidden" name="primaryKey" value="ShowingsID">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($getShowings[0]['ShowingsID']); ?>">
+
             <div class="row">
                 <div class="input-field col s12">
                     <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getShowings[0]['MovieID']); ?>" class="validate" required="" aria-required="true">

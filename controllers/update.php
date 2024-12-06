@@ -1,6 +1,6 @@
 <?php
 require_once "../includes/dbcon.php";
-require_once "../oop/UpdateModel.php";
+require_once "../oop/updateOOP.php";
 
 if (isset($_POST['submit'])) {
     $table = htmlspecialchars(trim($_POST['table']));
@@ -41,6 +41,6 @@ if (isset($_POST['submit'])) {
     if ($success) {
         header("Location: ../index.php?page=admin&status=updated&ID=$id");
     } else {
-        echo "Error: Failed to update.";
-    }
+        echo "Location: ../index.php?page=admin&status=0";
+    }   
 }
