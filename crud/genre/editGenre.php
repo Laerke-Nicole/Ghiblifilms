@@ -1,7 +1,15 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
 
 if (isset($_GET['ID'])) {
+
+// get the genre to edit
+$genreID = htmlspecialchars($_GET['ID']);
+$query = $dbCon->prepare("SELECT * FROM Genre WHERE GenreID = :genreID");
+$query->bindParam(':genreID', $genreID);
+$query->execute();
+$getGenre = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +23,6 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$genreID = htmlspecialchars($_GET['ID']);
-$query = $dbCon->prepare("SELECT * FROM Genre WHERE GenreID = :genreID");
-$query->bindParam(':genreID', $genreID);
-$query->execute();
-$getGenre = $query->fetchAll();
-?>
-
 <body>
 
 <div class="container">
@@ -30,6 +30,7 @@ $getGenre = $query->fetchAll();
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Genre">
+            <input type="hidden" name="original_GenreID" value="<?php echo htmlspecialchars($genreID); ?>">
 
             <div class="row">
                 <div class="input-field col s12">

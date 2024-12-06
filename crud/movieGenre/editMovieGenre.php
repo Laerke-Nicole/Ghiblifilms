@@ -1,9 +1,17 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
 
 if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
     $movieID = htmlspecialchars($_GET['MovieID']);
     $genreID = htmlspecialchars($_GET['GenreID']);
+
+// get the movie genre to edit
+$query = $dbCon->prepare("SELECT * FROM MovieGenre WHERE MovieID = :movieID AND GenreID = :genreID");
+$query->bindParam(':movieID', $movieID);
+$query->bindParam(':genreID', $genreID);
+$query->execute();
+$getMovieGenre = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -17,18 +25,15 @@ if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$query = $dbCon->prepare("SELECT * FROM MovieGenre WHERE MovieID = :movieID AND GenreID = :genreID");
-$query->bindParam(':movieID', $movieID);
-$query->bindParam(':genreID', $genreID);
-$query->execute();
-$getMovieGenre = $query->fetchAll();
-?>
-
 <body>
 <div class="container">
-    <h3>Editing movie genre for "<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>"</h3>
-    <form class="col s12" name="contact" method="post" action="crud/movieGenre/updateMovieGenre.php">
+<h3>Editing movie genre for "<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>"</h3>
+    <form class="col s12" name="contact" method="post" action="controllers/update.php">
+        <!-- Hidden inputs to identify the table and composite keys -->
+        <input type="hidden" name="table" value="MovieGenre">
+        <input type="hidden" name="original_MovieID" value="<?php echo htmlspecialchars($movieID); ?>">
+        <input type="hidden" name="original_GenreID" value="<?php echo htmlspecialchars($genreID); ?>">
+
         <div class="row">
             <div class="input-field col s6">
                 <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>" class="validate" required="" aria-required="true">
@@ -39,9 +44,6 @@ $getMovieGenre = $query->fetchAll();
                 <label for="GenreID">GenreID</label>
             </div>
         </div>
-
-        <input type="hidden" name="originalMovieID" value="<?php echo htmlspecialchars($movieID); ?>">
-        <input type="hidden" name="originalGenreID" value="<?php echo htmlspecialchars($genreID); ?>">
 
         <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
     </form>

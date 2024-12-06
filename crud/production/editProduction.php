@@ -1,5 +1,6 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
 
 if (isset($_GET['ID'])) {
 ?>
@@ -27,7 +28,11 @@ $getProduction = $query->fetchAll();
 
     <div class="container">
         <h3>Editing Production for "<?php echo htmlspecialchars($getProduction[0]['FirstName'] . ' ' . $getProduction[0]['LastName']); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/production/updateProduction.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="Production">
+            <input type="hidden" name="original_ProductionID" value="<?php echo htmlspecialchars($productionID); ?>">
+
             <div class="row">
                 <div class="input-field col s6">
                     <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars($getProduction[0]['FirstName']); ?>" class="validate" required="" aria-required="true">

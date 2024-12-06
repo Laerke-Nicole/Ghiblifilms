@@ -390,6 +390,10 @@
     padding-left: 96px;
 }
 
+.pl-10-percent {
+    padding-left: 10%;
+}
+
 
 a, ul, li {
     text-decoration: none;

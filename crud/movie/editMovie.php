@@ -1,6 +1,15 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
+
 if (isset($_GET['ID'])) {
+
+// get the movie to edit
+$movieID = htmlspecialchars(trim($_GET['ID']));
+$query = $dbCon->prepare("SELECT * FROM Movie WHERE MovieID = :movieID");
+$query->bindParam(':movieID', $movieID);
+$query->execute();
+$getMovie = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +20,7 @@ if (isset($_GET['ID'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<?php
-$movieID = htmlspecialchars(trim($_GET['ID']));
 
-$query = $dbCon->prepare("SELECT * FROM Movie WHERE MovieID = :movieID");
-$query->bindParam(':movieID', $movieID);
-$query->execute();
-$getMovie = $query->fetchAll();
-?>
 <body>
 
 <div class="container">

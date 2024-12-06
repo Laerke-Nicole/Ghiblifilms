@@ -22,45 +22,14 @@ if (isset($_SESSION['UserID'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
+    <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 <body>
-
-<nav class="flex justify-between items-center p-6">
-    <!-- empty div for left side alignment -->
-    <div></div>
-
-    <a href="index.php?page=home" class="secondary-color text-3xl caps">Ghiblifilms</a>
-
-    <ul class="flex gap-6">
-        
-        <!-- only show log in btn if ur not logged in -->
-        <?php if (!logged_in()) { ?>
-            <li><a href="index.php?page=login" class="secondary-color">Log in</a></li>
-        <?php } ?>
-
-        <!-- only show create new user btn if ur not logged in -->
-        <?php if (!logged_in()) { ?>
-        <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
-        <?php } ?>
-
-        <?php if ($userID): ?>
-            <li><a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color">Profile Page</a></li>
-        <?php endif; ?>
-
-        <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
-
-        <!-- show log out btn if ur logged in -->
-        <?php if (logged_in()) { ?>
-            <form action="logout.php" method="post" style="display:inline;">
-                <input type="submit" value="Log Out" class="btn">
-            </form>
-        <?php } ?>
-    </ul>
-</nav>
-
+<!-- header to include on all pages -->
+<?php include("modules/header/header.php") ?>
 
 
 <?php
@@ -121,6 +90,18 @@ break;
 
 
 // modules
+case "moviedetails":
+    include('modules/movie/movieDetails.php');
+break;
+
+case "movieshowings":
+    include('modules/movie/showings.php');
+break;
+
+case "movieteam":
+    include('modules/movie/team.php');
+break;
+
 case "categoriesadmin":
     include('modules/admin/categories.php');
 break;
@@ -141,12 +122,20 @@ case "seatreservationform":
     include('modules/seatreservation/form.php');
 break;
 
-case "edituserprofile":
-    include('modules/userprofile/editUserProfile.php');
+case "seatreservationcontent":
+    include('modules/seatreservation/seatReservationContent.php');
 break;
 
-case "updateuserprofile":
-    include('modules/userprofile/updateUserProfile.php');
+case "userinfo":
+    include('modules/userprofile/userInfo.php');
+break;
+
+case "userbookings":
+    include('modules/userprofile/userBookings.php');
+break;
+
+case "edituserprofile":
+    include('modules/userprofile/editUserProfile.php');
 break;
 
 case "deleteuserprofile":
@@ -157,6 +146,9 @@ case "edituserinfo":
     include('modules/userpayment/editUserInfo.php');
 break;
 
+case "paymentcontent":
+    include('modules/payment/paymentContent.php');
+break;
 
 // admin modules of cruds
 case "postalcodeadmin":
@@ -347,62 +339,13 @@ break;
 
 
 // update
-case "updatepostalcode":
-    include('crud/postalCode/updatePostalCode.php');
-break;
-
-case "updategenre":
-    include('crud/genre/updateGenre.php');
-break;
-
-case "updateroleinproduction":
-    include('crud/roleInProduction/updateRoleInProduction.php');
-break;
-
-case "updateproduction":
-    include('crud/production/updateProduction.php');
-break;
-
-case "updatevoiceactor":
-    include('crud/voiceActor/updateVoiceActor.php');
-break;
-
 case "updatemovie":
     include('crud/movie/updateMovie.php');
-break;
-
-case "updatemoviegenre":
-    include('crud/movieGenre/updateMovieGenre.php');
-break;
-
-case "updatemovieproduction":
-    include('crud/movieProduction/updateMovieProduction.php');
-break;
-
-case "updatemovievoiceactor":
-    include('crud/movieVoiceActor/updateMovieVoiceActor.php');
-break;
-
-case "updateshowings":
-    include('crud/showings/updateShowings.php');
-break;
-
-case "updateuser":
-    include('crud/user/updateUser.php');
 break;
 
 case "updatenews":
     include('crud/news/updateNews.php');
 break;
-
-case "updatecompanyinformation":
-    include('crud/companyinformation/updateCompanyInformation.php');
-break;
-
-case "updateopeninghour":
-    include('crud/openinghour/updateOpeningHour.php');
-break;
-
 
 // view/detail pages
 case "moviedetail":
@@ -436,6 +379,9 @@ break;
 }
 ?>
 
+
+<!-- footer to include on all pages -->
+<?php include("modules/footer/footer.php") ?>
 
 <!-- javascript -->
 <script src="/js/showCategory.js" defer></script>

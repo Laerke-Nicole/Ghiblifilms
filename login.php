@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         $stmt->bindParam(':Username', $username);
         $stmt->execute();
         
-        $found_user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $found_user = $stmt->fetch();
         
         if ($found_user) {
             if (password_verify($password, $found_user['Pass'])) {                                          
@@ -59,10 +59,6 @@ if (!empty($message)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/library.css">
-    <link rel="stylesheet" href="style/responsive.css">
-    <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
 </head>
 
 <h2>Log in</h2>

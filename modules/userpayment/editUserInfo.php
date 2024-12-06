@@ -41,7 +41,12 @@ $getUsers = $query->fetchAll();
 <body>
 <div class="container">
         <h3>Editing your information</h3>
-        <form class="col s12" name="contact" method="post" action="modules/userpayment/updateUserInfo.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="User">
+            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars($userID); ?>">
+            <input type="hidden" name="redirect" value="paymentdetail">
+
             <div class="row">
                 <div class="input-field col s6">
                     <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][3])); ?>" class="validate" required="" aria-required="true">
@@ -67,24 +72,24 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][7])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][7])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][10])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][10])); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][11])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][11])); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

@@ -21,6 +21,7 @@ try {
     if ($paymentIntent->status === 'succeeded') {
         // if the payment is successful display the invoice.php
         include("modules/invoice/invoice.php");
+        
     } elseif ($paymentIntent->status === 'requires_payment_method') {
         echo 'Payment failed. Please try again.';
         echo '<a href="index.php?page=showingdetail&showingid=' . $_SESSION['ShowingsID'] . '" class="btn btn-primary">Go back</a>';

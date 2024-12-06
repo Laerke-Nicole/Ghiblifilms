@@ -10,23 +10,6 @@ $getProduction = $queryProduction->fetchAll();
 <!-- Production -->
 <div class="container">
     <h4>All Production</h4>
-    <?php
-    if (isset($_GET['status'])) {
-        if ($_GET['status'] == "deleted") {
-            echo "The production has been successfully deleted!";
-            echo "<script>M.toast({html: 'Deleted!'})</script>";
-        } elseif ($_GET['status'] == "updated") {
-            echo "The production has been successfully updated!";
-            echo "<script>M.toast({html: 'Updated!'})</script>";
-        } elseif ($_GET['status'] == "added") {
-            echo "The new production has been successfully added!";
-            echo "<script>M.toast({html: 'Added!'})</script>";
-        } elseif ($_GET['status'] == 0) {
-            echo "Forbidden access - redirected to home!";
-            echo "<script>M.toast({html: 'Access denied!'})</script>";
-        }
-    }
-    ?>
     <div class="row">
         <table class="highlight">
             <thead>

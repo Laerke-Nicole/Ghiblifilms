@@ -4,18 +4,31 @@ require_once "../oop/updateOOP.php";
 
 if (isset($_POST['submit'])) {
     $table = htmlspecialchars(trim($_POST['table']));
-    $primaryKey = htmlspecialchars(trim($_POST['primaryKey']));
-    $id = htmlspecialchars(trim($_POST['id']));
+    $redirectPage = htmlspecialchars(trim($_POST['redirect'] ?? 'admin')); // Default to 'admin' if not provided
+
+    // Extract composite keys dynamically
+    $originalKeys = [];
+    foreach ($_POST as $key => $value) {
+        if (strpos($key, 'original_') === 0) {
+            $originalKeys[str_replace('original_', '', $key)] = htmlspecialchars(trim($value));
+        }
+    }
+
+    // Ensure original keys are not empty
+    if (empty($originalKeys)) {
+        echo "Error: Missing original keys for the update operation.";
+        exit;
+    }
 
     // Separate data and foreign key mappings
     $data = [];
     $foreignKeys = [];
 
     foreach ($_POST as $key => $value) {
-        if (in_array($key, ['submit', 'table', 'primaryKey', 'id'])) continue;
+        if (in_array($key, ['submit', 'table', 'redirect']) || strpos($key, 'original_') === 0) continue;
 
         if (str_contains($key, 'fk_')) {
-            $parts = explode('_', $key, 3); // Example: fk_Auditorium_AuditoriumID
+            $parts = explode('_', $key, 3); // Example: fk_Address_StreetName
             $foreignTable = $parts[1];
             $fieldName = $parts[2];
 
@@ -33,14 +46,27 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Initialize UpdateModel and call update method
-    $updateModel = new UpdateModel($dbCon);
-    $success = $updateModel->update($table, $primaryKey, $id, $data, $foreignKeys);
+    // Log data and foreign keys for debugging
+    error_log("Data to update: " . print_r($data, true));
+    error_log("Foreign Keys: " . print_r($foreignKeys, true));
 
-    // Redirect based on success or failure
+    // Initialize UpdateModel and call updateWithCompositeKey
+    $updateModel = new UpdateModel($dbCon);
+    $success = $updateModel->updateWithCompositeKey($table, $originalKeys, $data, $foreignKeys);
+
+    // Build dynamic redirect URL
     if ($success) {
-        header("Location: ../index.php?page=admin&status=updated&ID=$id");
+        $redirectUrl = "../index.php?page=" . urlencode($redirectPage) . "&status=updated";
+
+        // Append ID if available in originalKeys
+        foreach ($originalKeys as $key => $value) {
+            $redirectUrl .= "&$key=" . urlencode($value);
+        }
+
+        header("Location: $redirectUrl");
+        exit;
     } else {
-        echo "Location: ../index.php?page=admin&status=0";
-    }   
+        echo "Error: Update failed.";
+    }
 }
+?>

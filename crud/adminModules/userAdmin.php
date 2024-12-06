@@ -8,7 +8,6 @@ $queryUser = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.Postal
 
 $queryUser->execute();
 $getUsers = $queryUser->fetchAll();
-var_dump($getUsers);
 ?>
 
 
@@ -16,23 +15,6 @@ var_dump($getUsers);
 <div class="container">
 
     <h4>All users</h4>
-    <?php
-    if (isset($_GET['status'])) {
-        if ($_GET['status'] == "deleted") {
-            echo "The user " . $_GET['ID'] . " has been successfully deleted!";
-            echo "<script>M.toast({html: 'Deleted!'})</script>";
-        } elseif ($_GET['status'] == "updated") {
-            echo "The user " . $_GET['ID'] . " has been successfully Updated!";
-            echo "<script>M.toast({html: 'Updated!'})</script>";
-        } elseif ($_GET['status'] == "added") {
-            echo "The new user has been successfully added!";
-            echo "<script>M.toast({html: 'Added!'})</script>";
-        } elseif ($_GET['status'] == 0) {
-            echo "Forbidden access - redirected to home!";
-            echo "<script>M.toast({html: 'Access denied!'})</script>";
-        }
-    }
-    ?>
     <div class="row">
         <div class="row">
             <table class="highlight">

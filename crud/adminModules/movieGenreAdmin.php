@@ -10,23 +10,6 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
 <!-- Movie genre -->
 <div class="container">
     <h4>All Movies with their Genre</h4>
-    <?php
-    if (isset($_GET['status'])) {
-        if ($_GET['status'] == "deleted") {
-            echo "The movie genre has been successfully deleted!";
-            echo "<script>M.toast({html: 'Deleted!'})</script>";
-        } elseif ($_GET['status'] == "updated") {
-            echo "The movie genre has been successfully updated!";
-            echo "<script>M.toast({html: 'Updated!'})</script>";
-        } elseif ($_GET['status'] == "added") {
-            echo "The new movie genre has been successfully added!";
-            echo "<script>M.toast({html: 'Added!'})</script>";
-        } elseif ($_GET['status'] == 0) {
-            echo "Forbidden access - redirected to home!";
-            echo "<script>M.toast({html: 'Access denied!'})</script>";
-        }
-    }
-    ?>
     <div class="row">
         <table class="highlight">
             <thead>
@@ -51,7 +34,6 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
 
                 echo '<td><a href="index.php?page=editmoviegenre&MovieID=' . $movieGenre['MovieID'] . '&GenreID=' . $movieGenre['GenreID'] . '" class="btn">Edit</a></td>';
                 echo '<td><a href="index.php?page=deletemoviegenre&MovieID=' . $movieGenre['MovieID'] . '&GenreID=' . $movieGenre['GenreID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-
 
                 echo "</tr>";
             }

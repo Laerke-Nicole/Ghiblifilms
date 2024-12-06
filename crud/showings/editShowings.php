@@ -1,7 +1,18 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
 
 if (isset($_GET['ID'])) {
+
+// get the showing to edit
+$showingsID = htmlspecialchars($_GET['ID']);
+
+$query = $dbCon->prepare("SELECT * FROM Showings WHERE ShowingsID = :showingsID");
+$query->bindParam(':showingsID', $showingsID);
+
+$query->execute();
+
+$getShowings = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -15,17 +26,6 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$showingsID = htmlspecialchars($_GET['ID']);
-
-$query = $dbCon->prepare("SELECT * FROM Showings WHERE ShowingsID = :showingsID");
-$query->bindParam(':showingsID', $showingsID);
-
-$query->execute();
-
-$getShowings = $query->fetchAll();
-?>
-
 <body>
 
     <div class="container">
@@ -33,8 +33,7 @@ $getShowings = $query->fetchAll();
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Showings">
-            <input type="hidden" name="primaryKey" value="ShowingsID">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($getShowings[0]['ShowingsID']); ?>">
+            <input type="hidden" name="original_ShowingsID" value="<?php echo htmlspecialchars($showingsID); ?>">
 
             <div class="row">
                 <div class="input-field col s12">

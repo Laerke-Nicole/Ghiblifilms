@@ -20,4 +20,6 @@ confirm_logged_in();
     <a href="index.php?page=home#about-us"><button>Read about Ghiblifilms</button></a>
 
     <a href="index.php?page=home#news"><button>See our news</button></a>
+
+    <a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color"><button>See your profile page</button></a>
 </div>

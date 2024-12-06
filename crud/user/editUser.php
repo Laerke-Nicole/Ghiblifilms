@@ -1,6 +1,19 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
+
 if (isset($_GET['ID'])) {
+
+// get the user to edit
+$userID = htmlspecialchars($_GET['ID']);
+
+$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
+                           FROM User U 
+                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
+                           WHERE U.UserID = :userID");
+$query->bindParam(':userID', $userID);
+$query->execute();
+$getUsers = $query->fetchAll(); 
 ?>
 
 <!DOCTYPE html>
@@ -14,23 +27,15 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$userID = htmlspecialchars($_GET['ID']);
-
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
-?>
-
 <body>
 
 <div class="container">
         <h3>Editing user "<?php echo htmlspecialchars($getUsers[0]['Username']); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/user/updateUser.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="User">
+            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars($userID); ?>">
+
             <div class="row">
                 <div class="input-field col s6">
                     <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars($getUsers[0][1]); ?>" class="validate" required="" aria-required="true">
@@ -68,24 +73,24 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="StreetName" type="text" value="<?php echo htmlspecialchars($getUsers[0][8]); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars($getUsers[0][8]); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="StreetNumber" type="text" value="<?php echo htmlspecialchars($getUsers[0][7]); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars($getUsers[0][7]); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][10]); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars($getUsers[0][10]); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="Country" type="text" value="<?php echo htmlspecialchars($getUsers[0][11]); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars($getUsers[0][11]); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

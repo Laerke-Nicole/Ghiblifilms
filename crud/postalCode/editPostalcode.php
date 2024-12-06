@@ -1,7 +1,15 @@
 <?php 
 require_once "includes/dbcon.php";
+//confirm_logged_in();
 
 if (isset($_GET['ID'])) {
+
+// get the postal code to edit
+$postalCode = htmlspecialchars($_GET['ID']);
+$query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCode");
+$query->bindParam(':postalCode', $postalCode);
+$query->execute();
+$getPostalCode = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -15,19 +23,15 @@ if (isset($_GET['ID'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php
-$postalCode = htmlspecialchars($_GET['ID']);
-$query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCode");
-$query->bindParam(':postalCode', $postalCode);
-$query->execute();
-$getPostalCode = $query->fetchAll();
-?>
-
 <body>
 
 <div class="container">
         <h3>Editing postal code for "<?php echo htmlspecialchars($getPostalCode[0][1]); ?>"</h3>
-        <form class="col s12" name="contact" method="post" action="crud/postalCode/updatePostalCode.php">
+        <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- hidden input to connect to controller and oop -->
+            <input type="hidden" name="table" value="PostalCode">
+            <input type="hidden" name="original_PostalCode" value="<?php echo htmlspecialchars($postalCode); ?>">
+
             <div class="row">
                 <div class="input-field col s6">
                     <input id="PostalCode" name="PostalCode" type="text" value="<?php echo htmlspecialchars($getPostalCode[0]['PostalCode']); ?>" class="validate" required="" aria-required="true">

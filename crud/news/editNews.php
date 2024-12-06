@@ -1,6 +1,15 @@
 <?php 
 require_once "includes/dbcon.php";
+confirm_logged_in();
+
 if (isset($_GET['ID'])) {
+
+// get the news to edit
+$newsID = htmlspecialchars(trim($_GET['ID']));
+$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
+$query->bindParam(':newsID', $newsID);
+$query->execute();
+$getNews = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +20,7 @@ if (isset($_GET['ID'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-<?php
-$newsID = htmlspecialchars(trim($_GET['ID']));
 
-$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
-
-$query->bindParam(':newsID', $newsID);
-
-$query->execute();
-
-$getNews = $query->fetchAll();
-?>
 <body>
 
 <div class="container">

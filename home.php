@@ -109,10 +109,10 @@ if ($dailyShowingsViews) {
 </section>
 
 
-<!-- upcoming movies -->
+<!-- all movies -->
 <section class="pb-24 ten-percent" id="movies">
     <div>
-        <?php echo '<h2 class="text-center pb-4">Upcoming movies</h2>';?>
+        <?php echo '<h2 class="text-center pb-4">All of our movies</h2>';?>
     </div>
     
     <!-- loop with movies -->
