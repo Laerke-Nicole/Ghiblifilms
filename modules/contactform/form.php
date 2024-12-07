@@ -1,4 +1,4 @@
-<div class="w-half">
+<div class="w-half" id="contact-form">
     <div>
         <h2 class="text-xl pb-4">Fill out the form below and we will get back to you as soon as possible.</h2>
     </div>

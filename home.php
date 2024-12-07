@@ -35,7 +35,7 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
 
 
 // get opening hours  from db 
-$queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
+$queryOpeningHour = $dbCon->prepare("SELECT `Day`, `Time` FROM OpeningHour");
 $queryOpeningHour->execute();
 $getOpeningHour = $queryOpeningHour->fetchAll();
 

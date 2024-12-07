@@ -29,10 +29,10 @@ $getRoleInProduction = $queryRoleInProduction->fetchAll();
 
             foreach ($getRoleInProduction as $role) {
                 echo "<tr>";
-                    echo "<td>" . $role['RoleInProductionID'] . "</td>";
-                    echo "<td>" . $role['NameOfRole'] . "</td>";
-                    echo '<td><a href="index.php?page=editroleinproduction&ID=' . $role['RoleInProductionID'] . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=' . $role['RoleInProductionID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                    echo "<td>" . htmlspecialchars(trim($role['RoleInProductionID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($role['NameOfRole'])) . "</td>";
+                    echo '<td><a href="index.php?page=editroleinproduction&ID=' . htmlspecialchars(trim($role['RoleInProductionID'])) . '" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=' . htmlspecialchars(trim($role['RoleInProductionID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>

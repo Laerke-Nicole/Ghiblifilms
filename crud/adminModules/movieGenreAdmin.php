@@ -29,11 +29,11 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
 
             foreach ($getMovieGenre as $movieGenre) {
                 echo "<tr>";
-                echo "<td>" . $movieGenre['MovieID'] . "</td>";
-                echo "<td>" . $movieGenre['GenreID'] . "</td>";
+                echo "<td>" . htmlspecialchars(trim($movieGenre['MovieID'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($movieGenre['GenreID'])) . "</td>";
 
-                echo '<td><a href="index.php?page=editmoviegenre&MovieID=' . $movieGenre['MovieID'] . '&GenreID=' . $movieGenre['GenreID'] . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletemoviegenre&MovieID=' . $movieGenre['MovieID'] . '&GenreID=' . $movieGenre['GenreID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                echo '<td><a href="index.php?page=editmoviegenre&MovieID=' . htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])) . '" class="btn">Edit</a></td>';
+                echo '<td><a href="index.php?page=deletemoviegenre&MovieID=' . htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
 
                 echo "</tr>";
             }

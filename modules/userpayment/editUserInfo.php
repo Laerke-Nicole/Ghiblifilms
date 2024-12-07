@@ -44,7 +44,7 @@ $getUsers = $query->fetchAll();
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="User">
-            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars($userID); ?>">
+            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars(trim($userID)); ?>">
             <input type="hidden" name="redirect" value="paymentdetail">
 
             <div class="row">

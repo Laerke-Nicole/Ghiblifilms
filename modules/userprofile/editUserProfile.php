@@ -7,10 +7,8 @@ if (isset($_GET['ID'])) {
 // get user info from user table
 $userID = htmlspecialchars(trim($_GET['ID']));
 
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
+$query = $dbCon->prepare("SELECT * FROM UserProfileView WHERE UserID = :userID");
+
 $query->bindParam(':userID', $userID);
 $query->execute();
 $getUsers = $query->fetchAll(); 
@@ -34,7 +32,7 @@ $getUsers = $query->fetchAll();
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="User">
-            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars($userID); ?>">
+            <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars(trim($userID)); ?>">
             <input type="hidden" name="redirect" value="userprofile">
 
             <div class="row">
@@ -46,30 +44,30 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][3])); ?>" class="validate" required="" aria-required="true">
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][2])); ?>" class="validate" required="" aria-required="true">
                     <label for="FirstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][4])); ?>" class="validate" required="" aria-required="true">
+                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][3])); ?>" class="validate" required="" aria-required="true">
                     <label for="LastName">Last Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars(trim($getUsers[0][5])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars(trim($getUsers[0][4])); ?>" class="validate" required="" aria-required="true">
                     <label for="Email">E-Mail</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars(trim($getUsers[0][6])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars(trim($getUsers[0][5])); ?>" class="validate" required="" aria-required="true">
                     <label for="PhoneNumber">Phone Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][6])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
@@ -81,12 +79,12 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][10])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][9])); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][11])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

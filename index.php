@@ -66,6 +66,8 @@ case "admin":
 break;
 
 
+
+
 // controllers
 case "controllercreate":
     include('controllers/create.php');
@@ -153,6 +155,10 @@ break;
 
 case "form":
     include('modules/contactform/form.php');
+break;
+
+case "email":
+    include('modules/contactform/email.php');
 break;
 
 case "invoice":
@@ -413,8 +419,8 @@ case "invoicedetail":
     include('views/invoiceDetail.php');
 break;
 
-case "successfullogindetail":
-    include('views/successfulLogInDetail.php');
+case "useroptions":
+    include('views/userOptions.php');
 break;
 
 case "newuserdetail":

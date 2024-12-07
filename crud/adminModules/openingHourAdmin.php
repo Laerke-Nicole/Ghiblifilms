@@ -30,11 +30,11 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
 
             foreach ($getOpeningHours as $getOpeningHour) {
                 echo "<tr>";
-                echo "<td>" . $getOpeningHour['OpeningHourID'] . "</td>";
-                echo "<td>" . $getOpeningHour['Day'] . "</td>";
-                echo "<td>" . $getOpeningHour['Time'] . "</td>";
-                echo '<td><a href="index.php?page=editopeninghour&ID=' . $getOpeningHour['OpeningHourID'] . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deleteopeninghour&OpeningHourID=' . $getOpeningHour['OpeningHourID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                echo "<td>" . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($getOpeningHour['Day'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($getOpeningHour['Time'])) . "</td>";
+                echo '<td><a href="index.php?page=editopeninghour&ID=' . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . '" class="btn">Edit</a></td>';
+                echo '<td><a href="index.php?page=deleteopeninghour&OpeningHourID=' . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>

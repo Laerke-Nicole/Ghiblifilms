@@ -1,8 +1,8 @@
-
-<div class="row ten-percent">
-    <h2>Your information</h2>
-    <br>
-    <?php
+<?php
+echo '<div class="row ten-percent">';
+    echo '<h2>Your information</h2>';
+    echo '<br>';
+    
     if ($userProfile = $getUserProfileView[0]) {
         echo "<div>";
             echo '<p><strong>Username: </strong>' . htmlspecialchars(trim($userProfile['Username'])) . '</p>';
@@ -17,6 +17,7 @@
             echo "<br/>";
             echo '<a href="index.php?page=edituserprofile&ID='.$userProfile['UserID'].'" class="btn">Edit your info</a></div>';
         echo "</div>";
+    } else {
+        echo "<p>No user found.</p>";
     }
-    ?>
-</div>
+echo '</div>';

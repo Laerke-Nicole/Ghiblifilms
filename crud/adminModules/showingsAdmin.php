@@ -33,14 +33,14 @@ $getShowings = $queryShowings->fetchAll();
 
             foreach ($getShowings as $showings) {
                 echo "<tr>";
-                    echo "<td>" . $showings['ShowingsID'] . "</td>";
-                    echo "<td>" . $showings['MovieID'] . "</td>";
-                    echo "<td>" . $showings['AuditoriumID'] . "</td>";
-                    echo "<td>" . $showings['ScreenFormatID'] . "</td>";
-                    echo "<td>" . $showings['ShowingDate'] . "</td>";
-                    echo "<td>" . $showings['ShowingTime'] . "</td>";
-                    echo '<td><a href="index.php?page=editshowings&ID=' . $showings['ShowingsID'] . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteshowings&ShowingsID=' . $showings['ShowingsID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                    echo "<td>" . htmlspecialchars(trim($showings['ShowingsID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($showings['MovieID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($showings['AuditoriumID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($showings['ScreenFormatID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($showings['ShowingDate'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($showings['ShowingTime'])) . "</td>";
+                    echo '<td><a href="index.php?page=editshowings&ID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deleteshowings&ShowingsID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>

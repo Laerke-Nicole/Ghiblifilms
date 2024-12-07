@@ -23,28 +23,29 @@ if (!isset($_POST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response
     exit;
 }
 
-// Verify reCAPTCHA
+// verify reCAPTCHA
 if (!$recaptchaData->success) {
-    echo "Can't resend contact form. Please try again on the home page.";
-    echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=home\'">Go back to form</button>';
+    header("Location: /index.php?page=home");
     exit;
 }
 
-
+// if the email is valid
 if (!preg_match($regexp,$_POST['email']))
 	  {echo "Email is wrong";
-        echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=home\'">Go back to form</button>';
+        echo '<a href="/index.php?page=home" class="btn">Go back to home page</a>';
     }
 	  
+// if the fields are empty
 elseif (empty($firstName) || empty($lastName) || empty($email) || empty($subject) || empty($message))
 	{echo "Please fill in all required fields";
-    echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=home\'">Go back to form</button>';
+        echo '<a href="/index.php?page=home" class="btn">Go back to home page</a>';
     }
 
+// successful email
 elseif ($_POST['submit'])
 {
     $body = "Name: $firstName $lastName\nPhone: $phoneNumber\nEmail: $email\n\nMessage:\n$message";
 	mail($mymail,$subject,$body,"From: $email\n");
 	echo '<h1>"Thanks for your mail"</h1>';
-    echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=home\'">Go back to front page</button>';
+    echo '<a href="/index.php?page=home" class="btn">Go back to home page</a>';
 }

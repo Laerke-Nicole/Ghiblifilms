@@ -5,7 +5,7 @@ confirm_logged_in();
 if (isset($_GET['ID'])) {
 
 // get the production to edit
-$roleInProductionID = htmlspecialchars($_GET['ID']);
+$roleInProductionID = htmlspecialchars(trim($_GET['ID']));
 $query = $dbCon->prepare("SELECT * FROM RoleInProduction WHERE RoleInProductionID = :roleInProductionID");
 $query->bindParam(':roleInProductionID', $roleInProductionID);
 $query->execute();
@@ -26,20 +26,20 @@ $getRoleInProduction = $query->fetchAll();
 <body>
 
 <div class="container">
-        <h3>Editing Role In Production for "<?php echo htmlspecialchars($getRoleInProduction[0]['NameOfRole']); ?>"</h3>
+        <h3>Editing Role In Production for "<?php echo htmlspecialchars(trim($getRoleInProduction[0]['NameOfRole'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="RoleInProduction">
-            <input type="hidden" name="original_RoleInProductionID" value="<?php echo htmlspecialchars($roleInProductionID); ?>">
+            <input type="hidden" name="original_RoleInProductionID" value="<?php echo htmlspecialchars(trim($roleInProductionID)); ?>">
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="NameOfRole" name="NameOfRole" type="text" value="<?php echo htmlspecialchars($getRoleInProduction[0]['NameOfRole']); ?>" class="validate" required="" aria-required="true">
+                    <input id="NameOfRole" name="NameOfRole" type="text" value="<?php echo htmlspecialchars(trim($getRoleInProduction[0]['NameOfRole'])); ?>" class="validate" required="" aria-required="true">
                     <label for="NameOfRole">NameOfRole</label>
                 </div>
             </div>
 
-            <input type="hidden" name="RoleInProductionID" value="<?php echo htmlspecialchars($roleInProductionID); ?>">
+            <input type="hidden" name="RoleInProductionID" value="<?php echo htmlspecialchars(trim($roleInProductionID)); ?>">
 
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>

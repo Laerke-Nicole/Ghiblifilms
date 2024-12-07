@@ -17,7 +17,7 @@ if (isset($_GET['ID'])) {
 </head>
 
 <?php
-$productionID = htmlspecialchars($_GET['ID']);
+$productionID = htmlspecialchars(trim($_GET['ID']));
 $query = $dbCon->prepare("SELECT * FROM Production WHERE ProductionID = :productionID");
 $query->bindParam(':productionID', $productionID);
 $query->execute();
@@ -27,32 +27,32 @@ $getProduction = $query->fetchAll();
 <body>
 
     <div class="container">
-        <h3>Editing Production for "<?php echo htmlspecialchars($getProduction[0]['FirstName'] . ' ' . $getProduction[0]['LastName']); ?>"</h3>
+        <h3>Editing Production for "<?php echo htmlspecialchars(trim($getProduction[0]['FirstName'])) . ' ' . htmlspecialchars(trim($getProduction[0]['LastName'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Production">
-            <input type="hidden" name="original_ProductionID" value="<?php echo htmlspecialchars($productionID); ?>">
+            <input type="hidden" name="original_ProductionID" value="<?php echo htmlspecialchars(trim($productionID)); ?>">
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars($getProduction[0]['FirstName']); ?>" class="validate" required="" aria-required="true">
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getProduction[0]['FirstName'])); ?>" class="validate" required="" aria-required="true">
                     <label for="FirstName">FirstName</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars($getProduction[0]['LastName']); ?>" class="validate" required="" aria-required="true">
+                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getProduction[0]['LastName'])); ?>" class="validate" required="" aria-required="true">
                     <label for="LastName">LastName</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="RoleInProductionID" name="RoleInProductionID" type="text" value="<?php echo htmlspecialchars($getProduction[0]['RoleInProductionID']); ?>" class="validate" required="" aria-required="true">
+                    <input id="RoleInProductionID" name="RoleInProductionID" type="text" value="<?php echo htmlspecialchars(trim($getProduction[0]['RoleInProductionID'])); ?>" class="validate" required="" aria-required="true">
                     <label for="RoleInProductionID">RoleInProductionID</label>
                 </div>
             </div>
 
-            <input type="hidden" name="ProductionID" value="<?php echo htmlspecialchars($productionID); ?>">
+            <input type="hidden" name="ProductionID" value="<?php echo htmlspecialchars(trim($productionID)); ?>">
 
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>

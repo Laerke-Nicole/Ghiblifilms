@@ -5,7 +5,7 @@ confirm_logged_in();
 if (isset($_GET['ID'])) {
 
 // get the opening hour to edit
-$openingHourID = htmlspecialchars($_GET['ID']);
+$openingHourID = htmlspecialchars(trim($_GET['ID']));
 $query = $dbCon->prepare("SELECT * FROM OpeningHour WHERE OpeningHourID = :openingHourID");
 $query->bindParam(':openingHourID', $openingHourID);
 $query->execute();
@@ -26,24 +26,24 @@ $getOpeningHours = $query->fetchAll();
 <body>
 
 <div class="container">
-        <h3>Editing Opening Hour for "<?php echo htmlspecialchars($getOpeningHours[0]['Day']); ?>"</h3>
+        <h3>Editing Opening Hour for "<?php echo htmlspecialchars(trim($getOpeningHours[0]['Day'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="OpeningHour">
-            <input type="hidden" name="original_OpeningHourID" value="<?php echo htmlspecialchars($openingHourID); ?>">
+            <input type="hidden" name="original_OpeningHourID" value="<?php echo htmlspecialchars(trim($openingHourID)); ?>">
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Day" name="Day" type="text" value="<?php echo htmlspecialchars($getOpeningHours[0]['Day']); ?>" class="validate" required="" aria-required="true">
+                    <input id="Day" name="Day" type="text" value="<?php echo htmlspecialchars(trim($getOpeningHours[0]['Day'])); ?>" class="validate" required="" aria-required="true">
                     <label for="Day">Day</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="Time" name="Time" type="text" value="<?php echo htmlspecialchars($getOpeningHours[0]['Time']); ?>" class="validate" required="" aria-required="true">
+                    <input id="Time" name="Time" type="text" value="<?php echo htmlspecialchars(trim($getOpeningHours[0]['Time'])); ?>" class="validate" required="" aria-required="true">
                     <label for="Time">Time</label>
                 </div>
             </div>
 
-            <input type="hidden" name="OpeningHourID" value="<?php echo htmlspecialchars($openingHourID); ?>">
+            <input type="hidden" name="OpeningHourID" value="<?php echo htmlspecialchars(trim($openingHourID)); ?>">
 
             <button class="btn waves-effect waves-light" type="submit" name="submit">Update
             </button>

@@ -3,8 +3,8 @@ require_once "includes/dbcon.php";
 confirm_logged_in();
 
 if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
-    $movieID = htmlspecialchars($_GET['MovieID']);
-    $genreID = htmlspecialchars($_GET['GenreID']);
+    $movieID = htmlspecialchars(trim($_GET['MovieID']));
+    $genreID = htmlspecialchars(trim($_GET['GenreID']));
 
 // get the movie genre to edit
 $query = $dbCon->prepare("SELECT * FROM MovieGenre WHERE MovieID = :movieID AND GenreID = :genreID");
@@ -27,20 +27,20 @@ $getMovieGenre = $query->fetchAll();
 
 <body>
 <div class="container">
-<h3>Editing movie genre for "<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>"</h3>
+<h3>Editing movie genre for "<?php echo htmlspecialchars(trim($getMovieGenre[0]['MovieID'])); ?>"</h3>
     <form class="col s12" name="contact" method="post" action="controllers/update.php">
         <!-- Hidden inputs to identify the table and composite keys -->
         <input type="hidden" name="table" value="MovieGenre">
-        <input type="hidden" name="original_MovieID" value="<?php echo htmlspecialchars($movieID); ?>">
-        <input type="hidden" name="original_GenreID" value="<?php echo htmlspecialchars($genreID); ?>">
+        <input type="hidden" name="original_MovieID" value="<?php echo htmlspecialchars(trim($movieID)); ?>">
+        <input type="hidden" name="original_GenreID" value="<?php echo htmlspecialchars(trim($genreID)); ?>">
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars($getMovieGenre[0]['MovieID']); ?>" class="validate" required="" aria-required="true">
+                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars(trim($getMovieGenre[0]['MovieID'])); ?>" class="validate" required="" aria-required="true">
                 <label for="MovieID">MovieID</label>
             </div>
             <div class="input-field col s6">
-                <input id="GenreID" name="GenreID" type="number" value="<?php echo htmlspecialchars($getMovieGenre[0]['GenreID']); ?>" class="validate" required="" aria-required="true">
+                <input id="GenreID" name="GenreID" type="number" value="<?php echo htmlspecialchars(trim($getMovieGenre[0]['GenreID'])); ?>" class="validate" required="" aria-required="true">
                 <label for="GenreID">GenreID</label>
             </div>
         </div>

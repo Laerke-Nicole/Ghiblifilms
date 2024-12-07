@@ -30,11 +30,11 @@ $getVoiceActor = $queryVoiceActor->fetchAll();
 
             foreach ($getVoiceActor as $VoiceActor) {
                 echo "<tr>";
-                echo "<td>" . $VoiceActor['VoiceActorID'] . "</td>";
-                echo "<td>" . $VoiceActor['FirstName'] . "</td>";
-                echo "<td>" . $VoiceActor['LastName'] . "</td>";
-                echo '<td><a href="index.php?page=editvoiceactor&ID=' . $VoiceActor['VoiceActorID'] . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletevoiceactor&VoiceActorID=' . $VoiceActor['VoiceActorID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                echo "<td>" . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($VoiceActor['FirstName'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($VoiceActor['LastName'])) . "</td>";
+                echo '<td><a href="index.php?page=editvoiceactor&ID=' . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . '" class="btn">Edit</a></td>';
+                echo '<td><a href="index.php?page=deletevoiceactor&VoiceActorID=' . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                
 
                 echo "</tr>";

@@ -3,25 +3,6 @@ require_once("includes/session.php");
 require_once("includes/connection.php"); 
 require_once("includes/functions.php"); 
 
-// // recaptcha
-// $recaptchaSecret = '6Le5im4qAAAAAIilBJ35BlmkGIPIjIh-m5LgXR0u';
-// $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
-
-// if (!$recaptchaResponse) {
-//     echo "reCAPTCHA token is missing. Please try again.";
-//     exit;
-// }
-
-// $recaptchaValidation = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptchaSecret&response=$recaptchaResponse");
-// $recaptchaData = json_decode($recaptchaValidation);
-
-// if (!$recaptchaData || !$recaptchaData->success) {
-//     echo "Can't create user. reCAPTCHA validation failed. Please try again.";
-//     echo '<button class="btn" onclick="window.location.href=\'/ghiblifilms/index.php?page=newuser\'">Go back to form</button>';
-//     exit;
-// }
-
-
 if (isset($_POST['submit'])) {
 
 	$username = htmlspecialchars(trim($_POST['Username']));
@@ -83,7 +64,13 @@ if (isset($_POST['submit'])) {
 
             if ($result) {
                 $message = "User Created.";
-                redirect_to("index.php?page=login");
+                if (!headers_sent()) {
+                    header("Location: /index.php?page=login");
+                    exit;
+                } else {
+                    echo "<script>window.location.href='/index.php?page=login';</script>";
+                    exit;
+                }
             } else {
                 $message = "User could not be created.";
             }

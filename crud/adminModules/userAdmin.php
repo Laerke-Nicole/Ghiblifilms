@@ -43,20 +43,20 @@ $getUsers = $queryUser->fetchAll();
                 
                 foreach ($getUsers as $getUser) {
                     echo "<tr>";
-                    echo "<td>". $getUser['UserID']."</td>";
-                    echo "<td>". $getUser['Username']."</td>";
-                    echo "<td>". $getUser['FirstName']. " " .$getUser['LastName']."</td>";
-                    echo "<td>". $getUser['Email']."</td>";
-                    echo "<td>". $getUser['PhoneNumber']."</td>";
-                    echo "<td>". $getUser['StreetName']."</td>";
-                    echo "<td>". $getUser['StreetNumber']."</td>";
-                    echo "<td>". $getUser['PostalCode']."</td>";
-                    echo "<td>". $getUser['Country']."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['UserID']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['Username']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['FirstName'])). " " . htmlspecialchars(trim($getUser['LastName']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['Email']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['PhoneNumber']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['StreetName']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['StreetNumber']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['PostalCode']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getUser['Country']))."</td>";
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="index.php?page=edituser&ID='.$getUser['UserID'].'" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteuser&UserID='.$getUser['UserID'].'" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=edituser&ID=' . htmlspecialchars(trim($getUser['UserID'])) . '" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deleteuser&UserID=' . htmlspecialchars(trim($getUser['UserID'])) . '" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
                     
                     echo "</tr>";
                 }

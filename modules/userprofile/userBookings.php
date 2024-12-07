@@ -1,9 +1,8 @@
-
-<!-- work on display the users bookings -->
-<div class="row ten-percent">
-    <h2>Your bookings</h2>
-    <br>
-    <?php
+<?php
+// work on display the users bookings 
+echo '<div class="row ten-percent">';
+    echo '<h2>Your bookings</h2>';
+    echo '<br>';
     if (!$getUserReservations) {
         echo "You have no bookings.";
     } else {
@@ -23,8 +22,5 @@
                 echo "<br/>";
             echo '</div>';
         }
-        
-
     }
-    ?>
-</div>
+echo '</div>';

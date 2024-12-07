@@ -35,36 +35,36 @@ $getMovies = $queryMovie->fetchAll();
                 <?php
                 foreach ($getMovies as $getMovie) {
                     echo "<tr>";
-                    echo "<td>". $getMovie['MovieID']."</td>";
-                    echo "<td>". $getMovie['Name']."</td>";
-                    echo "<td>". $getMovie['Description']."</td>";
-                    echo "<td>". $getMovie['ReleaseYear']."</td>";
-                    echo "<td>". $getMovie['Duration']."</td>";
-                    echo "<td><img src='upload/" . $getMovie['MovieImg'] . "' alt='Image of movie' width='100'></td>";
+                    echo "<td>". htmlspecialchars(trim($getMovie['MovieID']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getMovie['Name']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getMovie['Description']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getMovie['ReleaseYear']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($getMovie['Duration']))."</td>";
+                    echo "<td><img src='upload/" . htmlspecialchars(trim($getMovie['MovieImg'])) . "' alt='Image of movie' width='100'></td>";
 
                     // get and display genres
                     $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
                     $genreQuery->execute([$getMovie['MovieID']]);
-                    $genres = $genreQuery->fetchAll(PDO::FETCH_COLUMN);
+                    $genres = $genreQuery->fetchAll();
                     echo "<td>" . implode(", ", $genres) . "</td>";
 
                     // get and display production team
                     $productionQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Production INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID WHERE MovieProduction.MovieID = ?");
                     $productionQuery->execute([$getMovie['MovieID']]);
-                    $productions = $productionQuery->fetchAll(PDO::FETCH_COLUMN);
+                    $productions = $productionQuery->fetchAll();
                     echo "<td>" . implode(", ", $productions) . "</td>";
 
                     // get and display voice actors
                     $voiceActorQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM VoiceActor INNER JOIN MovieVoiceActor ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID WHERE MovieVoiceActor.MovieID = ?");
                     $voiceActorQuery->execute([$getMovie['MovieID']]);
-                    $voiceActors = $voiceActorQuery->fetchAll(PDO::FETCH_COLUMN);
+                    $voiceActors = $voiceActorQuery->fetchAll();
                     echo "<td>" . implode(", ", $voiceActors) . "</td>";
 
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="index.php?page=editmovie&ID='.$getMovie['MovieID'].'" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deletemovie&MovieID=' . $getMovie['MovieID'] . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=editmovie&ID=' . htmlspecialchars(trim($getMovie['MovieID'])) .'" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deletemovie&MovieID=' . htmlspecialchars(trim($getMovie['MovieID'])) . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
 
                     echo "</tr>";
                 }

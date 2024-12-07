@@ -31,12 +31,12 @@ $getProduction = $queryProduction->fetchAll();
 
             foreach ($getProduction as $production) {
                 echo "<tr>";
-                    echo "<td>" . $production['ProductionID'] . "</td>";
-                    echo "<td>" . $production['FirstName'] . "</td>";
-                    echo "<td>" . $production['LastName'] . "</td>";
-                    echo "<td>" . $production['RoleInProductionID'] . "</td>";
-                    echo '<td><a href="index.php?page=editproduction&ID=' . $production['ProductionID'] . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteproduction&ProductionID=' . $production['ProductionID'] . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                    echo "<td>" . htmlspecialchars(trim($production['ProductionID'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($production['FirstName'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($production['LastName'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(trim($production['RoleInProductionID'])) . "</td>";
+                    echo '<td><a href="index.php?page=editproduction&ID=' . htmlspecialchars(trim($production['ProductionID'])) . '" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deleteproduction&ProductionID=' . htmlspecialchars(trim($production['ProductionID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>

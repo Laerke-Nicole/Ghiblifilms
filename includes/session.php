@@ -7,7 +7,7 @@
 	
 	function confirm_logged_in() {
 		if (!logged_in()) {
-			redirect_to("index.php?page=login");
+			header("Location: index.php?page=login");
 		}
 	}
 ?>
