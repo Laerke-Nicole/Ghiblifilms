@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
+    <script src="js/recaptcha.js" defer></script>
 </head>
 
 <h2>Log in</h2>
 
 <form action="" method="post" class="flex flex-col">
+    <!-- hidden input for reCAPTCHA token -->
+    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+
     <div class="pb-4">
         <p>Username:</p>
         <input type="text" name="User" maxlength="50" value="" class="validate" required="" aria-required="true" />

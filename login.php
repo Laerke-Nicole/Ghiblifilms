@@ -8,6 +8,25 @@ if (logged_in()) {
     redirect_to("index.php?page=home");
 }
 
+
+$recaptchaSecret = '6Le5im4qAAAAAIilBJ35BlmkGIPIjIh-m5LgXR0u';
+$recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
+
+if (!$recaptchaResponse) {
+    echo "reCAPTCHA token is missing. Please try again.";
+    exit;
+}
+
+// Verify the token
+$recaptchaValidation = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptchaSecret&response=$recaptchaResponse");
+$recaptchaData = json_decode($recaptchaValidation);
+
+if (!$recaptchaData->success) {
+    echo "reCAPTCHA validation failed. Please try again.";
+    exit;
+}
+
+
 if (isset($_POST['submit'])) { 
     $username = trim($_POST['User']);
     $password = trim($_POST['Pass']);

@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New user</title>
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
+    <script src="js/recaptcha.js" defer></script>
 </head>
 
 <h2>Create New User</h2>
 
 <form action="" method="post" class="flex flex-col">
+    <!-- hidden input for reCAPTCHA token -->
+    <!-- <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> -->
+    
     <div class="pb-4">
         <p>Username:</p>
         <input type="text" name="Username" maxlength="50" value="" class="validate" required="" aria-required="true" />
@@ -62,6 +69,12 @@
     <div class="cursor">
         <input type="submit" name="submit" value="Create" class="btn" />
     </div>
+
+    <input class="g-recaptcha" 
+        data-sitekey="6LcYqN8oAAAAAMR4uWAINgyvso2t7FITrhBawMTO" 
+        data-callback='onSubmit' 
+        data-action='submit'
+        type="submit" name="submit" value="Create" />
 
     <div>
         <a href="index.php?page=login" class="secondary-color">Aldready got a user? Log in here</a>
