@@ -2,6 +2,7 @@
 require_once("includes/session.php"); 
 require_once("includes/connection.php"); 
 require_once("includes/functions.php"); 
+require_once ("csrfProtection.php");
 
 if (isset($_POST['submit'])) {
 

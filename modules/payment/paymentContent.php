@@ -1,3 +1,7 @@
+<?php
+require_once ("csrfProtection.php");
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +41,9 @@
     <div>
         <h2>Payment</h2>
         <form id="payment-form">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <div id="card-element">
                 <!-- Stripe.js adds fields here -->
             </div>

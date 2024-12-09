@@ -1,7 +1,8 @@
 <?php
 require_once("includes/dbcon.php");
 require_once("includes/functions.php");
-require_once("includes/session.php");
+require_once("includes/session.php"); 
+require_once ("csrfProtection.php");
 confirm_logged_in();
 
 // ShowingsID in URL

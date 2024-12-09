@@ -2,6 +2,7 @@
 require_once("includes/dbcon.php");
 require_once("includes/functions.php");
 require_once("includes/session.php");
+require_once ("csrfProtection.php");
 confirm_logged_in();
 
 // check if the user is logged in

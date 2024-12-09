@@ -1,3 +1,9 @@
+<?php
+require_once("includes/functions.php"); 
+require_once("includes/session.php"); 
+require_once ("csrfProtection.php");
+?>
+
 <div class="w-half" id="contact-form">
     <div>
         <h2 class="text-xl pb-4">Fill out the form below and we will get back to you as soon as possible.</h2>
@@ -6,6 +12,9 @@
     <!-- input fields -->
     <div class="w-half">
         <form class="contact-form" action="modules/contactform/email.php" method="post">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+
             <div>
                 <input type="text" id="firstName" name="firstName" placeholder="First name" class="validate" required="" aria-required="true">
             </div>

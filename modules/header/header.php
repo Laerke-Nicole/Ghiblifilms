@@ -21,6 +21,7 @@ echo '<nav class="flex justify-between items-center p-6">';
             echo '<li><a href="index.php?page=userprofile&UserID=' . htmlspecialchars(trim($userID)) . '" class="secondary-color">Profile Page</a></li>';
         endif;        
 
+        
         echo '<li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>';
 
         // show log out btn if ur logged in 

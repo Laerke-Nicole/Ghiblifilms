@@ -2,6 +2,7 @@
 require_once("includes/dbcon.php");
 require_once("includes/functions.php");
 require_once("includes/session.php");
+require_once ("csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['UserID'])) {
@@ -42,6 +43,9 @@ $getUsers = $query->fetchAll();
 <div class="container">
         <h3>Editing your information</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="User">
             <input type="hidden" name="original_UserID" value="<?php echo htmlspecialchars(trim($userID)); ?>">

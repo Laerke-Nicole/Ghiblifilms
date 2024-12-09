@@ -1,3 +1,7 @@
+<?php
+require_once ("csrfProtection.php");
+?>
+
 
 <div class="ten-percent">
     <div class="grid-cols-2">
@@ -18,6 +22,9 @@
 
             <!-- Seat selection form -->
             <form method="POST" action="index.php?page=seatreservationform">
+                <!-- csrf protection -->
+                <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+
                 <div class="pb-4">
                     <label for="Seats">Select seats, up to 5:</label>
                     <div id="Seats">
