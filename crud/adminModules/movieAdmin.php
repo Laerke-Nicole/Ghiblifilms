@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get news
-$queryMovie = $dbCon->prepare("SELECT * FROM Movie");
-$queryMovie->execute();
-$getMovies = $queryMovie->fetchAll();
 ?>
 
 
@@ -85,6 +80,9 @@ $getMovies = $queryMovie->fetchAll();
         <h4>Add new movie</h4>
 
         <form class="col s12" method="post" action="crud/movie/addMovie.php" enctype="multipart/form-data">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Name" name="Name" type="text" class="validate" required>

@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get opening hours
-$queryProduction = $dbCon->prepare("SELECT * FROM Production");
-$queryProduction->execute();
-$getProduction = $queryProduction->fetchAll();
 ?>
 
 <!-- Production -->
@@ -48,6 +43,9 @@ $getProduction = $queryProduction->fetchAll();
     <h4>Add New Production</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="Production">
         <div class="row">

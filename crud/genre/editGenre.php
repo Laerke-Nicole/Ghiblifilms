@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -28,6 +29,9 @@ $getGenre = $query->fetchAll();
 <div class="container">
         <h3>Editing genre for "<?php echo htmlspecialchars(trim($getGenre[0]['GenreName'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Genre">
             <input type="hidden" name="original_GenreID" value="<?php echo htmlspecialchars(trim($genreID)); ?>">

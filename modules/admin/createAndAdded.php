@@ -1,9 +1,4 @@
 <?php
-// reservations management
-echo '<div id="reservationSection" class="expanded-section" style="display: none;">';
-    require 'crud/adminModules/reservationAdmin.php';
-echo '</div>';
-
 // movie management
 echo '<div id="movieSection" class="expanded-section" style="display: none;">';
     require 'crud/adminModules/movieAdmin.php';
@@ -64,4 +59,9 @@ echo '</div>';
 // address management
 echo '<div id="postalCodeSection" class="expanded-section ml-250" style="display: none;">';
     require 'crud/adminModules/postalCodeAdmin.php'; 
+echo '</div>';
+
+// reservations management
+echo '<div id="reservationSection" class="expanded-section ml-250" style="display: none;">';
+    require 'crud/adminModules/reservationAdmin.php';
 echo '</div>';

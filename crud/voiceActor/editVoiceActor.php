@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -28,6 +29,9 @@ $getVoiceActor = $query->fetchAll();
     <div class="container">
         <h3>Editing voice actor for "<?php echo htmlspecialchars(trim($getVoiceActor[0]['FirstName'])) . ' ' . htmlspecialchars(trim($getVoiceActor[0]['LastName'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="VoiceActor">
             <input type="hidden" name="original_VoiceActorID" value="<?php echo htmlspecialchars(trim($voiceActorID)); ?>">

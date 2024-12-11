@@ -10,6 +10,11 @@ class CreateModel {
     public function create($table, $data, $foreignKeys = []) {
         $resolvedForeignKeys = [];
 
+        // validate and remove CSRF token from database
+        if (isset($data['csrf_token'])) {
+            unset($data['csrf_token']); 
+        }
+
         // Handle foreign keys dynamically
         foreach ($foreignKeys as $foreignKey => $config) {
             // Resolve the foreign key and get its primary key value

@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get voice actor
-$queryVoiceActor = $dbCon->prepare("SELECT * FROM VoiceActor");
-$queryVoiceActor->execute();
-$getVoiceActor = $queryVoiceActor->fetchAll();
 ?>
 
 <!--  voice actor -->
@@ -48,6 +43,9 @@ $getVoiceActor = $queryVoiceActor->fetchAll();
     <h4>Add New voice actor</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="VoiceActor">
         <div class="row">

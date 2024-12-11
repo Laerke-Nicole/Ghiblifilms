@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['MovieID']) && isset($_GET['GenreID'])) {
@@ -29,6 +30,9 @@ $getMovieGenre = $query->fetchAll();
 <div class="container">
 <h3>Editing movie genre for "<?php echo htmlspecialchars(trim($getMovieGenre[0]['MovieID'])); ?>"</h3>
     <form class="col s12" name="contact" method="post" action="controllers/update.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- Hidden inputs to identify the table and composite keys -->
         <input type="hidden" name="table" value="MovieGenre">
         <input type="hidden" name="original_MovieID" value="<?php echo htmlspecialchars(trim($movieID)); ?>">

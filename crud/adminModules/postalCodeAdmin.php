@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get postal codes
-$queryPostalCode = $dbCon->prepare("SELECT * FROM PostalCode");
-$queryPostalCode->execute();
-$getPostalCode = $queryPostalCode->fetchAll();
 ?>
 
 <!-- Postal Code -->
@@ -44,6 +39,9 @@ $getPostalCode = $queryPostalCode->fetchAll();
     <h4>Add New Postal Code</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="PostalCode">
         <div class="row">

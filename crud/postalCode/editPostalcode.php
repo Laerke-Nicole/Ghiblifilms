@@ -1,6 +1,7 @@
 <?php 
-require_once "includes/dbcon.php";
-//confirm_logged_in();
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
+confirm_logged_in();
 
 if (isset($_GET['ID'])) {
 
@@ -28,6 +29,9 @@ $getPostalCode = $query->fetchAll();
 <div class="container">
         <h3>Editing postal code for "<?php echo htmlspecialchars(trim($getPostalCode[0][1])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="PostalCode">
             <input type="hidden" name="original_PostalCode" value="<?php echo htmlspecialchars(trim($postalCode)); ?>">

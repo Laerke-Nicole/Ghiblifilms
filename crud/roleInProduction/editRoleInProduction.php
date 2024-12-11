@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -28,6 +29,9 @@ $getRoleInProduction = $query->fetchAll();
 <div class="container">
         <h3>Editing Role In Production for "<?php echo htmlspecialchars(trim($getRoleInProduction[0]['NameOfRole'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="RoleInProduction">
             <input type="hidden" name="original_RoleInProductionID" value="<?php echo htmlspecialchars(trim($roleInProductionID)); ?>">

@@ -1,17 +1,3 @@
-<!-- reservation section -->
-<div id="movie-section" class="category-section">
-    <h5>Movie Management</h5>
-    <div class="row">
-    <!-- reservations -->
-    <div class="col s12 m6 l4">
-        <div class="card" onclick="expandSection('movieSection')">
-            <div class="card-content">
-                <span class="card-title">Movies</span>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- movie section -->
 <div id="movie-section" class="category-section">
     <h5>Movie Management</h5>
@@ -157,6 +143,20 @@
                 <div class="card-content">
                     <span class="card-title">Postal code</span>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- reservation section -->
+<div id="reservation-section" class="category-section">
+    <h5>Reservation Management</h5>
+    <div class="row">
+    <!-- reservations -->
+    <div class="col s12 m6 l4">
+        <div class="card" onclick="expandSection('reservationSection')">
+            <div class="card-content">
+                <span class="card-title">Reservations</span>
             </div>
         </div>
     </div>

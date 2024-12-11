@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -31,6 +32,9 @@ $getShowings = $query->fetchAll();
     <div class="container">
         <h3>Editing showings for "<?php echo htmlspecialchars(trim($getShowings[0]['ShowingsID'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Showings">
             <input type="hidden" name="original_ShowingsID" value="<?php echo htmlspecialchars(trim($showingsID)); ?>">

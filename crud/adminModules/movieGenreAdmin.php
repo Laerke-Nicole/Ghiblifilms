@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get Movie Genre
-$queryMovieGenre = $dbCon->prepare("SELECT * FROM MovieGenre");
-$queryMovieGenre->execute();
-$getMovieGenre = $queryMovieGenre->fetchAll();
 ?>
 
 <!-- Movie genre -->
@@ -46,6 +41,9 @@ $getMovieGenre = $queryMovieGenre->fetchAll();
     <h4>Add New Movie with their Genre</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="MovieGenre">
         <div class="row">

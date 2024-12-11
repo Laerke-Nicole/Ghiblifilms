@@ -1,12 +1,5 @@
 <?php
 confirm_logged_in();
-
-// get company information
-$queryCompanyInformation = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                                            FROM CompanyInformation C 
-                                            LEFT JOIN Address A ON C.AddressID = A.AddressID");
-$queryCompanyInformation->execute();
-$getCompanyInformation = $queryCompanyInformation->fetchAll();
 ?>
 
 
@@ -64,6 +57,9 @@ $getCompanyInformation = $queryCompanyInformation->fetchAll();
         <h4>Add new company information</h4>
 
         <form class="col s12" name="contact" method="post" action="controllers/create.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- to tell create.php which table to insert data into -->
             <input type="hidden" name="table" value="CompanyInformation">
             <div class="row">

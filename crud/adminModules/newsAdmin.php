@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get news
-$queryNews = $dbCon->prepare("SELECT * FROM News");
-$queryNews->execute();
-$getNews = $queryNews->fetchAll();
 ?>
 
 
@@ -50,6 +45,9 @@ $getNews = $queryNews->fetchAll();
     <hr>
         <h4>Add New News</h4>
         <form class="col s12" name="contact" method="post" action="crud/news/addNews.php" enctype="multipart/form-data">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+
             <div class="row">
                 <div class="input-field col s12">
                     <input id="Headline" name="Headline" type="text" class="validate" required="" aria-required="true">

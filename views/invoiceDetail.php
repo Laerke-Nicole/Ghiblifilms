@@ -36,7 +36,7 @@ try {
 
 // update payment status to 'paid' in the database
 if ($paymentIntent->status === 'succeeded') {    
-    $reservationID = $_SESSION['ReservationID']; // Store Reservation ID in the session
+    $reservationID = $_SESSION['ReservationID']; 
     
     $queryUpdatePayment = $dbCon->prepare("
         UPDATE Reservation

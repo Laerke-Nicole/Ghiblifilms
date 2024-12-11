@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get showings
-$queryShowings = $dbCon->prepare("SELECT * FROM Showings");
-$queryShowings->execute();
-$getShowings = $queryShowings->fetchAll();
 ?>
 
 <!-- showings -->
@@ -52,6 +47,9 @@ $getShowings = $queryShowings->fetchAll();
     <h4>Add New Showing</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="Showings">
         <div class="row">

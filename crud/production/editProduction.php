@@ -1,5 +1,6 @@
 <?php 
-require_once "includes/dbcon.php";
+require_once ("includes/dbcon.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -29,6 +30,9 @@ $getProduction = $query->fetchAll();
     <div class="container">
         <h3>Editing Production for "<?php echo htmlspecialchars(trim($getProduction[0]['FirstName'])) . ' ' . htmlspecialchars(trim($getProduction[0]['LastName'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
             <!-- hidden input to connect to controller and oop -->
             <input type="hidden" name="table" value="Production">
             <input type="hidden" name="original_ProductionID" value="<?php echo htmlspecialchars(trim($productionID)); ?>">

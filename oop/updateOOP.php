@@ -8,6 +8,11 @@ class UpdateModel {
 
     public function updateWithCompositeKey($table, $originalKeys, $data, $foreignKeys = []) {
         $resolvedForeignKeys = [];
+
+        // validate and remove CSRF token from database
+        if (isset($data['csrf_token'])) {
+            unset($data['csrf_token']); 
+        }
     
         // Resolve foreign keys dynamically
         foreach ($foreignKeys as $foreignKey => $config) {

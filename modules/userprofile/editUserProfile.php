@@ -3,6 +3,7 @@ require_once "includes/dbcon.php";
 require_once("includes/functions.php"); 
 require_once("includes/session.php"); 
 require_once ("includes/csrfProtection.php");
+require_once("controllers/userController.php");
 
 confirm_logged_in();
 
@@ -10,13 +11,6 @@ if (isset($_GET['ID'])) {
 
 // get user info from user table
 $userID = htmlspecialchars(trim($_GET['ID']));
-
-$query = $dbCon->prepare("SELECT * FROM UserProfileView WHERE UserID = :userID");
-
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
-
 
 ?>
 
@@ -34,7 +28,7 @@ $getUsers = $query->fetchAll();
 
 <body>
 <div class="container">
-        <h3>Editing user "<?php echo htmlspecialchars(trim($getUsers[0]['Username'])); ?>"</h3>
+        <h3>Editing user "<?php echo htmlspecialchars(trim($getUserProfileView[0]['Username'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- csrf protection -->
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
@@ -46,54 +40,54 @@ $getUsers = $query->fetchAll();
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][1])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Username" name="Username" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][1])); ?>" class="validate" required="" aria-required="true">
                     <label for="Username">Username</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][2])); ?>" class="validate" required="" aria-required="true">
+                    <input id="FirstName" name="FirstName" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][2])); ?>" class="validate" required="" aria-required="true">
                     <label for="FirstName">First Name</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][3])); ?>" class="validate" required="" aria-required="true">
+                    <input id="LastName" name="LastName" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][3])); ?>" class="validate" required="" aria-required="true">
                     <label for="LastName">Last Name</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars(trim($getUsers[0][4])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Email" name="Email" type="email" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][4])); ?>" class="validate" required="" aria-required="true">
                     <label for="Email">E-Mail</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars(trim($getUsers[0][5])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PhoneNumber" name="PhoneNumber" type="number" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][5])); ?>" class="validate" required="" aria-required="true">
                     <label for="PhoneNumber">Phone Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][6])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][6])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][7])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][7])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][9])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][9])); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getUsers[0][8])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getUserProfileView[0][8])); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

@@ -28,7 +28,8 @@ $getNews = $query->fetchAll();
         
         <!-- <form class="col s12" name="contact" method="post" action="updateNews.php" enctype="multipart/form-data"> -->
         <form class="col s12" name="contact" method="post" action="crud/news/updateNews.php" enctype="multipart/form-data">
-
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
 
             <div class="row">
                 <div class="input-field col s12">

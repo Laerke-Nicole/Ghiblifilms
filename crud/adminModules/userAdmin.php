@@ -1,13 +1,5 @@
 <?php
 confirm_logged_in();
-
-// get users with address details
-$queryUser = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                                FROM User U 
-                                LEFT JOIN Address A ON U.AddressID = A.AddressID");
-
-$queryUser->execute();
-$getUsers = $queryUser->fetchAll();
 ?>
 
 
@@ -37,26 +29,26 @@ $getUsers = $queryUser->fetchAll();
 
                 <tbody class="secondary-color">
                 <?php
-                if (!isset($getUsers)) {
-                    $getUsers = [];
+                if (!isset($users)) {
+                    $users = [];
                 }
                 
-                foreach ($getUsers as $getUser) {
+                foreach ($users as $user) {
                     echo "<tr>";
-                    echo "<td>". htmlspecialchars(trim($getUser['UserID']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['Username']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['FirstName'])). " " . htmlspecialchars(trim($getUser['LastName']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['Email']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['PhoneNumber']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['StreetName']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['StreetNumber']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['PostalCode']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getUser['Country']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['UserID']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['Username']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['FirstName'])). " " . htmlspecialchars(trim($user['LastName']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['Email']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['PhoneNumber']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['StreetName']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['StreetNumber']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['PostalCode']))."</td>";
+                    echo "<td>". htmlspecialchars(trim($user['Country']))."</td>";
                     echo "<td>";
 
                     echo "</td>";
-                    echo '<td><a href="index.php?page=edituser&ID=' . htmlspecialchars(trim($getUser['UserID'])) . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteuser&UserID=' . htmlspecialchars(trim($getUser['UserID'])) . '" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    echo '<td><a href="index.php?page=edituser&ID=' . htmlspecialchars(trim($user['UserID'])) . '" class="btn">Edit</a></td>';
+                    echo '<td><a href="index.php?page=deleteuser&UserID=' . htmlspecialchars(trim($user['UserID'])) . '" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
                     
                     echo "</tr>";
                 }
@@ -71,6 +63,9 @@ $getUsers = $queryUser->fetchAll();
         <h4>Add new user</h3>
 
         <form class="col s12" name="contact" method="post" action="controllers/create.php">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+
             <!-- to tell create.php which table to insert data into -->
             <input type="hidden" name="table" value="User">
             <div class="row">

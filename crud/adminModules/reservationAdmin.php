@@ -1,15 +1,10 @@
 <?php
 confirm_logged_in();
-
-// get user reservations
-$queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView ORDER BY UserID");
-$queryUserReservations->execute();
-$getUserReservations = $queryUserReservations->fetchAll();
 ?>
 
 <!-- Opening Hours -->
 <div class="container">
-    <h4>All Reservations sorted by user ID</h4>
+    <h4>All Reservations ordered by user's first name</h4>
     
     <?php
     if (!$getUserReservations) {

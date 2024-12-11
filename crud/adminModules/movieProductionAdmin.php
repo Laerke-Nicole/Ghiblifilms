@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get Movie Production
-$queryMovieProduction = $dbCon->prepare("SELECT * FROM MovieProduction");
-$queryMovieProduction->execute();
-$getMovieProduction = $queryMovieProduction->fetchAll();
 ?>
 
 <!-- Movie production -->
@@ -46,6 +41,9 @@ $getMovieProduction = $queryMovieProduction->fetchAll();
     <h4>Add New Movie with the production team</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="MovieProduction">
         <div class="row">

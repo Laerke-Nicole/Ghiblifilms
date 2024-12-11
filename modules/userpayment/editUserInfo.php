@@ -3,6 +3,7 @@ require_once("includes/dbcon.php");
 require_once("includes/functions.php");
 require_once("includes/session.php");
 require_once ("includes/csrfProtection.php");
+require_once("controllers/userController.php");
 confirm_logged_in();
 
 if (isset($_GET['UserID'])) {
@@ -17,14 +18,6 @@ if (isset($_GET['UserID'])) {
     die("User ID is required.");
 }
 
-// get user info to edit
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
 ?>
 
 

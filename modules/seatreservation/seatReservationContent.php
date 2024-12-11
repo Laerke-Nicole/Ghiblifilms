@@ -1,8 +1,3 @@
-<?php
-require_once ("includes/csrfProtection.php");
-?>
-
-
 <div class="ten-percent">
     <div class="grid-cols-2">
         <div>

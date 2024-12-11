@@ -1,10 +1,5 @@
 <?php
 confirm_logged_in();
-
-// Get opening hours
-$queryOpeningHour = $dbCon->prepare("SELECT * FROM OpeningHour");
-$queryOpeningHour->execute();
-$getOpeningHours = $queryOpeningHour->fetchAll();
 ?>
 
 <!-- Opening Hours -->
@@ -24,17 +19,17 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
 
             <tbody class="secondary-color">
             <?php
-            if (!isset($getOpeningHours)) {
-                $getOpeningHours = [];
+            if (!isset($openingHours)) {
+                $openingHours = [];
             }
 
-            foreach ($getOpeningHours as $getOpeningHour) {
+            foreach ($openingHours as $openingHour) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($getOpeningHour['Day'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($getOpeningHour['Time'])) . "</td>";
-                echo '<td><a href="index.php?page=editopeninghour&ID=' . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deleteopeninghour&OpeningHourID=' . htmlspecialchars(trim($getOpeningHour['OpeningHourID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                echo "<td>" . htmlspecialchars(trim($openingHour['OpeningHourID'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($openingHour['Day'])) . "</td>";
+                echo "<td>" . htmlspecialchars(trim($openingHour['Time'])) . "</td>";
+                echo '<td><a href="index.php?page=editopeninghour&ID=' . htmlspecialchars(trim($openingHour['OpeningHourID'])) . '" class="btn">Edit</a></td>';
+                echo '<td><a href="index.php?page=deleteopeninghour&OpeningHourID=' . htmlspecialchars(trim($openingHour['OpeningHourID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
                 echo "</tr>";
             }
             ?>
@@ -46,6 +41,9 @@ $getOpeningHours = $queryOpeningHour->fetchAll();
     <h4>Add New Opening Hour</h4>
 
     <form class="col s12" name="contact" method="post" action="controllers/create.php">
+        <!-- csrf protection -->
+        <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+        
         <!-- to tell create.php which table to insert data into -->
         <input type="hidden" name="table" value="OpeningHour">
         <div class="row">

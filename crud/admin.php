@@ -2,6 +2,14 @@
 require_once("includes/connection.php");
 require_once ("includes/dbcon.php");
 require_once("includes/functions.php");
+require_once ("includes/csrfProtection.php");
+// controllers
+require_once("controllers/movieController.php");
+require_once("controllers/companyController.php");
+require_once("controllers/userController.php");
+require_once("controllers/addressController.php");
+require_once("controllers/reservationsController.php");
+
 confirm_logged_in();
 ?>
 
@@ -28,6 +36,7 @@ confirm_logged_in();
         <li><a href="#!" onclick="showCategory('company')">Company</a></li>
         <li><a href="#!" onclick="showCategory('user')">Users</a></li>
         <li><a href="#!" onclick="showCategory('address')">Address</a></li>
+        <li><a href="#!" onclick="showCategory('reservation')">Reservations</a></li>
     </ul>
 
     <!-- Main Content -->

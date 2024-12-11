@@ -3,55 +3,9 @@ require_once ("includes/dbcon.php");
 require_once("includes/functions.php"); 
 require_once("includes/session.php"); 
 require_once("includes/connection.php"); 
-
-// get daily showings from db
-$queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");
-$queryShowings->execute();
-$dailyShowingsViews = $queryShowings->fetchAll();
-
-
-// get news from db
-$queryNews = $dbCon->prepare("SELECT * FROM News");
-$queryNews->execute();
-$getNews = $queryNews->fetchAll();
-
-
-// get movies from db
-$queryMovies = $dbCon->prepare("SELECT MovieID, `Name`, MovieImg FROM Movie");
-$queryMovies->execute();
-$getMovies = $queryMovies->fetchAll();
-
-
-// get about ghiblifilms from db
-$queryAboutCompany = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription FROM CompanyInformation");
-$queryAboutCompany->execute();
-$getAboutCompany = $queryAboutCompany->fetchAll();
-
-
-// get company info from db
-$queryCompanyInformation = $dbCon->prepare("SELECT CompanyEmail, CompanyPhoneNumber FROM CompanyInformation");
-$queryCompanyInformation->execute();
-$getCompanyInformation = $queryCompanyInformation->fetchAll();
-
-
-// get opening hours  from db 
-$queryOpeningHour = $dbCon->prepare("SELECT `Day`, `Time` FROM OpeningHour");
-$queryOpeningHour->execute();
-$getOpeningHour = $queryOpeningHour->fetchAll();
-
-
-// get view with company address info from db
-$queryCompanyAddressView = $dbCon->prepare("SELECT *
-                                            FROM CompanyAddressView");
-$queryCompanyAddressView->execute();
-$getCompanyAddressView = $queryCompanyAddressView->fetchAll();
-
-
-// get auditorium/venues from db
-$queryAuditorium = $dbCon->prepare("SELECT AuditoriumNumber
-                                    FROM Auditorium");
-$queryAuditorium->execute();
-$getAuditorium = $queryAuditorium->fetchAll();
+// controllers
+require_once("controllers/movieController.php");
+require_once("controllers/companyController.php");
 ?>
 
 
