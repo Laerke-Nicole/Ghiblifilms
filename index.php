@@ -3,6 +3,7 @@ require_once("includes/session.php");
 require_once ("includes/dbcon.php"); 
 require_once("includes/functions.php");
 require_once("includes/connection.php");
+require_once ("includes/csrfProtection.php");
 
 // check if the user is logged in
 if (isset($_SESSION['UserID'])) {
@@ -66,8 +67,6 @@ case "admin":
 break;
 
 
-
-
 // controllers
 case "controllercreate":
     include('controllers/create.php');
@@ -93,6 +92,10 @@ break;
 
 case "deleteoop":
     include('oop/deleteOOP.php');
+break;
+
+case "resizer":
+    include('oop/resizerOOP.php');
 break;
 
 

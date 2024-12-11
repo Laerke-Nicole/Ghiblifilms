@@ -1,4 +1,9 @@
 <?php
+// reservations management
+echo '<div id="reservationSection" class="expanded-section" style="display: none;">';
+    require 'crud/adminModules/reservationAdmin.php';
+echo '</div>';
+
 // movie management
 echo '<div id="movieSection" class="expanded-section" style="display: none;">';
     require 'crud/adminModules/movieAdmin.php';

@@ -1,5 +1,6 @@
 <?php
 require_once "../../includes/dbcon.php";
+require_once "../../oop/resizerOOP.php";
 
 if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     // Get the input values
@@ -15,14 +16,25 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     // Check if a new image file is uploaded
     if (isset($_FILES['MovieImg']) && $_FILES['MovieImg']['error'] == UPLOAD_ERR_OK) {
         // Validate the uploaded file (type and size)
-        $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg'];
-        
+        $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/jpg'];
+
         if (in_array($_FILES['MovieImg']['type'], $allowedTypes) && $_FILES['MovieImg']['size'] < 3000000) {
             // Move the uploaded file to the "upload" directory
             $movieImg = basename($_FILES['MovieImg']['name']);
             $uploadPath = "../../upload/" . $movieImg;
 
-            if (!move_uploaded_file($_FILES['MovieImg']['tmp_name'], $uploadPath)) {
+            if (move_uploaded_file($_FILES['MovieImg']['tmp_name'], $uploadPath)) {
+                // Resize the uploaded image
+                try {
+                    $resizer = new Resizer();
+                    $resizer->load($uploadPath);
+                    $resizer->resize(320, 450); // Set desired dimensions
+                    $resizer->save($uploadPath);
+                } catch (Exception $e) {
+                    echo "Error resizing image: " . $e->getMessage();
+                    exit();
+                }
+            } else {
                 echo "Failed to move uploaded file.";
                 exit();
             }
@@ -30,13 +42,7 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
             echo "Invalid file type or file size too large.";
             exit();
         }
-    } else {
-        // If no new image is uploaded, keep the existing one
-        $query = $dbCon->prepare("SELECT MovieImg FROM Movie WHERE MovieID = :movieID");
-        $query->bindParam(':movieID', $movieID);
-        $query->execute();
-        $movieImg = $query->fetchColumn(); // Fetch the current image file name
-    }
+    } 
 
     // Update the movie record
     $query = $dbCon->prepare("UPDATE Movie SET Name = :name, Description = :description, `ReleaseYear` = :releaseYear, `Duration` = :duration, `MovieImg` = :movieImg WHERE MovieID = :movieID");
@@ -57,4 +63,3 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
 } else {
     header("Location: ../../index.php?page=admin&status=0");
 }
-?>

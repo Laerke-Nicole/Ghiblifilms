@@ -6,12 +6,8 @@ require_once("includes/connection.php");
 confirm_logged_in(); 
 
 
-// userID in URL
-if (!isset($_GET['UserID'])) {
-    die("UserID not specified.");
-}
-
-$userID = $_GET['UserID']; 
+// UserID from session
+$userID = $_SESSION['UserID']; 
 
 
 // get user view
@@ -27,14 +23,18 @@ $queryUserReservations->bindParam(':userID', $userID);
 $queryUserReservations->execute();
 $getUserReservations = $queryUserReservations->fetchAll();
 
+if (!$getUserProfileView) {
+    die("Not found.");
+}
 
 // user info 
-include("modules/userprofile/userInfo.php");
+include("modules/userprofile/userInfo.php"); ?>
 
-echo '<br>';
-echo '<br>';
-echo '<br>';
-echo '<br>';
+<br>
+<br>
+<br>
+<br>
 
+<?php
 // list of bookings the user has made 
 include("modules/userprofile/userBookings.php"); 

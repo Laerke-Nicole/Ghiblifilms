@@ -57,6 +57,10 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $queryShowings->execute();
     $getShowings = $queryShowings->fetchAll();
 
+    // if they dont exist, display an error message
+    if (!$movieItem || !$genres || !$voiceActor || !$production) {
+        die("Not all items found.");
+    }
     
     // if statement to show details on movie
     if ($movieItem) {

@@ -9,9 +9,9 @@ echo '<section class="pb-24 ten-percent" id="movies">';
         
         foreach ($getMovies as $getMovie) { 
             echo '<div>';
-            echo "<img src='upload/" . htmlspecialchars(trim($getMovie['MovieImg'])) . "' alt='Image of movie'>";
-            echo '<h5 class="weight-400 pb-2">' . htmlspecialchars(trim($getMovie['Name'])) . '</h5>';
-            echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars(trim($getMovie['MovieID'])) . '\'">Get tickets</button>';
+                echo "<img src='upload/" . htmlspecialchars(trim($getMovie['MovieImg'])) . "' alt='Image of movie'>";
+                echo '<h5 class="weight-400 pb-2">' . htmlspecialchars(trim($getMovie['Name'])) . '</h5>';
+                echo '<button class="btn" onclick="window.location.href=\'index.php?page=moviedetail&ID=' . htmlspecialchars(trim($getMovie['MovieID'])) . '\'">Get tickets</button>';
             echo '</div>';
         }
     echo '</div>';

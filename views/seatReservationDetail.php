@@ -2,7 +2,7 @@
 require_once("includes/dbcon.php");
 require_once("includes/functions.php");
 require_once("includes/session.php"); 
-require_once ("csrfProtection.php");
+require_once ("includes/csrfProtection.php");
 confirm_logged_in();
 
 // ShowingsID in URL
@@ -12,6 +12,9 @@ if (!isset($_GET['ShowingsID'])) {
 
 $showingsID = $_GET['ShowingsID']; 
 $_SESSION['ShowingsID'] = $showingsID; // Save ShowingsID in session
+if (!$showingsID) {
+    die("No reservation details found.");
+}
 
 // Fetch already reserved seats for the showing
 $queryReservedSeats = $dbCon->prepare("
@@ -41,5 +44,3 @@ $availableSeats = $querySeats->fetchAll();
 
 // display the available seats, the seat options, and image of seats
 include ("modules/seatreservation/seatReservationContent.php");
-?>
-

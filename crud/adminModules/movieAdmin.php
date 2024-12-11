@@ -46,19 +46,25 @@ $getMovies = $queryMovie->fetchAll();
                     $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
                     $genreQuery->execute([$getMovie['MovieID']]);
                     $genres = $genreQuery->fetchAll();
-                    echo "<td>" . implode(", ", $genres) . "</td>";
+                    $genreNames = array_column($genres, 'GenreName');
+                    echo "<td>" . implode(", ", $genreNames) . "</td>";
+
 
                     // get and display production team
                     $productionQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Production INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID WHERE MovieProduction.MovieID = ?");
                     $productionQuery->execute([$getMovie['MovieID']]);
                     $productions = $productionQuery->fetchAll();
-                    echo "<td>" . implode(", ", $productions) . "</td>";
+                    $productionNames = array_column($productions, 'FullName');
+                    echo "<td>" . implode(", ", $productionNames) . "</td>";
+
 
                     // get and display voice actors
                     $voiceActorQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM VoiceActor INNER JOIN MovieVoiceActor ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID WHERE MovieVoiceActor.MovieID = ?");
                     $voiceActorQuery->execute([$getMovie['MovieID']]);
                     $voiceActors = $voiceActorQuery->fetchAll();
-                    echo "<td>" . implode(", ", $voiceActors) . "</td>";
+                    $voiceActorNames = array_column($voiceActors, 'FullName');
+                    echo "<td>" . implode(", ", $voiceActorNames) . "</td>";
+
 
                     echo "<td>";
 

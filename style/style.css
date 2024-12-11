@@ -147,12 +147,6 @@ p {
     column-gap: 16px;
 }
 
-.items img {
-    width: 100%; 
-    height: auto; 
-}
-
-
 /* style for a box with content inside */
 .box {
     border: 1px solid var(--secondary-color);

@@ -1,5 +1,6 @@
 <?php
 require_once "../../includes/dbcon.php";
+require_once "../../oop/resizerOOP.php";
 
 if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     // Get the input values, including the new image if uploaded
@@ -14,7 +15,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     // Check if a new image file is uploaded
     if (isset($_FILES['NewsImg']) && $_FILES['NewsImg']['error'] == UPLOAD_ERR_OK) {
         // Validate the uploaded file (type and size)
-        $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg'];
+        $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg', 'image/png'];
 
         if (in_array($_FILES['NewsImg']['type'], $allowedTypes) && $_FILES['NewsImg']['size'] < 3000000) {
             // Move the uploaded file to the "upload" directory
@@ -22,7 +23,16 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
             $uploadPath = "../../upload/" . $newsImg;
 
             if (move_uploaded_file($_FILES['NewsImg']['tmp_name'], $uploadPath)) {
-                // Image upload succeeded, set $newsImg to the new file name
+                // Resize the uploaded image
+                try {
+                    $resizer = new Resizer();
+                    $resizer->load($uploadPath);
+                    $resizer->resize(320, 450); // Set desired dimensions
+                    $resizer->save($uploadPath);
+                } catch (Exception $e) {
+                    echo "Error resizing image: " . $e->getMessage();
+                    exit();
+                }
             } else {
                 echo "Failed to move uploaded file.";
                 exit();

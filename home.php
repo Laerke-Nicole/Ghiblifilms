@@ -17,7 +17,7 @@ $getNews = $queryNews->fetchAll();
 
 
 // get movies from db
-$queryMovies = $dbCon->prepare("SELECT * FROM Movie");
+$queryMovies = $dbCon->prepare("SELECT MovieID, `Name`, MovieImg FROM Movie");
 $queryMovies->execute();
 $getMovies = $queryMovies->fetchAll();
 

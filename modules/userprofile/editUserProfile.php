@@ -2,7 +2,8 @@
 require_once "includes/dbcon.php";
 require_once("includes/functions.php"); 
 require_once("includes/session.php"); 
-require_once ("csrfProtection.php");
+require_once ("includes/csrfProtection.php");
+
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
@@ -15,6 +16,8 @@ $query = $dbCon->prepare("SELECT * FROM UserProfileView WHERE UserID = :userID")
 $query->bindParam(':userID', $userID);
 $query->execute();
 $getUsers = $query->fetchAll(); 
+
+
 ?>
 
 

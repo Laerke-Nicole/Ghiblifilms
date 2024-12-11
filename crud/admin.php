@@ -1,7 +1,6 @@
 <?php 
 require_once("includes/connection.php");
 require_once ("includes/dbcon.php");
-require_once("includes/session.php"); 
 require_once("includes/functions.php");
 confirm_logged_in();
 ?>

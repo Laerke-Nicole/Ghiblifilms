@@ -2,18 +2,17 @@
 require_once("includes/connection.php"); 
 require_once("includes/session.php"); 
 require_once("includes/functions.php"); 
-require_once ("csrfProtection.php");
+require_once ("includes/csrfProtection.php");
 
 
 if (logged_in()) {
-    // redirect_to("index.php?page=home");
     header("Location: index.php?page=home");
     exit;
 }
 
 if (isset($_POST['submit'])) { 
-    $username = trim($_POST['User']);
-    $password = trim($_POST['Pass']);
+    $username = htmlspecialchars(trim($_POST['User']));
+    $password = htmlspecialchars(trim($_POST['Pass']));
     
     try {
         $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; 

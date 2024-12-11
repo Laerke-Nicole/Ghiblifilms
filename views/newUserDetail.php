@@ -13,6 +13,9 @@
 <h2>Create New User</h2>
 
 <form action="" method="post" class="flex flex-col">
+    <!-- csrf protection -->
+    <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+    
     <!-- hidden input for reCAPTCHA token -->
     <!-- <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response"> -->
     

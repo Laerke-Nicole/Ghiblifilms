@@ -1,7 +1,7 @@
 <?php
 require_once("includes/functions.php"); 
 require_once("includes/session.php"); 
-require_once ("csrfProtection.php");
+require_once ("includes/csrfProtection.php");
 ?>
 
 <div class="w-half" id="contact-form">

@@ -94,8 +94,8 @@ CREATE TABLE Movie (
   MovieID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Name` varchar(100) NOT NULL,
   `Description` text NOT NULL,
-  ReleaseYear INT(4) NOT NULL,
-  Duration varchar(7) NOT NULL,
+  ReleaseYear YEAR NOT NULL,
+  Duration varchar(6) NOT NULL,
   MovieImg varchar(255) NOT NULL
 ) ENGINE=InnoDB;
 
@@ -223,24 +223,13 @@ CREATE VIEW DailyShowingsView AS
 SELECT 
   m.MovieID, 
   m.`Name`, 
-  m.Description, 
-  m.ReleaseYear, 
-  m.Duration, 
-  m.MovieImg, 
-  GROUP_CONCAT(DISTINCT g.GenreName ORDER BY g.GenreName) AS Genres,
-  GROUP_CONCAT(DISTINCT CONCAT(p1.FirstName, ' ', p1.LastName, ' (', r.NameOfRole, ')') ORDER BY p1.LastName) AS ProductionStaff,
-  GROUP_CONCAT(DISTINCT CONCAT(va.FirstName, ' ', va.LastName) ORDER BY va.LastName) AS VoiceActors
+  m.MovieImg,
+  s.ShowingTime,
+  ShowingDate
 FROM Movie m
-JOIN Showings s ON m.MovieID = s.MovieID
-LEFT JOIN MovieGenre mg ON m.MovieID = mg.MovieID
-LEFT JOIN Genre g ON mg.GenreID = g.GenreID
-LEFT JOIN MovieProduction mp ON m.MovieID = mp.MovieID
-LEFT JOIN Production p1 ON mp.ProductionID = p1.ProductionID
-LEFT JOIN RoleInProduction r ON p1.RoleInProductionID = r.RoleInProductionID
-LEFT JOIN MovieVoiceActor mva ON m.MovieID = mva.MovieID
-LEFT JOIN VoiceActor va ON mva.VoiceActorID = va.VoiceActorID
+INNER JOIN Showings s ON m.MovieID = s.MovieID
 WHERE s.ShowingDate = CURDATE()
-GROUP BY m.MovieID, m.`Name`, m.Description, m.ReleaseYear, m.Duration, m.MovieImg;
+GROUP BY s.ShowingTime, m.`Name`;
 
 
 -- user + address view

@@ -9,6 +9,10 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     $query->execute();
     $newsItem = $query->fetch();
 
+    // if no news exists with the given ID, display an error message
+    if (!$newsItem) {
+        die("News item not found.");
+    }
 
     // if statement to show details on news
     if ($newsItem) {
