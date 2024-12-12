@@ -7,6 +7,7 @@ if (isset($_GET['ID'])) {
 
 // get the opening hour to edit
 $openingHourID = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM OpeningHour WHERE OpeningHourID = :openingHourID");
 $query->bindParam(':openingHourID', $openingHourID);
 $query->execute();

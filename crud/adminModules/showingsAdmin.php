@@ -21,24 +21,18 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getShowings)) {
-                $getShowings = [];
-            }
-
-            foreach ($getShowings as $showings) {
-                echo "<tr>";
-                    echo "<td>" . htmlspecialchars(trim($showings['ShowingsID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($showings['MovieID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($showings['AuditoriumID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($showings['ScreenFormatID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($showings['ShowingDate'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($showings['ShowingTime'])) . "</td>";
-                    echo '<td><a href="index.php?page=editshowings&ID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteshowings&ShowingsID=' . htmlspecialchars(trim($showings['ShowingsID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($showings as $showings): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['MovieID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['AuditoriumID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['ScreenFormatID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['ShowingDate'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['ShowingTime'])); ?></td>
+                    <td><a href="index.php?page=editshowings&ID=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn">Edit</a></td>
+                    <td><a href="index.php?page=deleteshowings&ShowingsID=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>
@@ -64,9 +58,9 @@ confirm_logged_in();
                 <p>Auditorium</p>
                 <select name="AuditoriumID" id="AuditoriumID">
                     <?php
-                        $auditoriumQuery = $dbCon->query("SELECT AuditoriumID, AuditoriumNumber FROM Auditorium");
+                        include ("controllers/movieController.php");
                         while ($auditorium = $auditoriumQuery->fetch()) {
-                            echo "<option value='{$auditorium['AuditoriumID']}'>{$auditorium['AuditoriumNumber']}</option>";
+                            echo "<option value=\"" . htmlspecialchars($auditorium['AuditoriumID']) . "\">" . htmlspecialchars($auditorium['AuditoriumNumber']) . "</option>";
                         }
                     ?>
                 </select>
@@ -75,9 +69,9 @@ confirm_logged_in();
                 <p>ScreenFormat</p>
                 <select name="ScreenFormatID" id="ScreenFormatID">
                     <?php
-                        $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+                        include ("controllers/movieController.php");
                         while ($screenFormat = $screenFormatQuery->fetch()) {
-                            echo "<option value='{$screenFormat['ScreenFormatID']}'>{$screenFormat['ScreenFormat']}</option>";
+                            echo "<option value=\"{$screenFormat['ScreenFormatID']}\">{$screenFormat['ScreenFormat']}</option>";
                         }
                     ?>
                 </select>

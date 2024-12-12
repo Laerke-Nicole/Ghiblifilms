@@ -6,6 +6,7 @@ if (isset($_GET['ID'])) {
 
 // get the news to edit
 $newsID = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
 $query->bindParam(':newsID', $newsID);
 $query->execute();

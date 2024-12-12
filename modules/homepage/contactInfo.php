@@ -1,21 +1,19 @@
-<?php
-echo '<div class="w-half">';
-    echo '<div class="box">';
+<div class="w-half">
+    <div class="box">
         
-        echo '<h3 class="text-xl pb-4">Prefer a direct contact? You can reach us via email or phone:</h3>';
+        <h3 class="text-xl pb-4">Prefer a direct contact? You can reach us via email or phone:</h3>
         
-            echo '<div class="flex flex-col gap-6">';
-            foreach ($getCompanyInformation as $companyInfo) {
-                echo '<div>';
-                    echo '<h4 class="text-sm">Email us</h4>';
-                    echo '<p>' . htmlspecialchars(trim($companyInfo['CompanyEmail'])) . '</p>';
-                echo '</div>';
-                echo '<div>';
-                    echo '<h4 class="text-sm">Call us</h4>';
-                    echo '<p>' . htmlspecialchars(trim($companyInfo['CompanyPhoneNumber'])) . '</p>';
-                echo '</div>';
-            }
-            
-        echo '</div>';
-    echo '</div>';
-echo '</div>';
+            <div class="flex flex-col gap-6">
+            <?php foreach ($getCompanyInformation as $companyInfo): ?>
+                <div>
+                    <h4 class="text-sm">Email us</h4>
+                    <p><?php echo htmlspecialchars(trim($companyInfo['CompanyEmail'])); ?></p>
+                </div>
+                <div>
+                    <h4 class="text-sm">Call us</h4>
+                    <p><?php echo htmlspecialchars(trim($companyInfo['CompanyPhoneNumber'])); ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

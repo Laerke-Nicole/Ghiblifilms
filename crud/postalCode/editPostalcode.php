@@ -7,6 +7,7 @@ if (isset($_GET['ID'])) {
 
 // get the postal code to edit
 $postalCode = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCode");
 $query->bindParam(':postalCode', $postalCode);
 $query->execute();

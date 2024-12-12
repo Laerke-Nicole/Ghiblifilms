@@ -17,22 +17,17 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getMovieGenre)) {
-                $getMovieGenre = [];
-            }
 
-            foreach ($getMovieGenre as $movieGenre) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($movieGenre['MovieID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($movieGenre['GenreID'])) . "</td>";
+            <?php foreach ($getMovieGenre as $movieGenre): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($movieGenre['MovieID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieGenre['GenreID'])); ?></td>
 
-                echo '<td><a href="index.php?page=editmoviegenre&MovieID=' . htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletemoviegenre&MovieID=' . htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                <td><a href="index.php?page=editmoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deletemoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
 
-                echo "</tr>";
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

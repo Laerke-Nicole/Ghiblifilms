@@ -23,21 +23,19 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            foreach ($getNews as $news) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($news['NewsID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($news['Headline'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($news['SubHeadline'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($news['TextOfNews'])) . "</td>";
-                echo "<td><img src='upload/" . htmlspecialchars(trim($news['NewsImg'])) . "' alt='Image of news' width='100'></td>";
+            <?php foreach ($getNews as $news): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($news['NewsID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($news['Headline'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($news['SubHeadline'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($news['TextOfNews'])); ?></td>
+                <td><img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' width='100'></td>
 
-                echo '<td><a href="index.php?page=editnews&ID=' . htmlspecialchars(trim($news['NewsID'])) . '" class="waves-effect waves-light btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletenews&NewsID=' . htmlspecialchars(trim($news['NewsID'])) . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                <td><a href="index.php?page=editnews&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn">Edit</a></td>
+                <td><a href="index.php?page=deletenews&NewsID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                
-                echo "</tr>";
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

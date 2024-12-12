@@ -6,38 +6,36 @@ confirm_logged_in();
 <div class="container">
     <h4>All Reservations ordered by user's first name</h4>
     
-    <?php
-    if (!$getUserReservations) {
-        echo "There are no bookings";
-    } else {
-        echo '<table class="highlight">';
-        echo '<thead>';
-            echo '<tr class="secondary-color">';
-                echo '<th>Users name</th>';
-                echo '<th>Movie</th>';
-                echo '<th>Date</th>';
-                echo '<th>Time</th>';
-                echo '<th>Total</th>';
-                echo '<th>Payment date</th>';
-                echo '<th>Payment type</th>';
-            echo '</tr>';
-        echo '</thead>';
-        echo '<tbody class="secondary-color">';
+    <?php if (!$getUserReservations): ?>
+        <p>There are no bookings</p>
+    <?php else: ?>
+        <table class="highlight">
+        <thead>
+            <tr class="secondary-color">
+                <th>Users name</th>
+                <th>Movie</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Total</th>
+                <th>Payment date</th>
+                <th>Payment type</th>
+            </tr>
+        </thead>
+        <tbody class="secondary-color">
 
-        foreach ($getUserReservations as $reservation) {
-            echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($reservation['FirstName'])) . " " . htmlspecialchars(trim($reservation['LastName'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['MovieName'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['ShowingDate'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['ShowingTime'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['Amount'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['PaymentDate'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($reservation['PaymentType'])) . "</td>";
-            echo "</tr>";
-        }
+        <?php foreach ($getUserReservations as $reservation): ?>
+            <tr>
+                <td><?php echo htmlspecialchars(trim($reservation['FirstName'])) . " " . htmlspecialchars(trim($reservation['LastName'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['MovieName'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['ShowingDate'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['ShowingTime'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['Amount'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['PaymentDate'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($reservation['PaymentType'])); ?></td>
+            </tr>
+        <?php endforeach; ?>
 
-        echo '</tbody>';
-        echo '</table>';
-    }
-    ?>
+        </tbody>
+        </table>
+    <?php endif; ?>
 </div>

@@ -200,6 +200,11 @@ case "paymentcontent":
     include('modules/payment/paymentContent.php');
 break;
 
+case "newsmodule":
+    include('modules/news/news.php');
+break;
+
+
 // admin modules of cruds
 case "postalcodeadmin":
     include('crud/adminModules/postalCodeAdmin.php');

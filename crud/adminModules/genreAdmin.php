@@ -17,20 +17,15 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getGenre)) {
-                $getGenre = [];
-            }
 
-            foreach ($getGenre as $genre) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($genre['GenreID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($genre['GenreName'])) . "</td>";
-                echo '<td><a href="index.php?page=editgenre&ID=' . htmlspecialchars(trim($genre['GenreID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="controllers/delete.php?table=Genre&primaryKey=GenreID&id=' . htmlspecialchars(trim($genre['GenreID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($getGenre as $genre): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($genre['GenreID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($genre['GenreName'])); ?></td>
+                <td><a href="index.php?page=editgenre&ID=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deletegenre&GenreID=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

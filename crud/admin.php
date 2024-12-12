@@ -24,6 +24,7 @@ confirm_logged_in();
     <link rel="stylesheet" href="style/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/showCategory.js" defer></script>
+    <script src="js/dropdown.js" defer></script>
     <style>
         
     </style>

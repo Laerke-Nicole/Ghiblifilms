@@ -28,31 +28,25 @@ confirm_logged_in();
                 </thead>
 
                 <tbody class="secondary-color">
-                <?php
-                if (!isset($users)) {
-                    $users = [];
-                }
-                
-                foreach ($users as $user) {
-                    echo "<tr>";
-                    echo "<td>". htmlspecialchars(trim($user['UserID']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['Username']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['FirstName'])). " " . htmlspecialchars(trim($user['LastName']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['Email']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['PhoneNumber']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['StreetName']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['StreetNumber']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['PostalCode']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($user['Country']))."</td>";
-                    echo "<td>";
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                    <td><?php echo htmlspecialchars(trim($user['UserID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['Username'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['FirstName'])). " " . htmlspecialchars(trim($user['LastName'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['Email'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['PhoneNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['StreetName'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['StreetNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['PostalCode'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($user['Country'])); ?></td>
+                    <td>
 
-                    echo "</td>";
-                    echo '<td><a href="index.php?page=edituser&ID=' . htmlspecialchars(trim($user['UserID'])) . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteuser&UserID=' . htmlspecialchars(trim($user['UserID'])) . '" class=" btn red" onclick="return confirm(\'Delete! are you sure?\')">Delete</a></td>';
+                    </td>
+                    <td><a href="index.php?page=edituser&ID=<?php echo htmlspecialchars(trim($user['UserID'])); ?>" class="btn">Edit</a></td>
+                    <td><a href="index.php?page=deleteuser&UserID=<?php echo htmlspecialchars(trim($user['UserID'])); ?>" class=" btn red" onclick="return confirm('Delete! are you sure?')">Delete</a></td>
                     
-                    echo "</tr>";
-                }
-                ?>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

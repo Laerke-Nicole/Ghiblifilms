@@ -27,49 +27,50 @@ confirm_logged_in();
                 </thead>
 
                 <tbody class="secondary-color">
-                <?php
-                foreach ($getMovies as $getMovie) {
-                    echo "<tr>";
-                    echo "<td>". htmlspecialchars(trim($getMovie['MovieID']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getMovie['Name']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getMovie['Description']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getMovie['ReleaseYear']))."</td>";
-                    echo "<td>". htmlspecialchars(trim($getMovie['Duration']))."</td>";
-                    echo "<td><img src='upload/" . htmlspecialchars(trim($getMovie['MovieImg'])) . "' alt='Image of movie' width='100'></td>";
+                
+                <?php foreach ($getMovies as $getMovie): ?>
+                    <tr>
+                    <td><?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($getMovie['Name'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($getMovie['Description'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($getMovie['ReleaseYear'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($getMovie['Duration'])); ?></td>
+                    <td><img src='upload/<?php echo htmlspecialchars(trim($getMovie['MovieImg'])); ?>' alt='Image of movie' width='100'></td>
 
+                    <?php
                     // get and display genres
                     $genreQuery = $dbCon->prepare("SELECT GenreName FROM Genre INNER JOIN MovieGenre ON Genre.GenreID = MovieGenre.GenreID WHERE MovieGenre.MovieID = ?");
                     $genreQuery->execute([$getMovie['MovieID']]);
                     $genres = $genreQuery->fetchAll();
-                    $genreNames = array_column($genres, 'GenreName');
-                    echo "<td>" . implode(", ", $genreNames) . "</td>";
+                    
+                    $genreNames = array_column($genres, 'GenreName'); ?>
+                    <td><?php echo implode(", ", $genreNames); ?></td>
 
-
+                    <?php 
                     // get and display production team
                     $productionQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Production INNER JOIN MovieProduction ON Production.ProductionID = MovieProduction.ProductionID WHERE MovieProduction.MovieID = ?");
                     $productionQuery->execute([$getMovie['MovieID']]);
                     $productions = $productionQuery->fetchAll();
-                    $productionNames = array_column($productions, 'FullName');
-                    echo "<td>" . implode(", ", $productionNames) . "</td>";
+                    $productionNames = array_column($productions, 'FullName'); ?>
+                    <td><?php implode(", ", $productionNames); ?></td>
 
 
+                    <?php 
                     // get and display voice actors
                     $voiceActorQuery = $dbCon->prepare("SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM VoiceActor INNER JOIN MovieVoiceActor ON VoiceActor.VoiceActorID = MovieVoiceActor.VoiceActorID WHERE MovieVoiceActor.MovieID = ?");
                     $voiceActorQuery->execute([$getMovie['MovieID']]);
                     $voiceActors = $voiceActorQuery->fetchAll();
-                    $voiceActorNames = array_column($voiceActors, 'FullName');
-                    echo "<td>" . implode(", ", $voiceActorNames) . "</td>";
+                    $voiceActorNames = array_column($voiceActors, 'FullName'); ?>
+                    <td><?php echo implode(", ", $voiceActorNames); ?></td>
 
+                    <td>
 
-                    echo "<td>";
+                    </td>
+                    <td><a href="index.php?page=editmovie&ID=<?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?>" class="btn">Edit</a></td>
+                    <td><a href="index.php?page=deletemovie&MovieID=<?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
 
-                    echo "</td>";
-                    echo '<td><a href="index.php?page=editmovie&ID=' . htmlspecialchars(trim($getMovie['MovieID'])) .'" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deletemovie&MovieID=' . htmlspecialchars(trim($getMovie['MovieID'])) . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-
-                    echo "</tr>";
-                }
-                ?>
+                    </tr>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

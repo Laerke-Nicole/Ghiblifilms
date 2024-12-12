@@ -9,7 +9,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     
     // if they dont exist, display an error message
     if (!$movieItem || !$genres || !$voiceActor || !$production) {
-        die("Not all items found.");
+        die("Section(s) is empty.");
     } else {
         // display the details of the movie
         // movie overall info 

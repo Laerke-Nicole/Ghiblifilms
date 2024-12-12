@@ -17,20 +17,14 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getRoleInProduction)) {
-                $getRoleInProduction = [];
-            }
-
-            foreach ($getRoleInProduction as $role) {
-                echo "<tr>";
-                    echo "<td>" . htmlspecialchars(trim($role['RoleInProductionID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($role['NameOfRole'])) . "</td>";
-                    echo '<td><a href="index.php?page=editroleinproduction&ID=' . htmlspecialchars(trim($role['RoleInProductionID'])) . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=' . htmlspecialchars(trim($role['RoleInProductionID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($getRoleInProduction as $role): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($role['NameOfRole'])); ?></td>
+                    <td><a href="index.php?page=editroleinproduction&ID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn">Edit</a></td>
+                    <td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

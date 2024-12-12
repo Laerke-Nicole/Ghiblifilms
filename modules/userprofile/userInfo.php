@@ -1,23 +1,22 @@
-<?php
-echo '<div class="row ten-percent">';
-    echo '<h2>Your information</h2>';
-    echo '<br>';
+<div class="row ten-percent">
+    <h2>Your information</h2>
+    <br>
     
-    if ($userProfile = $getUserProfileView[0]) {
-        echo "<div>";
-            echo '<p><strong>Username: </strong>' . htmlspecialchars(trim($userProfile['Username'])) . '</p>';
-            echo '<p><strong>Name: </strong>' . htmlspecialchars(trim($userProfile['FirstName'])) . " "  . htmlspecialchars(trim($userProfile['LastName'])) .  '</p>';
-            echo '<p><strong>Email: </strong>' . htmlspecialchars(trim($userProfile['Email'])) . '</p>';
-            echo '<p><strong>Phone number: </strong>' . htmlspecialchars(trim($userProfile['PhoneNumber'])) . '</p>';
-            echo '<p><strong>Address: </strong>' . htmlspecialchars(trim($userProfile['StreetName'])) . " " . htmlspecialchars(trim($userProfile['StreetNumber'])) . '</p>';
-            echo '<p><strong>Country: </strong>' . htmlspecialchars(trim($userProfile['Country'])) . '</p>';
-            echo '<p><strong>Postal code: </strong>' . htmlspecialchars(trim($userProfile['PostalCode'])) . '</p>';
-            echo '<p><strong>City: </strong>' . htmlspecialchars(trim($userProfile['City'])) . '</p>';
+    <?php if ($userProfile = $getUserProfileView[0]): ?>
+        <div>
+            <p><strong>Username: </strong><?php echo htmlspecialchars(trim($userProfile['Username'])); ?></p>
+            <p><strong>Name: </strong><?php echo htmlspecialchars(trim($userProfile['FirstName'])) . " "  . htmlspecialchars(trim($userProfile['LastName'])); ?></p>
+            <p><strong>Email: </strong><?php echo htmlspecialchars(trim($userProfile['Email'])); ?></p>
+            <p><strong>Phone number: </strong><?php echo htmlspecialchars(trim($userProfile['PhoneNumber'])); ?></p>
+            <p><strong>Address: </strong><?php echo htmlspecialchars(trim($userProfile['StreetName'])) . " " . htmlspecialchars(trim($userProfile['StreetNumber'])); ?></p>
+            <p><strong>Country: </strong><?php echo htmlspecialchars(trim($userProfile['Country'])); ?></p>
+            <p><strong>Postal code: </strong><?php echo htmlspecialchars(trim($userProfile['PostalCode'])); ?></p>
+            <p><strong>City: </strong><?php echo htmlspecialchars(trim($userProfile['City'])); ?></p>
                 
-            echo "<br/>";
-            echo '<a href="index.php?page=edituserprofile&ID='.$userProfile['UserID'].'" class="btn">Edit your info</a></div>';
-        echo "</div>";
-    } else {
-        echo "<p>No user found.</p>";
-    }
-echo '</div>';
+            <br/>
+            <a href="index.php?page=edituserprofile&ID=<?php echo $userProfile['UserID']; ?>" class="btn">Edit your info</a>
+        </div>
+    <?php else: ?>
+        <p>No user found.</p>
+    <?php endif; ?>
+</div>

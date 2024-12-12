@@ -17,20 +17,14 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getPostalCode)) {
-                $getPostalCode = [];
-            }
-
-            foreach ($getPostalCode as $postalCode) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($postalCode['PostalCode'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($postalCode['City'])) . "</td>";
-                echo '<td><a href="index.php?page=editpostalcode&ID=' . htmlspecialchars(trim($postalCode['PostalCode'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletepostalcode&PostalCode=' . htmlspecialchars(trim($postalCode['PostalCode'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($getPostalCode as $postalCode): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($postalCode['City'])); ?></td>
+                <td><a href="index.php?page=editpostalcode&ID=<?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deletepostalcode&PostalCode=<?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

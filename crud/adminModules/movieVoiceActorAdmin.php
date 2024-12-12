@@ -17,22 +17,16 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getMovieVoiceActor)) {
-                $getMovieVoiceActor = [];
-            }
-
-            foreach ($getMovieVoiceActor as $movieVoiceActor) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($movieVoiceActor['MovieID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])) . "</td>";
+            <?php foreach ($getMovieVoiceActor as $movieVoiceActor): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?></td>
                 
-                echo '<td><a href="index.php?page=editmovievoiceactor&MovieID=' . htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletemovievoiceactor&MovieID=' . htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                <td><a href="index.php?page=editmovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deletemovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
 
-                echo "</tr>";
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

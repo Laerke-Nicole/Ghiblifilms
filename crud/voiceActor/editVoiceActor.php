@@ -7,6 +7,7 @@ if (isset($_GET['ID'])) {
 
 // get the voice actor to edit
 $voiceActorID = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM VoiceActor WHERE VoiceActorID = :voiceActorID");
 $query->bindParam(':voiceActorID', $voiceActorID);
 $query->execute();

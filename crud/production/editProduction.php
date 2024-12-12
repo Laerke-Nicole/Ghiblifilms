@@ -19,6 +19,7 @@ if (isset($_GET['ID'])) {
 
 <?php
 $productionID = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM Production WHERE ProductionID = :productionID");
 $query->bindParam(':productionID', $productionID);
 $query->execute();

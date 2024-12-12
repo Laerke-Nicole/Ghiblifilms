@@ -19,22 +19,16 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getProduction)) {
-                $getProduction = [];
-            }
-
-            foreach ($getProduction as $production) {
-                echo "<tr>";
-                    echo "<td>" . htmlspecialchars(trim($production['ProductionID'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($production['FirstName'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($production['LastName'])) . "</td>";
-                    echo "<td>" . htmlspecialchars(trim($production['RoleInProductionID'])) . "</td>";
-                    echo '<td><a href="index.php?page=editproduction&ID=' . htmlspecialchars(trim($production['ProductionID'])) . '" class="btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deleteproduction&ProductionID=' . htmlspecialchars(trim($production['ProductionID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($getProduction as $production): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars(trim($production['ProductionID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($production['FirstName'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($production['LastName'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($production['RoleInProductionID'])); ?></td>
+                    <td><a href="index.php?page=editproduction&ID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn">Edit</a></td>';
+                    <td><a href="index.php?page=deleteproduction&ProductionID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>';
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

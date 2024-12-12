@@ -25,6 +25,7 @@ $getShowings = $query->fetchAll();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/dropdown.js" defer></script>
 </head>
 
 <body>
@@ -51,7 +52,7 @@ $getShowings = $query->fetchAll();
                     <p>Auditorium</p>
                     <select name="AuditoriumID" id="AuditoriumID" class="validate" required aria-required="true">
                         <?php
-                        $auditoriumQuery = $dbCon->query("SELECT AuditoriumID, AuditoriumNumber FROM Auditorium");
+                        include ("controllers/movieController.php");
                         while ($auditorium = $auditoriumQuery->fetch()) {
                             $selected = $auditorium['AuditoriumID'] == $getShowings[0]['AuditoriumID'];
                             echo "<option value='{$auditorium['AuditoriumID']}' $selected>{$auditorium['AuditoriumNumber']}</option>";

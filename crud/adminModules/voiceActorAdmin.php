@@ -18,23 +18,16 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($getVoiceActor)) {
-                $getVoiceActor = [];
-            }
-
-            foreach ($getVoiceActor as $VoiceActor) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($VoiceActor['FirstName'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($VoiceActor['LastName'])) . "</td>";
-                echo '<td><a href="index.php?page=editvoiceactor&ID=' . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deletevoiceactor&VoiceActorID=' . htmlspecialchars(trim($VoiceActor['VoiceActorID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+            <?php foreach ($getVoiceActor as $VoiceActor): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($VoiceActor['VoiceActorID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($VoiceActor['FirstName'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($VoiceActor['LastName'])); ?></td>
+                <td><a href="index.php?page=editvoiceactor&ID=<?php echo htmlspecialchars(trim($VoiceActor['VoiceActorID'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deletevoiceactor&VoiceActorID=<?php echo htmlspecialchars(trim($VoiceActor['VoiceActorID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                
-
-                echo "</tr>";
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

@@ -66,6 +66,10 @@ $queryShowings = $dbCon->prepare("SELECT * FROM Showings");
 $queryShowings->execute();
 $showings = $queryShowings->fetchAll();
 
+$auditoriumQuery = $dbCon->query("SELECT AuditoriumID, AuditoriumNumber FROM Auditorium");
+
+$screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+
 
 // get everything from daily showings
 $queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");

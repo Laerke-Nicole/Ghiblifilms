@@ -18,21 +18,15 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php
-            if (!isset($openingHours)) {
-                $openingHours = [];
-            }
-
-            foreach ($openingHours as $openingHour) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars(trim($openingHour['OpeningHourID'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($openingHour['Day'])) . "</td>";
-                echo "<td>" . htmlspecialchars(trim($openingHour['Time'])) . "</td>";
-                echo '<td><a href="index.php?page=editopeninghour&ID=' . htmlspecialchars(trim($openingHour['OpeningHourID'])) . '" class="btn">Edit</a></td>';
-                echo '<td><a href="index.php?page=deleteopeninghour&OpeningHourID=' . htmlspecialchars(trim($openingHour['OpeningHourID'])) . '" class="btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
-                echo "</tr>";
-            }
-            ?>
+            <?php foreach ($getOpeningHour as $openingHour): ?>
+                <tr>
+                <td><?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($openingHour['Day'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></td>
+                <td><a href="index.php?page=editopeninghour&ID=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn">Edit</a></td>
+                <td><a href="index.php?page=deleteopeninghour&OpeningHourID=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
     </div>

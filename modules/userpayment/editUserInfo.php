@@ -9,15 +9,6 @@ confirm_logged_in();
 if (isset($_GET['UserID'])) {
     $userID = htmlspecialchars(trim($_GET['UserID']));
     
-$userID = $_GET['UserID']; 
-
-
-if (isset($_GET['UserID'])) {
-    $userID = htmlspecialchars(trim($_GET['UserID']));
-} else {
-    die("User ID is required.");
-}
-
 ?>
 
 

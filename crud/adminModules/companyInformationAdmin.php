@@ -28,28 +28,27 @@ confirm_logged_in();
 
                 <tbody class="secondary-color">
                 <?php
-                foreach ($getCompanyInformation as $companyInformation) {
-                    echo "<tr>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['CompanyInformationID'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['NameOfCompany'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['CompanyDescription'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['CompanyEmail'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['CompanyPhoneNumber'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['StreetName'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['StreetNumber'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['PostalCode'])) . "</td>";
-                    echo "<td>". htmlspecialchars(trim($companyInformation['Country'])) . "</td>";
-                    echo "<td>";
+                foreach ($getCompanyInformation as $companyInformation): ?>
+                    <tr>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['NameOfCompany'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['CompanyDescription'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['CompanyEmail'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['CompanyPhoneNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['StreetName'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['StreetNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['PostalCode'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['Country'])); ?></td>
+                    <td>
 
-                    echo "</td>";
+                    </td>
 
-                    echo '<td><a href="index.php?page=editcompanyinformation&ID=' . htmlspecialchars(trim($companyInformation['CompanyInformationID'])) . '" class="waves-effect waves-light btn">Edit</a></td>';
-                    echo '<td><a href="index.php?page=deletecompanyinformation&CompanyInformationID=' . htmlspecialchars(trim($companyInformation['CompanyInformationID'])) . '" class="waves-effect waves-light btn red" onclick="return confirm(\'Delete! Are you sure?\')">Delete</a></td>';
+                    <td><a href="index.php?page=editcompanyinformation&ID=<?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?>" class="waves-effect waves-light btn">Edit</a></td>
+                    <td><a href="index.php?page=deletecompanyinformation&CompanyInformationID=<?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
 
-                    echo "</tr>";
+                    </tr>
 
-                }
-                ?>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

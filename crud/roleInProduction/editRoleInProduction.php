@@ -7,6 +7,7 @@ if (isset($_GET['ID'])) {
 
 // get the production to edit
 $roleInProductionID = htmlspecialchars(trim($_GET['ID']));
+
 $query = $dbCon->prepare("SELECT * FROM RoleInProduction WHERE RoleInProductionID = :roleInProductionID");
 $query->bindParam(':roleInProductionID', $roleInProductionID);
 $query->execute();

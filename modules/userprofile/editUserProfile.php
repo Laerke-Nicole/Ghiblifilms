@@ -4,7 +4,6 @@ require_once("includes/functions.php");
 require_once("includes/session.php"); 
 require_once ("includes/csrfProtection.php");
 require_once("controllers/userController.php");
-
 confirm_logged_in();
 
 if (isset($_GET['ID'])) {
