@@ -1,20 +1,19 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $userID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the user to edit
-$userID = htmlspecialchars(trim($_GET['ID']));
+include ("controllers/adminController.php");
 
-$query = $dbCon->prepare("SELECT U.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM User U 
-                           LEFT JOIN Address A ON U.AddressID = A.AddressID 
-                           WHERE U.UserID = :userID");
-$query->bindParam(':userID', $userID);
-$query->execute();
-$getUsers = $query->fetchAll(); 
 ?>
 
 <!DOCTYPE html>
@@ -108,8 +107,3 @@ $getUsers = $query->fetchAll();
 </div>
 </body>
 </html>
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

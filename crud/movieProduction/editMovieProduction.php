@@ -1,18 +1,18 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['MovieID']) && isset($_GET['ProductionID'])) {
-    $movieID = htmlspecialchars(trim($_GET['MovieID']));
-    $productionID = htmlspecialchars(trim($_GET['ProductionID']));
+try {
+    $params = GetID::getValues(['MovieID', 'ProductionID']);
+    $movieID = $params['MovieID'];
+    $productionID = $params['ProductionID'];
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the movie production to edit
-$query = $dbCon->prepare("SELECT * FROM MovieProduction WHERE MovieID = :movieID AND ProductionID = :productionID");
-$query->bindParam(':movieID', $movieID);
-$query->bindParam(':productionID', $productionID);
-$query->execute();
-$getMovieProduction = $query->fetchAll();
+include ("controllers/adminController.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,9 +54,3 @@ $getMovieProduction = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

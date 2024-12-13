@@ -1,17 +1,19 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $postalCode = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the postal code to edit
-$postalCode = htmlspecialchars(trim($_GET['ID']));
+include ("controllers/adminController.php");
 
-$query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCode");
-$query->bindParam(':postalCode', $postalCode);
-$query->execute();
-$getPostalCode = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -57,9 +59,3 @@ $getPostalCode = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

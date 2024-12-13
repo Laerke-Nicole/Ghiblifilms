@@ -1,19 +1,18 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $showingsID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the showing to edit
-$showingsID = htmlspecialchars(trim($_GET['ID']));
-
-$query = $dbCon->prepare("SELECT * FROM Showings WHERE ShowingsID = :showingsID");
-$query->bindParam(':showingsID', $showingsID);
-
-$query->execute();
-
-$getShowings = $query->fetchAll();
+include ("controllers/adminController.php");
 ?>
 
 <!DOCTYPE html>
@@ -96,9 +95,3 @@ $getShowings = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

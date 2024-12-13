@@ -1,18 +1,18 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['MovieID']) && isset($_GET['VoiceActorID'])) {
-    $movieID = htmlspecialchars(trim($_GET['MovieID']));
-    $voiceActorID = htmlspecialchars(trim($_GET['VoiceActorID']));
+try {
+    $params = GetID::getValues(['MovieID', 'VoiceActorID']);
+    $movieID = $params['MovieID'];
+    $voiceActorID = $params['VoiceActorID'];
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the movie voice actor to edit
-$query = $dbCon->prepare("SELECT * FROM MovieVoiceActor WHERE MovieID = :movieID AND VoiceActorID = :voiceActorID");
-$query->bindParam(':movieID', $movieID);
-$query->bindParam(':voiceActorID', $voiceActorID);
-$query->execute();
-$getMovieVoiceActor = $query->fetchAll();
+include ("controllers/adminController.php");
 ?>
 
 <!DOCTYPE html>
@@ -54,9 +54,3 @@ $getMovieVoiceActor = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

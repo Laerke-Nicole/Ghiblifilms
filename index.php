@@ -98,6 +98,10 @@ case "resizer":
     include('oop/resizerOOP.php');
 break;
 
+case "getidoop":
+    include('oop/getIDOOP.php');
+break;
+
 
 // modules
 case "homeshowings":

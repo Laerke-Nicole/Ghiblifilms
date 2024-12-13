@@ -29,7 +29,8 @@ $getCompanyAddressView = $queryCompanyAddressView->fetchAll();
 // get company information
 $queryCompanyInformation = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
                                             FROM CompanyInformation C 
-                                            LEFT JOIN Address A ON C.AddressID = A.AddressID");
+                                            LEFT JOIN Address A 
+                                            ON C.AddressID = A.AddressID");
 $queryCompanyInformation->execute();
 $getCompanyInformation = $queryCompanyInformation->fetchAll();
 

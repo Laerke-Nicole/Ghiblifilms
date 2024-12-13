@@ -1,16 +1,19 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $genreID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the genre to edit
-$genreID = htmlspecialchars(trim($_GET['ID']));
-$query = $dbCon->prepare("SELECT * FROM Genre WHERE GenreID = :genreID");
-$query->bindParam(':genreID', $genreID);
-$query->execute();
-$getGenre = $query->fetchAll();
+include ("controllers/adminController.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +55,3 @@ $getGenre = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

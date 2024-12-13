@@ -1,9 +1,19 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $productionID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
+
+include ("controllers/adminController.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -16,15 +26,6 @@ if (isset($_GET['ID'])) {
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
-
-<?php
-$productionID = htmlspecialchars(trim($_GET['ID']));
-
-$query = $dbCon->prepare("SELECT * FROM Production WHERE ProductionID = :productionID");
-$query->bindParam(':productionID', $productionID);
-$query->execute();
-$getProduction = $query->fetchAll();
-?>
 
 <body>
 
@@ -66,9 +67,3 @@ $getProduction = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php 
-} else {    
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

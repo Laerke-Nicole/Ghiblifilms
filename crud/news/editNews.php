@@ -1,16 +1,17 @@
 <?php 
 require_once "includes/dbcon.php";
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $newsID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the news to edit
-$newsID = htmlspecialchars(trim($_GET['ID']));
-
-$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
-$query->bindParam(':newsID', $newsID);
-$query->execute();
-$getNews = $query->fetchAll();
+include ("controllers/adminController.php");
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +70,3 @@ $getNews = $query->fetchAll();
 </div>
 </body>
 </html>
-<?php 
-} else { 
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

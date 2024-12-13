@@ -1,19 +1,19 @@
 <?php 
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['ID'])) {
+try {
+    $params = GetID::getValues(['ID']);
+    $companyInformationID = $params['ID'];
+    
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 
-// get the company info to edit
-$companyInformationID = htmlspecialchars(trim($_GET['ID']));
-$query = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNumber, A.PostalCode, A.Country 
-                           FROM CompanyInformation C 
-                           LEFT JOIN Address A ON C.AddressID = A.AddressID 
-                           WHERE C.CompanyInformationID = :CompanyInformationID");
-$query->bindParam(':CompanyInformationID', $companyInformationID);
-$query->execute();
-$getCompanyInformation = $query->fetchAll();
+include ("controllers/adminController.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -95,9 +95,3 @@ $getCompanyInformation = $query->fetchAll();
 </div>
 </body>
 </html>
-
-<?php
-} else { 
-    header("Location: ../index.php?page=admin&status=0");
-}
-?>

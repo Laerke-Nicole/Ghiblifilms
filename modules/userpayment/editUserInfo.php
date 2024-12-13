@@ -4,11 +4,16 @@ require_once("includes/functions.php");
 require_once("includes/session.php");
 require_once ("includes/csrfProtection.php");
 require_once("controllers/userController.php");
+require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
-if (isset($_GET['UserID'])) {
-    $userID = htmlspecialchars(trim($_GET['UserID']));
+try {
+    $params = GetID::getValues(['UserID']);
+    $userID = $params['UserID'];
     
+} catch (Exception $e) { 
+    header("Location: ../index.php?page=admin&status=0");
+}
 ?>
 
 
@@ -90,8 +95,3 @@ if (isset($_GET['UserID'])) {
 </div>
 </body>
 </html>
-<?php 
-} else {    
-    header("Location: ../index.php?page=paymentdetail&status=updated");
-}
-?>
