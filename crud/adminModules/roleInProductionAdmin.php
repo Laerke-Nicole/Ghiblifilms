@@ -9,7 +9,6 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>RoleInProductionID</th>
                 <th>NameOfRole</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -17,9 +16,8 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php foreach ($getRoleInProduction as $role): ?>
+            <?php foreach ($roleInProductionAdmin as $role): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($role['NameOfRole'])); ?></td>
                     <td><a href="index.php?page=editroleinproduction&ID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn">Edit</a></td>
                     <td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>

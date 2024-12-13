@@ -62,13 +62,14 @@ $getShowings = $queryShowings->fetchAll();
 
 
 // Get everything from showings
-$queryShowings = $dbCon->prepare("SELECT * FROM Showings");
+$queryShowings = $dbCon->prepare("SELECT Showings.*, Movie.Name, Auditorium.AuditoriumNumber, ScreenFormat.ScreenFormat 
+                                    FROM Showings
+                                    INNER JOIN Movie ON Movie.MovieID = Showings.MovieID
+                                    INNER JOIN Auditorium ON Auditorium.AuditoriumID = Showings.AuditoriumID
+                                    INNER JOIN ScreenFormat ON ScreenFormat.ScreenFormatID = Showings.ScreenFormatID
+");
 $queryShowings->execute();
 $showings = $queryShowings->fetchAll();
-
-$auditoriumQuery = $dbCon->query("SELECT AuditoriumID, AuditoriumNumber FROM Auditorium");
-
-$screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
 
 
 // get everything from daily showings
@@ -90,36 +91,50 @@ $queryGenre->execute();
 $getGenre = $queryGenre->fetchAll();
 
 // Get everything from Movie Genre
-$queryMovieGenre = $dbCon->prepare("SELECT * FROM MovieGenre");
+$queryMovieGenre = $dbCon->prepare("SELECT MovieGenre.*, Movie.Name, Genre.GenreName
+                                    FROM MovieGenre
+                                    INNER JOIN Movie ON MovieGenre.MovieID = Movie.MovieID
+                                    INNER JOIN Genre ON MovieGenre.GenreID = Genre.GenreID
+");
 $queryMovieGenre->execute();
 $getMovieGenre = $queryMovieGenre->fetchAll();
 
-
 // Get everything from Movie Production
-$queryMovieProduction = $dbCon->prepare("SELECT * FROM MovieProduction");
-$queryMovieProduction->execute();
-$getMovieProduction = $queryMovieProduction->fetchAll();
+$queryMovieProduction = $dbCon->prepare("SELECT MovieProduction.*, Movie.Name, Production.FirstName, Production.LastName
+                                        FROM MovieProduction
+                                        INNER JOIN Movie ON MovieProduction.MovieID = Movie.MovieID
+                                        INNER JOIN Production ON MovieProduction.ProductionID = Production.ProductionID
+                                        ");
+$queryMovieProduction->execute(); 
+$getMovieProductionAdmin = $queryMovieProduction->fetchAll();
 
 
 // Get everything from movie voice actor
-$queryMovieVoiceActor = $dbCon->prepare("SELECT * FROM MovieVoiceActor");
+$queryMovieVoiceActor = $dbCon->prepare("SELECT MovieVoiceActor.*, Movie.Name, VoiceActor.FirstName, VoiceActor.LastName 
+                                        FROM MovieVoiceActor
+                                        INNER JOIN Movie ON MovieVoiceActor.MovieID = Movie.MovieID
+                                        INNER JOIN VoiceActor ON MovieVoiceActor.VoiceActorID = VoiceActor.VoiceActorID
+                                        ");
 $queryMovieVoiceActor->execute();
-$getMovieVoiceActor = $queryMovieVoiceActor->fetchAll();
+$getMovieVoiceActorAdmin = $queryMovieVoiceActor->fetchAll();
 
 
 // Get everything from production
-$queryProduction = $dbCon->prepare("SELECT * FROM Production");
+$queryProduction = $dbCon->prepare("SELECT Production.*, RoleInProduction.NameOfRole 
+                                    FROM Production
+                                    INNER JOIN RoleInProduction ON Production.RoleInProductionID = RoleInProduction.RoleInProductionID
+                                    ");
 $queryProduction->execute();
-$getProduction = $queryProduction->fetchAll();
+$getProductionAdmin = $queryProduction->fetchAll();
 
 
 // Get everything from role in production
 $queryRoleInProduction = $dbCon->prepare("SELECT * FROM RoleInProduction");
 $queryRoleInProduction->execute();
-$getRoleInProduction = $queryRoleInProduction->fetchAll();
+$roleInProductionAdmin = $queryRoleInProduction->fetchAll();
 
 
 // Get everything from voice actor
 $queryVoiceActor = $dbCon->prepare("SELECT * FROM VoiceActor");
 $queryVoiceActor->execute();
-$getVoiceActor = $queryVoiceActor->fetchAll();
+$getVoiceActorAdmin = $queryVoiceActor->fetchAll();

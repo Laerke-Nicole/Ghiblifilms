@@ -12,7 +12,6 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>NewsID</th>
                 <th>Headline</th>
                 <th>SubHeadline</th>
                 <th>Text</th>
@@ -25,7 +24,6 @@ confirm_logged_in();
             <tbody class="secondary-color">
             <?php foreach ($getNews as $news): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($news['NewsID'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['Headline'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['SubHeadline'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['TextOfNews'])); ?></td>

@@ -24,6 +24,7 @@ include ("controllers/adminController.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/dropdown.js" defer></script>
 </head>
 
 <body>
@@ -40,12 +41,28 @@ include ("controllers/adminController.php");
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars(trim($getMovieProduction[0]['MovieID'])); ?>" class="validate" required="" aria-required="true">
-                <label for="MovieID">MovieID</label>
+                <p>Movie name</p>
+                <select name="MovieID" id="MovieID">
+                    <?php
+                    include ("controllers/adminController.php");
+                    while ($movie = $movieQuery->fetch()) {
+                        $selected = $movie['MovieID'] == $getMovieProduction[0]['MovieID'] ? 'selected' : '';
+                        echo "<option value='{$movie['MovieID']}' $selected>{$movie['Name']}</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="input-field col s6">
-                <input id="ProductionID" name="ProductionID" type="number" value="<?php echo htmlspecialchars(trim($getMovieProduction[0]['ProductionID'])); ?>" class="validate" required="" aria-required="true">
-                <label for="ProductionID">ProductionID</label>
+                <p>Production name</p>
+                <select name="ProductionID" id="ProductionID">
+                    <?php
+                    include ("controllers/adminController.php");
+                    while ($production = $productionQuery->fetch()) {
+                        $selected = $production['ProductionID'] == $getMovieProduction[0]['ProductionID'] ? 'selected' : '';
+                        echo "<option value='{$production['ProductionID']}' $selected>{$production['FirstName']} {$production['LastName']}</option>";
+                    }
+                    ?>
+                </select>
             </div>
         </div>
 

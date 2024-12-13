@@ -41,8 +41,16 @@ include ("controllers/adminController.php");
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars(trim($getShowings[0]['MovieID'])); ?>" class="validate" required="" aria-required="true">
-                    <label for="MovieID">MovieID</label>
+                    <p>Movie name</p>
+                    <select name="MovieID" id="MovieID">
+                        <?php
+                        include ("controllers/adminController.php");
+                        while ($movie = $movieQuery->fetch()) {
+                            $selected = $movie['MovieID'] == $getShowings[0]['MovieID'] ? 'selected' : '';
+                            echo "<option value='{$movie['MovieID']}' $selected>{$movie['Name']}</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -51,9 +59,9 @@ include ("controllers/adminController.php");
                     <p>Auditorium</p>
                     <select name="AuditoriumID" id="AuditoriumID" class="validate" required aria-required="true">
                         <?php
-                        include ("controllers/movieController.php");
+                        include ("controllers/adminController.php");
                         while ($auditorium = $auditoriumQuery->fetch()) {
-                            $selected = $auditorium['AuditoriumID'] == $getShowings[0]['AuditoriumID'];
+                            $selected = $auditorium['AuditoriumID'] == $getShowings[0]['AuditoriumID'] ? 'selected' : '';
                             echo "<option value='{$auditorium['AuditoriumID']}' $selected>{$auditorium['AuditoriumNumber']}</option>";
                         }
                         ?>
@@ -64,9 +72,9 @@ include ("controllers/adminController.php");
                     <p>Screen format</p>
                     <select name="ScreenFormatID" id="ScreenFormatID" class="validate" required aria-required="true">
                         <?php
-                        $screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+                        include ("controllers/adminController.php");
                         while ($screenFormat = $screenFormatQuery->fetch()) {
-                            $selected = $screenFormat['ScreenFormatID'] == $getShowings[0]['ScreenFormatID']    ;
+                            $selected = $screenFormat['ScreenFormatID'] == $getShowings[0]['ScreenFormatID'] ? 'selected' : '';
                             echo "<option value='{$screenFormat['ScreenFormatID']}' $selected>{$screenFormat['ScreenFormat']}</option>";
                         }
                         ?>

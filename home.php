@@ -23,28 +23,28 @@ require_once("controllers/companyController.php");
 
 <?php
 // daily showings 
-echo include("modules/homepage/showings.php");
+include("modules/homepage/showings.php");
    
 // news 
-echo include("modules/homepage/news.php");
+include("modules/homepage/news.php");
 
 // all movies 
-echo include("modules/homepage/movies.php"); 
+include("modules/homepage/movies.php"); 
 
 // about ghiblifilms
-echo include("modules/homepage/about.php");
+include("modules/homepage/about.php");
 
 // contact form
-echo include("modules/homepage/contactFormAndContactInfo.php");
+include("modules/homepage/contactFormAndContactInfo.php");
 
 // opening hours
-echo include("modules/homepage/openingHours.php");
+include("modules/homepage/openingHours.php");
 
 // company address
-echo include("modules/homepage/address.php");
+include("modules/homepage/address.php");
 
 // venues/auditorium
-echo include("modules/homepage/auditorium.php");
+include("modules/homepage/auditorium.php");
 ?>
 
 </body>

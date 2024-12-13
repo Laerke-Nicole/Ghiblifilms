@@ -9,18 +9,18 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>MovieID</th>
-                <th>VoiceActorID</th>
+                <th>Movie name</th>
+                <th>Voice actor f + lname</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
 
             <tbody class="secondary-color">
-            <?php foreach ($getMovieVoiceActor as $movieVoiceActor): ?>
+            <?php foreach ($getMovieVoiceActorAdmin as $movieVoiceActor): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])); ?></td>
-                <td><?php echo htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieVoiceActor['Name'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieVoiceActor['FirstName'])) . " " . htmlspecialchars(trim($movieVoiceActor['LastName'])); ?></td>
                 
                 <td><a href="index.php?page=editmovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn">Edit</a></td>
                 <td><a href="index.php?page=deletemovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
@@ -42,13 +42,27 @@ confirm_logged_in();
         <input type="hidden" name="table" value="MovieVoiceActor">
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" class="validate" required="" aria-required="true">
-                <label for="MovieID">MovieID</label>
+                <p>Movie name</p>
+                    <select name="MovieID" id="MovieID">
+                        <?php
+                            include ("controllers/adminController.php");
+                            while ($movie = $movieQuery->fetch()) {
+                                echo "<option value=\"" . htmlspecialchars(trim($movie['MovieID'])) . "\">" . htmlspecialchars(trim($movie['Name'])) . "</option>";
+                            }
+                        ?>
+                    </select>
             </div>
 
             <div class="input-field col s6">
-                <input id="VoiceActorID" name="VoiceActorID" type="number" class="validate" required="" aria-required="true">
-                <label for="VoiceActorID">VoiceActorID</label>
+                <p>Voice actor name</p>
+                    <select name="VoiceActorID" id="VoiceActorID">
+                        <?php
+                            include ("controllers/adminController.php");
+                            while ($voiceActor = $voiceActorQuery->fetch()) {
+                                echo "<option value=\"" . htmlspecialchars(trim($voiceActor['VoiceActorID'])) . "\">" . htmlspecialchars(trim($voiceActor['FirstName'])) . " " . htmlspecialchars(trim($voiceActor['FirstName'])) . "</option>";
+                            }
+                        ?>
+                    </select>
             </div>
         </div>
 

@@ -9,22 +9,20 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>ProductionID</th>
                 <th>FirstName</th>
                 <th>LastName</th>
-                <th>RoleInProductionID</th>
+                <th>Role in production</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
 
             <tbody class="secondary-color">
-            <?php foreach ($getProduction as $production): ?>
+            <?php foreach ($getProductionAdmin as $production): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars(trim($production['ProductionID'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($production['FirstName'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($production['LastName'])); ?></td>
-                    <td><?php echo htmlspecialchars(trim($production['RoleInProductionID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($production['NameOfRole'])); ?></td>
                     <td><a href="index.php?page=editproduction&ID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn">Edit</a></td>
                     <td><a href="index.php?page=deleteproduction&ProductionID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
@@ -56,8 +54,15 @@ confirm_logged_in();
 
         <div class="row">
             <div class="input-field col s12">
-                <input id="RoleInProductionID" name="RoleInProductionID" type="text" class="validate" required="" aria-required="true">
-                <label for="RoleInProductionID">RoleInProductionID</label>
+                <p>Name of role</p>
+                <select name="RoleInProductionID" id="RoleInProductionID">
+                    <?php
+                        include ("controllers/adminController.php");
+                        while ($roleInProduction = $roleInProductionQuery->fetch()) {
+                            echo "<option value=\"" . htmlspecialchars(trim($roleInProduction['RoleInProductionID'])) . "\">" . htmlspecialchars(trim($roleInProduction['NameOfRole'])) . "</option>";
+                        }
+                    ?>
+                </select>
             </div>
         </div>
 

@@ -9,10 +9,9 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>ShowingsID</th>
-                <th>MovieID</th>
-                <th>AuditoriumID</th>
-                <th>ScreenFormatID</th>
+                <th>Movie name</th>
+                <th>Auditorium</th>
+                <th>ScreenFormat</th>
                 <th>ShowingDate</th>
                 <th>ShowingTime</th>
                 <th>Edit</th>
@@ -23,10 +22,9 @@ confirm_logged_in();
             <tbody class="secondary-color">
             <?php foreach ($showings as $showings): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?></td>
-                    <td><?php echo htmlspecialchars(trim($showings['MovieID'])); ?></td>
-                    <td><?php echo htmlspecialchars(trim($showings['AuditoriumID'])); ?></td>
-                    <td><?php echo htmlspecialchars(trim($showings['ScreenFormatID'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['Name'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['AuditoriumNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($showings['ScreenFormat'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($showings['ShowingDate'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($showings['ShowingTime'])); ?></td>
                     <td><a href="index.php?page=editshowings&ID=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn">Edit</a></td>
@@ -48,8 +46,15 @@ confirm_logged_in();
         <input type="hidden" name="table" value="Showings">
         <div class="row">
             <div class="input-field col s12">
-                <input id="MovieID" name="MovieID" type="text" class="validate" required="" aria-required="true">
-                <label for="MovieID">MovieID</label>
+                <p>Movie name</p>
+                <select name="MovieID" id="MovieID">
+                    <?php
+                        include ("controllers/movieController.php");
+                        while ($movie = $movieQuery->fetch()) {
+                            echo "<option value=\"" . htmlspecialchars(trim($movie['MovieID'])) . "\">" . htmlspecialchars(trim($movie['Name'])) . "</option>";
+                        }
+                    ?>
+                </select>
             </div>
         </div>
 
@@ -60,18 +65,19 @@ confirm_logged_in();
                     <?php
                         include ("controllers/movieController.php");
                         while ($auditorium = $auditoriumQuery->fetch()) {
-                            echo "<option value=\"" . htmlspecialchars($auditorium['AuditoriumID']) . "\">" . htmlspecialchars($auditorium['AuditoriumNumber']) . "</option>";
+                            echo "<option value=\"" . htmlspecialchars(trim($auditorium['AuditoriumID'])) . "\">" . htmlspecialchars(trim($auditorium['AuditoriumNumber'])) . "</option>";
                         }
                     ?>
                 </select>
             </div>
+
             <div class="input-field col s6">
                 <p>ScreenFormat</p>
                 <select name="ScreenFormatID" id="ScreenFormatID">
                     <?php
                         include ("controllers/movieController.php");
                         while ($screenFormat = $screenFormatQuery->fetch()) {
-                            echo "<option value=\"{$screenFormat['ScreenFormatID']}\">{$screenFormat['ScreenFormat']}</option>";
+                            echo "<option value=\"" . htmlspecialchars(trim($screenFormat['ScreenFormatID'])) . "\">" . htmlspecialchars(trim($screenFormat['ScreenFormat'])) . "</option>";
                         }
                     ?>
                 </select>

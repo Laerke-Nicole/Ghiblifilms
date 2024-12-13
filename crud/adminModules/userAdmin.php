@@ -12,7 +12,6 @@ confirm_logged_in();
             <table class="highlight">
                 <thead>
                 <tr class="secondary-color">
-                    <th>UserID</th>
                     <th>Username</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -30,7 +29,6 @@ confirm_logged_in();
                 <tbody class="secondary-color">
                 <?php foreach ($users as $user): ?>
                     <tr>
-                    <td><?php echo htmlspecialchars(trim($user['UserID'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($user['Username'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($user['FirstName'])). " " . htmlspecialchars(trim($user['LastName'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($user['Email'])); ?></td>

@@ -5,6 +5,7 @@ require_once("includes/functions.php");
 require_once ("includes/csrfProtection.php");
 // controllers
 require_once("controllers/movieController.php");
+require_once("controllers/adminController.php");
 require_once("controllers/companyController.php");
 require_once("controllers/userController.php");
 require_once("controllers/addressController.php");

@@ -24,6 +24,7 @@ include ("controllers/adminController.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/dropdown.js" defer></script>
 </head>
 
 <body>
@@ -40,12 +41,28 @@ include ("controllers/adminController.php");
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" value="<?php echo htmlspecialchars(trim($getMovieVoiceActor[0]['MovieID'])); ?>" class="validate" required="" aria-required="true">
-                <label for="MovieID">MovieID</label>
+                <p>Movie name</p>
+                <select name="MovieID" id="MovieID">
+                    <?php
+                    include ("controllers/adminController.php");
+                    while ($movie = $movieQuery->fetch()) {
+                        $selected = $movie['MovieID'] == $getMovieVoiceActor[0]['MovieID'] ? 'selected' : '';
+                        echo "<option value='{$movie['MovieID']}' $selected>{$movie['Name']}</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="input-field col s6">
-                <input id="VoiceActorID" name="VoiceActorID" type="number" value="<?php echo htmlspecialchars(trim($getMovieVoiceActor[0]['VoiceActorID'])); ?>" class="validate" required="" aria-required="true">
-                <label for="VoiceActorID">VoiceActorID</label>
+                <p>Voice actor name</p>
+                <select name="VoiceActorID" id="VoiceActorID">
+                    <?php
+                    include ("controllers/adminController.php");
+                    while ($voiceActor = $voiceActorQuery->fetch()) {
+                        $selected = $voiceActor['VoiceActorID'] == $getMovieVoiceActor[0]['VoiceActorID'] ? 'selected' : '';
+                        echo "<option value='{$voiceActor['VoiceActorID']}' $selected>{$voiceActor['FirstName']} {$voiceActor['LastName']}</option>";
+                    }
+                    ?>
+                </select>
             </div>
         </div>
 

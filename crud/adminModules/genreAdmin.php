@@ -9,7 +9,6 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>GenreID</th>
                 <th>GenreName</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -20,7 +19,6 @@ confirm_logged_in();
 
             <?php foreach ($getGenre as $genre): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($genre['GenreID'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($genre['GenreName'])); ?></td>
                 <td><a href="index.php?page=editgenre&ID=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="btn">Edit</a></td>
                 <td><a href="index.php?page=deletegenre&GenreID=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>

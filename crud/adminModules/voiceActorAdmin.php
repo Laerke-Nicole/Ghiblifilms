@@ -9,7 +9,6 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>VoiceActorID</th>
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Edit</th>
@@ -18,9 +17,8 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php foreach ($getVoiceActor as $VoiceActor): ?>
+            <?php foreach ($getVoiceActorAdmin as $VoiceActor): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($VoiceActor['VoiceActorID'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($VoiceActor['FirstName'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($VoiceActor['LastName'])); ?></td>
                 <td><a href="index.php?page=editvoiceactor&ID=<?php echo htmlspecialchars(trim($VoiceActor['VoiceActorID'])); ?>" class="btn">Edit</a></td>

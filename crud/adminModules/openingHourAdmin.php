@@ -9,7 +9,6 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>OpeningHourID</th>
                 <th>Day</th>
                 <th>Time</th>
                 <th>Edit</th>
@@ -20,7 +19,6 @@ confirm_logged_in();
             <tbody class="secondary-color">
             <?php foreach ($getOpeningHour as $openingHour): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($openingHour['Day'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></td>
                 <td><a href="index.php?page=editopeninghour&ID=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn">Edit</a></td>

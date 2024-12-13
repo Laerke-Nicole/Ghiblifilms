@@ -9,8 +9,8 @@ confirm_logged_in();
         <table class="highlight">
             <thead>
             <tr class="secondary-color">
-                <th>MovieID</th>
-                <th>GenreID</th>
+                <th>Movie name</th>
+                <th>Genre name</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -20,8 +20,8 @@ confirm_logged_in();
 
             <?php foreach ($getMovieGenre as $movieGenre): ?>
                 <tr>
-                <td><?php echo htmlspecialchars(trim($movieGenre['MovieID'])); ?></td>
-                <td><?php echo htmlspecialchars(trim($movieGenre['GenreID'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieGenre['Name'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($movieGenre['GenreName'])); ?></td>
 
                 <td><a href="index.php?page=editmoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn">Edit</a></td>
                 <td><a href="index.php?page=deletemoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
@@ -43,13 +43,27 @@ confirm_logged_in();
         <input type="hidden" name="table" value="MovieGenre">
         <div class="row">
             <div class="input-field col s6">
-                <input id="MovieID" name="MovieID" type="number" class="validate" required="" aria-required="true">
-                <label for="MovieID">MovieID</label>
+                <p>Movie name</p>
+                <select name="MovieID" id="MovieID">
+                    <?php
+                        include ("controllers/adminController.php");
+                        while ($movie = $movieQuery->fetch()) {
+                            echo "<option value=\"" . htmlspecialchars(trim($movie['MovieID'])) . "\">" . htmlspecialchars(trim($movie['Name'])) . "</option>";
+                        }
+                    ?>
+                </select>
             </div>
 
             <div class="input-field col s6">
-                <input id="GenreID" name="GenreID" type="number" class="validate" required="" aria-required="true">
-                <label for="GenreID">GenreID</label>
+                <p>Genre name</p>
+                <select name="GenreID" id="GenreID">
+                    <?php
+                        include ("controllers/adminController.php");
+                        while ($genre = $genreQuery->fetch()) {
+                            echo "<option value=\"" . htmlspecialchars(trim($genre['GenreID'])) . "\">" . htmlspecialchars(trim($genre['GenreName'])) . "</option>";
+                        }
+                    ?>
+                </select>
             </div>
         </div>
 

@@ -12,7 +12,6 @@ confirm_logged_in();
             <table class="highlight">
                 <thead>
                 <tr class="secondary-color">
-                    <th>MovieID</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Release year</th>
@@ -30,7 +29,6 @@ confirm_logged_in();
                 
                 <?php foreach ($getMovies as $getMovie): ?>
                     <tr>
-                    <td><?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($getMovie['Name'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($getMovie['Description'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($getMovie['ReleaseYear'])); ?></td>

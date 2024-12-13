@@ -13,13 +13,13 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     } else {
         // display the details of the movie
         // movie overall info 
-        echo include ("modules/movie/moviedetails.php");
+        include ("modules/movie/moviedetails.php");
         
         // display the team of the movie
-        echo include ("modules/movie/team.php");
+        include ("modules/movie/team.php");
 
         // display showings
-        echo include ("modules/movie/showings.php");
+        include ("modules/movie/showings.php");
     }
 }
 ?>

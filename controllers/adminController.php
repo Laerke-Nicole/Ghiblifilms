@@ -99,3 +99,21 @@ $query = $dbCon->prepare("SELECT * FROM VoiceActor WHERE VoiceActorID = :voiceAc
 $query->bindParam(':voiceActorID', $voiceActorID);
 $query->execute();
 $getVoiceActor = $query->fetchAll();
+
+
+
+
+// for the dropdowns
+$auditoriumQuery = $dbCon->query("SELECT AuditoriumID, AuditoriumNumber FROM Auditorium");
+
+$screenFormatQuery = $dbCon->query("SELECT ScreenFormatID, ScreenFormat FROM ScreenFormat");
+
+$movieQuery = $dbCon->query("SELECT MovieID, `Name` FROM Movie");
+
+$genreQuery = $dbCon->query("SELECT GenreID, GenreName FROM Genre");
+
+$roleInProductionQuery = $dbCon->query("SELECT RoleInProductionID, NameOfRole FROM RoleInProduction");
+
+$productionQuery = $dbCon->query("SELECT ProductionID, FirstName, LastName FROM Production");
+
+$voiceActorQuery = $dbCon->query("SELECT VoiceActorID, FirstName, LastName FROM VoiceActor");

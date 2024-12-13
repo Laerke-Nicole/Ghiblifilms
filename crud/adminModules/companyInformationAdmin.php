@@ -12,7 +12,6 @@ confirm_logged_in();
             <table class="highlight">
                 <thead>
                 <tr class="secondary-color">
-                    <th>Company ID</th>
                     <th>Company Name</th>
                     <th>Description</th>
                     <th>Email</th>
@@ -30,7 +29,6 @@ confirm_logged_in();
                 <?php
                 foreach ($getCompanyInformation as $companyInformation): ?>
                     <tr>
-                    <td><?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['NameOfCompany'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyDescription'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyEmail'])); ?></td>

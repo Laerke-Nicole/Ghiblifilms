@@ -25,6 +25,7 @@ include ("controllers/adminController.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/dropdown.js" defer></script>
 </head>
 
 <body>
@@ -53,8 +54,16 @@ include ("controllers/adminController.php");
 
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="RoleInProductionID" name="RoleInProductionID" type="text" value="<?php echo htmlspecialchars(trim($getProduction[0]['RoleInProductionID'])); ?>" class="validate" required="" aria-required="true">
-                    <label for="RoleInProductionID">RoleInProductionID</label>
+                    <p>Name of role</p>
+                    <select name="RoleInProductionID" id="RoleInProductionID">
+                        <?php
+                        include ("controllers/adminController.php");
+                        while ($roleInProduction = $roleInProductionQuery->fetch()) {
+                            $selected = $roleInProduction['RoleInProductionID'] == $getProduction[0]['RoleInProductionID'] ? 'selected' : '';
+                            echo "<option value='{$roleInProduction['RoleInProductionID']}' $selected>{$roleInProduction['NameOfRole']}</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
 
