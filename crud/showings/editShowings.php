@@ -30,7 +30,7 @@ include ("controllers/adminController.php");
 <body>
 
     <div class="container">
-        <h3>Editing showings for "<?php echo htmlspecialchars(trim($getShowings[0]['ShowingsID'])); ?>"</h3>
+        <h3>Editing showing</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- csrf protection -->
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

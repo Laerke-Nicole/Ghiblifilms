@@ -24,8 +24,7 @@ confirm_logged_in();
                 <td><?php echo htmlspecialchars(trim($movieGenre['GenreName'])); ?></td>
 
                 <td><a href="index.php?page=editmoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn">Edit</a></td>
-                <td><a href="index.php?page=deletemoviegenre&MovieID=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
-
+                <td><a href="index.php?page=controllerdelete&table=MovieGenre&primaryKey=MovieID&primaryKeyValue=<?php echo htmlspecialchars(trim($movieGenre['MovieID'])) . '&GenreID=' . htmlspecialchars(trim($movieGenre['GenreID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

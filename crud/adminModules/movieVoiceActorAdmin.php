@@ -23,7 +23,7 @@ confirm_logged_in();
                 <td><?php echo htmlspecialchars(trim($movieVoiceActor['FirstName'])) . " " . htmlspecialchars(trim($movieVoiceActor['LastName'])); ?></td>
                 
                 <td><a href="index.php?page=editmovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn">Edit</a></td>
-                <td><a href="index.php?page=deletemovievoiceactor&MovieID=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                <td><a href="index.php?page=controllerdelete&table=MovieVoiceActor&primaryKey=MovieID&primaryKeyValue=<?php echo htmlspecialchars(trim($movieVoiceActor['MovieID'])) . '&VoiceActorID=' . htmlspecialchars(trim($movieVoiceActor['VoiceActorID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
 
                 </tr>
             <?php endforeach; ?>

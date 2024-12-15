@@ -9,7 +9,7 @@ $getNewsItem = $query->fetch();
 // get everything from news
 $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();
-$getNews = $queryNews->fetchAll();
+$getNewsAdmin = $queryNews->fetchAll();
 
 
 // get about ghiblifilms from db
@@ -32,7 +32,7 @@ $queryCompanyInformation = $dbCon->prepare("SELECT C.*, A.StreetName, A.StreetNu
                                             LEFT JOIN Address A 
                                             ON C.AddressID = A.AddressID");
 $queryCompanyInformation->execute();
-$getCompanyInformation = $queryCompanyInformation->fetchAll();
+$getCompanyInformationAdmin = $queryCompanyInformation->fetchAll();
 
 
 // Get everything from opening hours

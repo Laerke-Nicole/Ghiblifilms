@@ -44,7 +44,8 @@ $query->execute();
 $getMovieVoiceActor = $query->fetchAll();
 
 // news
-$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID = :newsID");
+$query = $dbCon->prepare("SELECT * FROM News 
+                            WHERE NewsID = :newsID");
 $query->bindParam(':newsID', $newsID);
 $query->execute();
 $getNews = $query->fetchAll();
@@ -61,6 +62,11 @@ $query = $dbCon->prepare("SELECT * FROM PostalCode WHERE PostalCode = :postalCod
 $query->bindParam(':postalCode', $postalCode);
 $query->execute();
 $getPostalCode = $query->fetchAll();
+
+
+$query = $dbCon->prepare("SELECT * FROM PostalCode");
+$query->execute();
+$getPostalCodeAdmin = $query->fetchAll();
 
 
 // production

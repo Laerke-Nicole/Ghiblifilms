@@ -22,7 +22,7 @@ confirm_logged_in();
                 <td><?php echo htmlspecialchars(trim($openingHour['Day'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></td>
                 <td><a href="index.php?page=editopeninghour&ID=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn">Edit</a></td>
-                <td><a href="index.php?page=deleteopeninghour&OpeningHourID=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                <td><a href="index.php?page=controllerdelete&table=OpeningHour&primaryKey=OpeningHourID&primaryKeyValue=<?php echo htmlspecialchars(trim($openingHour['OpeningHourID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

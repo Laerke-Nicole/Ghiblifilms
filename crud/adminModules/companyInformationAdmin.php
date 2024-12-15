@@ -27,7 +27,7 @@ confirm_logged_in();
 
                 <tbody class="secondary-color">
                 <?php
-                foreach ($getCompanyInformation as $companyInformation): ?>
+                foreach ($getCompanyInformationAdmin as $companyInformation): ?>
                     <tr>
                     <td><?php echo htmlspecialchars(trim($companyInformation['NameOfCompany'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyDescription'])); ?></td>
@@ -42,7 +42,9 @@ confirm_logged_in();
                     </td>
 
                     <td><a href="index.php?page=editcompanyinformation&ID=<?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?>" class="waves-effect waves-light btn">Edit</a></td>
-                    <td><a href="index.php?page=deletecompanyinformation&CompanyInformationID=<?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                    <td><a href="index.php?page=controllerdelete&table=CompanyInformation&primaryKey=CompanyInformationID&primaryKeyValue=<?php echo htmlspecialchars(trim($companyInformation['CompanyInformationID'])); ?>"class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+
+                </td>
 
                     </tr>
 
@@ -59,6 +61,8 @@ confirm_logged_in();
             
             <!-- to tell create.php which table to insert data into -->
             <input type="hidden" name="table" value="CompanyInformation">
+            <input type="hidden" id="deleteID" name="CompanyInformationID" value="">
+            
             <div class="row">
                 <div class="input-field col s12">
                     <input id="NameOfCompany" name="NameOfCompany" type="text" class="validate" required="" aria-required="true" class="secondary-color">

@@ -4,7 +4,7 @@ require_once "../oop/updateOOP.php";
 
 if (isset($_POST['submit'])) {
     $table = htmlspecialchars(trim($_POST['table']));
-    $redirectPage = htmlspecialchars(trim($_POST['redirect'] ?? 'admin')); // Default to 'admin' if not provided
+    $redirectPage = htmlspecialchars(trim($_POST['redirect'] ?? 'admin'));
 
     // Extract composite keys dynamically
     $originalKeys = [];

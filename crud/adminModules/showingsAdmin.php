@@ -28,7 +28,7 @@ confirm_logged_in();
                     <td><?php echo htmlspecialchars(trim($showings['ShowingDate'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($showings['ShowingTime'])); ?></td>
                     <td><a href="index.php?page=editshowings&ID=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn">Edit</a></td>
-                    <td><a href="index.php?page=deleteshowings&ShowingsID=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                    <td><a href="index.php?page=controllerdelete&table=Showings&primaryKey=ShowingsID&primaryKeyValue=<?php echo htmlspecialchars(trim($showings['ShowingsID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

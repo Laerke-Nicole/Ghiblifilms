@@ -20,7 +20,7 @@ confirm_logged_in();
                 <tr>
                     <td><?php echo htmlspecialchars(trim($role['NameOfRole'])); ?></td>
                     <td><a href="index.php?page=editroleinproduction&ID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn">Edit</a></td>
-                    <td><a href="index.php?page=deleteroleinproduction&RoleInProductionID=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                    <td><a href="index.php?page=controllerdelete&table=RoleInProduction&primaryKey=RoleInProductionID&primaryKeyValue=<?php echo htmlspecialchars(trim($role['RoleInProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

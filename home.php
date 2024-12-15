@@ -4,6 +4,7 @@ require_once("includes/functions.php");
 require_once("includes/session.php"); 
 require_once("includes/connection.php"); 
 // controllers
+require_once("controllers/adminController.php");
 require_once("controllers/movieController.php");
 require_once("controllers/companyController.php");
 ?>

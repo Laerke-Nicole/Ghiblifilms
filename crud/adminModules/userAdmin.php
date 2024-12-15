@@ -41,7 +41,7 @@ confirm_logged_in();
 
                     </td>
                     <td><a href="index.php?page=edituser&ID=<?php echo htmlspecialchars(trim($user['UserID'])); ?>" class="btn">Edit</a></td>
-                    <td><a href="index.php?page=deleteuser&UserID=<?php echo htmlspecialchars(trim($user['UserID'])); ?>" class=" btn red" onclick="return confirm('Delete! are you sure?')">Delete</a></td>
+                    <td><a href="index.php?page=controllerdelete&table=User&primaryKey=UserID&primaryKeyValue=<?php echo htmlspecialchars(trim($user['UserID'])); ?>" class=" btn red" onclick="return confirm('Delete! are you sure?')">Delete</a></td>
                     
                     </tr>
                 <?php endforeach; ?>

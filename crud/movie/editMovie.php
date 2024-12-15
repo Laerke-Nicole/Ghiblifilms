@@ -26,7 +26,7 @@ include ("controllers/adminController.php");
 <body>
 
 <div class="container">
-    <h3>Editing Movie "<?php echo htmlspecialchars(trim($getMovie[0][1])); ?>"</h3>
+    <h3>Editing Movie "<?php echo htmlspecialchars(trim($getMovie[0]['Name'])); ?>"</h3>
     <form class="col s12" name="contact" method="post" action="crud/movie/updateMovie.php" enctype="multipart/form-data">
         <!-- csrf protection -->
         <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

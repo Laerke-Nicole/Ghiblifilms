@@ -30,7 +30,7 @@ include ("controllers/adminController.php");
 
 <body>
 <div class="container">
-<h3>Editing movie genre for "<?php echo htmlspecialchars(trim($getMovieGenre[0]['MovieID'])); ?>"</h3>
+<h3>Editing movie genre</h3>
     <form class="col s12" name="contact" method="post" action="controllers/update.php">
         <!-- csrf protection -->
         <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

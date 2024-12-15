@@ -18,7 +18,7 @@ CREATE TABLE Address (
   StreetNumber VARCHAR(10) NOT NULL,
   PostalCode VARCHAR(10) NOT NULL,
   Country VARCHAR(150) NOT NULL,
-  FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode)
+  FOREIGN KEY (PostalCode) REFERENCES PostalCode(PostalCode) ON DELETE CASCADE
 ) ENGINE=InnoDB; 
 
 
@@ -32,7 +32,7 @@ CREATE TABLE User (
   Email VARCHAR(255) NOT NULL,
   PhoneNumber VARCHAR(20) NOT NULL,
   AddressID INT,
-  FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
+  FOREIGN KEY (AddressID) REFERENCES Address(AddressID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -77,7 +77,7 @@ CREATE TABLE Production (
   FirstName varchar(50) NOT NULL,
   LastName varchar(50) NOT NULL,
   RoleInProductionID INT NOT NULL,
-  FOREIGN KEY (RoleInProductionID) REFERENCES RoleInProduction(RoleInProductionID)
+  FOREIGN KEY (RoleInProductionID) REFERENCES RoleInProduction(RoleInProductionID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -105,8 +105,8 @@ CREATE TABLE MovieGenre (
   MovieID INT NOT NULL,
   GenreID INT NOT NULL,
   CONSTRAINT PK_MovieGenre PRIMARY KEY (MovieID, GenreID),
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (GenreID) REFERENCES Genre(GenreID)
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID) ON DELETE CASCADE,
+  FOREIGN KEY (GenreID) REFERENCES Genre(GenreID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -115,8 +115,8 @@ CREATE TABLE MovieProduction (
   MovieID INT NOT NULL,
   ProductionID INT NOT NULL,
   CONSTRAINT PK_MovieProduction PRIMARY KEY (MovieID, ProductionID),
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (ProductionID) REFERENCES Production(ProductionID)
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID) ON DELETE CASCADE,
+  FOREIGN KEY (ProductionID) REFERENCES Production(ProductionID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -125,8 +125,8 @@ CREATE TABLE MovieVoiceActor (
   MovieID INT NOT NULL,
   VoiceActorID INT NOT NULL,
   CONSTRAINT PK_MovieVoiceActor PRIMARY KEY (MovieID, VoiceActorID),
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (VoiceActorID) REFERENCES VoiceActor(VoiceActorID)
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID) ON DELETE CASCADE,
+  FOREIGN KEY (VoiceActorID) REFERENCES VoiceActor(VoiceActorID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -148,7 +148,7 @@ CREATE TABLE CompanyInformation (
   CompanyEmail varchar(255) NOT NULL,
   CompanyPhoneNumber varchar(20) NOT NULL,
   AddressID INT,
-  FOREIGN KEY (AddressID) REFERENCES Address(AddressID)
+  FOREIGN KEY (AddressID) REFERENCES Address(AddressID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -168,9 +168,9 @@ CREATE TABLE Showings (
   ScreenFormatID INT NOT NULL,
   ShowingDate DATE NOT NULL,
   ShowingTime TIME NOT NULL,
-  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID),
-  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID),
-  FOREIGN KEY (ScreenFormatID) REFERENCES ScreenFormat(ScreenFormatID)
+  FOREIGN KEY (MovieID) REFERENCES Movie(MovieID) ON DELETE CASCADE,
+  FOREIGN KEY (AuditoriumID) REFERENCES Auditorium(AuditoriumID) ON DELETE CASCADE,
+  FOREIGN KEY (ScreenFormatID) REFERENCES ScreenFormat(ScreenFormatID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -181,8 +181,8 @@ CREATE TABLE Reservation (
   ShowingsID int NOT NULL,
   ReservationDate DATETIME NOT NULL DEFAULT NOW(),
   PaymentStatus VARCHAR(4),
-  FOREIGN KEY (UserID) REFERENCES User(UserID),
-  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID)
+  FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
+  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -193,8 +193,8 @@ CREATE TABLE SeatReservation (
   ShowingsID INT NOT NULL,
   SeatID INT NOT NULL,
   FOREIGN KEY (ReservationID) REFERENCES Reservation(ReservationID) ON DELETE CASCADE,
-  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID),
-  FOREIGN KEY (SeatID) REFERENCES Seat(SeatID)
+  FOREIGN KEY (ShowingsID) REFERENCES Showings(ShowingsID) ON DELETE CASCADE,
+  FOREIGN KEY (SeatID) REFERENCES Seat(SeatID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 
@@ -580,276 +580,276 @@ insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieI
 insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'imglink');
 
 
--- -- movie genres
--- -- the boy and the heron
--- insert into MovieGenre (MovieID, GenreID) values (1, 2);
--- insert into MovieGenre (MovieID, GenreID) values (1, 3);
--- insert into MovieGenre (MovieID, GenreID) values (1, 4);
+-- movie genres
+-- the boy and the heron
+insert into MovieGenre (MovieID, GenreID) values (1, 2);
+insert into MovieGenre (MovieID, GenreID) values (1, 3);
+insert into MovieGenre (MovieID, GenreID) values (1, 4);
 
--- -- spirited away
--- insert into MovieGenre (MovieID, GenreID) values (2, 2);
--- insert into MovieGenre (MovieID, GenreID) values (2, 4);
--- insert into MovieGenre (MovieID, GenreID) values (2, 6);
--- insert into MovieGenre (MovieID, GenreID) values (2, 7);
--- insert into MovieGenre (MovieID, GenreID) values (2, 10);
+-- spirited away
+insert into MovieGenre (MovieID, GenreID) values (2, 2);
+insert into MovieGenre (MovieID, GenreID) values (2, 4);
+insert into MovieGenre (MovieID, GenreID) values (2, 6);
+insert into MovieGenre (MovieID, GenreID) values (2, 7);
+insert into MovieGenre (MovieID, GenreID) values (2, 10);
 
--- -- howls moving castle
--- insert into MovieGenre (MovieID, GenreID) values (3, 2);
--- insert into MovieGenre (MovieID, GenreID) values (3, 4);
--- insert into MovieGenre (MovieID, GenreID) values (3, 7);
+-- howls moving castle
+insert into MovieGenre (MovieID, GenreID) values (3, 2);
+insert into MovieGenre (MovieID, GenreID) values (3, 4);
+insert into MovieGenre (MovieID, GenreID) values (3, 7);
 
--- -- princess mononoke
--- insert into MovieGenre (MovieID, GenreID) values (4, 2);
--- insert into MovieGenre (MovieID, GenreID) values (4, 4);
--- insert into MovieGenre (MovieID, GenreID) values (4, 5);
+-- princess mononoke
+insert into MovieGenre (MovieID, GenreID) values (4, 2);
+insert into MovieGenre (MovieID, GenreID) values (4, 4);
+insert into MovieGenre (MovieID, GenreID) values (4, 5);
 
--- -- my neighbour Totoro
--- insert into MovieGenre (MovieID, GenreID) values (5, 4);
--- insert into MovieGenre (MovieID, GenreID) values (5, 7);
--- insert into MovieGenre (MovieID, GenreID) values (5, 11);
+-- my neighbour Totoro
+insert into MovieGenre (MovieID, GenreID) values (5, 4);
+insert into MovieGenre (MovieID, GenreID) values (5, 7);
+insert into MovieGenre (MovieID, GenreID) values (5, 11);
 
--- -- ponyo
--- insert into MovieGenre (MovieID, GenreID) values (6, 2);
--- insert into MovieGenre (MovieID, GenreID) values (6, 4);
--- insert into MovieGenre (MovieID, GenreID) values (6, 7);
--- insert into MovieGenre (MovieID, GenreID) values (6, 11);
+-- ponyo
+insert into MovieGenre (MovieID, GenreID) values (6, 2);
+insert into MovieGenre (MovieID, GenreID) values (6, 4);
+insert into MovieGenre (MovieID, GenreID) values (6, 7);
+insert into MovieGenre (MovieID, GenreID) values (6, 11);
 
--- -- kikis delivery service
--- insert into MovieGenre (MovieID, GenreID) values (7, 4);
--- insert into MovieGenre (MovieID, GenreID) values (7, 7);
+-- kikis delivery service
+insert into MovieGenre (MovieID, GenreID) values (7, 4);
+insert into MovieGenre (MovieID, GenreID) values (7, 7);
 
--- -- tales from Earthsea
--- insert into MovieGenre (MovieID, GenreID) values (8, 2);
--- insert into MovieGenre (MovieID, GenreID) values (8, 4);
+-- tales from Earthsea
+insert into MovieGenre (MovieID, GenreID) values (8, 2);
+insert into MovieGenre (MovieID, GenreID) values (8, 4);
 
--- -- the tale of the princess kaguya
--- insert into MovieGenre (MovieID, GenreID) values (9, 3);
--- insert into MovieGenre (MovieID, GenreID) values (9, 10);
--- insert into MovieGenre (MovieID, GenreID) values (9, 12);
+-- the tale of the princess kaguya
+insert into MovieGenre (MovieID, GenreID) values (9, 3);
+insert into MovieGenre (MovieID, GenreID) values (9, 10);
+insert into MovieGenre (MovieID, GenreID) values (9, 12);
 
--- -- the secret world of arrietty
--- insert into MovieGenre (MovieID, GenreID) values (10, 2);
--- insert into MovieGenre (MovieID, GenreID) values (10, 3);
--- insert into MovieGenre (MovieID, GenreID) values (10, 4);
--- insert into MovieGenre (MovieID, GenreID) values (10, 7);
+-- the secret world of arrietty
+insert into MovieGenre (MovieID, GenreID) values (10, 2);
+insert into MovieGenre (MovieID, GenreID) values (10, 3);
+insert into MovieGenre (MovieID, GenreID) values (10, 4);
+insert into MovieGenre (MovieID, GenreID) values (10, 7);
 
--- -- the wind rises
--- insert into MovieGenre (MovieID, GenreID) values (11, 8);
--- insert into MovieGenre (MovieID, GenreID) values (11, 12);
+-- the wind rises
+insert into MovieGenre (MovieID, GenreID) values (11, 8);
+insert into MovieGenre (MovieID, GenreID) values (11, 12);
 
--- -- from up on poppy hill
--- insert into MovieGenre (MovieID, GenreID) values (12, 1);
--- insert into MovieGenre (MovieID, GenreID) values (12, 3);
--- insert into MovieGenre (MovieID, GenreID) values (12, 8);
--- insert into MovieGenre (MovieID, GenreID) values (12, 11);
-
-
--- -- movie production actor
--- -- the boy and the heron
--- insert into MovieProduction (MovieID, ProductionID) values (1, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 4);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 6);
--- insert into MovieProduction (MovieID, ProductionID) values (1, 7);
-
--- -- spirited away
--- insert into MovieProduction (MovieID, ProductionID) values (2, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 8);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 9);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 10);
--- insert into MovieProduction (MovieID, ProductionID) values (2, 11);
-
--- -- Howls moving castle
--- insert into MovieProduction (MovieID, ProductionID) values (3, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 12);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 13);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 14);
--- insert into MovieProduction (MovieID, ProductionID) values (3, 11);
-
--- -- princess mononoke
--- insert into MovieProduction (MovieID, ProductionID) values (4, 1); 
--- insert into MovieProduction (MovieID, ProductionID) values (4, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (4, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (4, 13);
--- insert into MovieProduction (MovieID, ProductionID) values (4, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (4, 15);
--- insert into MovieProduction (MovieID, ProductionID) values (4, 11);
-
--- -- My neighbour Totoro
--- insert into MovieProduction (MovieID, ProductionID) values (5, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 12);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 16);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 17);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 18);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 19);
--- insert into MovieProduction (MovieID, ProductionID) values (5, 11);
-
--- -- Ponyo
--- insert into MovieProduction (MovieID, ProductionID) values (6, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 20);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 21);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 22);
--- insert into MovieProduction (MovieID, ProductionID) values (6, 11);
-
--- -- Kikis delivery service
--- insert into MovieProduction (MovieID, ProductionID) values (7, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 23);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 24);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 17);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 25);
--- insert into MovieProduction (MovieID, ProductionID) values (7, 11);
-
--- -- Tales from Earthsea
--- insert into MovieProduction (MovieID, ProductionID) values (8, 26);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 27);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 28);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 29);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 22);
--- insert into MovieProduction (MovieID, ProductionID) values (8, 11);
-
--- -- The tale of the princess Kaguya
--- insert into MovieProduction (MovieID, ProductionID) values (9, 30);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 31);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 32);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 33);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 34);
--- insert into MovieProduction (MovieID, ProductionID) values (9, 35);
-
--- -- The secret world of Arrietty
--- insert into MovieProduction (MovieID, ProductionID) values (10, 36);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 37);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 38);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 22);
--- insert into MovieProduction (MovieID, ProductionID) values (10, 7);
-
--- -- The wind rises
--- insert into MovieProduction (MovieID, ProductionID) values (11, 1);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 2);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 3);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 39);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 5);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 40);
--- insert into MovieProduction (MovieID, ProductionID) values (11, 11);
-
--- -- From up on Poppy Hill
--- insert into MovieProduction (MovieID, ProductionID) values (12, 26);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 41);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 42);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 43);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 44);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 22);
--- insert into MovieProduction (MovieID, ProductionID) values (12, 11);
+-- from up on poppy hill
+insert into MovieGenre (MovieID, GenreID) values (12, 1);
+insert into MovieGenre (MovieID, GenreID) values (12, 3);
+insert into MovieGenre (MovieID, GenreID) values (12, 8);
+insert into MovieGenre (MovieID, GenreID) values (12, 11);
 
 
--- -- MovieVoiceActor here
--- -- the boy and the heron
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 1);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 2);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 3);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 4);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 5);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 6);
+-- movie production actor
+-- the boy and the heron
+insert into MovieProduction (MovieID, ProductionID) values (1, 1);
+insert into MovieProduction (MovieID, ProductionID) values (1, 2);
+insert into MovieProduction (MovieID, ProductionID) values (1, 3);
+insert into MovieProduction (MovieID, ProductionID) values (1, 4);
+insert into MovieProduction (MovieID, ProductionID) values (1, 5);
+insert into MovieProduction (MovieID, ProductionID) values (1, 6);
+insert into MovieProduction (MovieID, ProductionID) values (1, 7);
 
--- -- spirited away
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 7);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 8);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 9);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 10);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 11);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 12);
+-- spirited away
+insert into MovieProduction (MovieID, ProductionID) values (2, 1);
+insert into MovieProduction (MovieID, ProductionID) values (2, 8);
+insert into MovieProduction (MovieID, ProductionID) values (2, 3);
+insert into MovieProduction (MovieID, ProductionID) values (2, 9);
+insert into MovieProduction (MovieID, ProductionID) values (2, 5);
+insert into MovieProduction (MovieID, ProductionID) values (2, 10);
+insert into MovieProduction (MovieID, ProductionID) values (2, 11);
 
--- -- howls moving castle
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 13);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 6);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 12);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 14);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 15);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 16);
+-- Howls moving castle
+insert into MovieProduction (MovieID, ProductionID) values (3, 1);
+insert into MovieProduction (MovieID, ProductionID) values (3, 12);
+insert into MovieProduction (MovieID, ProductionID) values (3, 3);
+insert into MovieProduction (MovieID, ProductionID) values (3, 13);
+insert into MovieProduction (MovieID, ProductionID) values (3, 5);
+insert into MovieProduction (MovieID, ProductionID) values (3, 14);
+insert into MovieProduction (MovieID, ProductionID) values (3, 11);
 
--- -- princess mononoke
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 17);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 18);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 19);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 20);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 21);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 22);
+-- princess mononoke
+insert into MovieProduction (MovieID, ProductionID) values (4, 1); 
+insert into MovieProduction (MovieID, ProductionID) values (4, 2);
+insert into MovieProduction (MovieID, ProductionID) values (4, 3);
+insert into MovieProduction (MovieID, ProductionID) values (4, 13);
+insert into MovieProduction (MovieID, ProductionID) values (4, 5);
+insert into MovieProduction (MovieID, ProductionID) values (4, 15);
+insert into MovieProduction (MovieID, ProductionID) values (4, 11);
 
--- -- my neighbour Totoro
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 23);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 24);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 25);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 26);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 27);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 28);
+-- My neighbour Totoro
+insert into MovieProduction (MovieID, ProductionID) values (5, 1);
+insert into MovieProduction (MovieID, ProductionID) values (5, 12);
+insert into MovieProduction (MovieID, ProductionID) values (5, 16);
+insert into MovieProduction (MovieID, ProductionID) values (5, 17);
+insert into MovieProduction (MovieID, ProductionID) values (5, 18);
+insert into MovieProduction (MovieID, ProductionID) values (5, 19);
+insert into MovieProduction (MovieID, ProductionID) values (5, 11);
 
--- -- ponyo
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 29);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 30);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 31);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 32);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 33);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 34);
+-- Ponyo
+insert into MovieProduction (MovieID, ProductionID) values (6, 1);
+insert into MovieProduction (MovieID, ProductionID) values (6, 2);
+insert into MovieProduction (MovieID, ProductionID) values (6, 20);
+insert into MovieProduction (MovieID, ProductionID) values (6, 21);
+insert into MovieProduction (MovieID, ProductionID) values (6, 5);
+insert into MovieProduction (MovieID, ProductionID) values (6, 22);
+insert into MovieProduction (MovieID, ProductionID) values (6, 11);
 
--- -- kikis delivery service
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 35);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 36);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 37);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 38);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 39);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 40);
+-- Kikis delivery service
+insert into MovieProduction (MovieID, ProductionID) values (7, 1);
+insert into MovieProduction (MovieID, ProductionID) values (7, 23);
+insert into MovieProduction (MovieID, ProductionID) values (7, 24);
+insert into MovieProduction (MovieID, ProductionID) values (7, 17);
+insert into MovieProduction (MovieID, ProductionID) values (7, 5);
+insert into MovieProduction (MovieID, ProductionID) values (7, 25);
+insert into MovieProduction (MovieID, ProductionID) values (7, 11);
 
--- -- tales from Earthsea
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 41);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 42);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 19);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 43);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 44);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 10);
+-- Tales from Earthsea
+insert into MovieProduction (MovieID, ProductionID) values (8, 26);
+insert into MovieProduction (MovieID, ProductionID) values (8, 2);
+insert into MovieProduction (MovieID, ProductionID) values (8, 27);
+insert into MovieProduction (MovieID, ProductionID) values (8, 28);
+insert into MovieProduction (MovieID, ProductionID) values (8, 29);
+insert into MovieProduction (MovieID, ProductionID) values (8, 22);
+insert into MovieProduction (MovieID, ProductionID) values (8, 11);
 
--- -- the tale of the princess Kaguya
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 45);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 46);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 47);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 48);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 49);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 50);
+-- The tale of the princess Kaguya
+insert into MovieProduction (MovieID, ProductionID) values (9, 30);
+insert into MovieProduction (MovieID, ProductionID) values (9, 31);
+insert into MovieProduction (MovieID, ProductionID) values (9, 32);
+insert into MovieProduction (MovieID, ProductionID) values (9, 33);
+insert into MovieProduction (MovieID, ProductionID) values (9, 5);
+insert into MovieProduction (MovieID, ProductionID) values (9, 34);
+insert into MovieProduction (MovieID, ProductionID) values (9, 35);
 
--- -- the secret world of Arrietty
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 51);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 15);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 52);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 53);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 54);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 10);
+-- The secret world of Arrietty
+insert into MovieProduction (MovieID, ProductionID) values (10, 36);
+insert into MovieProduction (MovieID, ProductionID) values (10, 2);
+insert into MovieProduction (MovieID, ProductionID) values (10, 3);
+insert into MovieProduction (MovieID, ProductionID) values (10, 37);
+insert into MovieProduction (MovieID, ProductionID) values (10, 38);
+insert into MovieProduction (MovieID, ProductionID) values (10, 22);
+insert into MovieProduction (MovieID, ProductionID) values (10, 7);
 
--- -- the wind rises
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 55);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 56);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 57);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 58);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 59);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 60);
+-- The wind rises
+insert into MovieProduction (MovieID, ProductionID) values (11, 1);
+insert into MovieProduction (MovieID, ProductionID) values (11, 2);
+insert into MovieProduction (MovieID, ProductionID) values (11, 3);
+insert into MovieProduction (MovieID, ProductionID) values (11, 39);
+insert into MovieProduction (MovieID, ProductionID) values (11, 5);
+insert into MovieProduction (MovieID, ProductionID) values (11, 40);
+insert into MovieProduction (MovieID, ProductionID) values (11, 11);
 
--- -- from up on Poppy Hill
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 61);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 54);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
--- insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
+-- From up on Poppy Hill
+insert into MovieProduction (MovieID, ProductionID) values (12, 26);
+insert into MovieProduction (MovieID, ProductionID) values (12, 41);
+insert into MovieProduction (MovieID, ProductionID) values (12, 42);
+insert into MovieProduction (MovieID, ProductionID) values (12, 43);
+insert into MovieProduction (MovieID, ProductionID) values (12, 44);
+insert into MovieProduction (MovieID, ProductionID) values (12, 22);
+insert into MovieProduction (MovieID, ProductionID) values (12, 11);
+
+
+-- MovieVoiceActor here
+-- the boy and the heron
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 1);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 2);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 3);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 4);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 5);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (1, 6);
+
+-- spirited away
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 7);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 8);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 9);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 10);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 11);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (2, 12);
+
+-- howls moving castle
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 13);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 6);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 12);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 14);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 15);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (3, 16);
+
+-- princess mononoke
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 17);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 18);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 19);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 20);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 21);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (4, 22);
+
+-- my neighbour Totoro
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 23);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 24);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 25);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 26);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 27);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (5, 28);
+
+-- ponyo
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 29);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 30);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 31);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 32);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 33);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (6, 34);
+
+-- kikis delivery service
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 35);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 36);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 37);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 38);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 39);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (7, 40);
+
+-- tales from Earthsea
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 41);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 42);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 19);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 43);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 44);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (8, 10);
+
+-- the tale of the princess Kaguya
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 45);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 46);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 47);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 48);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 49);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (9, 50);
+
+-- the secret world of Arrietty
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 51);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 15);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 52);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 53);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 54);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (10, 10);
+
+-- the wind rises
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 55);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 56);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 57);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 58);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 59);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (11, 60);
+
+-- from up on Poppy Hill
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 61);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 54);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
+insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
 
 -- opening hours
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');

@@ -5,6 +5,11 @@ $queryMovie = $dbCon->prepare("SELECT *
 $queryMovie->execute();
 $getMovies = $queryMovie->fetchAll();
 
+$queryNews = $dbCon->prepare("SELECT * 
+                                FROM News");
+$queryNews->execute();
+$getNews = $queryNews->fetchAll();
+
 
 // get everything from the movie table
 $query = $dbCon->prepare("SELECT * FROM Movie 

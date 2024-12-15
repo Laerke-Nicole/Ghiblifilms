@@ -192,10 +192,6 @@ case "edituserprofile":
     include('modules/userprofile/editUserProfile.php');
 break;
 
-case "deleteuserprofile":
-    include('modules/userprofile/deleteUserBooking.php');
-break;
-
 case "edituserinfo":
     include('modules/userpayment/editUserInfo.php');
 break;
@@ -276,76 +272,13 @@ case "addnews":
     include('crud/news/addNews.php');
 break;
 
-
-// delete
-case "deletepostalcode":
-    include('crud/postalCode/deletePostalCode.php');
-break;
-
-case "deletegenre":
-    include('crud/genre/deleteGenre.php');
-break;
-
-case "deleteroleinproduction":
-    include('crud/roleInProduction/deleteRoleInProduction.php');
-break;
-
-case "deleteproduction":
-    include('crud/production/deleteProduction.php');
-break;
-
-case "deletevoiceactor":
-    include('crud/voiceActor/deleteVoiceActor.php');
-break;
-
-case "deletemovie":
-    include('crud/movie/deleteMovie.php');
-break;
-
-case "deletemoviegenre":
-    include('crud/movieGenre/deleteMovieGenre.php');
-break;
-
-case "deletemovieproduction":
-    include('crud/movieProduction/deleteMovieProduction.php');
-break;
-
-case "deletemovievoiceactor":
-    include('crud/movieVoiceActor/deleteMovieVoiceActor.php');
-break;
-
-case "deleteshowings":
-    include('crud/showings/deleteShowings.php');
-break;
-
-case "deleteuser":
-    include('crud/user/deleteUser.php');
-break;
-
-case "deletenews":
-    include('crud/news/deleteNews.php');
-break;
-
-case "deletecompanyinformation":
-    include('crud/companyinformation/deleteCompanyInformation.php');
-break;
-
-case "deleteopeninghour":
-    include('crud/openinghour/deleteOpeningHour.php');
-break;
-
-case "deletereservation":
-    include('crud/reservation/deletereservation.php');
-break;
-
-
 // edit
 case "editpostalcode":
     include('crud/postalCode/editPostalCode.php');
 break;
 
 case "editgenre":
-    include('crud/genre/editGenre.php');
+    include('crud/editCrud/editGenre.php');
 break;
 
 case "editroleinproduction":

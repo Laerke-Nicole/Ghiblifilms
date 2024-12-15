@@ -24,7 +24,7 @@ confirm_logged_in();
                     <td><?php echo htmlspecialchars(trim($production['LastName'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($production['NameOfRole'])); ?></td>
                     <td><a href="index.php?page=editproduction&ID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn">Edit</a></td>
-                    <td><a href="index.php?page=deleteproduction&ProductionID=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                    <td><a href="index.php?page=controllerdelete&table=Production&primaryKey=ProductionID&primaryKeyValue=<?php echo htmlspecialchars(trim($production['ProductionID'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

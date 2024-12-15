@@ -22,7 +22,7 @@ confirm_logged_in();
             </thead>
 
             <tbody class="secondary-color">
-            <?php foreach ($getNews as $news): ?>
+            <?php foreach ($getNewsAdmin as $news): ?>
                 <tr>
                 <td><?php echo htmlspecialchars(trim($news['Headline'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['SubHeadline'])); ?></td>
@@ -30,7 +30,7 @@ confirm_logged_in();
                 <td><img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' width='100'></td>
 
                 <td><a href="index.php?page=editnews&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn">Edit</a></td>
-                <td><a href="index.php?page=deletenews&NewsID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                <td><a href="index.php?page=controllerdelete&table=News&primaryKey=NewsID&primaryKeyValue=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                
                 </tr>
             <?php endforeach; ?>

@@ -8,7 +8,7 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
     include ("controllers/movieController.php");  
     
     // if they dont exist, display an error message
-    if (!$movieItem || !$genres || !$voiceActor || !$production) {
+    if (!$movieItem) {
         die("Section(s) is empty.");
     } else {
         // display the details of the movie

@@ -65,8 +65,8 @@ confirm_logged_in();
 
                     </td>
                     <td><a href="index.php?page=editmovie&ID=<?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?>" class="btn">Edit</a></td>
-                    <td><a href="index.php?page=deletemovie&MovieID=<?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
-
+                    <td><a href="index.php?page=controllerdelete&table=Movie&primaryKey=MovieID&primaryKeyValue=<?php echo htmlspecialchars(trim($getMovie['MovieID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
+                
                     </tr>
                 <?php endforeach; ?>
                 </tbody>
