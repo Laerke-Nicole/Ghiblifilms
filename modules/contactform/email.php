@@ -13,7 +13,7 @@ $regexp = "/^[^0-9][A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_-]+)*[.][
 $recaptchaResponse = $_POST['g-recaptcha-response'];
 
 // Check reCAPTCHA
-$recaptchaSecret = '6Le5im4qAAAAAIilBJ35BlmkGIPIjIh-m5LgXR0u';
+include ("secretKey.php");
 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 $recaptchaValidation = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
 $recaptchaData = json_decode($recaptchaValidation);
