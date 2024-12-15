@@ -29,7 +29,7 @@ confirm_logged_in();
                 <td><?php echo htmlspecialchars(trim($reservation['MovieName'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($reservation['ShowingDate'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($reservation['ShowingTime'])); ?></td>
-                <td><?php echo htmlspecialchars(trim($reservation['Amount'])); ?></td>
+                <td>€ <?php echo htmlspecialchars(trim($reservation['Amount']/100)); ?></td>
                 <td><?php echo htmlspecialchars(trim($reservation['PaymentDate'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($reservation['PaymentType'])); ?></td>
             </tr>
