@@ -274,7 +274,7 @@ break;
 
 // edit
 case "editpostalcode":
-    include('crud/postalCode/editPostalCode.php');
+    include('crud/editCrud/editPostalCode.php');
 break;
 
 case "editgenre":
@@ -282,15 +282,15 @@ case "editgenre":
 break;
 
 case "editroleinproduction":
-    include('crud/roleInProduction/editRoleInProduction.php');
+    include('crud/editCrud/editRoleInProduction.php');
 break;
 
 case "editproduction":
-    include('crud/production/editProduction.php');
+    include('crud/editCrud/editProduction.php');
 break;
 
 case "editvoiceactor":
-    include('crud/voiceActor/editVoiceActor.php');
+    include('crud/editCrud/editVoiceActor.php');
 break;
 
 case "editmovie":
@@ -298,35 +298,35 @@ case "editmovie":
 break;
 
 case "editmoviegenre":
-    include('crud/movieGenre/editMovieGenre.php');
+    include('crud/editCrud/editMovieGenre.php');
 break;
 
 case "editmovieproduction":
-    include('crud/movieProduction/editMovieProduction.php');
+    include('crud/editCrud/editMovieProduction.php');
 break;
 
 case "editmovievoiceactor":
-    include('crud/movieVoiceActor/editMovieVoiceActor.php');
+    include('crud/editCrud/editMovieVoiceActor.php');
 break;
 
 case "editshowings":
-    include('crud/showings/editShowings.php');
+    include('crud/editCrud/editShowings.php');
 break;
 
 case "edituser":
-    include('crud/user/editUser.php');
+    include('crud/editCrud/editUser.php');
 break;
 
 case "editnews":
-    include('crud/news/editNews.php');
+    include('crud/editCrud/editNews.php');
 break;
 
 case "editcompanyinformation":
-    include('crud/companyinformation/editCompanyInformation.php');
+    include('crud/editCrud/editCompanyInformation.php');
 break;
 
 case "editopeninghour":
-    include('crud/openinghour/editOpeningHour.php');
+    include('crud/editCrud/editOpeningHour.php');
 break;
 
 
