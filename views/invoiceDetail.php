@@ -6,7 +6,7 @@ require_once("includes/session.php");
 confirm_logged_in();
 
 require_once __DIR__ . '/../vendor/autoload.php';
-\Stripe\Stripe::setApiKey('sk_test_51QPRkfJdwUEjEc4U9XNhhHmwGq2j6TsckXUKqjCmzKzXy0QOucvUHze5JfZ4lNT5t34vq9RItphIqu418cTCCtYG00i8gkOzZC');
+include("modules/payment/secretAPI.php");
 
 if (!isset($_GET['payment_intent'])) {
     die('PaymentIntent ID is missing');

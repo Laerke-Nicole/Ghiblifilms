@@ -4,4 +4,6 @@ modules/payment/stripe.js
 
 modules/payment/payment.php
 
+modules/payment/secretAPI.php
+
 modules/contactform/secretKey.php
