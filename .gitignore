@@ -7,3 +7,5 @@ modules/payment/payment.php
 modules/payment/secretAPI.php
 
 modules/contactform/secretKey.php
+
+includes/dbcon.php

@@ -4,7 +4,7 @@ require_once("includes/session.php");
 require_once("includes/functions.php"); 
 require_once ("includes/csrfProtection.php");
 
-
+// check if the user is already logged in
 if (logged_in()) {
     header("Location: index.php?page=home");
     exit;
@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     $password = htmlspecialchars(trim($_POST['Pass']));
     
     try {
-        $query = "SELECT UserID, Username, Pass FROM User WHERE Username = :Username LIMIT 1"; 
+        $query = "SELECT UserID, Username, Pass, Role FROM User WHERE Username = :Username LIMIT 1"; 
         $stmt = $connection->prepare($query);
         
         // bind the username parameter
@@ -28,15 +28,23 @@ if (isset($_POST['submit'])) {
             // username/password authenticated
             $_SESSION['UserID'] = $found_user['UserID'];
             $_SESSION['User'] = $found_user['Username'];
+            $_SESSION['Role'] = $found_user['Role'];
         
             // after logging in go to the successful login detail view
-            if (!headers_sent()) {
-                header("Location: /index.php?page=useroptions");
+            if ($found_user['Role'] === 'Admin') {
+                header("Location: /index.php?page=admin");
                 exit;
             } else {
-                echo "<script>window.location.href='/index.php?page=useroptions';</script>";
+                header("Location: /index.php?page=useroptions");
                 exit;
             }
+            // if (!headers_sent()) {
+            //     header("Location: /index.php?page=useroptions");
+            //     exit;
+            // } else {
+            //     echo "<script>window.location.href='/index.php?page=useroptions';</script>";
+            //     exit;
+            // }
         } else {
             // if username or password is incorrect
             $message = "Username/password combination incorrect.<br />

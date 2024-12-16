@@ -20,7 +20,7 @@
 </div>
 
 <div id="productionSection" class="expanded-section" style="display: none;">
-    <?php require 'crud/adminModules/ProductionAdmin.php' ?> 
+    <?php require 'crud/adminModules/productionAdmin.php' ?> 
 </div>
 
 <div id="movieProductionSection" class="expanded-section" style="display: none;">

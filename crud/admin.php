@@ -12,7 +12,7 @@ require_once("controllers/userController.php");
 require_once("controllers/addressController.php");
 require_once("controllers/reservationsController.php");
 
-confirm_logged_in();
+confirm_is_admin();
 ?>
 
 <!DOCTYPE html>

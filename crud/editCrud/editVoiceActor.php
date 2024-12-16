@@ -2,7 +2,7 @@
 require_once ("includes/dbcon.php");
 require_once ("includes/csrfProtection.php");
 require_once ("oop/getIDOOP.php");
-confirm_logged_in();
+confirm_is_admin();
 
 try {
     $params = GetID::getValues(['ID']);

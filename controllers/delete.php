@@ -1,4 +1,10 @@
 <?php
+if (headers_sent($file, $line)) {
+    echo "Headers already sent in $file on line $line.";
+    exit;
+}
+
+
 require_once "includes/dbcon.php";
 require_once "oop/deleteOOP.php";
 
@@ -15,13 +21,14 @@ if (isset($_GET['table']) && isset($_GET['primaryKey']) && isset($_GET['primaryK
     // Redirect based on success or failure
     if ($success) {
         // Redirect to the dynamic page
-        header("Location: index.php?page=" . urlencode($redirectPage) . "&status=deleted&ID=" . urlencode($primaryKeyValue));
+        $redirectUrl = "/index.php?page=" . urlencode($redirectPage) . "&status=deleted&ID=" . urlencode($primaryKeyValue);
+        header("Location: $redirectUrl");
         exit;
     } else {
         echo "Error: Deletion failed.";
         exit;
     }
 } else {
-    echo "Error: Missing required parameters.";
+    echo "Error: Deleting failed";
     exit;
 }

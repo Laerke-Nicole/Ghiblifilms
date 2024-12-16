@@ -32,6 +32,7 @@ CREATE TABLE User (
   Email VARCHAR(255) NOT NULL,
   PhoneNumber VARCHAR(20) NOT NULL,
   AddressID INT,
+  Role ENUM('User', 'Admin') NOT NULL DEFAULT 'User',
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
@@ -863,3 +864,6 @@ insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.
 
 -- bank account
 INSERT INTO BankAccount (AccountID, Description, Balance) VALUES (1, 'Money balance', 0.00);
+
+-- admin
+INSERT INTO User (UserID, Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID, Role) VALUES (NULL, 'admin', '$2y$10$w5.j3nGeOiUAHLDdHJM.2eTAV.whkaCZSAibhHABRO8IGMf6pQVUa', 'Lærke', 'Nielsen', 'laerke@laerkenicole.dk', '12345678', NULL, 'Admin');

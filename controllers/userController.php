@@ -31,3 +31,14 @@ $queryUserReservations = $dbCon->prepare("SELECT * FROM UserReservationView
 $queryUserReservations->bindParam(':userID', $userID);
 $queryUserReservations->execute();
 $getUserReservations = $queryUserReservations->fetchAll();
+
+
+// check if user is admin
+$query = "SELECT Role 
+            FROM User 
+            WHERE UserID = :userID 
+            LIMIT 1";
+$stmt = $dbCon->prepare($query);
+$stmt->bindParam(':userID', $userID);
+$stmt->execute();
+$admin = $stmt->fetch();

@@ -16,12 +16,13 @@
             <li><a href="index.php?page=newuser" class="secondary-color">New user</a></li>
         <?php endif; ?> 
 
-        <?php if ($userID): ?>
+        <?php if ($userID && !is_admin()): ?>
             <li><a href="index.php?page=userprofile&UserID=' . htmlspecialchars(trim($userID)) . '" class="secondary-color">Profile Page</a></li>
         <?php endif; ?>     
 
-        
+        <?php if (is_admin()): ?>
         <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>
+        <?php endif; ?>   
 
         <!-- show log out btn if ur logged in  -->
         <?php if (logged_in()): ?>

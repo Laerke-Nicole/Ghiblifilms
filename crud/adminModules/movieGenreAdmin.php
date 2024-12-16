@@ -1,5 +1,5 @@
 <?php
-confirm_logged_in();
+confirm_is_admin();
 ?>
 
 <!-- Movie genre -->
