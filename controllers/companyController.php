@@ -40,3 +40,9 @@ $queryOpeningHour = $dbCon->prepare("SELECT *
                                     FROM OpeningHour");
 $queryOpeningHour->execute();
 $getOpeningHour = $queryOpeningHour->fetchAll();
+
+// company info
+$query = $dbCon->prepare("SELECT * 
+                           FROM CompanyInformation");
+$query->execute();
+$companyMailPhone = $query->fetchAll();

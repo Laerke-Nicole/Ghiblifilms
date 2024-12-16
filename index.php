@@ -265,10 +265,6 @@ case "addnews":
 break;
 
 // edit
-case "editpostalcode":
-    include('crud/editCrud/editPostalCode.php');
-break;
-
 case "editgenre":
     include('crud/editCrud/editGenre.php');
 break;
@@ -306,7 +302,7 @@ case "editshowings":
 break;
 
 case "editnews":
-    include('crud/editCrud/editNews.php');
+    include('crud/news/editNews.php');
 break;
 
 case "editcompanyinformation":

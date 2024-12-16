@@ -1,5 +1,6 @@
 <?php 
 require_once "includes/dbcon.php";
+require_once ("includes/csrfProtection.php");
 require_once ("oop/getIDOOP.php");
 confirm_is_admin();
 
@@ -9,6 +10,7 @@ try {
     $params = GetID::getValues(['ID']);
     // assign the id to newsid
     $newsID = $params['ID'];
+    
 } catch (Exception $e) { 
     header("Location: ../index.php?page=admin&status=0");
     exit;

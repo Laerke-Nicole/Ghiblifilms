@@ -5,7 +5,7 @@
         
             <div class="flex flex-col gap-6">
             <!-- company mail and phone number -->
-            <?php foreach ($getCompanyInformation as $companyInfo): ?>
+            <?php foreach ($companyMailPhone as $companyInfo): ?>
                 <div>
                     <h4 class="text-sm">Email us</h4>
                     <p><?php echo htmlspecialchars(trim($companyInfo['CompanyEmail'])); ?></p>

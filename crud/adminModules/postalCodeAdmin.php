@@ -11,7 +11,7 @@ confirm_is_admin();
             <tr class="secondary-color">
                 <th>PostalCode</th>
                 <th>City</th>
-                <th>Edit</th>
+                
                 <th>Delete</th>
             </tr>
             </thead>
@@ -22,7 +22,7 @@ confirm_is_admin();
                 <tr>
                 <td><?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($postalCode['City'])); ?></td>
-                <td><a href="index.php?page=editpostalcode&ID=<?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?>" class="btn">Edit</a></td>
+
                 <td><a href="index.php?page=controllerdelete&table=PostalCode&primaryKey=PostalCode&primaryKeyValue=<?php echo htmlspecialchars(trim($postalCode['PostalCode'])); ?>" class="btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>
             <?php endforeach; ?>

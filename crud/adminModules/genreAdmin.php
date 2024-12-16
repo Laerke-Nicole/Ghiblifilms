@@ -20,6 +20,7 @@ confirm_is_admin();
             <?php foreach ($getGenre as $genre): ?>
                 <tr>
                 <td><?php echo htmlspecialchars(trim($genre['GenreName'])); ?></td>
+                
                 <td><a href="index.php?page=editgenre&ID=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="btn">Edit</a></td>
                 <td><a href="index.php?page=controllerdelete&table=Genre&primaryKey=GenreID&primaryKeyValue=<?php echo htmlspecialchars(trim($genre['GenreID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
                 </tr>

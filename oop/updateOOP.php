@@ -6,6 +6,18 @@ class UpdateModel {
         $this->db = $dbConnection;
     }
 
+    // updates in the database with primary keys
+    private function getPrimaryKey($table) {
+        // fetch the primary key of the given table
+        $query = "SHOW KEYS FROM $table WHERE Key_name = 'PRIMARY'";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // return the column name of the primary key
+        return $result['Column_name'] ?? null;
+    }
+
     // updates in the database with primary keys and foreign keys
     public function updateWithCompositeKey($table, $originalKeys, $data, $foreignKeys = []) {
         $resolvedForeignKeys = [];

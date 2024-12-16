@@ -2,7 +2,7 @@
     <div class="half">
         <!-- img of movie  -->
         <div class="h-full-vh">
-            <img src="upload/' <?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="h-full-vh pl-12">
+            <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="h-full-vh pl-12">
         </div>
 
         <!-- info  -->
