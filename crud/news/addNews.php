@@ -3,12 +3,11 @@ require_once "../../includes/dbcon.php";
 require_once "../../oop/resizerOOP.php";
 
 if (isset($_POST['submit'])) {
-    // Trim and sanitize input fields
     $headline = htmlspecialchars(trim($_POST['Headline']));
     $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
     $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
 
-    // Image upload
+    // img upload
     if (isset($_FILES['newsImg'])) {
         if (($_FILES['newsImg']['type'] == "image/jpeg" ||
             $_FILES['newsImg']['type'] == "image/pjpeg" ||
@@ -17,35 +16,41 @@ if (isset($_POST['submit'])) {
             $_FILES['newsImg']['type'] == "image/jpg") && 
             ($_FILES['newsImg']['size'] < 6000000)) {
 
+            // if there is an error
             if ($_FILES['newsImg']['error'] > 0) {
                 echo "Error: " . $_FILES['newsImg']['error'];
                 exit();
+            // else upload the file in upload folder
             } else {
                 $uploadDir = "../../upload/";
                 $uploadedFile = $uploadDir . $_FILES['newsImg']['name'];
 
+                // if the file already exists then dont upload again
                 if (file_exists($uploadedFile)) {
                     echo "Can't upload: " . $_FILES['newsImg']['name'] . " exists.";
                     exit();
                 } else {
+                    // move uploaded file to a temporary location
                     move_uploaded_file($_FILES['newsImg']['tmp_name'], $uploadedFile);
 
-                    // Resize the image
+                    // resize the image
                     try {
                         $resizer = new Resizer();
                         $resizer->load($uploadedFile);
                         $resizer->resize(320, 450); 
                         $resizer->save($uploadedFile);
 
+                        // get the filename
                         $newsImg = $_FILES['newsImg']['name'];
 
-                        // Insert data into the database
+                        // insert data into the db
                         $query = $dbCon->prepare("INSERT INTO News (Headline, SubHeadline, TextOfNews, NewsImg) VALUES (:headline, :subHeadline, :textOfNews, :newsImg)");
                         $query->bindParam(':headline', $headline);
                         $query->bindParam(':subHeadline', $subHeadline);
                         $query->bindParam(':textOfNews', $textOfNews);
                         $query->bindParam(':newsImg', $newsImg);
 
+                        // if the query is successful
                         if ($query->execute()) {
                             header("Location: ../../index.php?page=admin&status=added");
                         } else {

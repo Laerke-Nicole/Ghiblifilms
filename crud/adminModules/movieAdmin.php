@@ -25,8 +25,8 @@ confirm_is_admin();
                 </tr>
                 </thead>
 
+                <!-- loop through the added items -->
                 <tbody class="secondary-color">
-                
                 <?php foreach ($getMovies as $getMovie): ?>
                     <tr>
                     <td><?php echo htmlspecialchars(trim($getMovie['Name'])); ?></td>

@@ -12,6 +12,7 @@ $userID = $_SESSION['UserID'];
 
 include ("controllers/userController.php");
 
+// if the userprofileview is empty 
 if (!$getUserProfileView) {
     die("No profile found.");
 }

@@ -16,6 +16,7 @@ require_once ("includes/csrfProtection.php");
 </head>
 <body>
 <div class="row ten-percent grid-cols-2">
+    <!-- booking overview -->
     <div>
         <h2>Order Overview</h2>
 
@@ -38,6 +39,7 @@ require_once ("includes/csrfProtection.php");
         <img src="img/seats.png" alt="Seating chart" height="200">
     </div>
 
+    <!-- payment -->
     <div>
         <h2>Payment</h2>
         <form id="payment-form">
@@ -45,10 +47,12 @@ require_once ("includes/csrfProtection.php");
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
             
             <div id="card-element">
-                <!-- Stripe.js adds fields here -->
+                <!-- stripe.js adds fields here -->
             </div>
             <button id="submit">Pay</button>
-            <div id="error-message"></div> <!-- Error display -->
+
+            <!-- stripes error -->
+            <div id="error-message"></div>
         </form>
     </div>
 </div>

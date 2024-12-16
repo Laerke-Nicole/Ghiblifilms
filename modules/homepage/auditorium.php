@@ -1,5 +1,5 @@
 <section>
-    <!-- display info  -->
+    <!-- display venues -->
     <div class="ten-percent pb-24">
            
         <h5>All our venues:</h5>

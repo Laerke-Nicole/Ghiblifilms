@@ -4,7 +4,9 @@ require_once ("includes/csrfProtection.php");
 require_once ("oop/getIDOOP.php");
 confirm_is_admin();
 
+// get the movie genre ids from the url
 try {
+    // retrieve the ids from the url with GetID::getValues
     $params = GetID::getValues(['MovieID', 'GenreID']);
     $movieID = $params['MovieID'];
     $genreID = $params['GenreID'];

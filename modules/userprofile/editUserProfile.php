@@ -7,10 +7,14 @@ require_once("controllers/userController.php");
 require_once ("oop/getIDOOP.php");
 confirm_logged_in();
 
+// get the user id from the url
 try {
+    // retrieve the id from the url with GetID::getValues
     $params = GetID::getValues(['ID']);
+    // assign the id to userid
     $userID = $params['ID'];
     
+// check if the user is the same as the logged in user
 } catch (Exception $e) { 
     header("Location: ../index.php?page=admin&status=0");
     exit;
@@ -18,6 +22,7 @@ try {
 
 include ("controllers/userController.php");
 
+// if the userprofileview cant be found
 if (!$getUserProfileView) {
     die("No profile found.");
 }

@@ -15,8 +15,8 @@ confirm_is_admin();
             </tr>
             </thead>
 
+            <!-- loop through the added items -->
             <tbody class="secondary-color">
-
             <?php foreach ($getGenre as $genre): ?>
                 <tr>
                 <td><?php echo htmlspecialchars(trim($genre['GenreName'])); ?></td>

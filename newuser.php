@@ -42,6 +42,7 @@ function resolveAddress($dbCon, $streetName, $streetNumber, $postalCode, $countr
     }
 }
 
+// if new user btn is clicked
 if (isset($_POST['submit'])) {
     $username = htmlspecialchars(trim($_POST['Username']));
     $password = htmlspecialchars(trim($_POST['Pass']));
@@ -54,17 +55,17 @@ if (isset($_POST['submit'])) {
     $postalCode = htmlspecialchars(trim($_POST['PostalCode']));
     $country = htmlspecialchars(trim($_POST['Country']));
 
-    // Tjek om brugernavnet allerede findes
+    // check if username already exists
     $query = "SELECT COUNT(*) FROM User WHERE Username = :username";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
 
-    // Hent antallet af eksisterende brugernavne
+    // get number of existing users
     $count = $stmt->fetchColumn();
 
     if ($count > 0) {
-        // Hvis brugernavnet allerede findes
+        // if username already exists in db
         $message = "The username '{$username}' is taken. Please choose a different username.";
     } else {
         // Hash password
@@ -72,10 +73,10 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($password, PASSWORD_BCRYPT, $iterations);
 
         try {
-            // Brug resolveAddress til at finde eller oprette AddressID
+            // use resolveAddress to find or create AddressID
             $addressID = resolveAddress($connection, $streetName, $streetNumber, $postalCode, $country);
 
-            // Indsæt brugeren i databasen
+            // add user to db
             $query = "INSERT INTO User (Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID) 
                       VALUES (:username, :hashed_password, :firstName, :lastName, :email, :phoneNumber, :addressID)";
             $stmt = $connection->prepare($query);
@@ -91,6 +92,7 @@ if (isset($_POST['submit'])) {
 
             $result = $stmt->execute();
 
+                // if user is created
                 if ($result) {
                     $message = "User Created.";
                     if (!headers_sent()) {
@@ -109,14 +111,14 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // display the message if set
-    if (!empty($message)) {
-        echo "<p>" . $message . "</p>";
-    }
+// display the message if set
+if (!empty($message)) {
+    echo "<p>" . $message . "</p>";
+}
 
-    // display the new user form
-    include ("views/newUserDetail.php");
+// display the new user form
+include ("views/newUserDetail.php");
 
-    // close the connection
-    if (isset($connection)){$connection = null;} 
-    ?>
+// close the connection
+if (isset($connection)){$connection = null;} 
+?>

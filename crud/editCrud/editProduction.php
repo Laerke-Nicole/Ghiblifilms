@@ -4,8 +4,11 @@ require_once ("includes/csrfProtection.php");
 require_once ("oop/getIDOOP.php");
 confirm_is_admin();
 
+// get the role in production id from the url
 try {
+    // retrieve the id from the url with GetID::getValues
     $params = GetID::getValues(['ID']);
+    // assign the id to productionid
     $productionID = $params['ID'];
     
 } catch (Exception $e) { 

@@ -6,7 +6,7 @@ class CreateModel {
         $this->db = $dbConnection;
     }
 
-    // Generic create method
+    // insert data into the database
     public function create($table, $data, $foreignKeys = []) {
         $resolvedForeignKeys = [];
 
@@ -15,9 +15,9 @@ class CreateModel {
             unset($data['csrf_token']); 
         }
 
-        // Handle foreign keys dynamically
+        // make sure the data exist in their tables
         foreach ($foreignKeys as $foreignKey => $config) {
-            // Resolve the foreign key and get its primary key value
+            // check if the related data exists if it doesnt it will create it
             $resolvedForeignKeys[$config['primaryKey']] = $this->resolveForeignKey(
                 $config['table'],
                 $config['data'],
@@ -25,53 +25,65 @@ class CreateModel {
             );
         }
 
-        // Merge resolved foreign keys into the main data
+        // merge resolved foreign keys into the main data array
         $data = array_merge($data, $resolvedForeignKeys);
 
-        // Build query dynamically for the main table
+        // keys of the $column name
         $columns = implode(", ", array_keys($data));
+        // :column1, :column2
         $placeholders = ":" . implode(", :", array_keys($data));
 
+        // insert data into the database
         $query = "INSERT INTO $table ($columns) VALUES ($placeholders)";
         $stmt = $this->db->prepare($query);
 
-        // Bind values
+        // bind the data
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
         }
 
-        // Execute the main query and return success status
+        // execute the insert query
         return $stmt->execute();
     }
 
-    // Resolve foreign key dynamically
+    // check a foreign key exists in the database
     private function resolveForeignKey($table, $data, $primaryKey) {
-        // Check if the foreign key record exists
+        // check if the foreign key exists
         $columns = implode(" AND ", array_map(fn($key) => "$key = :$key", array_keys($data)));
         $query = "SELECT $primaryKey FROM $table WHERE $columns LIMIT 1";
         $stmt = $this->db->prepare($query);
 
+        // bind the data 
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
         }
         $stmt->execute();
 
+        // fetch the data if it exists
         $existingRecord = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // if the foreign key exists
         if ($existingRecord) {
-            // Return the existing primary key
+            // return the existing primary key
             return $existingRecord[$primaryKey];
         } else {
-            // Insert a new record and return the new primary key
+            // if the data does not exist insert it into the foreign table
             $columns = implode(", ", array_keys($data));
             $placeholders = ":" . implode(", :", array_keys($data));
+
+            // insert into table
             $query = "INSERT INTO $table ($columns) VALUES ($placeholders)";
             $stmt = $this->db->prepare($query);
 
+            // bind the data
             foreach ($data as $key => $value) {
                 $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
             }
+
+            // execute the insert query
             $stmt->execute();
+
+            // return the primary key of the new inserted data
             return $this->db->lastInsertId();
         }
     }

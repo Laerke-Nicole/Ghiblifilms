@@ -24,7 +24,8 @@ confirm_is_admin();
                     <th>Delete</th>
                 </tr>
                 </thead>
-
+                
+                <!-- loop through the added items -->
                 <tbody class="secondary-color">
                 <?php
                 foreach ($getCompanyInformationAdmin as $companyInformation): ?>

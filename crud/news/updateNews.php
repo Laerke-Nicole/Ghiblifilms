@@ -2,33 +2,36 @@
 require_once "../../includes/dbcon.php";
 require_once "../../oop/resizerOOP.php";
 
+// if the form is submitted
 if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
-    // Get the input values, including the new image if uploaded
+    // get the input values
     $headline = htmlspecialchars(trim($_POST['Headline']));
     $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
     $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
     $newsID = htmlspecialchars(trim($_POST['NewsID']));
 
-    // Initialize the $newsImg variable to store the file name
+    // initialize the $newsImg variable to store the file name
     $newsImg = null;
 
-    // Check if a new image file is uploaded
+    // check if a new image file is uploaded
     if (isset($_FILES['NewsImg']) && $_FILES['NewsImg']['error'] == UPLOAD_ERR_OK) {
-        // Validate the uploaded file (type and size)
+        // validate the uploaded file is the right type
         $allowedTypes = ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/jpg', 'image/png'];
 
-        if (in_array($_FILES['NewsImg']['type'], $allowedTypes) && $_FILES['NewsImg']['size'] < 3000000) {
-            // Move the uploaded file to the "upload" directory
+        if (in_array($_FILES['NewsImg']['type'], $allowedTypes) && $_FILES['NewsImg']['size'] < 4000000) {
+            // move the uploaded file to the "upload" folder
             $newsImg = basename($_FILES['NewsImg']['name']);
             $uploadPath = "../../upload/" . $newsImg;
 
             if (move_uploaded_file($_FILES['NewsImg']['tmp_name'], $uploadPath)) {
-                // Resize the uploaded image
+                // resize the uploaded image
                 try {
                     $resizer = new Resizer();
                     $resizer->load($uploadPath);
-                    $resizer->resize(320, 450); // Set desired dimensions
+                    // size of the image
+                    $resizer->resize(320, 450);
                     $resizer->save($uploadPath);
+                // catch any exceptions
                 } catch (Exception $e) {
                     echo "Error resizing image: " . $e->getMessage();
                     exit();
@@ -43,7 +46,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
             exit();
         }
     }
-    // Prepare statement
+    // update news data
     $query = $dbCon->prepare("UPDATE News SET Headline = :headline, SubHeadline = :subHeadline, TextOfNews = :textOfNews, NewsImg = :newsImg WHERE NewsID = :newsID");
     
     $query->bindParam(':headline', $headline);
@@ -52,6 +55,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $query->bindParam(':newsImg', $newsImg);
     $query->bindParam(':newsID', $newsID);
 
+    // go to admin page after update
     if ($query->execute()) {
         header("Location: ../../index.php?page=admin&status=updated&ID=$newsID");
         exit;

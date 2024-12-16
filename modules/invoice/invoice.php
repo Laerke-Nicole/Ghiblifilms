@@ -5,7 +5,7 @@ require_once("includes/session.php");
 confirm_logged_in();
 ?>
 
-
+<!-- btns to userprofile or home after payment success -->
 <div class="ten-percent">
     <h1>Payment succeeded</h1>
     <p>You can now check your booking out on your profile page or go to the homepage to see more movies.</p>

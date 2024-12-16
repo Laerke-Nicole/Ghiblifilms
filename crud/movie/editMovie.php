@@ -3,8 +3,11 @@ require_once "includes/dbcon.php";
 require_once ("oop/getIDOOP.php");
 confirm_is_admin();
 
+// get the movie id from the url
 try {
+    // retrieve the id from the url with GetID::getValues
     $params = GetID::getValues(['ID']);
+    // assign the id to movieid
     $movieID = $params['ID'];
     
 } catch (Exception $e) { 

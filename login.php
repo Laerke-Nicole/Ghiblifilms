@@ -10,10 +10,13 @@ if (logged_in()) {
     exit;
 }
 
+// if login btn has been clicked
 if (isset($_POST['submit'])) { 
+    // get the input fields
     $username = htmlspecialchars(trim($_POST['User']));
     $password = htmlspecialchars(trim($_POST['Pass']));
     
+    // check if the username and password are correct
     try {
         $query = "SELECT UserID, Username, Pass, Role FROM User WHERE Username = :Username LIMIT 1"; 
         $stmt = $connection->prepare($query);
@@ -54,10 +57,8 @@ if (!empty($message)) {
     echo "<p>" . htmlspecialchars(trim($message)) . "</p>";
 }
 
-
 // display the log in form
 include ("views/loginDetail.php");
-
 
 // close the connection
 if (isset($connection)){$connection = null;}

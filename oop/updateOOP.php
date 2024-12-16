@@ -6,6 +6,7 @@ class UpdateModel {
         $this->db = $dbConnection;
     }
 
+    // updates in the database with primary keys and foreign keys
     public function updateWithCompositeKey($table, $originalKeys, $data, $foreignKeys = []) {
         $resolvedForeignKeys = [];
 
@@ -14,7 +15,7 @@ class UpdateModel {
             unset($data['csrf_token']); 
         }
     
-        // Resolve foreign keys dynamically
+        // resolve foreign keys to ensure they exist in the database
         foreach ($foreignKeys as $foreignKey => $config) {
             $resolvedForeignKeys[$config['primaryKey']] = $this->resolveForeignKey(
                 $config['table'],
@@ -23,66 +24,68 @@ class UpdateModel {
             );
         }
     
-        // Merge resolved foreign keys into the main data
+        // merge resolved foreign keys into the main data
         $data = array_merge($data, $resolvedForeignKeys);
     
-        // Ensure originalKeys are provided
+        // ensure at least one primary key is provided
         if (empty($originalKeys)) {
             throw new Exception("No primary keys provided for the WHERE clause in the update query.");
         }
     
-        // Build SET clause dynamically
+        // columns: column1 = :column1, column2 = :column2
         $setClause = implode(", ", array_map(fn($key) => "$key = :$key", array_keys($data)));
     
-        // Build WHERE clause for composite keys
+        // foreign keys: key1 = :original_key1 AND key2 = :original_key2
         $whereClause = implode(" AND ", array_map(fn($key) => "$key = :original_$key", array_keys($originalKeys)));
     
-        // Final Query
+        // update table
         $query = "UPDATE $table SET $setClause WHERE $whereClause";
-    
-        // Debugging
-        error_log("Generated Query: $query");
-        error_log("Data: " . print_r($data, true));
-        error_log("Original Keys: " . print_r($originalKeys, true));
     
         $stmt = $this->db->prepare($query);
     
-        // Bind values for SET clause
+        // bind values being updated
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
         }
     
-        // Bind values for WHERE clause
+        // bind original keys in the data
         foreach ($originalKeys as $key => $value) {
             $stmt->bindValue(":original_$key", htmlspecialchars(trim($value)));
         }
     
-        // Execute and return success status
         return $stmt->execute();
     }
 
+    // resolves a foreign key by checking if the data exists
+    // if not, it inserts the data
     private function resolveForeignKey($table, $data, $primaryKey) {
-        // Check if the foreign key record exists
+        // check if the foreign key data exists
         $columns = implode(" AND ", array_map(fn($key) => "$key = :$key", array_keys($data)));
+
         $query = "SELECT $primaryKey FROM $table WHERE $columns LIMIT 1";
+
         $stmt = $this->db->prepare($query);
 
+        // loop through the data and bind values
         foreach ($data as $key => $value) {
             $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
         }
         $stmt->execute();
 
+        // return the primary key if the data exists
         $existingRecord = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // if it exists return the primary key
         if ($existingRecord) {
             return $existingRecord[$primaryKey];
         } else {
-            // Insert new record for the foreign key
+            // insert new for the foreign key
             $columns = implode(", ", array_keys($data));
             $placeholders = ":" . implode(", :", array_keys($data));
             $query = "INSERT INTO $table ($columns) VALUES ($placeholders)";
             $stmt = $this->db->prepare($query);
 
+            // bind values for the insert query
             foreach ($data as $key => $value) {
                 $stmt->bindValue(":$key", htmlspecialchars(trim($value)));
             }

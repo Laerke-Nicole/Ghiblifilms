@@ -1,26 +1,31 @@
 <?php
+// mail to send to
 $myMail = "laerke@laerkenicole.dk";
 
+// the inputs from the form
 $firstName = htmlspecialchars(trim($_POST['firstName']));
 $lastName = htmlspecialchars(trim($_POST['lastName']));
 $email = htmlspecialchars(trim($_POST['email']));
 $phoneNumber = htmlspecialchars(trim($_POST['phoneNumber']));
 $subject = htmlspecialchars(trim($_POST['subject']));
 $msg = htmlspecialchars(trim($_POST['message']));
+// the numbers and letters that are allowed in the email
 $regexp = "/^[^0-9][A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_-]+)*[.][A-z]{2,4}$/";
 
 // token
 $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-// Check reCAPTCHA
+// check reCAPTCHA
 include ("secretKey.php");
 $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
 
+// if no token is found
 if (empty($recaptchaResponse)) {
     echo "No reCAPTCHA token found. Please try again.";
     exit;
 }
 
+// get reCAPTCHA secret key
 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
 $recaptchaValidation = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
 $recaptchaData = json_decode($recaptchaValidation);

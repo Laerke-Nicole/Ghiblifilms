@@ -13,16 +13,20 @@ if (isset($_SESSION['UserID'])) {
     $userID = null;
 }
 
-// Retrieve session data
+// get session data
 $showingsID = $_SESSION['ShowingsID'] ?? null;
+
+// get selected seats
 $selectedSeatIDs = $_SESSION['SelectedSeats'] ?? [];
+
+// if showingsID or selectedseatid is empty
 if (!$showingsID || empty($selectedSeatIDs)) {
     die("No reservation details found.");
 }
 
 include ("controllers/paymentController.php");
 
-// Calculate the total price
+// calculate the total price
 $pricePerSeat = 12;
 $totalPrice = count($selectedSeatIDs) * $pricePerSeat;
 

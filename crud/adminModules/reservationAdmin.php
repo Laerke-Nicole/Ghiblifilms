@@ -21,8 +21,9 @@ confirm_is_admin();
                 <th>Payment type</th>
             </tr>
         </thead>
-        <tbody class="secondary-color">
 
+        <!-- loop through the added items -->
+        <tbody class="secondary-color">
         <?php foreach ($getUserReservations as $reservation): ?>
             <tr>
                 <td><?php echo htmlspecialchars(trim($reservation['FirstName'])) . " " . htmlspecialchars(trim($reservation['LastName'])); ?></td>

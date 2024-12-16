@@ -33,7 +33,7 @@ confirm_is_admin();
 </head>
 <body>
 
-    <!-- Sidebar Navigation -->
+    <!-- sidebar -->
     <ul id="slide-out" class="sidenav sidenav-fixed">
         <li><a href="#!" onclick="showCategory('movie')">Movies</a></li>
         <li><a href="#!" onclick="showCategory('company')">Company</a></li>
@@ -41,7 +41,7 @@ confirm_is_admin();
         <li><a href="#!" onclick="showCategory('reservation')">Reservations</a></li>
     </ul>
 
-    <!-- Main Content -->
+    <!-- categories made with btns -->
     <main class="content-area">
         <?php include("modules/admin/categories.php"); ?>
     </main>

@@ -2,9 +2,11 @@
 <div class="row ten-percent">
     <h2>Your bookings</h2>
     <br>
+    <!-- if the user has no bookings yet -->
     <?php if (!$getUserReservations): ?>
         You have no bookings.
     <?php else: 
+        // show the booking list in a foreach
         foreach ($getUserReservations as $reservation): ?>
             <div>
                 <p><strong">Movie: </strong><?php echo htmlspecialchars($reservation['MovieName']); ?></p>

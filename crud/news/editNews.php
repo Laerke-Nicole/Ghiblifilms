@@ -3,10 +3,12 @@ require_once "includes/dbcon.php";
 require_once ("oop/getIDOOP.php");
 confirm_is_admin();
 
+// get the news id from the url
 try {
+    // retrieve the id from the url with GetID::getValues
     $params = GetID::getValues(['ID']);
+    // assign the id to newsid
     $newsID = $params['ID'];
-    
 } catch (Exception $e) { 
     header("Location: ../index.php?page=admin&status=0");
     exit;
@@ -29,7 +31,6 @@ include ("controllers/adminController.php");
 <div class="container">
         <h3>Editing News "<?php echo htmlspecialchars(trim($getNews[0]['Headline'])); ?>"</h3>
         
-        <!-- <form class="col s12" name="contact" method="post" action="updateNews.php" enctype="multipart/form-data"> -->
         <form class="col s12" name="contact" method="post" action="crud/news/updateNews.php" enctype="multipart/form-data">
         <!-- csrf protection -->
         <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

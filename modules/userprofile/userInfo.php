@@ -2,6 +2,7 @@
     <h2>Your information</h2>
     <br>
     
+    <!-- show all user info -->
     <?php if ($userProfile = $getUserProfileView[0]): ?>
         <div>
             <p><strong>Username: </strong><?php echo htmlspecialchars(trim($userProfile['Username'])); ?></p>

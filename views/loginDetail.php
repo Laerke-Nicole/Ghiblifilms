@@ -27,7 +27,7 @@
     
     <div class="pb-4">
         <p>Password:</p>
-        <input type="password" name="Pass" maxlength="30" value="" class="validate" required="" aria-required="true" />
+        <input type="password" name="Pass" maxlength="255" value="" class="validate" required="" aria-required="true" />
     </div>
 
     <div class="cursor">

@@ -16,6 +16,7 @@ confirm_is_admin();
             </tr>
             </thead>
 
+            <!-- loop through the added items -->
             <tbody class="secondary-color">
             <?php foreach ($getMovieProductionAdmin as $movieProduction): ?>
                 <tr>

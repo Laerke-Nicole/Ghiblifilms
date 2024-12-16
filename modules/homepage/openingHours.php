@@ -1,6 +1,6 @@
 <section>
     <div class="ten-percent pb-24">
-               
+        <!-- opening hours -->
         <h5>Opening hours:</h5>
         <?php foreach ($getOpeningHour as $openingHour): ?>
             <div>

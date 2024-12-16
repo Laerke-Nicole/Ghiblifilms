@@ -3,13 +3,12 @@ require_once "../../includes/dbcon.php";
 require_once "../../oop/resizerOOP.php";
 
 if (isset($_POST['submit'])) {
-    // Trim and htmlspecialchars for input fields
     $name = htmlspecialchars(trim($_POST['Name']));
     $description = htmlspecialchars(trim($_POST['Description']));
     $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
     $duration = htmlspecialchars(trim($_POST['Duration']));
 
-    // Image upload
+    // img upload
     if (isset($_FILES['movieImg'])) {
         if (($_FILES['movieImg']['type'] == "image/jpeg" ||
             $_FILES['movieImg']['type'] == "image/pjpeg" ||
@@ -18,22 +17,24 @@ if (isset($_POST['submit'])) {
             $_FILES['movieImg']['type'] == "image/jpg") && 
             ($_FILES['movieImg']['size'] < 600000)) { 
 
+            // if there is an error
             if ($_FILES['movieImg']['error'] > 0) {
                 echo "Error: " . $_FILES['movieImg']['error'];
-                exit(); // Stop further execution
+                exit();
+            // else upload the file in upload folder
             } else {
                 $uploadDir = "../../upload/";
                 $uploadedFile = $uploadDir . $_FILES['movieImg']['name'];
 
-                // Check if file exists
+                // if the file already exists then dont upload again
                 if (file_exists($uploadedFile)) {
                     echo "Can't upload: " . $_FILES['movieImg']['name'] . " exists.";
-                    exit(); // Stop further execution
+                    exit();
                 } else {
-                    // Move uploaded file to a temporary location
+                    // move uploaded file to a temporary location
                     move_uploaded_file($_FILES['movieImg']['tmp_name'], $uploadedFile);
 
-                    // Resize the image
+                    // resize the image
                     try {
                         $resizer = new Resizer();
                         $resizer->load($uploadedFile);
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) {
                         // get the filename
                         $movieImg = $_FILES['movieImg']['name'];
 
-                        // Insert data into the database
+                        // insert data into the db
                         $query = $dbCon->prepare("INSERT INTO Movie (`Name`, `Description`, ReleaseYear, Duration, MovieImg) VALUES (:name, :description, :releaseYear, :duration, :movieImg)");
                         $query->bindParam(':name', $name);
                         $query->bindParam(':description', $description);
@@ -51,7 +52,7 @@ if (isset($_POST['submit'])) {
                         $query->bindParam(':duration', $duration);
                         $query->bindParam(':movieImg', $movieImg);
 
-                        // Execute and check for errors
+                        // if the query is successful
                         if ($query->execute()) {
                             header("Location: ../../index.php?page=admin&status=added");
                             exit;

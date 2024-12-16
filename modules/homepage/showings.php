@@ -1,3 +1,4 @@
+<!-- showings -->
 <?php if ($dailyShowingsViews): ?>
     <section class="pt-24 ten-percent" id="daily-showings">
         <h2 class="text-center pb-4">Daily Showings</h2>

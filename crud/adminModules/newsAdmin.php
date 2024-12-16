@@ -21,6 +21,7 @@ confirm_is_admin();
             </tr>
             </thead>
 
+            <!-- loop through the added items -->
             <tbody class="secondary-color">
             <?php foreach ($getNewsAdmin as $news): ?>
                 <tr>

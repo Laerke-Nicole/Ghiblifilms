@@ -2,13 +2,13 @@
 require_once("includes/functions.php"); 
 ?>
 
-
 <div class="ten-percent">
     <h3>Logged in successfully</h3>
 
     <br />
     <br />
     
+    <!-- btns to buy tickets and go to profile page -->
     <div>
         <h4>Here is what you can do now that you are logged in!</h4>
         
@@ -19,6 +19,7 @@ require_once("includes/functions.php");
     <br />
     <br />
 
+    <!-- btns to go to ghiblifilms info -->
     <div>
         <h4>Or check out other stuff you can do!</h4>
         

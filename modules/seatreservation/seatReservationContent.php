@@ -3,7 +3,7 @@
         <div>
             <h1>Choose seats</h1>
             
-            <!-- Display reserved seats -->
+            <!-- display reserved seats -->
             <div class="flex pb-4 gap-4">
                 <p><strong>Taken seats:</strong></p>
                 <p><?php echo $reservedSeatList; ?></p>
@@ -23,6 +23,7 @@
                 <div class="pb-4">
                     <label for="Seats">Select seats, up to 5:</label>
                     <div id="Seats">
+                        <!-- loop of the available seats to click on -->
                         <?php foreach ($availableSeats as $seat): ?>
                             <label>
                                 <input type="checkbox" name="Seats[]" value="<?php echo $seat['SeatID']; ?>">

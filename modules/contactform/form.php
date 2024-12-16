@@ -16,23 +16,23 @@ require_once ("includes/csrfProtection.php");
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
 
             <div>
-                <input type="text" id="firstName" name="firstName" placeholder="First name" class="validate" required="" aria-required="true">
+                <input type="text" id="firstName" name="firstName" placeholder="First name" maxlength="50" class="validate" required="" aria-required="true">
             </div>
 
             <div>
-                <input type="text" id="lastName" name="lastName" placeholder="Last name" class="validate" required="" aria-required="true">
+                <input type="text" id="lastName" name="lastName" placeholder="Last name" maxlength="50" class="validate" required="" aria-required="true">
             </div>
 
             <div>
-                <input type="email" id="email" name="email" placeholder="Email" class="validate" required="" aria-required="true">
+                <input type="email" id="email" name="email" placeholder="Email" maxlength="255" class="validate" required="" aria-required="true">
             </div>
 
             <div>
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" class="validate" required="" aria-required="true">
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number" maxlength="20" class="validate" required="" aria-required="true">
             </div>
 
             <div>
-                <input type="text" id="subject" name="subject" placeholder="Subject" class="validate" required="" aria-required="true">
+                <input type="text" id="subject" name="subject" placeholder="Subject" class="validate" maxlength="255" required="" aria-required="true">
             </div>
 
             <div>
