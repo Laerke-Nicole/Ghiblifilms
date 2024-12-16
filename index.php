@@ -242,10 +242,6 @@ case "showingsadmin":
     include('crud/adminModules/showingsAdmin.php');
 break;
 
-case "useradmin":
-    include('crud/adminModules/userAdmin.php');
-break;
-
 case "newsadmin":
     include('crud/adminModules/newsAdmin.php');
 break;
@@ -307,10 +303,6 @@ break;
 
 case "editshowings":
     include('crud/editCrud/editShowings.php');
-break;
-
-case "edituser":
-    include('crud/editCrud/editUser.php');
 break;
 
 case "editnews":

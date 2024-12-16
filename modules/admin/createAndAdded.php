@@ -50,11 +50,6 @@
 </div>
 
 
-<!-- user management -->
-<div id="userSection" class="expanded-section ml-250" style="display: none;">
-    <?php require 'crud/adminModules/userAdmin.php' ?> 
-</div>
-
 <!-- address management -->
 <div id="postalCodeSection" class="expanded-section ml-250" style="display: none;">
     <?php require 'crud/adminModules/postalCodeAdmin.php' ?> 

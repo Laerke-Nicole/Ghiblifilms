@@ -15,6 +15,12 @@ try {
     header("Location: ../index.php?page=admin&status=0");
     exit;
 }
+
+include ("controllers/userController.php");
+
+if (!$getUserProfileView) {
+    die("No profile found.");
+}
 ?>
 
 

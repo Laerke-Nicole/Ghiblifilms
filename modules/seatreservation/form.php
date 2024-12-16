@@ -1,7 +1,8 @@
 <?php
-require_once("includes/dbcon.php");
-require_once("includes/functions.php");
-require_once("includes/session.php");
+// require_once("includes/dbcon.php");
+require_once(__DIR__ . "/../../includes/dbcon.php");
+require_once(__DIR__ . "/../../includes/functions.php");
+require_once(__DIR__ . "/../../includes/session.php");
 confirm_logged_in();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Seats'])) {
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Seats'])) {
     $_SESSION['SelectedSeats'] = $selectedSeats;
 
     // Redirect to the payment page
-    header("Location: index.php?page=paymentdetail");
+    header("Location: /index.php?page=paymentdetail");
     exit;
 }
 ?>

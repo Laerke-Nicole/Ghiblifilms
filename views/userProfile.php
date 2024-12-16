@@ -10,8 +10,10 @@ confirm_logged_in();
 // UserID from session
 $userID = $_SESSION['UserID']; 
 
+include ("controllers/userController.php");
+
 if (!$getUserProfileView) {
-    die("Not found.");
+    die("No profile found.");
 }
 
 // user info 

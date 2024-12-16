@@ -61,7 +61,6 @@ confirm_is_admin();
             
             <!-- to tell create.php which table to insert data into -->
             <input type="hidden" name="table" value="CompanyInformation">
-            <input type="hidden" id="deleteID" name="CompanyInformationID" value="">
             
             <div class="row">
                 <div class="input-field col s12">

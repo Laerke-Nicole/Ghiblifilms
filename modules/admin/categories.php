@@ -118,21 +118,6 @@
     </div>
 </div>
 
-<!-- user section -->
-<div id="user-section" class="category-section">
-    <h5>User Management</h5>
-    <div class="row">
-        <!-- users -->
-        <div class="col s12 m6 l4">
-            <div class="card" onclick="expandSection('userSection')">
-                <div class="card-content">
-                    <span class="card-title">Users</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- address section -->
 <div id="address-section" class="category-section">
     <h5>Address Management</h5>

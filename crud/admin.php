@@ -37,7 +37,6 @@ confirm_is_admin();
     <ul id="slide-out" class="sidenav sidenav-fixed">
         <li><a href="#!" onclick="showCategory('movie')">Movies</a></li>
         <li><a href="#!" onclick="showCategory('company')">Company</a></li>
-        <li><a href="#!" onclick="showCategory('user')">Users</a></li>
         <li><a href="#!" onclick="showCategory('address')">Address</a></li>
         <li><a href="#!" onclick="showCategory('reservation')">Reservations</a></li>
     </ul>

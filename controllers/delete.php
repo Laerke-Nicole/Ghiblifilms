@@ -1,10 +1,4 @@
 <?php
-if (headers_sent($file, $line)) {
-    echo "Headers already sent in $file on line $line.";
-    exit;
-}
-
-
 require_once "includes/dbcon.php";
 require_once "oop/deleteOOP.php";
 
@@ -12,7 +6,7 @@ if (isset($_GET['table']) && isset($_GET['primaryKey']) && isset($_GET['primaryK
     $table = htmlspecialchars(trim($_GET['table']));
     $primaryKey = htmlspecialchars(trim($_GET['primaryKey']));
     $primaryKeyValue = htmlspecialchars(trim($_GET['primaryKeyValue']));
-    $redirectPage = htmlspecialchars(trim($_GET['redirect'] ?? 'admin')); // Default to 'admin' if not specified
+    $redirectPage = htmlspecialchars(trim($_GET['redirect'] ?? 'admin'));
 
     // Initialize the DeleteModel
     $deleteModel = new DeleteModel($dbCon);
@@ -20,12 +14,11 @@ if (isset($_GET['table']) && isset($_GET['primaryKey']) && isset($_GET['primaryK
 
     // Redirect based on success or failure
     if ($success) {
-        // Redirect to the dynamic page
-        $redirectUrl = "/index.php?page=" . urlencode($redirectPage) . "&status=deleted&ID=" . urlencode($primaryKeyValue);
-        header("Location: $redirectUrl");
+        $redirectUrl = "index.php?page=" . urlencode($redirectPage) . "&status=deleted&" . urlencode($primaryKey) . "=" . urlencode($primaryKeyValue);
+        echo "<script>window.location.href='$redirectUrl';</script>";
         exit;
     } else {
-        echo "Error: Deletion failed.";
+        header("Location: index.php?page=admin&status=0");
         exit;
     }
 } else {

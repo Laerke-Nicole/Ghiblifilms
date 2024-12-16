@@ -17,8 +17,8 @@
         <?php endif; ?> 
 
         <?php if ($userID && !is_admin()): ?>
-            <li><a href="index.php?page=userprofile&UserID=' . htmlspecialchars(trim($userID)) . '" class="secondary-color">Profile Page</a></li>
-        <?php endif; ?>     
+            <li><a href="index.php?page=userprofile&UserID=<?php echo htmlspecialchars(trim($userID)); ?>" class="secondary-color">Profile Page</a></li>
+        <?php endif; ?>  
 
         <?php if (is_admin()): ?>
         <li><a href="index.php?page=admin" class="secondary-color">Admin page</a></li>

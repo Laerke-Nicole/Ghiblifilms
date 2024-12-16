@@ -32,19 +32,13 @@ if (isset($_POST['submit'])) {
         
             // after logging in go to the successful login detail view
             if ($found_user['Role'] === 'Admin') {
-                header("Location: /index.php?page=admin");
+                echo "<script>window.location.href='/index.php?page=admin';</script>";
                 exit;
             } else {
-                header("Location: /index.php?page=useroptions");
+                // if user is logged in go to the user options page
+                echo "<script>window.location.href='/index.php?page=useroptions';</script>";
                 exit;
             }
-            // if (!headers_sent()) {
-            //     header("Location: /index.php?page=useroptions");
-            //     exit;
-            // } else {
-            //     echo "<script>window.location.href='/index.php?page=useroptions';</script>";
-            //     exit;
-            // }
         } else {
             // if username or password is incorrect
             $message = "Username/password combination incorrect.<br />
