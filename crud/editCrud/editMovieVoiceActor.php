@@ -10,6 +10,7 @@ try {
     $voiceActorID = $params['VoiceActorID'];
 } catch (Exception $e) { 
     header("Location: ../index.php?page=admin&status=0");
+    exit;
 }
 
 include ("controllers/adminController.php");

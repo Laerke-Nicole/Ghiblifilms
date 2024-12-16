@@ -7,14 +7,13 @@
 // make address not be duplicated
 function resolveAddress($dbCon, $streetName, $streetNumber, $postalCode, $country) {
     // check if the address exists
-    $query = $dbCon->prepare("
-        SELECT AddressID 
-        FROM Address 
-        WHERE StreetName = :streetName 
-          AND StreetNumber = :streetNumber 
-          AND PostalCode = :postalCode 
-          AND Country = :country
-        LIMIT 1
+    $query = $dbCon->prepare(" SELECT AddressID 
+                                FROM Address 
+                                WHERE StreetName = :streetName 
+                                AND StreetNumber = :streetNumber 
+                                AND PostalCode = :postalCode 
+                                AND Country = :country
+                                LIMIT 1
     ");
     $query->bindParam(':streetName', $streetName);
     $query->bindParam(':streetNumber', $streetNumber);

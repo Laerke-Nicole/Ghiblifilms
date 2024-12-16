@@ -15,7 +15,7 @@
 
             <br/>
 
-            <!-- Seat selection form -->
+            <!-- seat selection form -->
             <form method="POST" action="index.php?page=seatreservationform">
                 <!-- csrf protection -->
                 <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

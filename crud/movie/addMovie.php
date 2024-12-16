@@ -54,6 +54,7 @@ if (isset($_POST['submit'])) {
                         // Execute and check for errors
                         if ($query->execute()) {
                             header("Location: ../../index.php?page=admin&status=added");
+                            exit;
                         } else {
                             echo "Failed to insert data. Error: " . implode(", ", $query->errorInfo());
                         }
@@ -73,4 +74,5 @@ if (isset($_POST['submit'])) {
 
 } else {
     header("Location: ../../index.php?page=admin&status=0");
+    exit;
 }

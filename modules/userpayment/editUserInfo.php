@@ -13,6 +13,7 @@ try {
     
 } catch (Exception $e) { 
     header("Location: ../index.php?page=admin&status=0");
+    exit;
 }
 ?>
 

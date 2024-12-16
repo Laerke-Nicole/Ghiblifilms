@@ -57,9 +57,11 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     // Execute the query and check for success
     if ($query->execute()) {
         header("Location: ../../index.php?page=admin&status=updated&ID=$movieID");
+        exit;
     } else {
         echo "Failed to update data. Error: " . implode(", ", $query->errorInfo());
     }
 } else {
     header("Location: ../../index.php?page=admin&status=0");
+    exit;
 }

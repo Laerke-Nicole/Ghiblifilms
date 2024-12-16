@@ -40,7 +40,9 @@ if (isset($_POST['submit'])) {
     // Redirect based on success or failure
     if ($success) {
         header("Location: ../index.php?page=admin&status=added");
+        exit;
     } else {
         header("Location: ../index.php?page=admin&status=error");
+        exit;
     }
 }

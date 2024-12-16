@@ -10,6 +10,7 @@
     <script src="js/recaptcha.js" defer></script>
 </head>
 
+<div class="ten-percent">
 <h2>Log in</h2>
 
 <form action="" method="post" class="flex flex-col">
@@ -38,5 +39,6 @@
     </div>
 </form>
 
+</div>
 </body>
 </html>

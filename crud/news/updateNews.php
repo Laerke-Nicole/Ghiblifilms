@@ -54,11 +54,13 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
 
     if ($query->execute()) {
         header("Location: ../../index.php?page=admin&status=updated&ID=$newsID");
+        exit;
     } else {
         echo "Failed to update data. Error: " . implode(", ", $query->errorInfo());
     }
 
 } else {
     header("Location: ../../index.php?page=admin&status=0");
+    exit;
 }
 ?>

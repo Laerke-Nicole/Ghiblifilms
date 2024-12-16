@@ -26,10 +26,6 @@ if (isset($_SESSION['UserID'])) {
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- recaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
-    <script src="js/recaptcha.js" defer></script>
     
 </head>
 
@@ -375,8 +371,6 @@ break;
 case "logindetail":
     include('views/loginDetail.php');
 break;
-
-
 
 }
 ?>

@@ -66,4 +66,5 @@ if (isset($_POST['submit'])) {
     }
 } else {
     header("Location: ../../index.php?page=admin&status=0");
+    exit;
 }
