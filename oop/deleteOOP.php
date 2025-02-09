@@ -13,8 +13,9 @@ class DeleteModel {
         $stmt = $this->db->prepare($query);
 
         // bind the primary key value
-        $stmt->bindValue(':primaryKeyValue', $primaryKeyValue, PDO::PARAM_INT);
+        $stmt->bindValue(':primaryKeyValue', $primaryKeyValue);
 
         return $stmt->execute();
     }
 }
+

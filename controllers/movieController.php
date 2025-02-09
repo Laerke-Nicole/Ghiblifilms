@@ -62,7 +62,6 @@ $queryShowings = $dbCon->prepare("SELECT s.*, a.AuditoriumNumber, sf.ScreenForma
 $queryShowings->bindParam(':movieID', $movieID);
 $queryShowings->execute();
 $getShowings = $queryShowings->fetchAll();
-
 }
 
 

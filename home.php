@@ -36,20 +36,9 @@ include("modules/homepage/news.php");
 // all movies 
 include("modules/homepage/movies.php"); 
 
-// about ghiblifilms
-include("modules/homepage/about.php");
-
 // contact form
 include("modules/homepage/contactFormAndContactInfo.php");
 
-// opening hours
-include("modules/homepage/openingHours.php");
-
-// company address
-include("modules/homepage/address.php");
-
-// venues/auditorium
-include("modules/homepage/auditorium.php");
 ?>
 
 </body>

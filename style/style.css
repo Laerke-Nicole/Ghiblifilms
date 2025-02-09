@@ -1,14 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+
 /* color palette */
 :root {
-    --primary-color: #2B2254;
+    /* --primary-color: #2B2254;
     --secondary-color: #D4C5FF;
-    --tertiary-color: #F3F3E7;
+    --tertiary-color: #F3F3E7; */
+    /* --primary-color: #A6CFE2; */
+    --primary-color: #a9d5aa;
+    --secondary-color: #F4F4E1;
+    --tertiary-color: #1c244d;
+
+    --black-title: #1b1b1b;
+    --black-text: #333;
+    --white-title: #f9f9f9;
+    --white-text: #f1f1f1;
 }
 
 /* font family */
 :root {
-    --primary-font: "etna", sans-serif;
-    --secondary-font: "open sans", sans-serif;
+    --primary-font: 'Comic Neue', sans-serif;
+    --secondary-font: "lora", serif;
 }
 
 * {
@@ -60,49 +72,44 @@ button {
 /* text style */
 h1 {
     font-family: var(--primary-font);
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--secondary-color);
-    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--black-title);
 }
 
 h2 {
     font-family: var(--primary-font);
-    font-size: 30px;
-    font-weight: 400;
-    color: var(--secondary-color);
-    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--black-title);
 }
 
 h3 {
     font-family: var(--primary-font);
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--secondary-color);
-    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--black-title);
 }
 
 h4 {
     font-family: var(--primary-font);
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--secondary-color);
-    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--black-title);
 }
 
 h5 {
     font-family: var(--primary-font);
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--secondary-color);
-    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--black-title);
 }
 
 p {
     font-family: var(--secondary-font);
     font-size: 14px;
-    font-weight: 400;
-    color: var(--tertiary-color);
+    font-weight: normal;
+    color: var(--black-text);
 }
 
 .primary-color {
@@ -129,14 +136,6 @@ p {
 
 
 /* styles for pages */
-/* front page about company */
-.about-ghiblifilms {
-    background-image: url("../img/about-ghiblifilms.jpg");
-    width: 100%;
-    height: 60vh;
-    background-size: cover;
-    background-position: center;
-}
 
 /* all containers with 3 items */
 .items {
@@ -145,6 +144,12 @@ p {
     grid-template-columns: repeat(3,minmax(1px, 1fr));
     row-gap: 56px;
     column-gap: 16px;
+}
+
+.grid-50-50 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
 }
 
 /* style for a box with content inside */
@@ -156,9 +161,14 @@ p {
 }
 
 .contact-form input, .contact-form textarea {
-    background-color: transparent;
-    border-bottom: 1px solid var(--secondary-color);
-    padding: 10px;
+    background-color: var(--white-title);
+    border: 0;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.contact {
+    padding: 70px;
 }
 
 
@@ -200,4 +210,11 @@ p {
 .category-section .card {
     cursor: pointer;
     background-color: var(--secondary-color);
+}
+
+.contact-left-img {
+    background-image: url('../img/about-ghiblifilms.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
 }

@@ -156,7 +156,7 @@ CREATE TABLE CompanyInformation (
 -- opening hours
 CREATE TABLE OpeningHour (
   OpeningHourID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `Day` varchar(9) NOT NULL,
+  `Day` varchar(100) NOT NULL,
   `Time` varchar(13) NOT NULL
 ) ENGINE=InnoDB;
 

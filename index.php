@@ -24,8 +24,6 @@ if (isset($_SESSION['UserID'])) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
 </head>
 
@@ -44,6 +42,14 @@ switch($page) {
 
 default:
     include('home.php');
+break;
+
+case "about":
+    include('views/aboutDetail.php');
+break;
+
+case "contact":
+    include('views/contactDetail.php');
 break;
 
 case "login":
@@ -367,8 +373,12 @@ break;
 <!-- footer to include on all pages -->
 <?php include("modules/footer/footer.php"); ?>
 
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 <!-- javascript -->
 <script src="/js/showCategory.js" defer></script>
+
 <script src="/js/dropdown.js"></script>
 </body>
 </html>

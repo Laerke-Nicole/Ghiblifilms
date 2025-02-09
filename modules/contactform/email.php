@@ -6,8 +6,6 @@ $myMail = "laerke@laerkenicole.dk";
 $firstName = htmlspecialchars(trim($_POST['firstName']));
 $lastName = htmlspecialchars(trim($_POST['lastName']));
 $email = htmlspecialchars(trim($_POST['email']));
-$phoneNumber = htmlspecialchars(trim($_POST['phoneNumber']));
-$subject = htmlspecialchars(trim($_POST['subject']));
 $msg = htmlspecialchars(trim($_POST['message']));
 // the numbers and letters that are allowed in the email
 $regexp = "/^[^0-9][A-z0-9_-]+([.][A-z0-9_]+)*[@][A-z0-9_]+([.][A-z0-9_-]+)*[.][A-z]{2,4}$/";
@@ -43,7 +41,7 @@ if (!preg_match($regexp,$_POST['email'])) {
     }
 	  
 // if the fields are empty
-elseif (empty($firstName) || empty($lastName) || empty($email) || empty($subject) || empty($msg)) {
+elseif (empty($firstName) || empty($lastName) || empty($email) || empty($msg)) {
         echo "Please fill in all required fields";
         echo '<a href="/index.php?page=home" class="btn">Go back to home page</a>';
     }
@@ -51,7 +49,7 @@ elseif (empty($firstName) || empty($lastName) || empty($email) || empty($subject
 // send email
 elseif (($_POST['submit'])) {
     $body = "$msg \n\n Name: $firstName $lastName \n Email: $email";
-        mail($myMail,$subject,$body,"From: $email\n");
+        mail($myMail,$body,"From: $email\n");
         echo '<h1>"Thanks for your mail"</h1>';
         echo '<a href="/index.php?page=home" class="btn">Go back to home page</a>';
     }

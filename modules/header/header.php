@@ -5,6 +5,9 @@
     <a href="index.php?page=home" class="secondary-color text-3xl caps">Ghiblifilms</a>
 
     <ul class="flex gap-6">
+
+        <li><a href="index.php?page=about" class="secondary-color">About Ghiblifilms</a></li>
+        <li><a href="index.php?page=contact" class="secondary-color">Contact us</a></li>
         
         <!-- only show log in btn if ur not logged in  -->
         <?php if (!logged_in()): ?>

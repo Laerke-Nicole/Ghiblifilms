@@ -71,6 +71,11 @@
     display: grid;
 }
 
+.grid-1-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
 .grid-cols-1 {
     display: grid !important;
     grid-template-columns: repeat(1, 1fr);
@@ -122,6 +127,14 @@
 
 .w-full {
     width: 100%;
+}
+
+.h-80 {
+    height: 80px;
+}
+
+.h-350 {
+    height: 350px;
 }
 
 .h-full-vh {
@@ -220,6 +233,10 @@
 
 .gap-20 {
     gap: 80px;
+}
+
+.gap-x-2 {
+    column-gap: 8px;
 }
 
 .ml-250 {
