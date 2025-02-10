@@ -29,16 +29,12 @@ require_once("controllers/companyController.php");
 <?php
 // daily showings 
 include("modules/homepage/showings.php");
-   
-// news 
-include("modules/homepage/news.php");
 
 // all movies 
 include("modules/homepage/movies.php"); 
-
-// contact form
-include("modules/homepage/contactFormAndContactInfo.php");
-
+   
+// news 
+include("modules/homepage/news.php");
 ?>
 
 </body>

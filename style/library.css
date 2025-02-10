@@ -276,6 +276,18 @@
     padding: 32px;
 }
 
+.p-10 {
+    padding: 40px;
+}
+
+.p-12 {
+    padding: 48px;
+}
+
+.p-16 {
+    padding: 64px;
+}
+
 .pt-2 {
     padding-top: 8px;
 }
@@ -454,6 +466,11 @@ button {
 .ten-percent {
     padding-right: 10%;
     padding-left: 10%;
+}
+
+.six-percent {
+    padding-right: 6%;
+    padding-left: 6%;
 }
 
 .cursor {

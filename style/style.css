@@ -46,23 +46,34 @@ body {
 /* button style */
 .btn-one {
     border: 1px solid var(--secondary-color);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px 20px;
     font-family: var(--primary-font);
     font-size: 13px;
-    color: var(--secondary-color);
+    color: var(--black-title);
     background-color: var(--secondary-color);
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-one {
+    background-color: var(--white-title);
 }
 
 .btn-two {
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px 20px;
     font-family: var(--primary-font);
     font-size: 14px;
     color: var(--white-title);
     background-color: var(--black-text) !important;
     cursor: pointer;
+    border: 0;
+    transition: 0.3s;
+}
+
+.btn-two:hover {
+    background-color: var(--black-title) !important;
 }
 
 
@@ -140,6 +151,14 @@ p {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3,minmax(1px, 1fr));
+    row-gap: 56px;
+    column-gap: 16px;
+}
+
+.items-two-col {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(1px, 1fr));
     row-gap: 56px;
     column-gap: 16px;
 }
@@ -278,4 +297,11 @@ p {
     margin-top: 1.5rem;
     border-top: 1px solid #6e6e6e; 
     padding-top: 1rem;
+}
+
+/* hr */
+.dark-hr {
+    border: 0;
+    height: 1px;
+    background-color: #8b95a2;
 }
