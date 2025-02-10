@@ -1,6 +1,6 @@
 <?php require_once("controllers/companyController.php"); ?>
 
-<section>
+<section class="about-container pb-28">
     <div class="flex justify-center align-center">
         <img src="img/logo.png" alt="Studio Ghibli logo" class="h-350">
     </div>
@@ -10,7 +10,7 @@
             <div class="flex-1 max-w-xs">
                 <h1 class="pb-2">About Ghiblifilms</h1>
             </div>
-            <div class="flex-1 max-w-lg">
+            <div class="flex-1 max-w-xl">
                 <p><?= htmlspecialchars(trim($about['CompanyDescription'])) ?></p>
             </div>
         <?php endforeach; ?>
@@ -20,7 +20,7 @@
         <img src="img/star-divider.svg" alt="divider" class="h-80">
     </div>
 
-    <div class="pt-8">
+    <div class="pt-8 flex justify-center justify-center gap-30">
     <!-- Opening Hours Section -->
         <div class="text-center">
             <h5>Opening hours</h5>
@@ -33,10 +33,10 @@
         </div>
 
         <!-- Find Us Section -->
-        <div class="flex flex-col justify-center align-center">
+        <div>
             <?php foreach ($getCompanyAddressView as $companyAddress): ?>
-                <h5>Find us</h5>
-                <div class="flex flex-col justify-center align-center">
+                <div class="flex flex-col text-center ">
+                    <h5>Find us</h5>
                     <p><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?> 
                     <?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?>
                     </p>
@@ -47,6 +47,5 @@
                 </div>
             <?php endforeach; ?>
         </div>
-
     </div>
 </section>

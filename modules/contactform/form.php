@@ -28,7 +28,7 @@ require_once ("includes/csrfProtection.php");
                 <!-- hidden input for reCAPTCHA token -->
                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
     
-                <input type="submit" id="submit" name="submit" value="Send" class="btn">
+                <input type="submit" id="submit" name="submit" value="Send message" class="btn-two">
             </div>
 
         </form>
