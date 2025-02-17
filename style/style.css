@@ -305,3 +305,28 @@ p {
     height: 1px;
     background-color: #8b95a2;
 }
+
+
+/* img zoom */
+.img-zoom-container {
+    width: 100%; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+.img-zoom {
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-zoom:hover {
+    transform: scale(1.1);
+    transform-origin: center center; 
+}
+
+.news-text {
+    max-width: 800px; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    margin: 0 auto;
+}

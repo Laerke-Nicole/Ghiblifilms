@@ -5,13 +5,12 @@
         <div>
             <div class="text-center pb-16">
                 <img src="upload/<?php echo htmlspecialchars(trim($getNewsItem['NewsImg'])); ?>" alt="Image of news" class="pb-4 round-corner">
-                <h2 class="pb-4"><?php echo htmlspecialchars(trim($getNewsItem['Headline'])); ?></h2>
+                <h1><?php echo htmlspecialchars(trim($getNewsItem['Headline'])); ?></h1>
                 <h5 class="pb-2"><?php echo htmlspecialchars(trim($getNewsItem['SubHeadline'])); ?></h5>
-                <p>type | author | date</p>
+                <p><?php echo htmlspecialchars(trim($getNewsItem['TypeOfNews'])) . ' | ' . htmlspecialchars(trim($getNewsItem['Author'])) . ' | ' . htmlspecialchars(trim($getNewsItem['DateOfNews'])); ?></p>
             </div>
 
-            <p><?php echo htmlspecialchars(trim($getNewsItem['TextOfNews'])); ?></p>
-            <img src="" alt="">
+            <p class="news-text"><?php echo htmlspecialchars(trim($getNewsItem['TextOfNews'])); ?></p>
         </div>
     </section>
 <?php else: ?>

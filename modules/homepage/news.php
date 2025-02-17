@@ -5,17 +5,23 @@
     
     <!-- loop with news  -->
     <div class="items-two-col">
-        <?php foreach ($getNews as $news): ?>
+    <?php foreach ($getNews as $news): ?>
+        <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="news-item">
             <div>
-                <img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' class="round-corner">
-                <div>
-                    Type | 05. feb 2025
+                <div class="img-zoom-container round-corner pb-2">
+                    <img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' class="round-corner img-zoom">
                 </div>
+
+                <div>
+                    <p><?php echo htmlspecialchars(trim($news['TypeOfNews'])) . ' | ' . htmlspecialchars(trim($news['DateOfNews'])); ?></p>
+                </div>
+
                 <h5 class="pb-2"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h5>
-                <p>short text</p>
-                <button class="btn-two" onclick="window.location.href='index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>'">Read more</button>
+                <button class="btn-two">Read more</button>
             </div>
-        <?php endforeach; ?>
-    </div>
+        </a>
+    <?php endforeach; ?>
+</div>
+
 
 </section>

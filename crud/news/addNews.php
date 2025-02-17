@@ -6,6 +6,9 @@ if (isset($_POST['submit'])) {
     $headline = htmlspecialchars(trim($_POST['Headline']));
     $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
     $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
+    $dateOfNews = htmlspecialchars(trim($_POST['DateOfNews']));
+    $typeOfNews = htmlspecialchars(trim($_POST['TypeOfNews']));
+    $author = htmlspecialchars(trim($_POST['Author']));
 
     // img upload
     if (isset($_FILES['newsImg'])) {
@@ -44,11 +47,14 @@ if (isset($_POST['submit'])) {
                         $newsImg = $_FILES['newsImg']['name'];
 
                         // insert data into the db
-                        $query = $dbCon->prepare("INSERT INTO News (Headline, SubHeadline, TextOfNews, NewsImg) VALUES (:headline, :subHeadline, :textOfNews, :newsImg)");
+                        $query = $dbCon->prepare("INSERT INTO News (Headline, SubHeadline, TextOfNews, NewsImg, DateOfNews, TypeOfNews, Author) VALUES (:headline, :subHeadline, :textOfNews, :newsImg, :dateOfNews, :typeOfNews, :author)");
                         $query->bindParam(':headline', $headline);
                         $query->bindParam(':subHeadline', $subHeadline);
                         $query->bindParam(':textOfNews', $textOfNews);
                         $query->bindParam(':newsImg', $newsImg);
+                        $query->bindParam(':dateOfNews', $dateOfNews);
+                        $query->bindParam(':typeOfNews', $typeOfNews);
+                        $query->bindParam(':author', $author);
 
                         // if the query is successful
                         if ($query->execute()) {

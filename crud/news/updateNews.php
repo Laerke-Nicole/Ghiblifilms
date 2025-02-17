@@ -8,6 +8,9 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
     $headline = htmlspecialchars(trim($_POST['Headline']));
     $subHeadline = htmlspecialchars(trim($_POST['SubHeadline']));
     $textOfNews = htmlspecialchars(trim($_POST['TextOfNews']));
+    $dateOfNews = htmlspecialchars(trim($_POST['DateOfNews']));
+    $typeOfNews = htmlspecialchars(trim($_POST['TypeOfNews']));
+    $author = htmlspecialchars(trim($_POST['Author']));
     $newsID = htmlspecialchars(trim($_POST['NewsID']));
 
     // initialize the $newsImg variable to store the file name
@@ -47,12 +50,15 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
         }
     }
     // update news data
-    $query = $dbCon->prepare("UPDATE News SET Headline = :headline, SubHeadline = :subHeadline, TextOfNews = :textOfNews, NewsImg = :newsImg WHERE NewsID = :newsID");
+    $query = $dbCon->prepare("UPDATE News SET Headline = :headline, SubHeadline = :subHeadline, TextOfNews = :textOfNews, DateOfNews = :dateOfNews, TypeOfNews = :typeOfNews, Author = :author, NewsImg = :newsImg WHERE NewsID = :newsID");
     
     $query->bindParam(':headline', $headline);
     $query->bindParam(':subHeadline', $subHeadline);
     $query->bindParam(':textOfNews', $textOfNews);
     $query->bindParam(':newsImg', $newsImg);
+    $query->bindParam(':dateOfNews', $dateOfNews);
+    $query->bindParam(':typeOfNews', $typeOfNews);
+    $query->bindParam(':author', $author);
     $query->bindParam(':newsID', $newsID);
 
     // go to admin page after update

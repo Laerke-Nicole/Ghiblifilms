@@ -65,6 +65,28 @@ include ("controllers/adminController.php");
                 </div>
             </div>
 
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="DateOfNews" name="DateOfNews" type="date" class="validate" required=""><?php echo htmlspecialchars(trim($getNews[0]['DateOfNews'])); ?></input>
+                    <label for="DateOfNews">Date of news</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="TypeOfNews" name="TypeOfNews" type="text" value="<?php echo htmlspecialchars(trim($getNews[0]['TypeOfNews'])); ?>" class="validate" required="" aria-required="true">
+                    <label for="TypeOfNews">Type of news</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="Author" name="Author" type="text" value="<?php echo htmlspecialchars(trim($getNews[0]['Author'])); ?>" class="validate" required="" aria-required="true">
+                    <label for="Author">Author</label>
+                </div>
+            </div>
+
+
 
             <input type="hidden" name="NewsID" value="<?php echo htmlspecialchars(trim($newsID)); ?>">
 

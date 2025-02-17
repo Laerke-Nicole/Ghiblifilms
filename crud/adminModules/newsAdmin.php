@@ -16,6 +16,10 @@ confirm_is_admin();
                 <th>SubHeadline</th>
                 <th>Text</th>
                 <th>Image</th>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Author</th>
+
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -29,6 +33,9 @@ confirm_is_admin();
                 <td><?php echo htmlspecialchars(trim($news['SubHeadline'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['TextOfNews'])); ?></td>
                 <td><img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' width='100'></td>
+                <td><?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></td>
+                <td><?php echo htmlspecialchars(trim($news['Author'])); ?></td>
 
                 <td><a href="index.php?page=editnews&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="btn">Edit</a></td>
                 <td><a href="index.php?page=controllerdelete&table=News&primaryKey=NewsID&primaryKeyValue=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="waves-effect waves-light btn red" onclick="return confirm('Delete! Are you sure?')">Delete</a></td>
@@ -69,6 +76,27 @@ confirm_is_admin();
             <div class="row">
                 <div class="input-field col s12">
                     <input id="newsImg" name="newsImg" type="file" class="validate" required="" aria-required="true">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="DateOfNews" name="DateOfNews" type="date" class="validate" required="" aria-required="true">
+                    <label for="DateOfNews">Date of news</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="TypeOfNews" name="TypeOfNews" type="text" class="validate" required="" aria-required="true">
+                    <label for="TypeOfNews">Type of news</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="Author" name="Author" type="text" class="validate" required="" aria-required="true">
+                    <label for="Author">Author</label>
                 </div>
             </div>
 

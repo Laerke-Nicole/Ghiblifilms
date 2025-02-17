@@ -137,7 +137,10 @@ CREATE TABLE News (
   Headline varchar(168) NOT NULL,
   SubHeadline varchar(168) NOT NULL,
   TextOfNews text NOT NULL,
-  NewsImg varchar(255) NOT NULL
+  NewsImg varchar(255) NOT NULL,
+  DateOfNews DATE NOT NULL, 
+  TypeOfNews varchar(100) NOT NULL,
+  Author varchar(255) NOT NULL
 ) ENGINE=InnoDB;
 
 
@@ -315,6 +318,7 @@ DELIMITER ;
 
 -- postal code
 insert into PostalCode (PostalCode, City) values ('6800', 'Varde');
+insert into PostalCode (PostalCode, City) values ('2300', 'Copenhagen');
 
 -- auditorium
 insert into Auditorium (AuditoriumID, AuditoriumNumber) values (NULL, 'Bio 1');
@@ -853,13 +857,8 @@ insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
 
 -- opening hours
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Tuesday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (3, 'Wednesday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (4, 'Thursday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (5, 'Friday', '17.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (6, 'Saturday', '12.00 - 22.00');
-insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (7, 'Sunday', '12.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday - Thursday', '17.00 - 22.00');
+insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Friday - Sunday', '16.00 - 23.00');
 
 
 -- bank account
