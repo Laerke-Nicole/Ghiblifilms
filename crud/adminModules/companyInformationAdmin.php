@@ -16,6 +16,10 @@ confirm_is_admin();
                     <th>Description</th>
                     <th>Email</th>
                     <th>Phone number</th>
+                    <th>Total movies</th>
+                    <th>Total years</th>
+                    <th>Total awards</th>
+                    <th>Total visitors</th>
                     <th>Street name</th>
                     <th>Street number</th>
                     <th>Postal code</th>
@@ -34,6 +38,10 @@ confirm_is_admin();
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyDescription'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyEmail'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['CompanyPhoneNumber'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['TotalMovies'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['TotalYears'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['TotalAwards'])); ?></td>
+                    <td><?php echo htmlspecialchars(trim($companyInformation['TotalVisitors'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['StreetName'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['StreetNumber'])); ?></td>
                     <td><?php echo htmlspecialchars(trim($companyInformation['PostalCode'])); ?></td>
@@ -88,6 +96,30 @@ confirm_is_admin();
                     <label for="CompanyPhoneNumber">Phone number</label>
                 </div>
             </div>  
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="TotalMovies" name="TotalMovies" type="number" class="validate" required="" aria-required="true">
+                    <label for="TotalMovies">Total movies</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="TotalYears" name="TotalYears" type="number" class="validate" required="" aria-required="true">
+                    <label for="TotalYears">Total years</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="TotalAwards" name="TotalAwards" type="number" class="validate" required="" aria-required="true">
+                    <label for="TotalAwards">Total awards</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="TotalVisitors" name="TotalVisitors" type="number" class="validate" required="" aria-required="true">
+                    <label for="TotalVisitors">Total visitors</label>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="input-field col s6">

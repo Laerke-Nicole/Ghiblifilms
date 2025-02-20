@@ -1,11 +1,9 @@
-<nav class="flex justify-between items-center p-6">
-    <!-- empty div for left side alignment  -->
-    <div></div>
-
+<nav class="flex justify-between items-center p-6 pr-12 pl-12">
     <a href="index.php?page=home" class="secondary-color text-3xl caps">Ghiblifilms</a>
 
     <ul class="flex gap-6">
 
+        <li><a href="index.php?page=home" class="secondary-color">Movies</a></li>
         <li><a href="index.php?page=about" class="secondary-color">About Ghiblifilms</a></li>
         <li><a href="index.php?page=contact" class="secondary-color">Contact us</a></li>
         
@@ -32,7 +30,7 @@
         <!-- show log out btn if ur logged in  -->
         <?php if (logged_in()): ?>
             <form action="logout.php" method="post" style="display:inline;">
-                <input type="submit" value="Log Out" class="btn">
+                <input type="submit" value="Log Out">
             </form>
         <?php endif; ?>
     </ul>

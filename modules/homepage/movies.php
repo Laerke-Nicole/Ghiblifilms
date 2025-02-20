@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 
-<section class="pb-24 movies-container">   
+<section class="pt-16 pb-24 movies-container">   
     <h2 class="pb-6">Movies in our cinema</h2> 
 
     <div class="swiper mySwiper">

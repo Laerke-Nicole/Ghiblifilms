@@ -27,6 +27,7 @@
         <div>
             <h4 class="pb-2 white-headline">About Us</h4>
             <div class="flex flex-col gap-2">
+                <a href="index.php?page=home" class="footer-link"><p>Movies</p></a>
                 <a href="index.php?page=about" class="footer-link"><p>About Ghiblifilms</p></a>
                 <a href="index.php?page=contact" class="footer-link"><p>Contact Us</p></a>
                 <p class="white-text">Job at Ghiblifilms</p>

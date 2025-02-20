@@ -149,6 +149,9 @@
     height: 90vh;
 }
 
+.font-bold {
+    font-weight: bold;
+}
 
 .text-xs {
     font-size: 12px;
@@ -253,6 +256,11 @@
 
 .gap-x-4 {
     column-gap: 16px;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .mt-2 {
@@ -477,6 +485,11 @@ button {
 .ten-percent {
     padding-right: 10%;
     padding-left: 10%;
+}
+
+.fifteen-percent {
+    padding-right: 15%;
+    padding-left: 15%;
 }
 
 .six-percent {

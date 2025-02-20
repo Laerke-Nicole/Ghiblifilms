@@ -151,6 +151,10 @@ CREATE TABLE CompanyInformation (
   CompanyDescription text NOT NULL,
   CompanyEmail varchar(255) NOT NULL,
   CompanyPhoneNumber varchar(20) NOT NULL,
+  TotalMovies int(3) NOT NULL,
+  TotalYears int(2) NOT NULL,
+  TotalAwards int(4) NOT NULL,
+  TotalVisitors int(5) NOT NULL,
   AddressID INT,
   FOREIGN KEY (AddressID) REFERENCES Address(AddressID) ON DELETE CASCADE
 ) ENGINE=InnoDB;
@@ -855,6 +859,15 @@ insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 18);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 8);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 44);
 insert into MovieVoiceActor (MovieID, VoiceActorID) values (12, 10);
+
+
+-- address
+INSERT INTO Address (AddressID, StreetName, StreetNumber, PostalCode, Country) VALUES (1, 'Arne Jacobsens Allé', 12, 2300, 'Denmark');
+
+
+-- company info
+INSERT INTO CompanyInformation (CompanyInformationID, NameOfCompany, CompanyDescription, CompanyEmail, CompanyPhoneNumber, TotalMovies, TotalYears, TotalAwards, TotalVisitors, AddressID) VALUES (1, 'Ghiblifilms', 'Welcome to Ghiblifilms, Copenhagen enchanting cinema dedicated entirely to the magical world of Studio Ghibli. Nestled in the heart of the city, our cinema is a haven for Ghibli fans, where the charm and wonder of Hayao Miyazaki’s timeless creations come to life. Our screenings exclusively feature Studio Ghibli classics, offering a truly immersive experience where the magic of the movies extends beyond the screen.', 'Ghiblifilms@ghibli.com', 32222232, 12, 11, 100, 10000, 1);
+
 
 -- opening hours
 insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (1, 'Monday - Thursday', '17.00 - 22.00');

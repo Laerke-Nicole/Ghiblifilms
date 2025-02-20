@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
                     try {
                         $resizer = new Resizer();
                         $resizer->load($uploadedFile);
-                        $resizer->resize(450, 320); 
+                        $resizer->resize(1000, 550); 
                         $resizer->save($uploadedFile);
 
                         // get the filename

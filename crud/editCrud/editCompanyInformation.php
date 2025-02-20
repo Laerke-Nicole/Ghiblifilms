@@ -67,26 +67,51 @@ include ("controllers/adminController.php");
                 </div>
             </div>  
 
+            
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0][6])); ?>" class="validate" required="" aria-required="true">
+                    <input id="TotalMovies" name="TotalMovies" type="number" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['TotalMovies'])); ?>" class="validate" required="">
+                    <label for="TotalMovies" class="active">Total movies</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="TotalYears" name="TotalYears" type="number" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['TotalYears'])); ?>" class="validate" required="">
+                    <label for="TotalYears" class="active">Total years</label>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="TotalAwards" name="TotalAwards" type="number" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['TotalAwards'])); ?>" class="validate" required="">
+                    <label for="TotalAwards" class="active">Total awards</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input id="TotalVisitors" name="TotalVisitors" type="number" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['TotalVisitors'])); ?>" class="validate" required="">
+                    <label for="TotalVisitors" class="active">Total visitors</label>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="StreetName" name="fk_Address_StreetName" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['StreetName'])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetName">Street Name</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0][7])); ?>" class="validate" required="" aria-required="true">
+                    <input id="StreetNumber" name="fk_Address_StreetNumber" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['StreetNumber'])); ?>" class="validate" required="" aria-required="true">
                     <label for="StreetNumber">Street Number</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0][8])); ?>" class="validate" required="" aria-required="true">
+                    <input id="PostalCode" name="fk_Address_PostalCode" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['PostalCode'])); ?>" class="validate" required="" aria-required="true">
                     <label for="PostalCode">Postal code</label>
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0][9])); ?>" class="validate" required="" aria-required="true">
+                    <input id="Country" name="fk_Address_Country" type="text" value="<?php echo htmlspecialchars(trim($getCompanyInformation[0]['Country'])); ?>" class="validate" required="" aria-required="true">
                     <label for="Country">Country</label>
                 </div>
             </div>

@@ -1,51 +1,51 @@
 <?php require_once("controllers/companyController.php"); ?>
 
-<section class="about-container pb-28">
-    <div class="flex justify-center align-center">
-        <img src="img/logo.png" alt="Studio Ghibli logo" class="h-350">
-    </div>
-
-    <div class="flex flex-col justify-center align-center text-center pb-8">
-        <?php foreach ($getAboutCompany as $about): ?>
-            <div class="flex-1 max-w-xs">
-                <h1 class="pb-2">About Ghiblifilms</h1>
-            </div>
-            <div class="flex-1 max-w-xl">
-                <p><?= htmlspecialchars(trim($about['CompanyDescription'])) ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
-
-    <div class="flex justify-center">
-        <img src="img/star-divider.svg" alt="divider" class="h-80">
-    </div>
-
-    <div class="pt-8 flex justify-center justify-center gap-30">
-    <!-- Opening Hours Section -->
-        <div class="text-center">
-            <h5>Opening hours</h5>
-            <?php foreach ($getOpeningHour as $openingHour): ?>
+<section>
+    <div class="fifteen-percent">
+        <div class="flex justify-center align-center">
+            <img src="img/logo.png" alt="Studio Ghibli logo" class="h-350">
+        </div>
+    
+        <!-- About Section -->
+        <div class="flex flex-col pb-20 mx-auto text-center">
+            <?php foreach ($getAboutCompany as $about): ?>
                 <div>
-                    <p class="text-sm"><?php echo htmlspecialchars(trim($openingHour['Day'])); ?></p>
-                    <p class="pb-4 text-sm"><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></p>
+                    <h1 class="pb-2">About Ghiblifilms</h1>
+                </div>
+                <div>
+                    <p><?= htmlspecialchars(trim($about['CompanyDescription'])) ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
-
-        <!-- Find Us Section -->
-        <div>
-            <?php foreach ($getCompanyAddressView as $companyAddress): ?>
-                <div class="flex flex-col text-center ">
-                    <h5>Find us</h5>
-                    <p><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?> 
-                    <?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?>
-                    </p>
-                    <p><?php echo htmlspecialchars(trim($companyAddress['PostalCode'])); ?> 
-                    <?php echo htmlspecialchars(trim($companyAddress['City'])); ?>
-                    </p>
-                    <p><?php echo htmlspecialchars(trim($companyAddress['Country'])); ?></p>
-                </div>
-            <?php endforeach; ?>
+    
+        <!-- divider -->
+        <hr class="dark-hr">
+    
+        <!-- stats -->
+        <div class="pt-20 pb-20">
+            <div class="flex justify-evenly">
+                <?php foreach ($everythingCompany as $company): ?>
+                    <div class="text-center">
+                        <h4 class="text-5xl"><?php echo htmlspecialchars(trim($company['TotalMovies'])); ?></h4>
+                        <p>Movies</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-5xl"><?php echo htmlspecialchars(trim($company['TotalYears'])); ?></h4>
+                        <p>Years</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-5xl">+<?php echo htmlspecialchars(trim($company['TotalAwards'])); ?></h4>
+                        <p>Awards</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-5xl">+<?php echo htmlspecialchars(trim($company['TotalVisitors'])); ?></h4>
+                        <p>Visitors</p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
+
+
+    <div class="about-banner"></div>
 </section>

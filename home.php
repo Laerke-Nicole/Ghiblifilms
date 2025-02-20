@@ -38,7 +38,7 @@ if ($showings == !null) {
 // all movies 
 include("modules/homepage/movies.php"); ?>
 <div class="six-percent">
-<hr class="dark-hr">
+    <hr class="dark-hr">
 </div>
 
 <?php

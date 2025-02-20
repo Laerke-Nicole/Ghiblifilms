@@ -32,7 +32,7 @@ if (isset($_POST['NewsID']) && isset($_POST['submit'])) {
                     $resizer = new Resizer();
                     $resizer->load($uploadPath);
                     // size of the image
-                    $resizer->resize(450, 320);
+                    $resizer->resize(1000, 550);
                     $resizer->save($uploadPath);
                 // catch any exceptions
                 } catch (Exception $e) {

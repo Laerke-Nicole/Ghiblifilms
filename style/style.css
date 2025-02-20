@@ -13,7 +13,7 @@
     --white-text: #f1f1f1;
     --extra-light: #d2c6bb;
 
-    --light-bg: #ffebd8;
+    --light-bg: var(--primary-color);
     --dark-bg: var(--tertiary-color);
 }
 
@@ -107,7 +107,6 @@ body {
 }
 
 
-
 /* text style */
 h1 {
     font-family: var(--primary-font);
@@ -171,6 +170,17 @@ p {
 }
 
 
+/* nav */
+nav {
+    border-bottom: 1px solid var(--extra-light);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* swiper */
 .movies-container {
     padding-left: 6%;
@@ -229,7 +239,7 @@ p {
 }
 
 .contact {
-    padding: 70px;
+    padding: 64px;
 }
 
 
@@ -282,11 +292,12 @@ p {
 
 
 /* about */
-.about-container{
-    background-image: url('../img/about-us-bg.png');
+.about-banner {
+    background-image: url('../img/banner.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: center;
+    height: 500px;
 }
 
 
