@@ -24,6 +24,7 @@ if (isset($_SESSION['UserID'])) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
+
     
 </head>
 
@@ -106,6 +107,10 @@ break;
 
 
 // modules
+case "highlightmovie":
+    include('modules/homepage/highlightMovie.php');
+break;
+
 case "homeshowings":
     include('modules/homepage/showings.php');
 break;
@@ -373,12 +378,20 @@ break;
 <!-- footer to include on all pages -->
 <?php include("modules/footer/footer.php"); ?>
 
+
+
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     
 <!-- javascript -->
 <script src="/js/showCategory.js" defer></script>
 
 <script src="/js/dropdown.js"></script>
+
+<!-- js with swiper -->
+<script src="./js/slider.js" defer></script>
 </body>
 </html>

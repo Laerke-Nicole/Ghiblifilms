@@ -142,3 +142,8 @@ $roleInProductionAdmin = $queryRoleInProduction->fetchAll();
 $queryVoiceActor = $dbCon->prepare("SELECT * FROM VoiceActor");
 $queryVoiceActor->execute();
 $getVoiceActorAdmin = $queryVoiceActor->fetchAll();
+
+// get only most recent movie
+$query = $dbCon->prepare("SELECT * FROM Movie ORDER BY ReleaseYear DESC LIMIT 1");
+$query->execute();
+$highlightMovie = $query->fetch();

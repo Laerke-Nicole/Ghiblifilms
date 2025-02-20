@@ -45,4 +45,4 @@ $getOpeningHour = $queryOpeningHour->fetchAll();
 $query = $dbCon->prepare("SELECT * 
                            FROM CompanyInformation");
 $query->execute();
-$companyMailPhone = $query->fetchAll();
+$everythingCompany = $query->fetchAll();

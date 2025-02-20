@@ -31,7 +31,7 @@ confirm_is_admin();
                 <tr>
                 <td><?php echo htmlspecialchars(trim($news['Headline'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['SubHeadline'])); ?></td>
-                <td><?php echo htmlspecialchars(trim($news['TextOfNews'])); ?></td>
+                <td class="max-w-xs"><?php echo htmlspecialchars(trim($news['TextOfNews'])); ?></td>
                 <td><img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' width='100'></td>
                 <td><?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></td>
                 <td><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></td>

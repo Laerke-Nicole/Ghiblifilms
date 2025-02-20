@@ -28,14 +28,29 @@ require_once("controllers/companyController.php");
 
 <?php
 // daily showings 
-include("modules/homepage/showings.php");
+include("modules/homepage/showings.php"); 
+if ($showings == !null) {
+    echo '<div class="six-percent">';
+        echo '<hr class="dark-hr">';
+    echo '</div>';
+}
 
 // all movies 
-include("modules/homepage/movies.php"); 
-   
+include("modules/homepage/movies.php"); ?>
+<div class="six-percent">
+<hr class="dark-hr">
+</div>
+
+<?php
 // news 
-include("modules/homepage/news.php");
-?>
+include("modules/homepage/news.php"); ?>
+<div class="six-percent">
+    <hr class="dark-hr">
+</div>
+
+<?php
+// highlighted movie
+include("modules/homepage/highlightMovie.php"); ?>
 
 </body>
 </html>
