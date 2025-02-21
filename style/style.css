@@ -509,6 +509,14 @@ footer {
 
 
 /* collage hero */  
+.hero-item {
+    transition: 0.3s;
+}
+
+.hero-item:hover {
+    filter: brightness(85%);
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;

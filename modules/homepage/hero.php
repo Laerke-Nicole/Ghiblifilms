@@ -9,7 +9,7 @@
             <!-- Movie Section -->
             <div class="column left-column">
                 <?php if ($movie): ?>
-                    <a href="index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($movie['MovieID'])); ?>">
+                    <a href="index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($movie['MovieID'])); ?>" class="hero-item">
                     <div class="">
                         <img src="upload/<?php echo htmlspecialchars(trim($movie['MovieImage'])); ?>" alt="Image of movie round-corner">
                         
@@ -28,7 +28,7 @@
             <!-- News Section -->
             <div class="column right-column">
                 <?php foreach ($newsItems as $news): ?>
-                    <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="news-item">
+                    <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="news-item hero-item">
                         <div>
                             <img src="upload/<?php echo htmlspecialchars(trim($news['NewsImage'])); ?>" alt="Image of news">
 
