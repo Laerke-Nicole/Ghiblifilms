@@ -155,10 +155,6 @@ case "movieshowings":
     include('modules/movie/showings.php');
 break;
 
-case "movieteam":
-    include('modules/movie/team.php');
-break;
-
 case "categoriesadmin":
     include('modules/admin/categories.php');
 break;
@@ -393,5 +389,8 @@ break;
 
 <!-- js with swiper -->
 <script src="./js/slider.js" defer></script>
+
+<!-- toggle -->
+<script src="./js/toggle.js" defer></script>
 </body>
 </html>

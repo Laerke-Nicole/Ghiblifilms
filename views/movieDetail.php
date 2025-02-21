@@ -18,9 +18,6 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
 
         // display showings
         include ("modules/movie/showings.php");
-
-        // display the team of the movie
-        include ("modules/movie/team.php");
     }
 }
 ?>

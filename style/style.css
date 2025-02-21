@@ -145,7 +145,6 @@ h5 {
 
 p {
     font-family: var(--secondary-font);
-    font-size: 14px;
     font-weight: normal;
 }
 
@@ -230,7 +229,7 @@ nav ul li:hover {
 /* style for a box with content inside */
 .box {
     border: 1px solid var(--secondary-color);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 36px;
     width: 100%;
 }
@@ -313,12 +312,12 @@ nav ul li:hover {
 footer {
     background-color: var(--secondary-color);
     padding: 50px 5% 16px 5%;
-    font-size: 15px;
 }
 
 .footer-link {
     color: var(--white-text) !important;
     text-decoration: none;
+    font-size: 14px !important;
 }
 
 .footer-link:hover {
@@ -385,6 +384,7 @@ footer {
 /* showings */
 .showings-container {
     margin-right: 6%;
+    margin-bottom: 100px;
 }
 
 .showings-container {
@@ -404,7 +404,7 @@ footer {
     width: 160px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .time:hover {
@@ -415,4 +415,93 @@ footer {
     .time {
         width: 100%;
     }
+}
+
+
+/* team */
+.production-team {
+    letter-spacing: 1px;
+}
+
+.production-list {
+    width: 100%;
+}
+
+.production-item {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    padding-bottom: 4px;
+}
+
+.role {
+    width: 200px;
+    font-weight: 600;
+}
+
+.name {
+    flex: 1;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    .production-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .role {
+        width: auto;
+    }
+}
+
+
+/* smooth toggle */
+.accordion-content {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    max-height: 500px;
+    background-color: var(--white-title);
+    border-radius: 20px;
+    margin-top: 8px;
+}
+.hidden {
+    max-height: 0;
+    display: none;
+}
+
+.toggle-dropdown {
+    background-color: var(--white-title) !important;
+    border-radius: 20px;
+    border: 0;
+    padding: 10px 20px;
+    position: relative;
+    padding-right: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-right: 20px;
+    transform: translateY(-50%) rotate(0deg);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid black; /* Arrow color */
+    transition: transform 0.3s ease;
+}
+
+.arrow.rotate {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
