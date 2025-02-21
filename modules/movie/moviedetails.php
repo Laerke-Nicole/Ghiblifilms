@@ -1,12 +1,12 @@
 <section>
-    <div class="grid-1-2">
+    <div class="grid-1-2 pt-8 pb-20 five-percent">
         <!-- img of movie  -->
-        <div class="h-full-vh">
-            <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="h-full-vh pl-12 round-corner">
+        <div class="flex justify-center">
+            <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="movie-detail-img round-corner">
         </div>
 
         <!-- info  -->
-        <div class="p-16">
+        <div class="pt-16 pl-8">
             <!-- title and description  -->
             <div class="pb-12">
                 <h1 class="pb-4"><?php echo htmlspecialchars(trim($movieItem['Name'])); ?></h1>

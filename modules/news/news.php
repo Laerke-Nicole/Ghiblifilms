@@ -1,7 +1,7 @@
 <!-- if statement to show details on news -->
 <?php if ($getNewsItem): ?>
     <!-- display the details of the news -->
-    <section class="pt-24 pb-24 fifteen-percent flex flex-col justify-center align-center ">
+    <section class="pt-24 pb-24 fifteen-percent flex flex-col justify-center align-center">
         <div>
             <div class="text-center pb-16">
                 <img src="upload/<?php echo htmlspecialchars(trim($getNewsItem['NewsImg'])); ?>" alt="Image of news" class="pb-4 round-corner">

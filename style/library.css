@@ -73,6 +73,12 @@
     grid-template-columns: 2fr 1fr;
 }
 
+@media (max-width: 768px) {
+    .grid-1-2, .grid-2-1 {
+        grid-template-columns: 1fr;
+    }
+}
+
 .grid-cols-1 {
     display: grid !important;
     grid-template-columns: repeat(1, 1fr);
@@ -139,6 +145,10 @@
 
 .h-350 {
     height: 350px;
+}
+
+.h-60-vh {
+    height: 60vh;
 }
 
 .h-full-vh {
@@ -477,9 +487,22 @@ button {
     text-align: left;
 }
 
-
 .round-corner {
-    border-radius: 10px;
+    border-radius: 10px !important;
+}
+
+.round-corner-right {
+    border-radius: 0 10px 10px 0 !important;
+}
+
+.five-percent {
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+.six-percent {
+    padding-right: 6%;
+    padding-left: 6%;
 }
 
 .ten-percent {
@@ -492,10 +515,6 @@ button {
     padding-left: 15%;
 }
 
-.six-percent {
-    padding-right: 6%;
-    padding-left: 6%;
-}
 
 .cursor {
     cursor: pointer;

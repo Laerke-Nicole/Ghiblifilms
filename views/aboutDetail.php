@@ -26,19 +26,19 @@
             <div class="flex justify-evenly">
                 <?php foreach ($everythingCompany as $company): ?>
                     <div class="text-center">
-                        <h4 class="text-5xl"><?php echo htmlspecialchars(trim($company['TotalMovies'])); ?></h4>
+                        <h4 class="text-4xl"><?php echo htmlspecialchars(trim($company['TotalMovies'])); ?></h4>
                         <p>Movies</p>
                     </div>
                     <div class="text-center">
-                        <h4 class="text-5xl"><?php echo htmlspecialchars(trim($company['TotalYears'])); ?></h4>
+                        <h4 class="text-4xl"><?php echo htmlspecialchars(trim($company['TotalYears'])); ?></h4>
                         <p>Years</p>
                     </div>
                     <div class="text-center">
-                        <h4 class="text-5xl">+<?php echo htmlspecialchars(trim($company['TotalAwards'])); ?></h4>
+                        <h4 class="text-4xl">+<?php echo htmlspecialchars(trim($company['TotalAwards'])); ?></h4>
                         <p>Awards</p>
                     </div>
                     <div class="text-center">
-                        <h4 class="text-5xl">+<?php echo htmlspecialchars(trim($company['TotalVisitors'])); ?></h4>
+                        <h4 class="text-4xl">+<?php echo htmlspecialchars(trim($company['TotalVisitors'])); ?></h4>
                         <p>Visitors</p>
                     </div>
                 <?php endforeach; ?>
