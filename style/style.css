@@ -553,3 +553,18 @@ footer {
     display: block; 
     margin-bottom: 12px;
 }
+
+/* log in */
+.create-user-link {
+    text-decoration: underline !important;
+}
+
+.login-form input, .newuser-form input {
+    background-color: var(--white-title);
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 20px;
+    max-width: 100%;
+    resize: none;
+    font-family: var(--primary-font);
+}

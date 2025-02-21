@@ -106,7 +106,11 @@ if (isset($_POST['submit'])) {
                     $message = "User could not be created.";
                 }
             } catch (PDOException $e) {
-                $message = "User could not be created. Error: " . $e->getMessage();
+                if ($e->getCode() === '23000' && strpos($e->getMessage(), 'FOREIGN KEY') !== false) {
+                    $message = "The provided postal code does not exist. Please enter a valid postal code.";
+                } else {
+                    $message = "User could not be created. Error: " . $e->getMessage(); 
+                }
             }
         }
     }

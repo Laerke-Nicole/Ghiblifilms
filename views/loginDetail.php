@@ -10,10 +10,10 @@
     <script src="js/recaptcha.js" defer></script>
 </head>
 
-<div class="ten-percent">
-<h2>Log in</h2>
+<div class="ten-percent pt-6 pb-20">
+<h2 class="pb-4">Log in</h2>
 
-<form action="" method="post" class="flex flex-col">
+<form action="" method="post" class="flex flex-col login-form">
     <!-- csrf protection -->
     <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
     
@@ -21,21 +21,19 @@
     <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
 
     <div class="pb-4">
-        <p>Username:</p>
-        <input type="text" name="User" maxlength="50" value="" class="validate" required="" aria-required="true" />
+        <input type="text" name="User" maxlength="50" value="" placeholder="Username" class="validate" required="" aria-required="true" />
     </div>
     
-    <div class="pb-4">
-        <p>Password:</p>
-        <input type="password" name="Pass" maxlength="255" value="" class="validate" required="" aria-required="true" />
+    <div class="pb-6">
+        <input type="password" name="Pass" maxlength="255" value="" placeholder="Password" class="validate" required="" aria-required="true" />
     </div>
 
-    <div class="cursor">
-        <input type="submit" name="submit" value="Login" class="btn" />
+    <div class="cursor pb-2">
+        <input type="submit" name="submit" value="Login" class="btn-two" />
     </div>
 
     <div>
-        <a href="index.php?page=newuser" class="secondary-color">Got no user? Create a new user here</a>
+        <p class="secondary-color text-sm">Got no user? <a href="index.php?page=newuser" class="secondary-color text-sm create-user-link">Create a new user here</a></p> 
     </div>
 </form>
 

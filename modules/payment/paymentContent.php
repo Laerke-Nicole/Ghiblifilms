@@ -15,10 +15,10 @@ require_once ("includes/csrfProtection.php");
     
 </head>
 <body>
-<div class="row ten-percent grid-cols-2">
+<div class="ten-percent grid-cols-2 pt-6 pb-20">
     <!-- booking overview -->
     <div>
-        <h2>Order Overview</h2>
+        <h2 class="pb-4">Order Overview</h2>
 
         <p><strong>Movie:</strong> <?php echo $getShowingsInfo['MovieName']; ?></p>
         <p><strong>Showing Date:</strong> <?php echo $getShowingsInfo['ShowingDate']; ?></p>
@@ -35,21 +35,22 @@ require_once ("includes/csrfProtection.php");
         <br />
 
         <p><strong>Selected Seats:</strong> <?php echo implode(", ", $seatNumbers); ?></p>
-        <p><strong>Total Price:</strong> €<?php echo number_format($totalPrice, 2); ?></p>
+        <p class="pb-4"><strong>Total Price:</strong> €<?php echo number_format($totalPrice, 2); ?></p>
         <img src="img/seats.png" alt="Seating chart" height="200">
     </div>
 
     <!-- payment -->
     <div>
-        <h2>Payment</h2>
+        <h3 class="pb-4">Payment</h3>
         <form id="payment-form">
             <!-- csrf protection -->
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
             
-            <div id="card-element">
+            <div id="card-element" class="pb-4">
                 <!-- stripe.js adds fields here -->
             </div>
-            <button id="submit">Pay</button>
+
+            <button id="submit" class="btn-two">Pay</button>
 
             <!-- stripes error -->
             <div id="error-message"></div>

@@ -1,7 +1,7 @@
 <!-- work on display the users bookings  -->
-<div class="row ten-percent">
-    <h2>Your bookings</h2>
-    <br>
+<div class="ten-percent pb-20">
+    <h3 class="pb-4">Your bookings</h3>
+
     <!-- if the user has no bookings yet -->
     <?php if (!$getUserReservations): ?>
         You have no bookings.

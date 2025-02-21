@@ -11,11 +11,11 @@
     <script src="js/recaptcha.js" defer></script>
 </head>
 
-<div class="ten-percent">
+<div class="ten-percent pt-6 pb-20">
 
-    <h2>Create New User</h2>
+    <h2 class="pb-4">Create New User</h2>
     
-    <form action="" method="post" class="flex flex-col">
+    <form action="" method="post" class="flex flex-col newuser-form">
         <!-- csrf protection -->
         <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
         
@@ -23,61 +23,51 @@
         <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
         
         <div class="pb-4">
-            <p>Username:</p>
-            <input type="text" name="Username" maxlength="50" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="Username" maxlength="50" value="" placeholder="Username" class="validate" required="" aria-required="true" />
         </div>
         
         <div class="pb-4">
-            <p>Password:</p>
-            <input type="password" name="Pass" maxlength="255" value="" class="validate" required="" aria-required="true" />
+            <input type="password" name="Pass" maxlength="255" value="" placeholder="Password" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>First name:</p>
-            <input type="text" name="FirstName" maxlength="50" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="FirstName" maxlength="50" value="" placeholder="First name" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Last name:</p>
-            <input type="text" name="LastName" maxlength="50" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="LastName" maxlength="50" value="" placeholder="Last name" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Email:</p>
-            <input type="text" name="Email" maxlength="255" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="Email" maxlength="255" value="" placeholder="Email" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Phone number:</p>
-            <input type="text" name="PhoneNumber" maxlength="20" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="PhoneNumber" maxlength="20" value="" placeholder="Phone number" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Street name:</p>
-            <input type="text" name="StreetName" maxlength="255" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="StreetName" maxlength="255" value="" placeholder="Street name" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Street number:</p>
-            <input type="number" name="StreetNumber" maxlength="10" value="" class="validate" required="" aria-required="true" />
+            <input type="number" name="StreetNumber" maxlength="10" value="" placeholder="Street number" class="validate" required="" aria-required="true" />
         </div>
     
         <div class="pb-4">
-            <p>Postal code:</p>
-            <input type="text" name="PostalCode" maxlength="10" value="" class="validate" required="" aria-required="true" />
+            <input type="text" name="PostalCode" maxlength="10" value="" placeholder="Postal code" class="validate" required="" aria-required="true" />
+        </div>
+                    
+        <div class="pb-6">
+            <input type="text" name="Country" maxlength="150" value="" placeholder="Country" class="validate" required="" aria-required="true" />
         </div>
     
-        <div class="pb-4">
-            <p>Country:</p>
-            <input type="text" name="Country" maxlength="150" value="" class="validate" required="" aria-required="true" />
-        </div>
-    
-        <div class="cursor">
-            <input type="submit" name="submit" value="Create" class="btn" />
+        <div class="cursor pb-2">
+            <input type="submit" name="submit" value="Create user" class="btn-two" />
         </div>
     
         <div>
-            <a href="index.php?page=login" class="secondary-color">Aldready got a user? Log in here</a>
+            <p class="secondary-color text-sm">Aldready got a user? <a href="index.php?page=login" class="secondary-color text-sm create-user-link">Log in here</a></p>
         </div>
     </form>
 </div>

@@ -20,11 +20,6 @@ if (!$getUserProfileView) {
 // user info 
 include("modules/userprofile/userInfo.php"); ?>
 
-<br>
-<br>
-<br>
-<br>
-
 <?php
 // list of bookings the user has made 
 include("modules/userprofile/userBookings.php"); 

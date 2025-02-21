@@ -1,4 +1,4 @@
-<div class="ten-percent">
+<div class="ten-percent pt-6 pb-20">
     <div class="grid-cols-2">
         <div>
             <h1>Choose seats</h1>
@@ -9,8 +9,12 @@
                 <p><?php echo $reservedSeatList; ?></p>
             </div>
 
-            <div>
-                <p>Price per seat: 12 euros</p>
+            <div class="pb-4">
+                <p><span class="font-bold">Price per seat:</span> 12 euros</p>
+            </div>
+
+            <div class="pr-12">
+                <hr class="dark-hr">
             </div>
 
             <br/>
@@ -33,7 +37,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn">Choose seats</button>
+                <button type="submit" class="btn-two">Choose seats</button>
             </form>
         </div>
 

@@ -24,7 +24,10 @@ if (isset($_SESSION['UserID'])) {
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
-
+    <!-- recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
+    <script src="js/recaptcha.js" defer></script>
     
 </head>
 
