@@ -23,7 +23,7 @@
     
         <!-- stats -->
         <div class="pt-20 pb-20">
-            <div class="flex justify-evenly">
+            <div class="flex justify-evenly company-stats">
                 <?php foreach ($everythingCompany as $company): ?>
                     <div class="text-center">
                         <h4 class="text-4xl"><?php echo htmlspecialchars(trim($company['TotalMovies'])); ?></h4>

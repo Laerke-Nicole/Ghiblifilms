@@ -15,7 +15,7 @@ require_once ("includes/csrfProtection.php");
     
 </head>
 <body>
-<div class="ten-percent grid-cols-2 pt-6 pb-20">
+<div class="ten-percent grid-cols-2 pt-6 pb-20 payment-content-container">
     <!-- booking overview -->
     <div>
         <h2 class="pb-4">Order Overview</h2>

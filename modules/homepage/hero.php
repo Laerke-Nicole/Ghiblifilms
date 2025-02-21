@@ -13,7 +13,7 @@
                     <div class="">
                         <img src="upload/<?php echo htmlspecialchars(trim($movie['MovieImage'])); ?>" alt="Image of movie round-corner">
                         
-                        <h5 class="pt-2 white-headline"><?php echo htmlspecialchars(trim($movie['MovieName'])); ?></h5>
+                        <h4 class="pt-2 white-headline text-xl"><?php echo htmlspecialchars(trim($movie['MovieName'])); ?></h4>
                         <p class="pb-4 white-text"><?php echo htmlspecialchars(trim($movie['ReleaseYear'])); ?></p>
                         <button class="btn-one" onclick="window.location.href='index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($movie['MovieID'])); ?>'">
                             Get tickets
@@ -36,7 +36,7 @@
                                 <p class="white-text text-sm pt-2"><span class="font-bold"><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></span> | <?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></p>
                             </div>
                             
-                            <h4 class="white-headline pb-4"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>
+                            <h4 class="white-headline pb-4 text-xl"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>
                             <button class="btn-one">Read more</button>
                         </div>
                     </a>

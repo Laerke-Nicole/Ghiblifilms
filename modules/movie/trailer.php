@@ -1,7 +1,7 @@
 <section>
     <div class="six-percent pt-20 pb-20">
         <h3 class="black-headline pb-6">Watch the trailer</h3>
-        <div>
+        <div class="trailer-video">
         <?php if ($movieItem): ?>
             <?php 
                 $trailerUrl = htmlspecialchars(trim($movieItem['MovieTrailer']));

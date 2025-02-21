@@ -1,7 +1,7 @@
 <?php require_once("controllers/companyController.php"); ?>
 
 <footer>
-    <div class="flex justify-evenly">
+    <div class="footer-content flex justify-evenly">
         <!-- company info -->
         <div>
             <h3 class="pb-4 text-2xl uppercase etna white-headline">Ghiblifilms</h3>
@@ -54,7 +54,7 @@
 
 
         <!-- social media -->
-        <div class="flex justify-around gap-10">
+        <div>
             <div>
                 <h4 class="pb-2 white-headline">Follow us</h4>
                 <div class="flex gap-2">

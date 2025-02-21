@@ -23,11 +23,16 @@ if (isset($_SESSION['UserID'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/library.css">
+    <link rel="stylesheet" href="style/responsive.css">
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
+    <!-- tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+
     <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6Le5im4qAAAAABvcp4E5XaeQ54PjcD-9ql3pq5nF"></script>
     <script src="js/recaptcha.js" defer></script>
+    
     
 </head>
 
@@ -386,7 +391,6 @@ break;
 <?php include("modules/footer/footer.php"); ?>
 
 
-
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -403,5 +407,7 @@ break;
 
 <!-- toggle -->
 <script src="./js/toggle.js" defer></script>
+
+
 </body>
 </html>

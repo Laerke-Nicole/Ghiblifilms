@@ -4,7 +4,7 @@
     <section class="pt-24 pb-24 fifteen-percent flex flex-col justify-center align-center">
         <div>
             <div class="text-center pb-16">
-                <img src="upload/<?php echo htmlspecialchars(trim($getNewsItem['NewsImg'])); ?>" alt="Image of news" class="pb-4 round-corner">
+                <img src="upload/<?php echo htmlspecialchars(trim($getNewsItem['NewsImg'])); ?>" alt="Image of news" class="pb-4 round-corner news-page-img">
 
                 <h1><?php echo htmlspecialchars(trim($getNewsItem['Headline'])); ?></h1>
                 <h5 class="pb-6"><?php echo htmlspecialchars(trim($getNewsItem['SubHeadline'])); ?></h5>
@@ -13,9 +13,6 @@
                 <hr class="dark-hr">
 
             </div>
-
-            
-
 
             <p class="news-text"><?php echo htmlspecialchars(trim($getNewsItem['TextOfNews'])); ?></p>
         </div>

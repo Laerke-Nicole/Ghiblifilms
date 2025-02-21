@@ -14,7 +14,7 @@
                     <p class="black-text text-sm"><span class="font-bold"><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></span> | <?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></p>
                 </div>
 
-                <h4 class="pb-4"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>
+                <h4 class="pb-4 text-xl"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>
                 <button class="btn-two">Read more</button>
             </div>
         </a>
