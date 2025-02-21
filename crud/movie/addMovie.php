@@ -7,6 +7,7 @@ if (isset($_POST['submit'])) {
     $description = htmlspecialchars(trim($_POST['Description']));
     $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
     $duration = htmlspecialchars(trim($_POST['Duration']));
+    $movieTrailer = htmlspecialchars(trim($_POST['MovieTrailer']));
 
     // img upload
     if (isset($_FILES['movieImg'])) {
@@ -45,12 +46,13 @@ if (isset($_POST['submit'])) {
                         $movieImg = $_FILES['movieImg']['name'];
 
                         // insert data into the db
-                        $query = $dbCon->prepare("INSERT INTO Movie (`Name`, `Description`, ReleaseYear, Duration, MovieImg) VALUES (:name, :description, :releaseYear, :duration, :movieImg)");
+                        $query = $dbCon->prepare("INSERT INTO Movie (`Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) VALUES (:name, :description, :releaseYear, :duration, :movieImg, :movieTrailer)");
                         $query->bindParam(':name', $name);
                         $query->bindParam(':description', $description);
                         $query->bindParam(':releaseYear', $releaseYear);
                         $query->bindParam(':duration', $duration);
                         $query->bindParam(':movieImg', $movieImg);
+                        $query->bindParam(':movieTrailer', $movieTrailer);
 
                         // if the query is successful
                         if ($query->execute()) {

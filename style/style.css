@@ -76,7 +76,7 @@ body {
 /* button style */
 .btn-one {
     border: 1px solid var(--secondary-color);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px 25px;
     font-family: var(--primary-font);
     font-size: 13px;
@@ -91,7 +91,7 @@ body {
 }
 
 .btn-two {
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px 25px;
     font-family: var(--primary-font);
     font-size: 14px;
@@ -229,7 +229,7 @@ nav ul li:hover {
 /* style for a box with content inside */
 .box {
     border: 1px solid var(--secondary-color);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 36px;
     width: 100%;
 }
@@ -237,7 +237,7 @@ nav ul li:hover {
 .contact-form input, .contact-form textarea {
     background-color: var(--white-title);
     border: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 10px 20px;
     width: 100%;
     max-width: 100%;
@@ -378,6 +378,7 @@ footer {
     width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 10px !important;
 }
 
 
@@ -404,7 +405,7 @@ footer {
     width: 160px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .time:hover {
@@ -462,7 +463,7 @@ footer {
     overflow: hidden;
     max-height: 500px;
     background-color: var(--white-title);
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 8px;
 }
 .hidden {
@@ -472,7 +473,7 @@ footer {
 
 .toggle-dropdown {
     background-color: var(--white-title) !important;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 0;
     padding: 10px 20px;
     position: relative;
@@ -493,7 +494,7 @@ footer {
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid black; /* Arrow color */
+    border-top: 6px solid var(--black-title); 
     transition: transform 0.3s ease;
 }
 
@@ -504,4 +505,43 @@ footer {
 .accordion-content {
     overflow: hidden;
     transition: max-height 0.3s ease;
+}
+
+
+/* collage hero */  
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.column {
+    flex: 50%;
+    padding: 12px;
+    gap: 24px;
+    flex: 1;
+}
+
+.column img {
+    width: 100%;
+    margin-top: 24px;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+
+/* collage bottom of homepage */
+.row-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px; 
+    padding: 0;
+}
+
+.column-grid img {
+    width: 100%; 
+    border-radius: 10px;
+    margin: 0; 
+    display: block; 
+    margin-bottom: 12px;
 }

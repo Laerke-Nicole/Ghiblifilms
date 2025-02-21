@@ -1,5 +1,5 @@
 <section>
-    <div class="grid-1-2 pt-8 pb-20 five-percent">
+    <div class="grid-1-2 pt-8 five-percent">
         <!-- movie img -->
         <div class="flex justify-center">
             <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="movie-detail-img round-corner">

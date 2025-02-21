@@ -97,7 +97,8 @@ CREATE TABLE Movie (
   `Description` text NOT NULL,
   ReleaseYear YEAR NOT NULL,
   Duration varchar(6) NOT NULL,
-  MovieImg varchar(255) NOT NULL
+  MovieImg varchar(255) NOT NULL,
+  MovieTrailer varchar(255) NOT NULL
 ) ENGINE=InnoDB;
 
 
@@ -226,18 +227,43 @@ CREATE TABLE BankAccount
 
 
 -- views
--- daily showings view
-CREATE VIEW DailyShowingsView AS
-SELECT 
-  m.MovieID, 
-  m.`Name`, 
-  m.MovieImg,
-  s.ShowingTime,
-  ShowingDate
-FROM Movie m
-INNER JOIN Showings s ON m.MovieID = s.MovieID
-WHERE s.ShowingDate = CURDATE()
-GROUP BY s.ShowingTime, m.`Name`;
+-- movie + nes hero section
+CREATE OR REPLACE VIEW CollageView AS
+SELECT * FROM (
+    SELECT 
+        m.MovieID, m.`Name` AS MovieName, m.MovieImg AS MovieImage, m.ReleaseYear,
+        s.ShowingDate, NULL AS NewsID, NULL AS Headline, NULL AS TypeOfNews, 
+        NULL AS NewsImage, NULL AS DateOfNews,
+        1 AS SortOrder
+    FROM Movie m
+    JOIN Showings s ON m.MovieID = s.MovieID
+    WHERE s.ShowingDate = (
+        SELECT MIN(ShowingDate) FROM Showings WHERE ShowingDate >= CURDATE()
+    )
+    LIMIT 1
+) AS MoviePart
+
+UNION ALL
+
+SELECT * FROM (
+    -- Two most recent news items
+    SELECT 
+        NULL AS MovieID, NULL AS MovieName, NULL AS MovieImage, NULL AS ReleaseYear,
+        NULL AS ShowingDate, n.NewsID, n.Headline, n.TypeOfNews, 
+        n.NewsImg AS NewsImage, n.DateOfNews,
+        2 AS SortOrder
+    FROM News n
+    ORDER BY n.DateOfNews DESC
+    LIMIT 2
+) AS NewsPart
+
+ORDER BY SortOrder, DateOfNews DESC;
+
+
+
+
+
+
 
 
 -- user + address view
@@ -575,18 +601,18 @@ insert into VoiceActor (VoiceActorID, FirstName, LastName) values (NULL, 'Masami
 
 
 -- movie
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'The boy and the heron', 'In the wake of his mothers death and his fathers remarriage, a headstrong boy named Mahito ventures into a dreamlike world shared by both the living and the dead.', 2023, '2h 4m', 'theboyandtheheron.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Spirited away', 'During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.', 2001, '2h 4m', 'spiritedaway.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Howls moving castle', 'When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.', 2004, '1h 59m', 'howlsmovingcastle.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Princess Mononoke', 'On a journey to find the cure for a Tatarigamis curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.', 1997, '2h 13m', 'princessmononoke.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'My neighbour Totoro', 'When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.', 1988, '1h 26m', 'myneighbourtotoro.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Ponyo', 'A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.', 2008, '1h 41m', 'ponyo.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Kikis delivery service', 'Along with her black cat Jiji, Kiki settles in a seaside town and starts a high-flying delivery service. Here begins her magical encounter with independence and responsibility, making lifelong friends and finding her place in the world.', 1989, '1h 43m', 'kiki.jpeg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'Tales from Earthsea', 'In a mythical land, a man and a young boy investigate a series of unusual occurrences.', 2006, '1h 55m', 'talesofearthsea.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'The tale of the princess Kaguya', 'Kaguya is a beautiful young woman coveted by five nobles. To try to avoid marrying a stranger she doesnt love, she sends her suitors on seemingly impossible tasks. But she will have to face her fate and punishment for her choices.', 2013, '2h 17m', 'princesskaguya.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'The secret world of Arrietty', 'The Clock family are four-inch-tall people who live anonymously in another familys residence, borrowing simple items to make their home. Life changes for the Clocks when their teenage daughter Arrietty is discovered.', 2010, '1h 34m', 'arrietty.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'The wind rises', 'Jiro Horikoshi studies assiduously to fulfill his aim of becoming an aeronautical engineer. As WWII begins, fighter aircraft designed by him end up getting used by the Japanese Empire against its foes.', 2013, '2h 6m', 'thewindrises.jpg');
-insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'kokurikozaka.jpg');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'The boy and the heron', 'In the wake of his mothers death and his fathers remarriage, a headstrong boy named Mahito ventures into a dreamlike world shared by both the living and the dead.', 2023, '2h 4m', 'theboyandtheheron.jpg', 'https://www.youtube.com/watch?v=t5khm-VjEu4');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Spirited away', 'During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.', 2001, '2h 4m', 'spiritedaway.jpg', 'https://www.youtube.com/watch?v=fDUFP7EeXLE');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Howls moving castle', 'When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.', 2004, '1h 59m', 'howlsmovingcastle.jpg', 'https://www.youtube.com/watch?v=DJeUGpcle8s');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Princess Mononoke', 'On a journey to find the cure for a Tatarigamis curse, Ashitaka finds himself in the middle of a war between the forest gods and Tatara, a mining colony. In this quest he also meets San, the Mononoke Hime.', 1997, '2h 13m', 'princessmononoke.jpg', 'https://www.youtube.com/watch?v=vf6c6n35wr4');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'My neighbour Totoro', 'When two girls move to the country to be near their ailing mother, they have adventures with the wondrous forest spirits who live nearby.', 1988, '1h 26m', 'myneighbourtotoro.jpg', 'https://www.youtube.com/watch?v=HaLISMAGdOE');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Ponyo', 'A five-year-old boy develops a relationship with Ponyo, a young goldfish princess who longs to become a human after falling in love with him.', 2008, '1h 41m', 'ponyo.jpg', 'https://www.youtube.com/watch?v=h6XP82TyFWw');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Kikis delivery service', 'Along with her black cat Jiji, Kiki settles in a seaside town and starts a high-flying delivery service. Here begins her magical encounter with independence and responsibility, making lifelong friends and finding her place in the world.', 1989, '1h 43m', 'kiki.jpeg', 'https://www.youtube.com/watch?v=t6-fT0hjTvc');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'Tales from Earthsea', 'In a mythical land, a man and a young boy investigate a series of unusual occurrences.', 2006, '1h 55m', 'talesofearthsea.jpg', 'https://www.youtube.com/watch?v=8hxYx3Jq3kI');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'The tale of the princess Kaguya', 'Kaguya is a beautiful young woman coveted by five nobles. To try to avoid marrying a stranger she doesnt love, she sends her suitors on seemingly impossible tasks. But she will have to face her fate and punishment for her choices.', 2013, '2h 17m', 'princesskaguya.jpg', 'https://www.youtube.com/watch?v=PZK2y9NAaNo');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'The secret world of Arrietty', 'The Clock family are four-inch-tall people who live anonymously in another familys residence, borrowing simple items to make their home. Life changes for the Clocks when their teenage daughter Arrietty is discovered.', 2010, '1h 34m', 'arrietty.jpg', 'https://www.youtube.com/watch?v=ncXbAhTzIYc');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'The wind rises', 'Jiro Horikoshi studies assiduously to fulfill his aim of becoming an aeronautical engineer. As WWII begins, fighter aircraft designed by him end up getting used by the Japanese Empire against its foes.', 2013, '2h 6m', 'thewindrises.jpg', 'https://www.youtube.com/watch?v=TXuswYJFrDM');
+insert into Movie (MovieID, `Name`, `Description`, ReleaseYear, Duration, MovieImg, MovieTrailer) values (NULL, 'From up on Poppy Hill', 'A group of Yokohama teens look to save their schools clubhouse from the wrecking ball in preparations for the 1964 Tokyo Olympics.', 2011, '1h 31m', 'kokurikozaka.jpg', 'https://www.youtube.com/watch?v=a0DIxdy8CZA');
 
 
 -- movie genres

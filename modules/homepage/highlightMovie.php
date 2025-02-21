@@ -5,10 +5,10 @@
             <h3 class="text-4xl white-headline"><?php echo htmlspecialchars(trim($highlightMovie['Name'])); ?></h3>
 
             <div class="flex">
-                <p class="pb-6 text-lg white-text"><?php echo htmlspecialchars(trim($highlightMovie['ReleaseYear'])) . ' | ' . htmlspecialchars(trim($highlightMovie['Duration'])); ?></p>
+                <p class="pb-4 text-lg white-text"><?php echo htmlspecialchars(trim($highlightMovie['ReleaseYear'])) . ' | ' . htmlspecialchars(trim($highlightMovie['Duration'])); ?></p>
             </div>
 
-            <p class="pb-6 text-lg white-text"><?php echo htmlspecialchars(trim($highlightMovie['Description'])); ?></p>
+            <p class="pb-8 text-base white-text"><?php echo htmlspecialchars(trim($highlightMovie['Description'])); ?></p>
             
             <div>
                 <button class="btn-one" onclick="window.location.href='index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($highlightMovie['MovieID'])); ?>'">See more</button>

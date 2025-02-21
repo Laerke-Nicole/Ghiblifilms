@@ -107,12 +107,16 @@ break;
 
 
 // modules
-case "highlightmovie":
-    include('modules/homepage/highlightMovie.php');
+case "hero":
+    include('modules/homepage/hero.php');
 break;
 
-case "homeshowings":
-    include('modules/homepage/showings.php');
+case "collage":
+    include('modules/homepage/collage.php');
+break;
+
+case "highlightmovie":
+    include('modules/homepage/highlightMovie.php');
 break;
 
 case "homenews":
@@ -153,6 +157,10 @@ break;
 
 case "movieshowings":
     include('modules/movie/showings.php');
+break;
+
+case "movietrailer":
+    include('modules/movie/trailer.php');
 break;
 
 case "categoriesadmin":

@@ -1,0 +1,22 @@
+<section>
+    <div class="six-percent pt-20 pb-20">
+        <h3 class="black-headline pb-6">Watch the trailer</h3>
+        <div>
+        <?php if ($movieItem): ?>
+            <?php 
+                $trailerUrl = htmlspecialchars(trim($movieItem['MovieTrailer']));
+                $embedUrl = str_replace("watch?v=", "embed/", $trailerUrl);
+            ?>
+            <iframe width="560" height="315" 
+                src="<?php echo $embedUrl; ?>" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        <?php endif; ?>
+
+        </div>
+    </div>
+</section>

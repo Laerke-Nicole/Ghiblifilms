@@ -113,6 +113,14 @@ confirm_is_admin();
                     <input id="movieImg" name="movieImg" type="file" class="validate" required="" aria-required="true">
                 </div>
             </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="MovieTrailer" name="MovieTrailer" class="materialize-textarea" required></textarea>
+                    <label for="MovieTrailer">Movie trailer</label>
+                </div>
+            </div> 
+            
             
             <button class="btn waves-effect waves-light" type="submit" name="submit">Add Movie</button>
         </form>

@@ -76,10 +76,6 @@ $queryShowings->execute();
 $showings = $queryShowings->fetchAll();
 
 
-// get everything from daily showings
-$queryShowings = $dbCon->prepare("SELECT * FROM DailyShowingsView");
-$queryShowings->execute();
-$dailyShowingsViews = $queryShowings->fetchAll();
 
 
 // get auditorium/venues from db
@@ -147,3 +143,9 @@ $getVoiceActorAdmin = $queryVoiceActor->fetchAll();
 $query = $dbCon->prepare("SELECT * FROM Movie ORDER BY ReleaseYear DESC LIMIT 1");
 $query->execute();
 $highlightMovie = $query->fetch();
+
+
+// movie + news section
+$queryHero = $dbCon->prepare("SELECT * FROM CollageView");
+$queryHero->execute();
+$heroCollageViews = $queryHero->fetchAll();

@@ -16,6 +16,9 @@ if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
         // movie overall info 
         include ("modules/movie/moviedetails.php");
 
+        // trailer
+        include ("modules/movie/trailer.php");
+
         // display showings
         include ("modules/movie/showings.php");
     }

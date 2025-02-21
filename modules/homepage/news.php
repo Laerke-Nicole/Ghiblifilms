@@ -1,4 +1,4 @@
-<section class="pt-24 pb-24 six-percent" id="news">
+<section class="pt-16 pb-16 six-percent" id="news">
     <div>
         <h2 class="pb-6">Latest news</h2>
     </div>
@@ -8,10 +8,10 @@
     <?php foreach ($getNews as $news): ?>
         <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="news-item">
             <div>
-                <img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' class="round-corner news-img w-full pb-2">
+                <img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' class="round-corner news-img w-full">
 
                 <div>
-                    <p class="black-text"><span class="font-bold"><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></span> | <?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></p>
+                    <p class="black-text text-sm"><span class="font-bold"><?php echo htmlspecialchars(trim($news['TypeOfNews'])); ?></span> | <?php echo htmlspecialchars(trim($news['DateOfNews'])); ?></p>
                 </div>
 
                 <h4 class="pb-4"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>

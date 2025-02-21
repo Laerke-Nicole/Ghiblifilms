@@ -71,6 +71,14 @@ include ("controllers/adminController.php");
             </div>
         </div>
 
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="MovieTrailer" name="MovieTrailer" type="text" value="<?php echo htmlspecialchars(trim($getMovie[0]['MovieTrailer'])); ?>" class="validate" required>
+                <label for="MovieTrailer">Movie trailer</label>
+            </div>
+        </div>
+        
+
         <input type="hidden" name="MovieID" value="<?php echo htmlspecialchars(trim($movieID)); ?>">
 
         <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>

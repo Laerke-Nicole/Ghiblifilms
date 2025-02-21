@@ -26,31 +26,33 @@ require_once("controllers/companyController.php");
 </head>
 <body>
 
-<?php
-// daily showings 
-include("modules/homepage/showings.php"); 
-if ($showings == !null) {
-    echo '<div class="six-percent">';
-        echo '<hr class="dark-hr">';
-    echo '</div>';
-}
+<section class="pb-20">
+    <?php
+    // hero 
+    include("modules/homepage/hero.php"); 
 
-// all movies 
-include("modules/homepage/movies.php"); ?>
-<div class="six-percent">
-    <hr class="dark-hr">
-</div>
+    // all movies 
+    include("modules/homepage/movies.php"); ?>
+    <div class="six-percent">
+        <hr class="dark-hr">
+    </div>
 
-<?php
-// news 
-include("modules/homepage/news.php"); ?>
-<div class="six-percent">
-    <hr class="dark-hr">
-</div>
+    <?php
+    // news 
+    include("modules/homepage/news.php"); ?>
 
-<?php
-// highlighted movie
-include("modules/homepage/highlightMovie.php"); ?>
+    <?php
+    // highlighted movie
+    include("modules/homepage/highlightMovie.php"); ?>
+    
+    <div class="six-percent">
+        <hr class="dark-hr">
+    </div>
+
+    <?php
+    // collage section
+    include("modules/homepage/collage.php"); ?>
+</section>
 
 </body>
 </html>

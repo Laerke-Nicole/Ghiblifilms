@@ -10,6 +10,7 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     $releaseYear = htmlspecialchars(trim($_POST['ReleaseYear']));
     $duration = htmlspecialchars(trim($_POST['Duration']));
     $movieID = htmlspecialchars(trim($_POST['MovieID']));
+    $movieTrailer = htmlspecialchars(trim($_POST['MovieTrailer']));
 
     // initialize the $movieImg variable to store the file name
     $movieImg = null;
@@ -48,7 +49,7 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     } 
 
     // update movie data
-    $query = $dbCon->prepare("UPDATE Movie SET Name = :name, Description = :description, `ReleaseYear` = :releaseYear, `Duration` = :duration, `MovieImg` = :movieImg WHERE MovieID = :movieID");
+    $query = $dbCon->prepare("UPDATE Movie SET Name = :name, Description = :description, `ReleaseYear` = :releaseYear, `Duration` = :duration, `MovieImg` = :movieImg, `MovieTrailer` = :movieTrailer WHERE MovieID = :movieID");
 
     $query->bindParam(':name', $name);
     $query->bindParam(':description', $description);
@@ -56,6 +57,7 @@ if (isset($_POST['MovieID']) && isset($_POST['submit'])) {
     $query->bindParam(':duration', $duration);
     $query->bindParam(':movieImg', $movieImg);
     $query->bindParam(':movieID', $movieID);
+    $query->bindParam(':movieTrailer', $movieTrailer);
 
     // go to admin page after update
     if ($query->execute()) {
