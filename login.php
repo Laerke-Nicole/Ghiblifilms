@@ -35,11 +35,13 @@ if (isset($_POST['submit'])) {
         
             // after logging in go to the successful login detail view
             if ($found_user['Role'] === 'Admin') {
-                echo "<script>window.location.href='/index.php?page=admin';</script>";
+                echo "<script>window.location.href='index.php?page=admin';</script>";
                 exit;
             } else {
                 // if user is logged in go to the user options page
-                echo "<script>window.location.href='/index.php?page=useroptions';</script>";
+                echo "<script>window.location.href='index.php?page=useroptions';</script>"; 
+
+                // echo "<script>window.location.href='/index.php?page=useroptions';</script>";
                 exit;
             }
         } else {

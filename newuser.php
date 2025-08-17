@@ -96,10 +96,14 @@ if (isset($_POST['submit'])) {
                 if ($result) {
                     $message = "User Created.";
                     if (!headers_sent()) {
-                        header("Location: /index.php?page=login");
+                        header("Location: index.php?page=login");
+
+                        // header("Location: /index.php?page=login");
                         exit;
                     } else {
-                        echo "<script>window.location.href='/index.php?page=login';</script>";
+                        // echo "<script>window.location.href='/index.php?page=login';</script>";
+                        echo "<script>window.location.href='index.php?page=login';</script>";
+
                         exit;
                     }
                 } else {

@@ -2,7 +2,7 @@
     <?php if ($highlightMovie): ?>
         <div class="flex flex-col justify-center items-center">
             <h5 class="extra-light">Newest movie in Ghiblifilms</h5>
-            <h3 class="text-4xl white-headline"><?php echo htmlspecialchars(trim($highlightMovie['Name'])); ?></h3>
+            <h2 class="white-headline"><?php echo htmlspecialchars(trim($highlightMovie['Name'])); ?></h2>
 
             <div class="flex">
                 <p class="pb-4 text-lg white-text"><?php echo htmlspecialchars(trim($highlightMovie['ReleaseYear'])) . ' | ' . htmlspecialchars(trim($highlightMovie['Duration'])); ?></p>

@@ -1,5 +1,5 @@
 <nav class="pc-nav flex justify-between items-center p-6 pr-12 pl-12">
-    <a href="index.php?page=home" class="secondary-color text-3xl uppercase">Ghiblifilms</a>
+    <a href="index.php?page=home" class="secondary-color text-3xl uppercase logo">Ghiblifilms</a>
 
     <ul class="flex gap-6">
         <li><a href="index.php?page=home" class="secondary-color">Movies</a></li>

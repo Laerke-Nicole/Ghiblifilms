@@ -6,7 +6,7 @@
         </div>
 
         <!-- movie info -->
-        <div class="pt-16 pl-8">
+        <div class="pt-16 pl-8 movie-info-container">
             <!-- title and description -->
             <div class="pb-12">
                 <h1 class="pb-4"><?php echo htmlspecialchars(trim($movieItem['Name'])); ?></h1>

@@ -1,6 +1,6 @@
 <?php require_once("controllers/companyController.php"); ?>
 
-<section class="s-bg">
+<section>
     <div class="grid-1-2">
         <div class="contact-left-img"></div>
 

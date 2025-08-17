@@ -10,32 +10,34 @@
     <script src="js/recaptcha.js" defer></script>
 </head>
 
-<div class="ten-percent pt-6 pb-20">
-<h2 class="pb-4">Log in</h2>
-
-<form action="" method="post" class="flex flex-col login-form">
-    <!-- csrf protection -->
-    <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
-    
-    <!-- hidden input for reCAPTCHA token -->
-    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-
-    <div class="pb-4">
-        <input type="text" name="User" maxlength="50" value="" placeholder="Username" class="validate" required="" aria-required="true" />
-    </div>
-    
-    <div class="pb-6">
-        <input type="password" name="Pass" maxlength="255" value="" placeholder="Password" class="validate" required="" aria-required="true" />
-    </div>
-
-    <div class="cursor pb-2">
-        <input type="submit" name="submit" value="Login" class="btn-two" />
-    </div>
-
+<div class="six-percent pt-6 pb-20 flex flex-col justify-center align-center">
     <div>
-        <p class="secondary-color text-sm">Got no user? <a href="index.php?page=newuser" class="secondary-color text-sm create-user-link">Create a new user here</a></p> 
+        <h2 class="pb-4">Log in</h2>
+        
+        <form action="" method="post" class="flex flex-col login-form">
+            <!-- csrf protection -->
+            <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
+            
+            <!-- hidden input for reCAPTCHA token -->
+            <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+        
+            <div class="pb-4">
+                <input type="text" name="User" maxlength="50" value="" placeholder="Username" class="validate" required="" aria-required="true" />
+            </div>
+            
+            <div class="pb-6">
+                <input type="password" name="Pass" maxlength="255" value="" placeholder="Password" class="validate" required="" aria-required="true" />
+            </div>
+        
+            <div class="cursor pb-2">
+                <input type="submit" name="submit" value="Login" class="btn-two" />
+            </div>
+        
+            <div>
+                <p class="secondary-color text-sm">Got no user? <a href="index.php?page=newuser" class="secondary-color text-sm create-user-link">Create a new user here</a></p> 
+            </div>
+        </form>
     </div>
-</form>
 
 </div>
 </body>

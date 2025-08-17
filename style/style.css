@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
-
-
 /* color palette */
 :root {
     --primary-color: #ffebd8;
@@ -19,8 +16,8 @@
 
 /* font family */
 :root {
-    --primary-font: 'Comic Neue', sans-serif;
-    --secondary-font: "lora", serif;
+    --primary-font: "lora", serif;
+    --secondary-font: "nimbus-sans", sans-serif;
 }
 
 * {
@@ -110,28 +107,28 @@ body {
 /* text style */
 h1 {
     font-family: var(--primary-font);
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bold;
     color: var(--black-title);
 }
 
 h2 {
     font-family: var(--primary-font);
-    font-size: 36px;
+    font-size: 32px;
     font-weight: bold;
     color: var(--black-title);
 }
 
 h3 {
     font-family: var(--primary-font);
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--black-title);
 }
 
 h4 {
     font-family: var(--primary-font);
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: var(--black-title);
 }
@@ -183,17 +180,15 @@ nav ul {
 
 nav ul li {
     transition: 0.3s;
+    font-family: var(--secondary-font);
 }
 
 nav ul li:hover {
     text-decoration: underline;
 }
 
-/* swiper */
-.movies-container {
-    padding-left: 6%;
-}
 
+/* swiper */
 .movie-img {
     transition: 0.3s;
 }
@@ -221,6 +216,7 @@ nav ul li:hover {
 
 .swiper-button-next::after, .swiper-button-prev::after {
     color: var(--white-title); 
+    text-shadow: var(--black-title) 0 0 5px;
 }
 
 .swiper-button-next:hover::after, .swiper-button-prev:hover::after {
@@ -301,7 +297,7 @@ nav ul li:hover {
 
 /* about */
 .about-banner {
-    background-image: url('../img/banner.png');
+    background-image: url('../img/banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

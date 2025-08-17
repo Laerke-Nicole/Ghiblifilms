@@ -94,7 +94,7 @@
     grid-template-columns: repeat(3, 1fr);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 18px;
 }
 
 .grid-cols-4 {

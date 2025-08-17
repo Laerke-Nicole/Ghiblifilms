@@ -904,4 +904,4 @@ insert into OpeningHour (OpeningHourID, `Day`, `Time`) values (2, 'Friday - Sund
 INSERT INTO BankAccount (AccountID, Description, Balance) VALUES (1, 'Money balance', 0.00);
 
 -- admin
-INSERT INTO User (UserID, Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID, Role) VALUES (NULL, 'admin', '$2y$10$w5.j3nGeOiUAHLDdHJM.2eTAV.whkaCZSAibhHABRO8IGMf6pQVUa', 'Lærke', 'Nielsen', 'laerke@laerkenicole.dk', '12345678', NULL, 'Admin');
+INSERT INTO User (UserID, Username, Pass, FirstName, LastName, Email, PhoneNumber, AddressID, Role) VALUES (NULL, 'alvoryXaden', '$2y$10$ntaWXGGnjvj6ndDkuxgucusnNo/BhTqo5DBS0mji8AMdBw9ze7B2G', 'Lærke', 'Nielsen', 'laerke@laerkenicole.dk', '12345678', NULL, 'Admin');

@@ -6,7 +6,7 @@
     <!-- loop with news  -->
     <div class="grid-cols-3">
     <?php foreach ($getNews as $news): ?>
-        <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="news-item">
+        <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($news['NewsID'])); ?>" class="flex flex-col justify-between">
             <div>
                 <img src='upload/<?php echo htmlspecialchars(trim($news['NewsImg'])); ?>' alt='Image of news' class="round-corner news-img w-full">
 
@@ -15,6 +15,8 @@
                 </div>
 
                 <h4 class="pb-4 text-xl"><?php echo htmlspecialchars(trim($news['Headline'])); ?></h4>
+            </div>
+            <div>
                 <button class="btn-two">Read more</button>
             </div>
         </a>

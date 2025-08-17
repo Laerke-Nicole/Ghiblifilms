@@ -38,6 +38,30 @@
         flex-direction: column;
         gap: 24px;
     }
+
+    /* contact */
+    .contact {
+        padding: 24px 6% 80px 6% !important;
+    }
+
+    /* news detail page */
+    .news-detail-container {
+        padding: 24px 6% 80px 6% !important;
+    }
+
+    /* movie detail page */
+    .movie-info-container{
+        padding: 24px 0 0 0;
+    }
+
+    .collage-container .row-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .collage-3, .collage-4 {
+        display: none;
+    }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -49,5 +73,9 @@
         padding-top: 4px;
         flex-wrap: wrap;
         gap: 14px !important;
+    }
+
+    .logo {
+        text-align: center;
     }
 }

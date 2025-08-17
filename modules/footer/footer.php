@@ -15,7 +15,7 @@
 
                 <?php foreach ($getCompanyAddressView as $companyAddress): ?>
                     <div>
-                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?><?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?></p>
+                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?> <?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?></p>
                         <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['PostalCode'])); ?> <?php echo htmlspecialchars(trim($companyAddress['City'])); ?></p>
                         <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['Country'])); ?></p>
                     </div>
@@ -25,7 +25,7 @@
 
         <!-- about us links -->
         <div>
-            <h4 class="pb-2 white-headline">About Us</h4>
+            <h5 class="text-xl pb-2 white-headline">About Us</h5>
             <div class="flex flex-col gap-2">
                 <a href="index.php?page=home" class="footer-link"><p>Movies</p></a>
                 <a href="index.php?page=about" class="footer-link"><p>About Ghiblifilms</p></a>
@@ -41,7 +41,7 @@
 
         <!-- opening hours -->
         <div>
-            <h4 class="pb-2 white-headline">Opening hours</h4>
+            <h5 class="text-xl pb-2 white-headline">Opening hours</h5>
             <div class="flex flex-col gap-2">
                 <?php foreach ($getOpeningHour as $openingHour): ?>
                     <div>
@@ -56,7 +56,7 @@
         <!-- social media -->
         <div>
             <div>
-                <h4 class="pb-2 white-headline">Follow us</h4>
+                <h5 class="text-xl pb-2 white-headline">Follow us</h5>
                 <div class="flex gap-2">
                     <img src="img/facebook.svg" alt="facebook" height="26">
                     <img src="img/instagram.svg" alt="instagram" height="26">
