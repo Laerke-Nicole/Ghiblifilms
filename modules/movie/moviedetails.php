@@ -1,31 +1,31 @@
 <section>
-    <div class="grid-1-2 pt-8 five-percent">
+    <div class="container grid grid-cols-2 gap-6 pt-10">
         <!-- movie img -->
         <div class="flex justify-center">
-            <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="movie-detail-img round-corner">
+            <img src="upload/<?php echo htmlspecialchars(trim($movieItem['MovieImg'])); ?>" alt="Image of movie" class="movie-detail-img round-corner mr-14">
         </div>
 
         <!-- movie info -->
-        <div class="pt-16 pl-8 movie-info-container">
+        <div class="movie-info-container sticky top-20 self-start pr-4">
             <!-- title and description -->
-            <div class="pb-12">
-                <h1 class="pb-4"><?php echo htmlspecialchars(trim($movieItem['Name'])); ?></h1>
-                <p class="pb-4"><?php echo htmlspecialchars(trim($movieItem['Description'])); ?></p>
-                <a href="#showings"><button class="btn-two">See times</button></a>
+            <div>
+                <h1><?php echo htmlspecialchars(trim($movieItem['Name'])); ?></h1>
+                <p class="mb-4"><?php echo htmlspecialchars(trim($movieItem['Description'])); ?></p>
+                <a href="#showings"><button class="btn-two mb-10">See times</button></a>
             </div>
 
             <!-- key info -->
-            <div class="flex flex-col gap-2 pb-8">
+            <div class="key-info flex flex-col gap-4 mb-10">
                 <div>
-                    <h4 class="text-sm">Duration</h4>
+                    <h5>Duration</h5>
                     <p><?php echo htmlspecialchars(trim($movieItem['Duration'])); ?></p>
                 </div>
                 <div>
-                    <h4 class="text-sm">Release year</h4>
+                    <h5>Release year</h5>
                     <p><?php echo htmlspecialchars(trim($movieItem['ReleaseYear'])); ?></p>
                 </div>
                 <div>
-                    <h4 class="text-sm">Genre</h4>
+                    <h5>Genre</h5>
                     <p><?php echo htmlspecialchars(implode(", ", array_column($genres, 'GenreName'))); ?></p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             </div>
 
             <!-- production team -->
-            <div>
+            <div class="pb-4 md:pb-0">
                 <button class="toggle-dropdown w-full text-left black-text text-sm" onclick="toggleAccordion('productionTeam', this)">Production team<span class="arrow"></span>
                 </button>
                 <div id="productionTeam" class="accordion-content hidden pl-4 pt-2">

@@ -27,6 +27,7 @@ if (isset($_SESSION['UserID'])) {
     <link rel="stylesheet" href="https://use.typekit.net/arj0iay.css">
     <!-- tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js"></script>
@@ -59,6 +60,10 @@ break;
 
 case "contact":
     include('views/contactDetail.php');
+break;
+
+case "newslist":
+    include('views/newsList.php');
 break;
 
 case "login":
@@ -347,6 +352,10 @@ case "updatenews":
 break;
 
 // view/detail pages
+case "movies":
+    include('views/movies.php');
+break;
+
 case "moviedetail":
     include('views/movieDetail.php');
 break;

@@ -1,22 +1,33 @@
-<!-- if statement to show details on news -->
-<?php if ($getNewsItem): ?>
-    <!-- display the details of the news -->
-    <section class="pt-24 pb-24 fifteen-percent flex flex-col justify-center align-center news-detail-container">
-        <div>
-            <div class="text-center pb-16">
-                <img src="upload/<?php echo htmlspecialchars(trim($getNewsItem['NewsImg'])); ?>" alt="Image of news" class="pb-4 round-corner news-page-img">
-
-                <h2 class=""><?php echo htmlspecialchars(trim($getNewsItem['Headline'])); ?></h2>
-                <h4 class="pb-6"><?php echo htmlspecialchars(trim($getNewsItem['SubHeadline'])); ?></h4>
-                <p class="pb-6"><?php echo htmlspecialchars(trim($getNewsItem['TypeOfNews'])) . ' | ' . htmlspecialchars(trim($getNewsItem['Author'])) . ' | ' . htmlspecialchars(trim($getNewsItem['DateOfNews'])); ?></p>
-
-                <hr class="dark-hr">
-
+<section class="container container-smaller pt-10 flex justify-between gap-6 news-details-container">
+    <!-- left column: main news -->
+    <div class="flex-1">
+        <?php if ($getFirstNews): ?>
+        <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars(trim($getFirstNews['NewsID'])); ?>" class="flex flex-col justify-between">
+            <div>
+                <img src='upload/<?php echo htmlspecialchars(trim($getFirstNews['NewsImg'])); ?>' alt='Image of news' class="round-corner news-img w-full mb-4">
+                <p class="black-text text-sm primary-font mb-1">
+                    <span class="font-bold"><?php echo htmlspecialchars(trim($getFirstNews['TypeOfNews'])); ?></span> | <?php echo htmlspecialchars(trim($getFirstNews['DateOfNews'])); ?>
+                </p>
+                <h4><?php echo htmlspecialchars(trim($getFirstNews['Headline'])); ?></h4>
+                <p><?php echo htmlspecialchars(trim($getFirstNews['TextOfNews'])); ?></p>
             </div>
+        </a>
+    <?php endif; ?>
 
-            <p class="news-text"><?php echo htmlspecialchars(trim($getNewsItem['TextOfNews'])); ?></p>
-        </div>
-    </section>
-<?php else: ?>
-    <p>News item not found.</p>
-<?php endif; ?>
+    </div>
+
+    <!-- right column: other news -->
+    <div class="w-64 flex-shrink-0">
+        <h5 class="mb-4">Other news</h5>
+        <?php foreach ($getOtherNews as $news): ?>
+            <div class="mb-6">
+                <a href="index.php?page=newsdetail&ID=<?php echo htmlspecialchars($news['NewsID']); ?>" class="flex flex-col justify-between">
+                    <div>
+                        <img src="upload/<?php echo htmlspecialchars($news['NewsImg']); ?>" alt="Image of news" class="round-corner news-img w-full mb-2">
+                        <h5 class="text-sm font-medium"><?php echo htmlspecialchars($news['Headline']); ?></h5>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>

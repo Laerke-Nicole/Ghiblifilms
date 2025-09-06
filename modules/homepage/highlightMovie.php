@@ -1,22 +1,33 @@
-<section class="highlight-movie round-corner-right six-percent grid-cols-2 dark-bg">
+<section class="highlight-movie-section">
+  <div class="container highlight-movie">
     <?php if ($highlightMovie): ?>
-        <div class="flex flex-col justify-center items-center">
-            <h5 class="extra-light">Newest movie in Ghiblifilms</h5>
-            <h2 class="white-headline"><?php echo htmlspecialchars(trim($highlightMovie['Name'])); ?></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="highlight-text flex flex-col justify-center">
+          <h5 class="extra-light">Newest movie in Ghiblifilms</h5>
+          <h2 class="white-headline"><?php echo htmlspecialchars(trim($highlightMovie['Name'])); ?></h2>
 
-            <div class="flex">
-                <p class="pb-4 text-lg white-text"><?php echo htmlspecialchars(trim($highlightMovie['ReleaseYear'])) . ' | ' . htmlspecialchars(trim($highlightMovie['Duration'])); ?></p>
-            </div>
+          <div class="flex">
+            <p class="pb-4 text-sm extra-light tagline">
+              <?php echo htmlspecialchars(trim($highlightMovie['ReleaseYear'])) . ' | ' . htmlspecialchars(trim($highlightMovie['Duration'])); ?>
+            </p>
+          </div>
 
-            <p class="pb-8 text-base white-text"><?php echo htmlspecialchars(trim($highlightMovie['Description'])); ?></p>
-            
-            <div>
-                <button class="btn-one" onclick="window.location.href='index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($highlightMovie['MovieID'])); ?>'">See more</button>
-            </div>
+          <p class="pb-8 text-base white-text">
+            <?php echo htmlspecialchars(trim($highlightMovie['Description'])); ?>
+          </p>
+          
+          <div>
+            <button class="btn-one" 
+              onclick="window.location.href='index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($highlightMovie['MovieID'])); ?>'">
+              See more
+            </button>
+          </div>
         </div>
 
         <div class="highlight-movie-img flex justify-end items-center">
-            <img src='upload/<?php echo htmlspecialchars(trim($highlightMovie['MovieImg'])); ?>' alt='Image of movie' class="round-corner">
+          <img src="upload/<?php echo htmlspecialchars(trim($highlightMovie['MovieImg'])); ?>" alt="Image of movie" class="round-corner">
         </div>
+      </div>
     <?php endif; ?>
+  </div>
 </section>

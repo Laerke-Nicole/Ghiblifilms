@@ -1,23 +1,23 @@
 <?php require_once("controllers/companyController.php"); ?>
 
 <footer>
-    <div class="footer-content flex justify-evenly">
+    <div class="footer-content flex justify-between container container-footer">
         <!-- company info -->
         <div>
-            <h3 class="pb-4 text-2xl uppercase etna white-headline">Ghiblifilms</h3>
+            <h3 class="text-2xl uppercase white-headline primary-font">Ghiblifilms</h3>
             <?php foreach ($everythingCompany as $companyInfo): ?>
-            <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-2">
-                    <p class="white-text text-sm">+45 <?php echo htmlspecialchars(trim($companyInfo['CompanyPhoneNumber'])); ?></p>
-                    <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyInfo['CompanyEmail'])); ?></p>
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col">
+                    <p class="extra-light text-sm">+45 <?php echo htmlspecialchars(trim($companyInfo['CompanyPhoneNumber'])); ?></p>
+                    <p class="extra-light text-sm"><?php echo htmlspecialchars(trim($companyInfo['CompanyEmail'])); ?></p>
                 </div>
                 <?php endforeach; ?>
 
                 <?php foreach ($getCompanyAddressView as $companyAddress): ?>
                     <div>
-                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?> <?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?></p>
-                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['PostalCode'])); ?> <?php echo htmlspecialchars(trim($companyAddress['City'])); ?></p>
-                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($companyAddress['Country'])); ?></p>
+                        <p class="extra-light text-sm"><?php echo htmlspecialchars(trim($companyAddress['StreetName'])); ?> <?php echo htmlspecialchars(trim($companyAddress['StreetNumber'])); ?></p>
+                        <p class="extra-light text-sm"><?php echo htmlspecialchars(trim($companyAddress['PostalCode'])); ?> <?php echo htmlspecialchars(trim($companyAddress['City'])); ?></p>
+                        <p class="extra-light text-sm"><?php echo htmlspecialchars(trim($companyAddress['Country'])); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -25,28 +25,25 @@
 
         <!-- about us links -->
         <div>
-            <h5 class="text-xl pb-2 white-headline">About Us</h5>
+            <h5 class="text-lg footer-headlines white-headline">About Us</h5>
             <div class="flex flex-col gap-2">
-                <a href="index.php?page=home" class="footer-link"><p>Movies</p></a>
-                <a href="index.php?page=about" class="footer-link"><p>About Ghiblifilms</p></a>
-                <a href="index.php?page=contact" class="footer-link"><p>Contact Us</p></a>
-                <p class="white-text text-sm">Job at Ghiblifilms</p>
-                <p class="white-text text-sm">Membership</p>
-                <p class="white-text text-sm">Cookie policy</p>
-                <p class="white-text text-sm">Privacy policy</p>
-                <p class="white-text text-sm">Cookie settings</p>
+                <a href="index.php?page=movies" class="footer-link white-text"><p>Movies</p></a>
+                <a href="index.php?page=about" class="footer-link white-text"><p>About Ghiblifilms</p></a>
+                <a href="index.php?page=contact" class="footer-link white-text"><p>Contact Us</p></a>
+                <p class="white-text text-base white-text">Job at Ghiblifilms</p>
+                <p class="white-text text-base white-text">Membership</p>
             </div>
         </div>
 
 
         <!-- opening hours -->
         <div>
-            <h5 class="text-xl pb-2 white-headline">Opening hours</h5>
-            <div class="flex flex-col gap-2">
+            <h5 class="text-lg footer-headlines white-headline">Opening hours</h5>
+            <div class="flex flex-col">
                 <?php foreach ($getOpeningHour as $openingHour): ?>
-                    <div>
+                    <div class="opening-hours">
                         <p class="white-text text-sm"><?php echo htmlspecialchars(trim($openingHour['Day'])); ?></p>
-                        <p class="pb-4 white-text text-sm"><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></p>
+                        <p class="white-text text-sm"><?php echo htmlspecialchars(trim($openingHour['Time'])); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -56,10 +53,10 @@
         <!-- social media -->
         <div>
             <div>
-                <h5 class="text-xl pb-2 white-headline">Follow us</h5>
+                <h5 class="text-lg footer-headlines white-headline">Follow us</h5>
                 <div class="flex gap-2">
-                    <img src="img/facebook.svg" alt="facebook" height="26">
-                    <img src="img/instagram.svg" alt="instagram" height="26">
+                    <img src="img/facebook.svg" alt="facebook" class="h-5">
+                    <img src="img/instagram.svg" alt="instagram"  class="h-5">
                 </div>
             </div>
         </div>

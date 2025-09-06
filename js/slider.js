@@ -1,14 +1,41 @@
-const swiper = new Swiper('.mySwiper', {
-    slidesPerView: 'auto',
+const swiper = new Swiper('.swiper', {
+    loop: true,
     spaceBetween: 16,
-    grabCursor: true, // Enables dragging with mouse
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+    grabCursor: true, 
+
     breakpoints: {
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-    }
+        320: {
+        slidesPerView: 1.3,
+        spaceBetween: 20
+        },
+        500: {
+        slidesPerView: 2.3,
+        spaceBetween: 30
+        },
+        640: {
+        slidesPerView: 3.3,
+        spaceBetween: 40
+        }
+    },
+
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+});
+
+
+
+const swiperMovieList = new Swiper('.swiper-movies', {
+    loop: true,
+    spaceBetween: 16,
+    grabCursor: true, 
+    slidesPerView: 1.2,
+
+    scrollbar: {
+        el: '.swiper-scrollbar',
+    },
+    
+    pagination: {
+    el: '.swiper-pagination',
+  },
 });

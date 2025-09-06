@@ -1,6 +1,6 @@
 <section>
-    <div class="six-percent pt-20 pb-20">
-        <h3 class="black-headline pb-6">Watch the trailer</h3>
+    <div class="trailer container">
+        <h3 class="black-headline">Watch the trailer</h3>
         <div class="trailer-video">
         <?php if ($movieItem): ?>
             <?php 

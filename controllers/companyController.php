@@ -11,6 +11,25 @@ $queryNews = $dbCon->prepare("SELECT * FROM News");
 $queryNews->execute();
 $getNewsAdmin = $queryNews->fetchAll();
 
+// Check if ID exists in the URL
+if (isset($_GET['ID']) && is_numeric($_GET['ID'])) {
+    $currentNewsID = (int) $_GET['ID']; 
+} else {
+    $currentNewsID = 0; 
+}
+
+
+// get other news
+$query = $dbCon->prepare("SELECT * FROM News WHERE NewsID != :currentID ORDER BY DateOfNews DESC LIMIT 3");
+$query->bindParam(':currentID', $currentNewsID, PDO::PARAM_INT);
+$query->execute();
+$getOtherNews = $query->fetchAll(PDO::FETCH_ASSOC);
+$queryNews = $dbCon->prepare("SELECT * FROM News ORDER BY DateOfNews DESC LIMIT 1");
+$queryNews->execute();
+$getFirstNews = $queryNews->fetch(PDO::FETCH_ASSOC);
+
+
+
 
 // get about ghiblifilms from db
 $queryAboutCompany = $dbCon->prepare("SELECT NameOfCompany, CompanyDescription 

@@ -22,30 +22,28 @@ require_once("controllers/companyController.php");
 </head>
 <body>
 
-<section class="pb-20">
+<section>
     <?php
     // hero 
     include("modules/homepage/hero.php"); 
 
+    // intro text
+    include("modules/homepage/introText.php");
+
     // all movies 
-    include("modules/homepage/movies.php"); ?>
-    <div class="six-percent">
-        <hr class="dark-hr">
-    </div>
+    include("modules/homepage/movies.php"); 
 
-    <?php
+    // all content blocks
+    include("modules/homepage/contentBlock.php");
+
     // news 
-    include("modules/homepage/news.php"); ?>
+    include("modules/homepage/news.php"); 
 
-    <?php
-    // highlighted movie
-    include("modules/homepage/highlightMovie.php"); ?>
     
-    <div class="six-percent">
-        <hr class="dark-hr">
-    </div>
+    // highlighted movie
+    include("modules/homepage/highlightMovie.php"); 
 
-    <?php
+    
     // collage section
     include("modules/homepage/collage.php"); ?>
 </section>

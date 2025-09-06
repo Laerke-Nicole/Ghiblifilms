@@ -1,5 +1,5 @@
 <section>
-    <div class="six-percent pt-20 collage-container">
+    <div class="container collage-container">
         <div class="row-grid">
             <div class="column-grid">
                 <img src="img/collage-1.jpg" alt="landscape">
