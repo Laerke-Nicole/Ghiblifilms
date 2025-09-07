@@ -188,7 +188,7 @@ nav ul li:hover {
 
 /* about */
 .about-banner {
-    background-image: url('../img/banner.jpg');
+    background-image: url('../img/About-img-banner.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -441,6 +441,78 @@ footer {
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
+
+/* hero */
+.hero {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
+}
+
+.hero-content h1 {
+    max-width: 700px;
+    line-height: 0.9 !important;
+}
+
+
+.hero-content p {
+    max-width: 500px;
+    /* text-wrap: balance; */
+}
+
+.hero-img {
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+
+.full-width-container .container {
+    margin-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
 
 
 /* collage hero */  

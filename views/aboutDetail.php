@@ -3,7 +3,7 @@
 <section>
     <div>
         <div class="flex justify-center align-center container about-company-logo">
-            <img src="img/logo.png" alt="Studio Ghibli logo" class="h-80 bg-cover">
+            <img src="img/logo.png" alt="Studio Ghibli logo" class="h-80 object-cover">
         </div>
     
         <!-- About Section -->

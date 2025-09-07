@@ -228,6 +228,10 @@ case "newsmodule":
     include('modules/news/news.php');
 break;
 
+case "dropdown":
+    include('modules/blocks/dropdown.php');
+break;
+
 
 // admin modules of cruds
 case "postalcodeadmin":
@@ -391,7 +395,6 @@ break;
 case "logindetail":
     include('views/loginDetail.php');
 break;
-
 }
 ?>
 
@@ -417,6 +420,8 @@ break;
 <!-- toggle -->
 <script src="./js/toggle.js" defer></script>
 
+<!-- tailwind -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
 
 </body>
 </html>

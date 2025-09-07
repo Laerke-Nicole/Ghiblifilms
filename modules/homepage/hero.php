@@ -1,12 +1,20 @@
-<section class="hero-section">
+<section class="hero">
     <div class="hero-content container">
-        <h1 class="hero-title pb-1">All studio Ghibli movies in one cinema</h1>
+        <h1 class="hero-title pb-1"><span class="secondary-color">All</span> studio Ghibli movies <span class="secondary-color">in one cinema</span></h1>
         <p class="hero-description pb-4">Your one-stop destination for all Studio Ghibli movies in our 2D cinema. Explore our extensive collection of films, and find news in our cinema.</p>
         <div class="flex gap-2">
-            <button class="btn-two">Explore Now</button>
-            <button class="btn-one">Get Tickets</button>
+            <a href="index.php?page=movies">
+                <button class="btn-two">Explore Now</button>
+            </a>
+
+            <!-- link to the movie thats being promoted in the hero -->
+            <a href="index.php?page=movies">
+                <button class="btn-one">Get Tickets</button>
+            </a>
         </div>
     </div>
+    <div class="glass-overlay"></div>
+    <div class="hero-img"></div>
 </section>
 
 <?php if (!empty($heroCollageViews)): ?>
@@ -25,7 +33,6 @@
                         <img src="upload/<?php echo htmlspecialchars(trim($movie['MovieImage'])); ?>" alt="Image of movie round-corner" class="mb-4">
                         
                         <h4 class="white-headline"><?php echo htmlspecialchars(trim($movie['MovieName'])); ?></h4>
-                        <!-- <p class="pb-4 white-text"><?php echo htmlspecialchars(trim($movie['ReleaseYear'])); ?></p> -->
                         <button class="btn-one" onclick="window.location.href='index.php?page=moviedetail&ID=<?php echo htmlspecialchars(trim($movie['MovieID'])); ?>'">
                             Get tickets
                     </button>

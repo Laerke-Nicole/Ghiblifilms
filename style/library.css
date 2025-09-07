@@ -272,7 +272,7 @@ tr:hover {
 .btn-one {
     border: 1px solid var(--secondary-color);
     border-radius: 10px;
-    padding: 10px 25px;
+    padding: 8px 20px;
     font-family: var(--primary-font);
     font-size: 13px;
     color: var(--black-title);
@@ -287,7 +287,7 @@ tr:hover {
 
 .btn-two {
     border-radius: 10px;
-    padding: 10px 25px;
+    padding: 8px 20px;
     font-family: var(--primary-font);
     font-size: 13px;
     color: var(--white-title);
