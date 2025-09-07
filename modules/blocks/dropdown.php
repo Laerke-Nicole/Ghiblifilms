@@ -12,14 +12,18 @@
         <?php endif; ?>
 
         <!-- if user is logged in -->
+         <?php if (is_admin()): ?>
+            <li><a href="index.php?page=admin" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Admin</a></li>
+        <?php endif; ?>   
+
         <?php if (logged_in()): ?>
             <div class="divider"></div>
-            <p class="secondary-color">Welcome back <span class="font-bold"><?php echo htmlspecialchars(trim($userID)); ?></span>!</p>
-            <a href="index.php?page=newuser" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Your bookings</a>
-            <a href="index.php?page=newuser" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Edit profile</a>
-            <a href="index.php?page=newuser" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Your bookings</a>
-            <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Sign out</button>
-        <?php endif; ?>
-    </div>
+            <p class="block px-4 py-2 text-sm white-headline">Welcome back <span class="font-bold"><?php echo htmlspecialchars(trim($userID)); ?></span>!</p>
+            <a href="index.php?page=userprofile" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">Your bookings</a>
+            <form action="logout.php" method="post" class="inline">
+              <input type="submit" value="Sign out" class="cursor-pointer block w-full px-4 py-2 text-left text-sm text-gray-300 focus:bg-white/5 focus:text-white focus:outline-hidden">
+            </form>
+            <?php endif; ?>
+          </div>
   </el-menu>
 </el-dropdown>

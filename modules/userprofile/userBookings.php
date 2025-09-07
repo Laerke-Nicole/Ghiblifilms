@@ -1,6 +1,6 @@
 <!-- work on display the users bookings  -->
-<div class="ten-percent pb-20">
-    <h3 class="pb-4">Your bookings</h3>
+<div class="container">
+    <h2>Your bookings</h2>
 
     <!-- if the user has no bookings yet -->
     <?php if (!$getUserReservations): ?>
@@ -25,5 +25,3 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-
-http://localhost/ghiblifilms/index.php?page=paymentdetail&ShowingsID=1

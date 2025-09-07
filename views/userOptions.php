@@ -2,18 +2,19 @@
 require_once("includes/functions.php"); 
 ?>
 
-<div class="ten-percent">
-    <h3>Logged in successfully</h3>
+<div class="container pt-10">
+    <h2>Logged in successfully!</h2>
 
-    <br />
     <br />
     
     <!-- btns to buy tickets and go to profile page -->
     <div>
         <h4>Here is what you can do now that you are logged in!</h4>
         
-        <a href="index.php?page=home#daily-showings"><button>Buy tickets</button></a>
-        <a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color"><button>See your profile page</button></a>
+        <div class="flex gap-2">
+            <a href="index.php?page=home#daily-showings"><button class="btn-two">Buy tickets</button></a>
+            <a href="index.php?page=userprofile&UserID=<?php echo $userID; ?>" class="secondary-color"><button class="btn-two">See your profile page</button></a>
+        </div>
     </div>
 
     <br />
@@ -21,10 +22,12 @@ require_once("includes/functions.php");
 
     <!-- btns to go to ghiblifilms info -->
     <div>
-        <h4>Or check out other stuff you can do!</h4>
+        <h5>Or check out other stuff you can do!</h5>
         
-        <a href="index.php?page=home#movies"><button>Look at movies to book</button></a>
-        <a href="index.php?page=home#about-us"><button>Read about Ghiblifilms</button></a>
-        <a href="index.php?page=home#news"><button>See our news</button></a>
+        <div class="flex gap-2">
+            <a href="index.php?page=movies"><button class="btn-one">Look at movies to book</button></a>
+            <a href="index.php?page=newslist"><button class="btn-one">See our news</button></a>
+            <a href="index.php?page=about"><button class="btn-one">Read about Ghiblifilms</button></a>
+        </div>
     </div>
 </div>

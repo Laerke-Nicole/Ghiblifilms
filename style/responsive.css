@@ -1,10 +1,10 @@
 @media only screen and (max-width: 992px) {
     .hero-content h1 {
-        max-width: 500px;
+        max-width: 500px !important;
     }
 
     .hero-content p {
-        max-width: 450px;
+        max-width: 450px !important;
     }
 
     /* footer */
@@ -56,7 +56,7 @@
 
 @media only screen and (max-width: 768px) {
     .glass-overlay {
-        width: 80%;
+        width: 80% !important;
     }
 
     nav {
@@ -66,7 +66,11 @@
     nav ul {
         padding-top: 4px;
         flex-wrap: wrap;
-        gap: 14px !important;
+        gap: 0 !important;
+    }
+
+    nav ul li {
+        padding: 8px !important;
     }
 
     .logo {
@@ -112,7 +116,7 @@
 
 @media (max-width: 576px) {
     .glass-overlay {
-        width: 100%;
+        width: 100% !important;
     }
 
 }

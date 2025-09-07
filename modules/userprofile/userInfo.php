@@ -1,5 +1,5 @@
-<div class="ten-percent pt-6 pb-20">
-    <h3 class="pb-4">Your information</h3>
+<div class="container pt-10">
+    <h2>Your information</h2>
     
     <!-- show all user info -->
     <?php if ($userProfile = $getUserProfileView[0]): ?>
@@ -11,9 +11,8 @@
             <p><strong>Address: </strong><?php echo htmlspecialchars(trim($userProfile['StreetName'])) . " " . htmlspecialchars(trim($userProfile['StreetNumber'])); ?></p>
             <p><strong>Country: </strong><?php echo htmlspecialchars(trim($userProfile['Country'])); ?></p>
             <p><strong>Postal code: </strong><?php echo htmlspecialchars(trim($userProfile['PostalCode'])); ?></p>
-            <p><strong>City: </strong><?php echo htmlspecialchars(trim($userProfile['City'])); ?></p>
+            <p class="pb-4"><strong>City: </strong><?php echo htmlspecialchars(trim($userProfile['City'])); ?></p>
                 
-            <br/>
             <a href="index.php?page=edituserprofile&ID=<?php echo $userProfile['UserID']; ?>" class="btn-two">Edit your info</a>
         </div>
     <?php else: ?>

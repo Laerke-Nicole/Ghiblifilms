@@ -41,7 +41,7 @@ if (!$getUserProfileView) {
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
         <h3>Editing user "<?php echo htmlspecialchars(trim($getUserProfileView[0]['Username'])); ?>"</h3>
         <form class="col s12" name="contact" method="post" action="controllers/update.php">
             <!-- csrf protection -->
@@ -108,7 +108,7 @@ if (!$getUserProfileView) {
             
             <input type="hidden" name="UserID" value="<?php echo htmlspecialchars(trim($userID)); ?>">
 
-            <button class="btn waves-effect waves-light" type="submit" name="submit">Update</button>
+            <button class="btn-two" type="submit" name="submit">Update</button>
         </form>
     </div>
 </div>

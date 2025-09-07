@@ -15,10 +15,10 @@ require_once ("includes/csrfProtection.php");
     
 </head>
 <body>
-<div class="ten-percent grid-cols-2 pt-6 pb-20 payment-content-container">
+<div class="container grid grid-cols-2 pt-10 payment-content-container">
     <!-- booking overview -->
     <div>
-        <h2 class="pb-4">Order Overview</h2>
+        <h2>Order Overview</h2>
 
         <p><strong>Movie:</strong> <?php echo $getShowingsInfo['MovieName']; ?></p>
         <p><strong>Showing Date:</strong> <?php echo $getShowingsInfo['ShowingDate']; ?></p>
@@ -41,7 +41,7 @@ require_once ("includes/csrfProtection.php");
 
     <!-- payment -->
     <div>
-        <h3 class="pb-4">Payment</h3>
+        <h3>Payment</h3>
         <form id="payment-form">
             <!-- csrf protection -->
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">

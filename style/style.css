@@ -137,6 +137,68 @@ nav ul li:hover {
     font-size: 13px;
 }
 
+.newuser-form span {
+    margin-bottom: 8px !important;
+    padding-left: 7px;
+    font-size: 14px;
+}
+.newuser-form .input-field {
+    background-color: var(--white-title);
+    border: 0;
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+    font-family: var(--primary-font);
+    font-size: 13px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.newuser-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: var(--primary-font);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.form-group span {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-family: var(--primary-font);
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 /* admin page */
 .sidenav {
@@ -566,18 +628,6 @@ footer {
 .create-user-link {
     text-decoration: underline !important;
 }
-
-.login-form input, .newuser-form input {
-    background-color: var(--white-title);
-    border: 0;
-    border-radius: 10px;
-    padding: 10px 20px;
-    max-width: 100%;
-    resize: none;
-    font-family: var(--primary-font);
-}
-
-
 
 .company-stats h2 {
     margin-bottom: 2px;

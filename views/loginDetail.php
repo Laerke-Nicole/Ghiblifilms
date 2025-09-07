@@ -10,34 +10,36 @@
     <script src="js/recaptcha.js" defer></script>
 </head>
 
-<div class="six-percent pt-6 pb-20 flex flex-col justify-center align-center">
-    <div>
-        <h2 class="pb-4">Log in</h2>
+<div class="container pt-10 flex justify-center">
+    <div class="form-wrapper">
+        <h2>Log in</h2>
         
-        <form action="" method="post" class="flex flex-col login-form">
-            <!-- csrf protection -->
+        <form action="" method="post" class="login-form">
+            <!-- CSRF protection -->
             <input type="hidden" name="csrf_token" value="<?php echo csrfToken(); ?>">
             
             <!-- hidden input for reCAPTCHA token -->
             <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-        
-            <div class="pb-4">
-                <input type="text" name="User" maxlength="50" value="" placeholder="Username" class="validate" required="" aria-required="true" />
+
+            <div class="form-group">
+                <span>Username</span>
+                <input type="text" name="User" maxlength="50" placeholder="Username" class="input-field" required />
             </div>
             
-            <div class="pb-6">
-                <input type="password" name="Pass" maxlength="255" value="" placeholder="Password" class="validate" required="" aria-required="true" />
+            <div class="form-group">
+                <span>Password</span>
+                <input type="password" name="Pass" maxlength="255" placeholder="Password" class="input-field" required />
             </div>
-        
-            <div class="cursor pb-2">
+            
+            <div class="form-actions">
                 <input type="submit" name="submit" value="Login" class="btn-two" />
             </div>
-        
-            <div>
-                <p class="secondary-color text-sm">Got no user? <a href="index.php?page=newuser" class="secondary-color text-sm create-user-link">Create a new user here</a></p> 
-            </div>
+
+            <p class="secondary-color text-xs">Got no user? <a href="index.php?page=newuser" class="secondary-color text-sm create-user-link">Create a new user here</a></p> 
         </form>
     </div>
+</div>
+
 
 </div>
 </body>

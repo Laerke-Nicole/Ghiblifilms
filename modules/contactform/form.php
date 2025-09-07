@@ -14,22 +14,22 @@ require_once ("includes/csrfProtection.php");
     
                 <div>
                     <span>First name</span>
-                    <input type="text" id="firstName" name="firstName" placeholder="First name" maxlength="50" class="validate" required="" aria-required="true">
+                    <input type="text" id="firstName" name="firstName" placeholder="First name" maxlength="50" class="validate input-field" required="" aria-required="true">
                 </div>
 
                 <div>
                     <span>Last name</span>
-                    <input type="text" id="lastName" name="lastName" placeholder="Last name" maxlength="50" class="validate" required="" aria-required="true">
+                    <input type="text" id="lastName" name="lastName" placeholder="Last name" maxlength="50" class="validate input-field" required="" aria-required="true">
                 </div>
     
                 <div>
                     <span>Email</span>
-                    <input type="email" id="email" name="email" placeholder="Email" maxlength="255" class="validate" required="" aria-required="true">
+                    <input type="email" id="email" name="email" placeholder="Email" maxlength="255" class="validate input-field" required="" aria-required="true">
                 </div>
     
                 <div>
                     <span>Message</span>
-                    <textarea id="message" name="message" placeholder="Message" class="validate" required="" aria-required="true"></textarea>
+                    <textarea id="message" name="message" placeholder="Message" class="validate input-field" required="" aria-required="true"></textarea>
                 </div>
 
                 <!-- hidden input for reCAPTCHA token -->
